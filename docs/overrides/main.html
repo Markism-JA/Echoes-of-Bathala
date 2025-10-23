@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block styles %}
+{{ super() }}
+<style>
+    /* Light Mode Palette */
+    [data-md-color-scheme="default"] {
+        --md-primary-fg-color: #F7F8F9;
+        /* Almost black for headers */
+        --md-primary-fg-color--light: #202020;
+        --md-primary-bg-color: Neutral0;
+        /* Pure white background */
+
+        --md-default-fg-color: #202020;
+        /* Main text color */
+        --md-default-fg-color--light: #707070;
+        /* Lighter text for secondary info */
+        --md-default-fg-color--lighter: #acacac;
+        /* Borders */
+        --md-default-bg-color: #ffffff;
+        /* Main background */
+
+        --md-accent-fg-color: #0052cc;
+        /* A single pop of color for links/accents */
+
+        --md-code-fg-color: #303030;
+        --md-code-bg-color: #f5f5f5;
+        /* Light grey for code blocks */
+
+        --md-typeset-table-color: hsla(0, 0%, 0%, 0.12);
+    }
+
+    /* Dark Mode Palette */
+    [data-md-color-scheme="slate"] {
+        --md-primary-fg-color: #101214;
+        --md-primary-fg-color--light: #d0d0d0;
+        --md-primary-bg-color: #f0f0f0;
+        /* Very dark grey, not pure black */
+        # --md-default-fg-color: #d0d0d0;
+        /* Main text color (off-white) */
+        --md-default-fg-color--light: #909090;
+        /* Lighter text */
+        --md-default-fg-color--lighter: #404040;
+        /* Borders */
+        --md-default-bg-color: #121212;
+
+        --md-accent-fg-color: #3498db;
+
+        --md-code-fg-color: #e0e0e0;
+        --md-code-bg-color: #1e1e1e;
+
+        --md-typeset-table-color: hsla(0, 0%, 100%, 0.12);
+    }
+</style>
+{% endblock %}

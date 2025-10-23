@@ -1,0 +1,376 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="413.89 110.48 900.35 474.31">
+ <v:documentProperties>
+  <v:userDefs>
+   <v:ud v:nameU="msvNoAutoConnect" v:val="1"/>
+  </v:userDefs>
+ </v:documentProperties>
+ <g id="SFixTitle"/>
+ <g id="SContent">
+  <g>
+   <g transform="matrix(1,0,0,-1,0,792)">
+    <g transform="matrix(1,0,0,1,414.26642,207.5904)" v:mID="51">
+     <title>Process</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <g transform="matrix(1,0,0,1,0,0)" v:mID="51">
+      <title>Process</title>
+      <userDefs>
+       <ud nameU="visVersion" val="15"/>
+       <ud nameU="DefaultWidth" val="1"/>
+       <ud nameU="DefaultHeight" val="0.75"/>
+       <ud nameU="ResizeTxtHeight" val="0.75"/>
+      </userDefs>
+      <custProps>
+       <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+       <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+       <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+       <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+       <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+       <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+       <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+      </custProps>
+      <path d="M0,0 L899.596801758,0 L899.596801758,0 L899.596801758,473.558410645 L899.596801758,473.558410645 L0,473.558410645 L0,473.558410645 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="none" stroke-opacity="0"/>
+     </g>
+     <path d="M0,0 L899.596801758,0 L899.596801758,0 L899.596801758,473.558410645 L899.596801758,473.558410645 L0,473.558410645 L0,473.558410645 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)"/>
+    </g>
+    <g transform="matrix(1,0,0,1,705.4164,443.5452)" v:mID="1">
+     <title>Process</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,54.885601044 L96.703193665,54.885601044 L0,54.885601044 L0,54.885601044 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="35.683628" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">PEARL</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,705.4164,320.706)" v:mID="2">
+     <title>Process.2</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,54.885601044 L96.703193665,54.885601044 L0,54.885601044 L0,54.885601044 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="35.017612" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">$BAKU</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,926.00995,443.5524)" v:mID="3">
+     <title>Process.3</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,54.885601044 L96.703193665,54.885601044 L0,54.885601044 L0,54.885601044 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="22.474646" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">In-game Market</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1027.5732,320.706)" v:mID="4">
+     <title>Process.4</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,54.885601044 L96.703193665,54.885601044 L0,54.885601044 L0,54.885601044 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="40.130894" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">DEX</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1202.0796,372.1068)" v:mID="10">
+     <title>Process.10</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,20.98800087 L96.703193665,20.98800087 L0,20.98800087 L0,20.98800087 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="39.02152" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.894)">Seller</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1202.0869,292.9932)" v:mID="11">
+     <title>Process.11</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,20.98800087 L96.703193665,20.98800087 L0,20.98800087 L0,20.98800087 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="38.57621" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.894)">Buyer</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1124.2764,348.14877)" v:mID="12">
+     <title>Dynamic connector</title>
+     <g transform="matrix(1,0,0,1,0,0)" v:mID="12">
+      <title>Dynamic connector</title>
+      <path d="M72.043197632,31.572000504 L77.803199768,34.451999664 L72.043197632,37.332000732 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" opacity="0" transform="matrix(1,0,0,1,0,0)"/>
+      <path d="M0,0 L13.5,0 L13.5,0 L13.5,34.451999664 L13.5,34.451999664 L77.803199768,34.451999664 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none" stroke-opacity="0"/>
+     </g>
+     <path d="M72.043197632,31.572000504 L77.803199768,34.451999664 L72.043197632,37.332000732 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,0 L13.5,0 L13.5,0 L13.5,34.451999664 L13.5,34.451999664 L77.803199768,34.451999664 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,1124.2765,348.1488)" v:mID="13">
+     <title>Dynamic connector</title>
+     <path d="M72.05039978,-47.541603088 L77.810401917,-44.661598206 L72.05039978,-41.781597137 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,0 L13.5,0 L13.5,0 L13.5,-44.661598206 L13.5,-44.661598206 L77.810401917,-44.661598206 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,1250.4385,292.99316)" v:mID="14">
+     <title>Dynamic connector</title>
+     <path d="M-502.430389404,24.832801819 L-496.670410156,27.71280098 L-502.430389404,30.59280014 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,-468.9576,524.38324)"/>
+     <path d="M0,0 L0,-13.5 L0,-13.5 L-171.513595581,-13.5 L-171.513595581,-13.5 L-171.513595581,-13.5 L-171.513595581,-13.5 C-171.513595581,-12.704654694 -171.829879761,-11.941070557 -172.392272949,-11.378677368 L-172.392272949,-11.378677368 C-172.954681396,-10.816283226 -173.718261719,-10.499998093 -174.513595581,-10.5 L-174.513595581,-10.5 C-175.308959961,-10.500001907 -176.072540283,-10.816289902 -176.634918213,-11.378684998 L-176.634918213,-11.378684998 C-177.19732666,-11.941077232 -177.51361084,-12.704658508 -177.51361084,-13.5 L-177.51361084,-13.5 L-177.51361084,-13.5 L-177.51361084,-13.5 L-496.670410156,-13.5 L-496.670410156,-13.5 L-496.670410156,27.71280098 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,1250.4385,292.99316)" v:mID="23">
+     <title>Dynamic connector</title>
+     <path d="M-180.273590088,24.832801819 L-174.513595581,27.71280098 L-180.273590088,30.59280014 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,-146.8008,202.2264)"/>
+     <path d="M0,0 L0,-63.454589844 L0,-63.454589844 L-174.513595581,-63.454589844 L-174.513595581,-63.454589844 L-174.513595581,27.71280098 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-121.113205,-72.25459)"/>
+    </g>
+    <g transform="matrix(1,0,0,1,770.6736,400.572)" v:mID="24">
+     <title>Sheet.24</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="6.944062" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Minting</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,837.7848,480.4344)" v:mID="25">
+     <title>Sheet.25</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="8.953827" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Market</text>
+      <text x="11.285859" y="14.400001" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Usage</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,918.81354,356.3856)" v:mID="26">
+     <title>Sheet.26</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="16.946014" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">List</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1138.0536,393.8832)" v:mID="27">
+     <title>Sheet.27</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="16.946014" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Sell</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1149.5304,313.9848)" v:mID="28">
+     <title>Sheet.28</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="4.6208205" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Purchase</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1138.0608,241.092)" v:mID="29">
+     <title>Sheet.29</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="14.279999" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Hold</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,866.2536,249.61682)" v:mID="30">
+     <title>Sheet.30</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="9.952851" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Utilize</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,624.3192,356.3856)" v:mID="31">
+     <title>Sheet.31</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="6.949922" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Convert</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,484.82278,495.71637)" v:mID="33">
+     <title>Process.33</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,54.885601044 L96.703193665,54.885601044 L0,54.885601044 L0,54.885601044 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="26.470737" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">Regular Zone</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,484.81558,388.6668)" v:mID="35">
+     <title>Process.35</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,54.885601044 L96.703193665,54.885601044 L0,54.885601044 L0,54.885601044 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="4.25394" y="4.8" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">Special Time Limited Zone</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,581.52606,523.1592)" v:mID="36">
+     <title>Dynamic connector</title>
+     <path d="M118.130401611,-55.051200867 L123.890403748,-52.171199799 L118.130401611,-49.29119873 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,0 L13.5,0 L13.5,0 L13.5,-52.171199799 L13.5,-52.171199799 L123.890403748,-52.171199799 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,581.5188,416.1096)" v:mID="37">
+     <title>Dynamic connector</title>
+     <path d="M118.13760376,51.998397827 L123.897605896,54.878398895 L118.13760376,57.758399963 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,0 L13.5,0 L13.5,0 L13.5,54.878398895 L13.5,54.878398895 L123.897605896,54.878398895 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,744.768,443.5452)" v:mID="39">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-70.833602905 L9,-67.953598022 L3.239999533,-65.07359314 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-0,-1,1,0,76.9536,-58.953598)"/>
+     <path d="M9,0 L9,-67.953598022 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,696.4164,348.1488)" v:mID="40">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,119.959197998 L9,122.839202881 L3.239999533,125.719192505 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-17.704761505,0 L-17.704761505,0 L-17.704761505,122.839202881 L-17.704761505,122.839202881 L9,122.839202881 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,802.1196,461.9916)" v:mID="41">
+     <title>Dynamic connector</title>
+     <path d="M118.130401611,6.123599052 L123.890403748,9.003599167 L118.130401611,11.883600235 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,8.996399879 L13.5,8.996399879 L13.5,8.996399879 L13.5,9.003599167 L13.5,9.003599167 L123.890403748,9.003599167 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,613.6055,485.964)" v:mID="43">
+     <title>Sheet.43</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="10.943086" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Fishes</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,802.11957,339.1488)" v:mID="44">
+     <title>Dynamic connector</title>
+     <path d="M219.693603516,6.119999409 L225.453598022,9 L219.693603516,11.880000114 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,9 L225.453598022,9 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+    </g>
+    <g transform="matrix(1,0,0,1,705.4164,608.85004)" v:mID="47">
+     <title>Process.47</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+      <ud nameU="DefaultWidth" val="1"/>
+      <ud nameU="DefaultHeight" val="0.75"/>
+      <ud nameU="ResizeTxtHeight" val="0.75"/>
+     </userDefs>
+     <custProps>
+      <cp nameU="Cost" lbl="Cost" type="7" langID="1033" val="0"/>
+      <cp nameU="ProcessNumber" lbl="Process Number" type="2" langID="1033" val="0"/>
+      <cp nameU="Owner" lbl="Owner" type="0" langID="1033" val="0"/>
+      <cp nameU="Function" lbl="Function" type="0" langID="1033"/>
+      <cp nameU="StartDate" lbl="Start Date" type="5" langID="1033" val="0"/>
+      <cp nameU="EndDate" lbl="End Date" type="5" langID="1033" val="0"/>
+      <cp nameU="Status" lbl="Status" type="4" langID="1033"/>
+     </custProps>
+     <path d="M0,0 L96.703193665,0 L96.703193665,0 L96.703193665,54.885601044 L96.703193665,54.885601044 L0,54.885601044 L0,54.885601044 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="2.7012072" y="0" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">Equipment/Material crafting</text>
+      <text x="34.80472" y="9.6" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,29.8428)">resource</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,762.768,498.4308)" v:mID="48">
+     <title>Dynamic connector</title>
+     <path d="M-14.760001183,107.539199829 L-9,110.419197083 L-14.760001183,113.299194336 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,101.4192,119.4192)"/>
+     <path d="M-9,0 L-9,61.136627197 L-9,61.136627197 L-9,61.136627197 L-9,61.136627197 L-9,110.419197083 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-29,46.4096)"/>
+    </g>
+    <g transform="matrix(1,0,0,1,749.56323,557.928)" v:mID="49">
+     <title>Sheet.49</title>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="13.951875" y="7.2000003" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,12.599999)">Craft</text>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+ <style type="text/css"><![CDATA[ .TextStyle1 {font-family:Times New Roman;font-size:12px;}.TextStyle0 {font-family:Times New Roman;font-size:8px;} ]]></style>
+</svg>

@@ -1,0 +1,50 @@
+name: Generate Weekly Consultation Form
+
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "The week number (e.g., 5)"
+        required: true
+        type: string
+      date:
+        description: "Optional: The date to use (e.g., 10/23/2025)"
+        required: false
+        type: string
+
+jobs:
+  generate-form:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install python-docx
+
+      - name: Run script to generate DOCX
+        id: generate
+        working-directory: ./scripts/auto-generate-consult-form
+        run: |
+          FILENAME="Week-${{ github.event.inputs.week }}-Consultation-Form.docx"
+          echo "output_name=$FILENAME" >> $GITHUB_OUTPUT
+
+          DATE_ARG=""
+          if [[ -n "${{ github.event.inputs.date }}" ]]; then
+            DATE_ARG="--date '${{ github.event.inputs.date }}'"
+          fi
+
+          # Run the script with all arguments
+          python consultationForm.py "$FILENAME" --week "${{ github.event.inputs.week }}" $DATE_ARG
+
+      - name: Upload DOCX Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Consultation-Form-Week-${{ github.event.inputs.week }}
+          path: ./scripts/auto-generate-consult-form/${{ steps.generate.outputs.output_name }}

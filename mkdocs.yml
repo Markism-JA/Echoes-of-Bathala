@@ -1,0 +1,50 @@
+site_name: MMORPG Game Docs
+site_description: A description of my awesome project.
+site_author: Your Name
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+
+  features:
+    - header.autohide
+    - navigation.instant
+    - navigation.tabs
+
+    - navigation.top
+    - search.suggest
+    - content.tabs.link
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mermaid2
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - footnotes
+  - def_list
+  - attr_list
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true 
+
+extra_css:
+  - css/custom.css

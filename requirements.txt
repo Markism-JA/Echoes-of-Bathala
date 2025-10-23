@@ -1,0 +1,7 @@
+mkdocs
+mkdocs-material
+mkdocs-material-extensions
+mkdocs-mermaid2-plugin
+mkdocs-get-deps
+pymdown-extensions
+ghp-import
