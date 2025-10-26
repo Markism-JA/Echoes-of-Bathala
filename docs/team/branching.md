@@ -60,6 +60,18 @@ fix/60-correct-login-error
 - `<prefix>` should describe the nature of the work, e.g., `experiment`, `spike`, or `hotfix`.
 **Example:**
 
+### 3. Miscellaneous Branches
+
+- **Purpose:** For tasks not associated with an existing issue.
+- **Naming Convention:**
+
+```
+<prefix>/<short-descriptive-branch-name>
+```
+
+- `<prefix>` should describe the nature of the work, e.g., `experiment`, `spike`, or `hotfix`.
+**Example:**
+
 ```
 experiment/ui-redesign
 hotfix/fix-typo-footer
