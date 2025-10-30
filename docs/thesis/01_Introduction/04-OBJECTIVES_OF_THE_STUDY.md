@@ -1,10 +1,6 @@
 ## Objectives of the Study
 
-### General Objective
-
 To design, implement, and evaluate an MMORPG prototype based on Filipino mythology, featuring a functional, blockchain-driven player economy.
-
-### Specific Objectives
 
 1. To design a game world and narrative derived from Filipino mythological figures and epics (e.g., Bathala, Bakunawa).
 2. To architect a dual-asset tokenomics model linking "Perlas," the main in-game resource from gameplay, to "Baku Coin," a blockchain cryptocurrency.

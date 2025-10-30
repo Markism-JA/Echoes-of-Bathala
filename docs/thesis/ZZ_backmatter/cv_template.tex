@@ -1,0 +1,83 @@
+\clearpage
+\phantomsection
+\section*{{\fontsize{9}{11}\selectfont Curriculum Vitae of}}
+\addcontentsline{toc}{section}{Curriculum Vitae of \FullName}
+\vspace{-0.5\baselineskip}
+
+\centering
+
+{\large \textbf{
+    \addfontfeatures{Letters=Uppercase}
+    \FullName
+}} \\
+\Address \\
+\EmailAddress \\
+\ContactInfo
+\vspace{1cm}
+
+% -- Educational Background
+\centering
+{\fontsize{11}{13.5}\selectfont{EDUCATIONAL BACKGROUND}}
+\par
+\vspace{0.3em}
+
+\begin{tabularx}{\textwidth}{C C C}
+    Level & Inclusive Dates & Name of School/ Institution \\
+    \forlistloop{\AddRow}{\EducationalList} 
+\end{tabularx}
+\vspace{1em}
+
+% -- Professional or Volunteer Experience
+
+\raggedright
+\fontsize{11}{13.5}\selectfont PROFESSIONAL OR VOLUNTEER EXPERIENCE
+\par
+\vspace{0.3em}
+
+\begin{tabularx}{\textwidth}{C C C}
+Inclusive Dates & \shortstack{Nature of Experience/\\ Job Title} & \shortstack{Name and Address of Company or\\ Organization} \\
+\forlistloop{\AddRow}{\ProfessionalExperienceList}
+\end{tabularx}
+\vspace{1em}
+
+% -- Affiliation
+
+\raggedright
+\fontsize{11}{13.5}\selectfont AFFILIATION
+\par
+\vspace{0.3em}
+
+\begin{tabularx}{\textwidth}{C C C}
+Inclusive Dates & Name of Organization & Position \\
+\forlistloop{\AddRow}{\AffiliationList}
+\end{tabularx}
+\vspace{1em}
+
+% -- Skills
+
+\raggedright
+\fontsize{11}{13.5}\selectfont SKILLS
+\par
+\vspace{0.3em}
+
+\begin{tabularx}{\textwidth}{C C C}
+SKILLS & Level of Competency & Date Acquired \\
+\forlistloop{\AddRow}{\SkillList}
+\end{tabularx}
+\vspace{1em}
+
+% -- Trainings
+
+\raggedright
+\fontsize{11}{13.5}\selectfont TRAININGS, SEMINARS OR WORKSHOP ATTENDED
+\par
+\vspace{0.3em}
+
+\begin{tabularx}{\textwidth}{C C C}
+Inclusive Dates & Title of Training, Seminar or Workshop \\
+\forlistloop{\AddRow}{\TrainingList}
+\end{tabularx}
+\vspace{1em}
+
+
+\clearpage

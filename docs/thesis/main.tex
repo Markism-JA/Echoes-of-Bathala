@@ -1,0 +1,32 @@
+\input{settings/preamble}
+\input{settings/macros.tex}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\input{00_frontmatter/titlepage.tex}
+
+\pagestyle{fancy}
+
+% Frontmatter
+\input{00_frontmatter/endoresement-form.tex}
+\input{00_frontmatter/approval-sheet}
+\input{00_frontmatter/toc.tex}
+
+\cleardoublepage \newcounter{romanpages}
+\setcounter{romanpages}{\value{page}}
+\pagenumbering{arabic} 
+\setcounter{page}{\value{romanpages}}
+
+% Body
+\input{include.tex}
+
+% Backmatter
+\input{ZZ_backmatter/member1_data.tex}
+\input{ZZ_backmatter/member2_data.tex}
+\input{ZZ_backmatter/member3_data.tex}
+\input{ZZ_backmatter/member4_data.tex}
+\input{ZZ_backmatter/adviser_acceptance_form.tex}
+\input{ZZ_backmatter/references.tex}
+\end{document}
