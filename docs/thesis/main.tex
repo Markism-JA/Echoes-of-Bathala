@@ -14,13 +14,18 @@
 \input{00_frontmatter/approval-sheet}
 \input{00_frontmatter/toc.tex}
 
-\cleardoublepage \newcounter{romanpages}
-\setcounter{romanpages}{\value{page}}
-\pagenumbering{arabic} 
-\setcounter{page}{\value{romanpages}}
 
 % Body
+\cleardoublepage \newcounter{romanpages}
+\setcounter{romanpages}{\value{page}}
+\pagenumbering{arabic}
+\setcounter{page}{\value{romanpages}}
+
+\begingroup
+\setlength{\parindent}{0pt}
+\onehalfspacing
 \input{include.tex}
+\endgroup
 
 % Backmatter
 \input{ZZ_backmatter/member1_data.tex}

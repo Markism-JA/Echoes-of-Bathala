@@ -1,6 +1,5 @@
 \documentclass[12pt,letterpaper, oneside]{book}
 
-\usepackage[utf8]{inputenc}
 \usepackage{fontspec}
 \usepackage{ragged2e}
 \usepackage{geometry}
@@ -8,12 +7,13 @@
 \usepackage{titlesec}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
-\usepackage{etoolbox}
 \usepackage{textcase}
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{etoolbox}
 \usepackage{array}
+\usepackage{parskip}
+\usepackage{setspace}
 \usepackage[style=apa]{biblatex}
 
 \usepackage[
@@ -38,22 +38,25 @@
 
 \renewcommand{\contentsname}{\hfill\bfseries\normalsize TABLE OF CONTENTS\hfill}
 \renewcommand{\cftaftertoctitle}{
-  \par
-  \vspace{1em}
-  \hfill Page\par
+    \par
+    \vspace{1em}
+    \hfill Page\par
 }
 
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
-\setlength{\cftsecindent}{0pt}
-\setlength{\cftsubsecindent}{1.5em}
+\setlength{\cftsecindent}{0pt} 
+\setlength{\cftsecnumwidth}{5em}
+
+\setlength{\cftsubsecindent}{0pt}
+\setlength{\cftsubsecnumwidth}{7em}
+
+\setlength{\cftsubsubsecindent}{0pt}
+\setlength{\cftsubsubsecnumwidth}{9em}
+
 \setlength{\cftbeforesecskip}{1ex}
 \setlength{\cftbeforesubsecskip}{0pt}
-% \setlength{\cftchapnumwidth}{0pt}
-
-\setlength{\cftsecnumwidth}{5em}
-\setlength{\cftsecindent}{1.5em}
-\setlength{\cftbeforesecskip}{1ex}
+\setlength{\cftbeforesubsubsecskip}{0pt}
 
 \geometry{left=1.50in, right=1in, top=1in, bottom=0.75in}
 
@@ -62,7 +65,8 @@
 \titleformat{\chapter}[block]{\normalfont\normalsize\bfseries\centering}{}{0pt}{\normalsize}[\vspace{1cm}]
 \titlespacing{\chapter}{0pt}{0pt}{0cm}
 
-\titleformat{\section}[block]{\normalfont\normalsize\bfseries\centering\raggedright}{}{0.5em}{}
+\titleformat{\section}[block]{\normalfont\normalsize\bfseries\centering\raggedright}{}{}{}
+\titleformat{\subsection}[block]{\normalfont\normalsize\bfseries\centering\raggedright}{}{}{}
 
 \fancyhf{}
 
