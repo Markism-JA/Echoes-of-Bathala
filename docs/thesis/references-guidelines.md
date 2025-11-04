@@ -206,8 +206,8 @@ A valid source should at least meet one of these:
 
 Older sources (5–15+ years old) may be used if they are:
 
-- **Foundational works**  
-  Example: Nakamoto’s Bitcoin whitepaper (2008), early virtual economy studies  
+- **Foundational works**
+  Example: Nakamoto’s Bitcoin Whitepaper (2008), early virtual economy studies
 - Seminal publications in software engineering, game theory, cryptography, or economics
 - Original creators of theories, models, or algorithms
 - Still cited and respected in modern literature
@@ -237,5 +237,5 @@ Ask:
 4. Is the technology or method still used today?
 5. Is there a more updated authoritative source available?
 
-If **yes** to (1–2), typically valid.  
+If **yes** to (1–2), typically valid.
 If **no** to (3–5), avoid or replace with newer research.
