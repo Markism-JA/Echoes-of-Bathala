@@ -64,7 +64,7 @@ According to @smith2020, analysis shows...
 
 - For every references, an entry in the `references.bib` must be created. There are different types of references entry in the .bib file. When referencing you call the key, which is the first field in a bibliography entry.
 
-Example: [References](thesis/references-guidelines.md#main-biblatex-syntax)
+Example: [References](thesis_documentation/references-guidelines.md#main-biblatex-syntax)
 
 > Google Drive copies (for submission) are generated automatically by the build system. The lead dev would be responsible for the CD pipeline for this [Not yet implemented as CD pipeline, still local (Lead Dev's Machine)].
 
