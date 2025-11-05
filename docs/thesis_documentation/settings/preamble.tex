@@ -14,12 +14,14 @@
 \usepackage{array}
 \usepackage{parskip}
 \usepackage{setspace}
-\usepackage[style=apa]{biblatex}
+\usepackage[style=apa, backend=biber]{biblatex}
+\usepackage{csquotes}
 
 \usepackage[
+    citecolor=black,
     colorlinks=true,
     linkcolor=black,
-    urlcolor=blue,
+    urlcolor=black,
     pdfborder={0 0 0}
 ]{hyperref}
 
@@ -47,6 +49,8 @@
 
 \setlength{\cftsecindent}{0pt} 
 \setlength{\cftsecnumwidth}{5em}
+
+\setlength\bibitemsep{1.2\baselineskip}
 
 \setlength{\cftsubsecindent}{0pt}
 \setlength{\cftsubsecnumwidth}{7em}
