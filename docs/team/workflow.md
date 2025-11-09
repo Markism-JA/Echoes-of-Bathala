@@ -5,10 +5,11 @@
 1. **Planning Meeting**
 
 Each development cycle starts with a planning meeting. The meeting follows a standardized format; see [Communication in Meeting/Standup](communication/Standup) for details. During the meeting, we:
-   - Review current progress
-   - Identify roadblocks
-   - Break down tasks and assign them to team members
-   - Record tasks in the repository's **Issues** tab
+
+- Review current progress
+- Identify roadblocks
+- Break down tasks and assign them to team members
+- Record tasks in the repository's **Issues** tab
 
 2. **Branch Creation**
 

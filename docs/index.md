@@ -72,7 +72,7 @@ Example: [References](thesis_documentation/references-guidelines.md#main-biblate
 
 1. **Create or edit** Markdown docs locally or via GitHub’s editor. Please learn to do this locally.
 2. **Commit** to your `docs/<topic>` branch.
-3. **Open a Pull Request** to `dev` for review.
+3. **Open a Pull Request** to `master` for review.
 4. After approval, the documentation builds actions will run automatically (Publishing to website and outputting to drive [Not yet implemented]).
 
 Example branch:
