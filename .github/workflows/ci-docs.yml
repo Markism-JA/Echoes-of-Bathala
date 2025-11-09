@@ -1,5 +1,3 @@
-# .github/workflows/deploy-docs.yml
-
 name: Deploy Documentation
 
 on:
