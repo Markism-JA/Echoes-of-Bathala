@@ -10,9 +10,9 @@ Finally, the integration of these two systems—a centralized, high-speed game s
 
 Therefore, this study addresses this three-fold problem by designing, prototyping, and validating:
 
-1. A novel Stabilization Framework (AMM, adaptive throttle, treasury) to solve the technical economic imbalance.
+1. A novel Stabilization Framework (AMM, adaptive throttle, treasury) as a proposal solution to the technical economic imbalance.
 
-2. A "Social Sink" (grounded in Self-Determination Theory and Filipino mythology) to solve the sociological motivation problem.
+2. A "Social Sink" (grounded in Self-Determination Theory and Filipino mythology) as a proposal solution to the sociological motivation problem.
 
 3. A Hybrid Reference Architecture that securely connects the traditional 3-tier game components to the decentralized token infrastructure.
 
