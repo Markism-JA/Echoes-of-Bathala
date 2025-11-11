@@ -1,17 +1,31 @@
-## **Statement of the Problem**
+## Statement of the Problem
 
-The rise of blockchain-integrated games has created new opportunities for players through play-to-earn systems. However, combining cultural storytelling, engaging gameplay, and blockchain-based economies remains a developing area of study. There is a need to explore how these technologies can be used not only for profit but also for cultural expression, balanced gameplay, and sustainable virtual economies.
+As established in the background of this study, first-generation "Play-to-Earn" (P2E) economies have proven to be critically unstable. Their economic models, exemplified by case studies like *Axie Infinity*, suffer from a fundamental design flaw: economic faucets (token generation) vastly outpace economic sinks (token removal). This imbalance leads to hyper-inflationary pressure that destroy economic value and devalue the player experience [@Silverio2025].
 
-This study aims to address this by developing a Filipino-inspired Massively Multiplayer Online Role-Playing Game (MMORPG) that integrates Filipino mythology with a blockchain-based player economy. The project uses a dual-asset tokenomics model with _Perlas_ (in-game currency) and _Baku Coin_ (blockchain token), linked through a smart contract system called the “Divine Tithe.” This system promotes economic stability by regulating currency value, reducing inflation, and rewarding player activity fairly through transparent and decentralized mechanisms.
+While later models like MIR4 introduced dual-token conversion, they failed to implement the sophisticated controls necessary to prevent bot-driven exploitation and market collapse [@Lee2023]. This research identifies a critical gap, which is the need for a hybrid economic model that integrates the managed-economy principles of stable Web2 systems like EVE Online [@Gudmundsson2011q4] with the on-chain architecture of Web3.
 
-Furthermore, the study also explores how Filipino folklore and mythology can be represented in a digital environment while maintaining technical and economic balance. By merging gameplay, culture, and blockchain systems, this research aims to contribute creatively and technically to game development, blockchain innovation, and cultural preservation.
+Furthermore, this technical flaw is compounded by a sociological flaw, an over-reliance on purely extrinsic, profit-seeking motivation [@Delic2023Understanding]. This "speculator mindset" fosters an unstable user base with no long-term community investment.
 
-**This study specifically aims to answer the following research questions:**
+Finally, the integration of these two systems—a centralized, high-speed game server and a decentralized, low-trust blockchain—presents a complex architectural challenge. Securely bridging this gap is essential to prevent the on-chain exploits and cheat-driven economic failures that have plagued many Web3 titles.
 
-1. How can Filipino mythology and culture be effectively integrated into an MMORPG’s world-building, narrative, and gameplay systems?  
-2. How can the dual-asset tokenomics model linking *Perlas* and *Baku Coin* maintain economic stability and fairness for players?  
-3. How can the **“Divine Tithe”** system regulate currency flow and minimize inflation within the in-game economy?  
-4. How can gameplay mechanics such as combat, quests, and trading be integrated with the tokenomics system to ensure fairness and sustainability in player progression?
-5. How can blockchain infrastructure through smart contracts and the _Baku Coin_ token ensure transparency, security, and decentralized transactions within the game ecosystem?
+Therefore, this study addresses this three-fold problem by designing, prototyping, and validating:
 
-Through these questions, the study aims to demonstrate how blockchain technology and Filipino mythology can coexist in a unified MMORPG system that promotes both cultural preservation and economic sustainability in digital game environments.
+1. A novel Stabilization Framework (AMM, adaptive throttle, treasury) to solve the technical economic imbalance.
+
+2. A "Social Sink" (grounded in Self-Determination Theory and Filipino mythology) to solve the sociological motivation problem.
+
+3. A Hybrid Reference Architecture that securely connects the traditional 3-tier game components to the decentralized token infrastructure.
+
+### Research Questions
+
+This study specifically aims to answer the following research questions:
+
+1. (Economic): To what extent can the proposed Stabilization Framework (AMM, adaptive throttle, and treasury) mitigate hyper-inflation and maintain economic stability within a dual-token economy, in contrast to the uncontrolled models of first-generation P2E games?
+
+2. (Sociological): How does the implementation of a "Social Sink," grounded in Filipino mythology, influence player motivation? Does it demonstrably foster intrinsic motivation (e.g., social relatedness, community) over the purely extrinsic (profit-seeking) motivations endemic to previous P2E models?
+
+3. (Balancing): How can the "Divine Tithe" (the conversion mechanic) be balanced to successfully integrate the technical demands of the Stabilization Framework with the motivational goals of the "Social Sink"?
+
+4. (Blockchain): How can a blockchain infrastructure (smart contracts, Baku Coin token) be architected to transparently, securely, and effectively execute the complex economic logic of the proposed Stabilization Framework?
+
+5. (Systems Architecture): How can a traditional 3-tier game architecture (Client, Server, Database) be effectively and securely integrated with a decentralized Token Infrastructure (Smart Contracts, API Gateway, Wallet Service) to ensure real-time, verifiable, and cheat-resistant economic transactions?
