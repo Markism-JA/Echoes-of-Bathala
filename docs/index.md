@@ -1,4 +1,4 @@
-# Project Documentation Guide
+# Documentation Guide
 
 ## Conventions
 
