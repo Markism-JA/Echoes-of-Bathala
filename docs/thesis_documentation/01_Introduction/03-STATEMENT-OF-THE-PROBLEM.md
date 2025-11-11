@@ -10,22 +10,9 @@ Finally, the integration of these two systems—a centralized, high-speed game s
 
 Therefore, this study addresses this three-fold problem by designing, prototyping, and validating:
 
-1. A novel Stabilization Framework (AMM, adaptive throttle, treasury) as a proposal solution to the technical economic imbalance.
+1. A novel Stabilization Framework (AMM, adaptive throttle, treasury...) as a proposal solution to the technical economic imbalance.
 
 2. A "Social Sink" (grounded in Self-Determination Theory and Filipino mythology) as a proposal solution to the sociological motivation problem.
 
-3. A Hybrid Reference Architecture that securely connects the traditional 3-tier game components to the decentralized token infrastructure.
+3. An Architecture that securely connects the traditional 3-tier game components to the decentralized token infrastructure.
 
-### Research Questions
-
-This study specifically aims to answer the following research questions:
-
-1. (Economic): To what extent can the proposed Stabilization Framework (AMM, adaptive throttle, and treasury) mitigate hyper-inflation and maintain economic stability within a dual-token economy, in contrast to the uncontrolled models of first-generation P2E games?
-
-2. (Sociological): How does the implementation of a "Social Sink," grounded in Filipino mythology, influence player motivation? Does it demonstrably foster intrinsic motivation (e.g., social relatedness, community) over the purely extrinsic (profit-seeking) motivations endemic to previous P2E models?
-
-3. (Balancing): How can the "Divine Tithe" (the conversion mechanic) be balanced to successfully integrate the technical demands of the Stabilization Framework with the motivational goals of the "Social Sink"?
-
-4. (Blockchain): How can a blockchain infrastructure (smart contracts, Baku Coin token) be architected to transparently, securely, and effectively execute the complex economic logic of the proposed Stabilization Framework?
-
-5. (Systems Architecture): How can a traditional 3-tier game architecture (Client, Server, Database) be effectively and securely integrated with a decentralized Token Infrastructure (Smart Contracts, API Gateway, Wallet Service) to ensure real-time, verifiable, and cheat-resistant economic transactions?
