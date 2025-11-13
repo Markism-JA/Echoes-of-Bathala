@@ -1,19 +1,49 @@
 ## Calendar of Activities
 
-| Phase | Activity / Milestone | Duration | Timeline |
-|:---|:---|:---|:---|
-| 1. Pre-Production & Planning | Software Planning & Initial Design | ~3.5 Months | Aug 20, 2025 - Dec 5, 2025 |
-|  | Finalize game design document, tokenomics model, and technical architecture |  |  |
-| 2. Prototype Development (Alpha) | Core Development (MPC - Minimum Playable Content) | ~2.5 Months | Dec 10, 2025 - Feb 28, 2026 |
-|  | Develop core gameplay systems in Unity |  |  |
-|  | Milestone: Alpha Build Complete |  |  |
-| 3. Testing & Refinement (Beta) | Blockchain + Server Development | ~5 Months | Mar 1, 2026 - Jul 31, 2026 |
-|  | Build low-latency game server and ASP.NET RESTful API |  |  |
-|  | Develop and integrate blockchain smart contracts (Baku Coin & NFTs). |  |  |
-|  | Milestone: Beta Build Ready |  |  |
-| 4. Final Integration & Demo | Final Integration and Demo | ~3 Months | Aug 1, 2026 - Nov 1, 2026 |
-|  | Testnet testing and smart contract auditing |  |  |
-|  | Game website launch with download portal |  |  |
-|  | Implement token exchange system |  |  |
-|  | Deploy working public demo |  |  |
-|  | Milestone: Project Completion  |  |  |
+\vspace*{-1em}
+\begin{table}[H]
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+
+\begin{tabularx}{\textwidth}{
+    >{\bfseries}p{3cm}
+    p{7cm}
+    p{2cm}
+    p{2cm}
+}
+\toprule
+Phase & Activity / Milestone & Duration & Timeline \\
+\midrule
+
+1. Pre-Production \& Planning &
+Software planning and initial design; finalize the game design document, tokenomics model, and technical architecture.
+& $\sim$3.5 months & Aug 20, 2025 -- Dec 5, 2025 \\
+
+\addlinespace
+2. Prototype Development &
+Core development (MPC — Minimum Playable Content); develop core gameplay systems in Unity.
+
+\textbf{Milestone:} Alpha build complete.
+& $\sim$2.5 months & Dec 10, 2025 -- Feb 28, 2026 \\
+
+\addlinespace
+3. Testing \& Refinement &
+Blockchain and server development; build low-latency game server and ASP.NET RESTful API; develop and integrate blockchain smart contracts (Baku Coin \& NFTs).
+
+\textbf{Milestone:} Beta build ready.
+& $\sim$5 months & Mar 1, 2026 -- Jul 31, 2026 \\
+
+\addlinespace
+4. Final Integration \& Demo &
+Final integration and public demo; conduct testnet testing and smart contract auditing; implement token exchange system.
+
+\textbf{Milestone:} Project completion.
+& $\sim$3 months & Aug 1, 2026 -- Nov 1, 2026 \\
+
+\bottomrule
+\end{tabularx}
+
+\label{tab:project-timeline}
+\end{table}
