@@ -1,3 +1,11 @@
 ## Budgetary Estimate
 
-This is budgetary estimate.
+| Quantity | Specifics         | Approximate Cost |
+|----------|-----------------|----------------------|
+| 1        | Software         | 0                    |
+| 1        | 3D Models / Assets | 5,000–7,000         |
+| 1        | Sound / Music    | 0–1,000              |
+| 1        | UI / Icons       | 0–1,000              |
+| 2        | Server / Hosting | 2,000–3,000          |
+| 1        | Miscellaneous    | 0–1,000              |
+| Total    |                  | 7,000–10,000     |
