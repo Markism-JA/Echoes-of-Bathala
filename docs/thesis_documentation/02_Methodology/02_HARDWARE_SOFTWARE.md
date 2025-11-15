@@ -2,14 +2,14 @@
 
 ### Game Development Software
 
-| Software / Technology | Purpose |
-| :--- | :--- |
-| Unity | Primary game engine |
-| Blender | 3D modeling, animation, and rendering |
-| ASP.NET Core | Dedicated game server and RESTful API framework |
-| Git | Version control |
-| GitHub | Code repository hosting and project management |
-| Unity Collaborate | Unity-integrated version control |
+| Software / Technology | Purpose                                         |
+| :-------------------- | :---------------------------------------------- |
+| Unity                 | Primary game engine                             |
+| Blender               | 3D modeling, animation, and rendering           |
+| ASP.NET Core          | Dedicated game server and RESTful API framework |
+| Git                   | Version control                                 |
+| GitHub                | Code repository hosting and project management  |
+| Unity Collaborate     | Unity-integrated version control                |
 
 ### Blockchain & Token Creation Software
 
