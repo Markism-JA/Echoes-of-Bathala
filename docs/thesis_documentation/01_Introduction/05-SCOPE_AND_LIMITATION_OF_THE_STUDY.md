@@ -172,7 +172,7 @@ This is one of the main components of the software. The game server is the singl
 
     a. Item Validity - Performs the initial critical validation that the submitted item or materials are valid.
 
-    b. Cost Manager -Calculates and deducts all required resources and currency  before any enhancement attempt begins.
+    b. Cost Manager - Calculates and deducts all required resources and currency  before any enhancement attempt begins.
 
     c. Success Probability Scaling - Executes the central logic for determining the enhancement outcome.
 
