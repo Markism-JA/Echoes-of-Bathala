@@ -21,8 +21,12 @@ jobs:
       - name: Set up TeX Live, Tools, and Compile
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: docs/thesis_documentation/main.tex
-          compiler: lualatex
+          working_directory: docs/thesis_documentation/
+
+          root_file: main.tex
+
+          compiler: latexmk
+          latexmk_use_lualatex: true
 
           pre_compile: 'tlmgr update --self && tlmgr install latexmk biber enumitem biblatex-apa geometry titlesec ragged2e makecell tocloft fancyhdr textcase etoolbox parskip setspace csquotes booktabs float'
 
