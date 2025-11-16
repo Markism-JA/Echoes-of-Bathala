@@ -2,8 +2,565 @@
 
 This study focuses on the development of a desktop-based massively multiplayer online role-playing game (MMORPG) inspired by Philippine folklore that integrates blockchain-based assets. The primary objective is to demonstrate the functionality of the game’s core gameplay loop and the tokenomics system, which utilizes in-game tokens and non-fungible token (NFT) assets to simulate a player-driven economy.
 
-The scope of the study includes the design, implementation, and testing of essential gameplay features, as well as the creation and deployment of custom ERC-20 and ERC-721 smart contracts on the Polygon test network. The level progression within the game will be limited to Level 30 to effectively showcase gameplay balance and the functionality of the economic loop. This project is intended solely for demonstration and academic evaluation, and is not designed for commercial release.
+### Scope of the Study
 
-The study is limited to a desktop platform and will not include cross-platform compatibility such as mobile or web versions. It will also exclude full-scale multiplayer optimization, commercial-grade security features, and public blockchain deployment. The NFT and token systems will operate exclusively within the Polygon testnet environment, without any real-world economic value or earning potential.
+This scope of this study is threefold designing, developing and evaluating a prototype of a Massively Multiplayer Online Role Playing Game (MMORPG). The study seeks to incorporate traditional folklore, cultural narratives, customs, and mythological symbols into the game’s core design, environment, and gameplay systems to act as a social sink. The following contains the software separated into major component, to its subsystem and the features of each subsystem:
 
-Furthermore, the study does not encompass large-scale player testing or long-term economic balancing, as these are beyond the intended academic scope. These limitations are recognized as necessary constraints due to time, technical resources, and the project’s focus on demonstrating feasibility rather than commercial readiness.
+#### Game Server
+
+This is one of the main components of the software. The game server is the single, authoritative source of truth for all persistent world data and game logic, responsible for calculating player interactions, validating movements, managing the state of all characters and environments, and synchronizing that data across every connected client in real-time.
+
+**I. World Simulation**
+
+- **1.0 World State Manager**
+
+    Contains the states for the environment, acting as a dedicated subsystem responsible for tracking and synchronizing the following persistent data.
+
+    a. Entity - General container for persistent objects.
+
+    b. Non-Player Characters - Quest givers.
+
+    c. Player Objects - Hauling cart.
+
+    d. Resource Nodes - Perlas, Ores.
+
+    e. Collective Cooldown and Effects - Zone debuffs, Event Cooldowns.
+
+- **1.1 Physics**
+
+    Contains the data and authoritative engine for all spatial interactions and character locomotion.
+  
+    a. Position - Stores their location using X, Y, Z coordinates
+
+    b. Collision Check - Determine if entities are physically overlapping
+
+    c. Movement Prediction - Validating the client's reported movement  against the server's predicted state to prevent lag.
+
+    d. Map Boundaries - Defines the legal perimeter for zones and regions.
+
+    e. Hitbox State - Manages the size, shape and active frames of hitboxes.
+
+- **1.3 Dungeon Manager**
+
+    Responsible for handling all aspects of instanced, temporary, or specialized gameplay zones.
+
+    a. Dungeon State - Manages the current progress and status of a dungeon.
+
+    b. Spawn - Handles the initial placement and subsequent respawn logic for all enemies.
+
+    c. Timer - Administers all time-related constraints, includes cooldown, allowable time.
+
+    d. Loot Roll Manager - Manages the fair and structured distribution of unique rewards dropped within the dungeon.
+
+- **1.4 AI System**
+
+    Contains processing, execution, and state management of all Non-Player Characters (NPCs), monsters, and boss encounters. It governs all aspects of enemy and npc behavior.
+  
+    a. Behavior Trees - A hierarchical structure used to model complex, conditional enemy decision-making and action sequencing.
+
+    b. Threat Table - A data structure tracking numerical amount of threat or enmity.
+
+    c. State Machine - System that defines and manages the behavioral state of monster.
+
+    d. Pathfinding - System responsible for calculating the optimal route for an monster
+
+    e. Aggro System - Logic to designate the current target of the monster.
+
+    f.  Schedule - Manages the time-based non-combat behaviors of NPC or monsters.
+
+- **1.5 Combat System**
+
+    Authoritative core of all player-versus-environment and player-versus-player (PvP) conflicts and battles.
+
+    a. Stat Calculation - Calculates the current numerical values of all character attributes.
+
+    b. Status Effect State - Manages application, duration and ticks of current buffs and debuffs.
+
+    c. Damage Events - Central process that resolves an attack and calculates the final damage value.
+
+    d. Cooldowns -  Responsible for checking the timer to determine if a skill can be executed.
+
+**II. Player Management**
+
+- **2.1 Authentication System**
+
+    Handles the initial player login and account verification against the database.
+
+   a. Credential Validation - Validates username/password or other login methods.
+
+   b. Session Token Generation - Creates the unique, temporary cryptographic key (Session Token) upon successful login.
+
+   c. Character List Retrieval - Fetches the list of characters associated with the account from the Game Database
+
+- **2.2 Player Runtime State**
+
+    Responsible for tracking all temporary, real-time, and volatile data associated with an actively logged-in player character.
+
+   a. Core Player Statistics - Stores the current values of the player's character attributes.
+
+   b. Status Effects - Tracks all active personal buffs and debuffs currently affecting the player character.
+
+   c. Inventory Change - Records and manages all temporary modifications to the player's inventory that occur during a session.
+
+   d. Cooldowns - Manages the current remaining time until a players specific skill, ability, or item can be used again.
+
+   e. Uncommitted Quest Progress - Stores all temporary advancement within active quests that has not yet been finalized and saved.
+
+   f. Temporary Combat Logs - Records a brief, volatile history of recent combat events.
+
+   g. Input Command Queues - A temporary buffer that stores the sequence of actions sent by the player's client.
+
+- **2.3 Player Session Manager**
+
+     Manages the server's active record of all logged-in users and their authenticated connection status.
+  
+   a. Connected Players - A live list tracking all current users who have an established and active network connection to the game server.
+
+   b. Session Tokens - Manages the creation, validation, and expiration of unique, temporary cryptographic keys assigned to a player upon successful login.
+
+   c. Player State - Tracks the connection status and current activity of a player within the game world.
+
+**III. Others**
+
+- **3.1 Anti Cheat**
+
+    Operates on the game server to monitor, validate, and restrict player actions that violate the established rules of the game.
+
+    a. Movement Check - Performs continuous server-side verification of the player's reported movement speed, direction, and position against the limits imposed by the Physics/Movement Module.
+
+    b. Input Validation - Scrutinizes every command and action request received from the player's client.
+
+- **3.2 Gameplay System**
+
+    Manages the primary progression and social reward structures of the game.
+
+    a. Quest Engine - Manages the lifecycle of all quests and cultural narratives, from assignment to completion. Also responsible for awarding non-crypto currency, items, and, in specific cases, BAKU tokens or Perlas.
+
+    b. Loot System - Governs the server-side determination and distribution of items and currency dropped by defeated enemies or contained in discoverable chests. This includes the calculation of item drops.
+
+    c. Crafting Queues - Manages the sequential processing and time-gating of all production and crafting orders initiated by players.
+
+    d. Parties - Manages the formation, membership, and social rules of temporary player groups.
+
+    f. Player-to-player Trading System - Manages the synchronous, secure, two-player trade interface to exchange non-crypto items and currency.
+
+    g. Talipapa System (Marketplace) - Manages the authoritative server-side logic for the asynchronous marketplace, including posting listings, processing buyouts, collecting fees, and sending items/currency via an in-game mail system.
+
+- **3.3 Infrastructure**
+
+    Manages the low-level, foundational services that maintain the operational timing, and persistence required for the entire Game Server to function securely and reliably.
+
+    a. Scheduler Tick - The central, authoritative clock and heartbeat of the entire server simulation.
+
+- **3.4 Equipment Attribute Enhancement**
+
+    This server-side module executes the permanent and irreversible logic when a player attempts to enhancement an item.
+
+    a. Item Validity - Performs the initial critical validation that the submitted item or materials are valid.
+
+    b. Cost Manager - Calculates and deducts all required resources and currency before any enhancement attempt begins.
+
+    c. Success Probability Scaling - Executes the central logic for determining the enhancement outcome.
+
+    d. Attribute applier - Contains the probability scaling logic to increase an equipment attributes.
+
+    e. Item State Manager - Manages the logic that implements the consequences of success and failure.
+
+- **3.5 Equipment Tier Upgrade System**
+
+    This server-side module executes the permanent and irreversible logic when a player attempts to upgrade or enchant an item.
+
+    a. Item Validity - Performs the initial critical validation that the submitted item or materials are valid.
+
+    b. Cost Manager -Calculates and deducts all required resources and currency  before any enhancement attempt begins.
+
+    c. Success Probability Scaling - Executes the central logic for determining the enhancement outcome.
+
+    d. Tier Applier - Contains the logic to increase an equipment tier.
+
+    e. Item State Manager - Manages the logic that implements the consequences of success and failure.
+
+    f. Tier Cap - Contains the logic for an item maximum tier level.
+
+- **3.6 Equipment Crafting System**
+
+    This server-side module handles the complete lifecycle of creating new equipment: validating ingredients, consuming resources.
+
+    a. Recipe Manager - Manages the lookup, validation, and prerequisites for every crafting recipe.
+
+    b. Equipment Creation - Executes the core, non-reversible steps of the crafting process, from consuming materials to determining the item's final attributes.
+
+  - b.1. Combine Item - Definitive step where the required input materials are simultaneously and authoritatively removed from the player's inventory and consumed by the system.
+
+  - b.2.  Apply Stats - Generates the base stats or attributes for the new item.
+
+  - b.3. Success or Failure -Executes the calculation to determine the outcome of the craft.
+
+    c. Equipment Creation Logic - Contains the logic for the entire flow of crafting process.
+
+- **3.7 Baku Forge System (Fungible Token Faucet)**
+
+    This server-side module manages the player-driven conversion of in-game resources (Perlas) into the on-chain fungible token (BAKU). This is a primary economic faucet.
+
+    a. Context Validation - Verifies the player is interacting with the correct NPC or is within the designated "Baku Forge" zone.
+
+    b. Resource Cost Manager - Calculates and deducts the required amount of Perlas from the player's off-chain inventory (Game Database).
+
+    c. Conversion Rate Logic - Applies the current server-defined exchange rate.
+
+    d. Token Request Emitter - Upon successful validation and resource deduction, this component generates a secure request to the Crypto Request Router to mint or transfer the calculated BAKU amount to the player's linked wallet.
+
+- **3.8 NFT Minting System**
+
+    This server-side module handles the player-initiated process of converting a specific, eligible in-game item (from the Game Database) into a permanent Non-Fungible Token (NFT) on the blockchain.
+
+    a. Item Eligibility Check - Validates that the item submitted by the player (e.g., a "Legendary" crafted weapon) is eligible for tokenization.
+
+    b. Minting Cost Manager - Calculates and deducts the required cost for minting, which could be BAKU tokens, non-crypto currency, or other rare materials.
+
+    c. Item State Conversion - Authoritatively flags the item in the Game Database as "tokenized," linking it to its future on-chain ID and making it non-volatile.
+
+    d. NFT Request Emitter - Securely packages the item's metadata (stats, name, rarity, ID) and sends a minting request to the Crypto Request Router to create the NFT on the blockchain.
+
+- **3.9 Character Progression System**
+
+    This is the authoritative server-side counterpart to the client's Progression System. It manages the permanent, non-volatile state of a character's growth, abilities, and skills, ensuring all progression is validated and legitimate.
+
+    a. Experience and Leveling Manager - Authoritatively handles all experience point (XP) gain and the leveling-up process. It receives XP "grant" commands from other systems (like Quest Engine and Loot System) and calculates when a character levels up, triggering the availability of new points or skills.
+
+    b. Attribute Manager - Manages the "bank" of available attribute points (e.g., Strength, Intellect) for a character. It validates and processes all player requests to allocate these points, then updates the character's base stats in the Game Database.
+
+    c. Class & Profession Manager (Separate and related) - Contains the definitive logic, rules, and skill trees for all player classes (Anito's Heir System) and professions (Blacksmith and Craftsmith). It manages the character's current level in each and validates all requests to learn or upgrade class-specific abilities or profession-specific recipes.
+
+    d. Skill Manager - Manages the authoritative list of skills a character has learned. It validates all prerequisites (e.g., level, class, attribute requirements) before unlocking a new skill for a character, making it available for the Combat System (1.5) to use. It also handles the upgrading logic of skill via skill scrolls.
+
+#### Game Client
+
+One of the main components of the software. Its primary role is to render the virtual world based on data received from the Game Server and to capture, queue, and transmit player input as commands to the server.
+
+- **1.0 Character Control**
+
+    Responsible for translating the player's physical input  into digital commands and visual representations of the player character's actions on the local screen.
+
+  a. Movement - Handles the client-side interpretation and execution of directional input.
+
+  b. Animation - Manages the visual rendering of the player character's actions and state.
+
+  c. Targeting - Manages the player's client-side system for selecting, directing and locking onto enemies or interactable objects.
+
+- **1.1 Progression System**
+
+   Manages the visual representation of the player's advancement and character development and details. It displays all progression-related data received from the Game Server.
+
+  a. Quest Tracker - Displays the current status of all active quests.
+
+  b. Levelling - Manages the visual presentation of the player's overall level and progression status.
+
+  c. Experience Curve - Displays the percentage of current experience points accumulated relative to amount of experience points remaining until the next level.
+
+  d. Class System - Renders the visual interface and mechanics related to the character's chosen class.
+
+  e. Equipment System - Manages the client-side inventory and character gear display.
+
+  f. Skill System - Displays the visual interface for all character skills or abilities.
+
+  g. Profession System - Renders the user interface for all non-combat economic specializations or skills.
+
+  h. Attributes - Renders the character's core statistics (e.g., Strength, Agility, Intellect, Vitality). This interface displays the current value of each attribute, the points available for allocation (if any), and tooltips explaining how each attribute contributes to secondary stats like attack power, critical strike chance, and health.
+
+- **1.2 Crafting and Gathering**
+
+    This client-side module manages the visual presentation and input mechanisms for all resource acquisition and item production.
+
+  a. Recipe - Manages the display of the player's learned item blueprints and crafting formulas.
+
+  b. Creation - Handles the visual interface and confirmation for initiating a crafting order.
+
+  c. Crafting Chance - Displays the server-determined percentage likelihood of success or failure before the player commits to the crafting action.
+
+    d. Upgrade System - Manages the client-side user interface and logic for modifying or improving existing items, often requiring additional materials or currency.
+  - d.1. Enhance - Renders the interface for increasing an item's base statistics or numeric tier.
+  - d.2. Enchant - Renders the interface for applying enhancement  to an item.
+
+- **1.3 Inventory System**
+
+  Manages the visual presentation and player interaction with all stored items, resources, and currency.
+
+  a. Item interaction - This term covers the entire range of things a player can do with an item once it is in their inventory, including equipping, unequipping, moving, splitting stacks, using, selling, or destroying.
+
+  b. Slots - Renders the visual structure of the inventory grid.
+
+  c. Stack - Handles the visual representation and management of item quantity within a single inventory slot.
+
+  d. Upgrading - Manages the client-side interface and visual confirmation for increasing the player's total storage capacity.
+
+- **1.4 Item System**
+
+  This module manages the visual rendering and information display for all items in the game world, inventory, and equipment slots.
+  
+  a. Equipment - Manages the client-side representation and stat comparison interface for items designed to be worn.
+
+  b. Drop Rate - Renders the visual presentation of the probability that a specific item, or category of items, will be acquired from an enemy or container.
+
+  c. Durability - Manages the visual status and health bar of an item's current wear and tear.
+
+  d. Consumables - Handles the visual feedback and prompt for single-use items.
+
+  e. Item Metadata - Renders the detailed descriptive information about the item in tooltips and inspection windows.
+
+  f. Rarity - Manages the visual and stylistic representation of an item's unique quality.
+
+  g. Item Drop UI - Renders the visual window or notification that appears when an enemy is defeated or a container is opened, displaying the icons, names, and quantities of the items that have dropped. This interface allows the player to loot the items, transferring them to their inventory.
+
+- **1.5 Social System**
+
+    This client-side module manages all interfaces and functions related to player-to-player communication, grouping, and cooperative interaction, drawing upon the authoritative data from the Game Server's Gameplay System.
+
+    a. Chats - Renders and manages the visual interface for all real-time text communication channels.
+
+  - a.1. Area Chat - A localized communication channel that displays messages from players within a specific in-game radius or zone.
+  - a.2. Party Chat - A private communication channel exclusive to members of the same party or group.
+  - a.3. World Chat - A global communication channel visible to all connected players across the entire game world.
+
+  b. Parties - Displays the visual status  of all members within the player's current cooperative group.
+
+  c. Item Distribution - Renders the visual interface and mechanics for determining how loot is shared among party members.
+
+  d. Friends List - Displays the current connection status and location of a player's designated social contacts.
+
+  e. Player-to-Player Trade UI
+
+    Renders the secure, synchronous interface for two players to exchange items and currency. This includes item slots for each player's offer, a currency field, and a two-stage "confirm" and "finalize" process to validate the trade on the server.
+
+- **1.6 General UI/UX**
+
+   This comprehensive client-side module manages the aesthetic design, layout, and functionality of all interactive graphical elements presented to the player.
+
+    a. HUD - Manages the always-visible, non-intrusive overlay that presents essential, real-time status information.
+
+    b. Map - Renders the visual interface for the game world's geography and current player or NPC location.
+
+    c. Talipapa UI - Shows the visual interface or button that accesses the talipapa, the auction system.
+
+    d. Menus - Manages the standard hierarchical pop-up windows that contain and organize the various other system interfaces.
+
+    e. Pre-Game Menus - Manages the UI flow that occurs before a player loads into the game world.
+
+  - e.1. Login Screen - Renders the interface for account authentication (e.g., username, password) and connects to the server's Authentication System.
+
+  - e.2. Character Selection/Creation - Renders the interface to view, select, delete, or create new characters. This includes class, profession, and appearance customization which communicates with the server's Character Progression System.
+
+    f. Settings Menu - Renders the interface for configuring all local client options, including:
+
+  - f.1. Audio Settings - Manages all volume sliders (e.g., Master, Music, Sound Effects).
+  - f.2. Graphics Settings - Manages resolution, texture quality, and other performance-related options.
+  - f.3. Keybindings - Manages the mapping of user inputs to in-game actions.
+
+- **1.7 Combat System**
+
+    This client-side module manages all visual feedback and special effects related to conflicts and battles.
+
+    a. PVE - Player Versus Environment
+
+  - a.1. Aggro UI - Renders the visual indicator that a monster is targeting a player.
+
+  - a.2. AI Mob Action -Manages the visual rendering of special actions or abilities performed by monsters and bosses.
+
+    b. PVP - Player Versus Player
+
+    - b.1. PK Mode - Manages the client-side visual display of a player's current hostility or PvP engagement status.
+
+    c. PVP and PVE - Shared features for both
+
+    - c.1. Visual Hit Confirmation - Renders visual  confirmation that an attack has successfully landed on a target.
+
+    - c.2. Damage or Heal -  Manages the rendering of floating numerical text for all damage dealt and healing values.
+
+    - c.3. Status Effects - Displays the visual icons, tooltips, and remaining timer bars for all temporary buffs and debuffs.
+
+    - c.4. Health and MP Bar - Manages the visual rendering of the player and target's current Health and Resource (MP) bars.
+
+    - c.5. Cooldown - Renders the visual overlay  on skill buttons in the player's HUD to indicate the time remaining until a skill is available for use.
+
+- **1.8 Kuchero System**
+
+    This client-side module manages all visual and interfaces related to the kuchero.
+
+  a. Cart - Manages the visual rendering of the object used for hauling
+
+- **1.9 Talipapa System**
+
+    This client-side module provides the visual interface for the in-game market.
+
+  a. Search - Manages the input fields and logic for filtering the market listings.
+
+  b. Sorting - Handles the client-side arrangement and display order of the market listings.
+
+  c. Market Display - Renders the main interface for viewing  item listings. This includes displaying the item icon, quantity, seller's name, the item's metadata, the list price, and any associated transaction fees.
+
+- **1.10 Entity Rendering**
+
+    This client-side module is responsible for the visual projection and real-time updating of all player characters, NPCs, objects, and the static environment.
+
+    a. Models - Manages the loading and display of the 3D character models for the player, all other players, and NPCs.
+
+    b. Dialogue - Renders the visual interface for all narrative and conversational interactions with NPCs.
+
+    c. Environment - Manages the loading and static rendering of the game's physical world, including terrain, buildings, weather or zone effects, and skyboxes.
+
+    d. Hostiles or Enemies - Focuses on the unique rendering requirements for combat-active entities.
+
+  - d.1 - Animation - Manages the visual sequencing of all movement and combat actions performed by hostile NPCs and monsters.
+  - d.2 - Targeting - Renders the visual feedback of a monster skill designation or range.
+
+    e. Interactable Objects State - Renders the visual state of all interactable resource nodes and world objects.
+
+    f. Particle System Rendering - Manages the creation and rendering of all dynamic visual effects.
+
+    g. Interaction and Feedback indicators - Renders contextual visual elements over entities and world objects.
+
+- **1.11 Audio Manager**
+
+    This module is responsible for managing and playing all audio within the client.
+
+    a. Background Music (BGM) - Handles the streaming, looping, and playback of ambient music for different zones, menus, and boss encounters.
+
+    b. Sound Effects (SFX) - Manages the playback of all event-driven sounds, including spatial (3D) effects for combat and environment (e.g., footsteps, skill hits) and interface (2D) sounds for button clicks and notifications.
+
+- **1.12 Tokenomy Interface**
+
+    This module manages all client-side UIs that interact directly with the server's Token Infrastructure and related economy systems.
+
+    a. Baku-Forge UI - Renders the dedicated interface and world object (inside NPC towns) for converting in-game resources (e.g., Perlas) into the BAKU fungible token. This UI displays the current server-defined conversion rate, the player's available resources, and a confirmation button that sends the conversion request to the server's Baku Forge System.
+
+    b. NFT-Minting UI - Renders the interface that allows a player to select an eligible, server-validated in-game item (e.g., a "Legendary" crafted item) and initiate the process to mint it into an on-chain NFT. This UI displays the item, the BAKU or resource cost, and a final confirmation to send the request to the server's NFT Minting System.
+
+    c. Wallet Management UI - Renders the interface in the settings menu that allows a player to securely link, verify, or view their external cryptocurrency wallet address with their game account. This UI communicates with the server's Wallet Service.
+
+#### Game Database
+
+A main component of the software. This is the non-volatile storage system where the Game Server persists all critical information.
+
+- **1.0 Database API (ASP.NET RESTful Service)**
+
+    This is the secure application layer that manages all data transactions. It exposes a series of RESTful endpoints that the Game Server consumes.
+
+  - 1.1 - Account & Character Endpoints provides endpoints for user authentication (login, registration), session validation, and character management (creation, selection, retrieval).
+
+  - 1.2 - Player Data Endpoints provides endpoints for saving and loading a character's persistent state, including their inventory, equipment, quest progress, and attributes (e.g., /character/{id}/save, /character/{id}/inventory).
+
+  - 1.3 - Economy Endpoints provides endpoints for managing all persistent economic actions, such as posting/canceling Talipapa listings, retrieving crafting history, and logging Baku Forge conversions.
+
+  - 1.4 - Static Game Data Endpoints provides endpoints for the Game Server to load static, non-volatile game rules, such as NPC definitions, item blueprints, and quest definitions, on startup.
+
+- **2.0 SQL Instance**
+
+    This is the non-volatile storage layer. It contains the actual data schemas, tables, and stored procedures managed by the API.
+
+  - **2.1 Player Account Schema**
+
+       Tables containing the authoritative, persistent record for all user and character data.
+
+       a. Account Tables - Stores hashed credentials, account status, and associated wallet addresses.
+
+       b. Character Tables - Stores the persistent state for each character (e.g., level, XP, class, attributes, current zone).
+
+       c. Inventory & Equipment Tables - Stores all persistent item instances, their quantity, durability, and which character or storage container they belong to.
+
+       d. Quest Progression Tables - Stores the state (e.g., "in-progress," "completed") of all quests for each character.
+
+       e. Social Tables - Stores persistent social data (e.g., Friends List).
+
+  - **2.2 - Static World Data Schema**
+
+       Tables containing the static, read-only "blueprint" data for the game.
+
+       a. Entity Definitions - Stores the base stats, models, and abilities for all NPCs and enemies.
+
+       b. World Definitions - Stores static world data (e.t., zone names, map boundaries).
+
+       c. Game Rule Tables - Stores the comprehensive rules for combat (e.g., damage formulas), progression (e.g., XP curves), and crafting (e.g., recipes, probability scales).
+
+  - **2.3 - Dynamic Economy Schema**
+
+       Tables that manage the persistent state of all economic and item-related transactions.
+
+       a. Item Instance Table - The authoritative table for every unique item in the game, including those with NFT linkage.
+
+       b. Manufacturing & Transaction Logs - Stores the audit trail for all crafting, enhancement, and Baku Forge conversions.
+
+       c. Talipapa Listing Table - Stores all active, volatile listings for the player-to-player marketplace.
+
+  - **2.4 Analytics Schema**
+
+       a. Event Log Tables - Stores detailed, time-stamped logs of significant player and system actions (e.g., trades, boss kills, high-value-item drops).
+
+#### Token Infrastructure
+
+This module defines the smart contract architecture, token standards, and core utility for the digital assets and currency that form the foundation of the game's economy and unique ownership mechanics. It acts as the definitive bridge between the centralized Game Server and the decentralized blockchain.
+
+- **1.1 Blockchain API Gateway**
+
+    This is the low-level middleware service responsible for all direct communication with the blockchain's RPC nodes. It abstracts the complexity of on-chain transactions, acting as the "last stop" for requests.
+
+    a. Transaction Submission: Takes finalized, signed transaction requests from the Crypto Request Router and broadcasts them to the blockchain network.
+
+    b. Gas Fee Management: Handles gas price estimation to ensure transactions are processed in a timely and cost-effective manner.
+
+    c. Nonce Management: Manages the sequential transaction nonce for the server's "hot wallet" to prevent transaction re-ordering or re-sends.
+
+    d. Receipt Confirmation: Listens for transaction confirmations from the network and reports the status (success or failure) back to the Router for logging.
+
+- **1.2 Smart Contract**
+
+    These are the on-chain, deployed contracts that define the properties and logic of the game's assets.
+
+    a. BAKU (Fungible Token): The game's primary economic token, compliant with the ERC-20 standard.
+
+  - Key Functions: Exposes standard transfer(), approve(), and balanceOf() functions, as well as a privileged mint() function callable only by the Crypto Request Router for distributing tokens from the Baku Forge.
+
+    b. Game Assets (Non-Fungible Token): The contract for unique in-game items (legendary equipment), compliant with the ERC-721 standard.
+
+  - Key Functions: Exposes standard safeTransferFrom() and ownerOf() functions.
+  - Metadata Management: A privileged mint() function (callable only by the Router) that creates a new token and assigns its tokenURI (describing the item's stats).
+  - Metadata Update: A privileged setTokenURI() function to allow the Router to update an NFT's metadata when it is enhanced on the Game Server.
+
+- **1.3 Crypto Request Router**
+
+    This is the primary security, queuing, and validation layer that sits between the Game Server and the Blockchain API Gateway. It is the only component authorized to call privileged mint or update functions on the Smart Contracts.
+
+    a. Request Validation & Security: Authenticates all incoming requests from the Game Server (via a secure API key) to ensure they are legitimate.
+
+    b. Transaction Queuing: A persistent queue that holds all transaction requests, ensuring they are processed reliably even if the Gateway or blockchain is slow.
+
+    c. Retry Logic: Manages failed transactions, automatically retrying them with new gas prices or logging them for manual inspection if they fail repeatedly.
+
+    d. Prioritization: Prioritizes high-value transactions (a player minting an NFT) over lower-value ones (batch-distributing BAKU rewards).
+
+- **1.4 Wallet Service**
+
+    This is a dedicated service (part of the Database API or a standalone microservice) that manages the secure link between a player's in-game account and their external blockchain wallet.
+
+    a. Wallet Linking: Provides an endpoint for a player to link their wallet address (MetaMask) to their in-game account ID in the Game Database.
+
+    b. Ownership Verification (Message Signing): Secures the linking process by requiring the player to sign a unique, server-provided message (a "nonce") with their wallet's private key. The service then verifies this signature on the backend to prove ownership without ever seeing the private key.
+
+    c. Read-Only Access: Provides the Game Server with a secure way to look up a player's linked wallet address for sending BAKU or NFTs.
+
+### Limitations
+
+These limitations are recognized as necessary constraints due to time, technical resources, and the project’s focus on demonstrating feasibility rather than commercial readiness. Further testing and broader deployment are recommended to validate the system's reliability and scalability.
+
+- The game application does not support cross-platform compatibility such as web or mobile versions. It will run exclusively as a desktop game or application.
+
+- This study does not cover full-scale multiplayer optimization, including stress testing for large concurrent player populations. Network performance, latency compensation, and server load balancing are only evaluated at a prototype level.
+
+- The future demonstration limits the player to thirty levels, which restricts the scope of content available for evaluation. Additional levels may introduce new mechanics or challenges not represented in this version.
+
+- The demonstration is limited up to Chapter Two of the narrative, limiting exposure to later story developments. This prevents assessment of the full narrative flow and character progression. Other chapters may present themes or mechanics that are not reflected in this showcase.
+
+- The system lacks enterprise-level security measures typically required for commercial deployment. Only basic or prototype-tier protections are implemented.
+
+- All blockchain, NFT, and token functionalities are confined to the Polygon testnet rather than a live mainnet. This limits the realism of performance, cost, and security assessments.
+
+- The study does not include large-scale player participation needed to evaluate system stability and player-driven economies. long-term balance metrics such as inflation, resource scarcity, and market behavior are not analyzed.
