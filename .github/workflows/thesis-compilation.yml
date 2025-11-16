@@ -24,7 +24,7 @@ jobs:
           root_file: docs/thesis_documentation/main.tex
           compiler: lualatex
 
-          pre_compile: 'tlmgr update --self && tlmgr install latexmk biber enumitem biblatex-apa geometry titlesec ragged2e makecell tocloft fancyhdr textcase tabularx etoolbox parskip setspace csquotes longtable booktabs array float'
+          pre_compile: 'tlmgr update --self && tlmgr install latexmk biber enumitem biblatex-apa geometry titlesec ragged2e makecell tocloft fancyhdr textcase etoolbox parskip setspace csquotes booktabs float'
 
       - name: Upload Compiled PDF
         uses: actions/upload-artifact@v4
