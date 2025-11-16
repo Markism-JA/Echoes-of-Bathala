@@ -9,14 +9,16 @@ on:
       - 'docs/thesis_documentation/**.bib'
       - '.github/workflows/latex_compile.yml'
 
+  workflow_dispatch:
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: ⬇️ Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up TeX Live and Tools
+      - name: ⚙️ Set up TeX Live and Tools
         uses: xu-cheng/latex-action@v2
         with:
           compiler: lualatex
