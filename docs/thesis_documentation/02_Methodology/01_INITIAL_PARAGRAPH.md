@@ -2,7 +2,9 @@
 
 This section articulates the systematic approach and technical architecture driving the development of "Echoes of Bathala Online", defining the specific development strategy and lifecycle planning adopted. It exhibits the technical specification by enumerating the required hardware and software. Furthermore, the methodology includes budgetary estimates of the project and to visualize the proposed system, graphic representation such as a high-level conceptual framework and data flow diagram illustrates the processes and data movement across the proposed software architecture.
 
-<img width="1920" height="1080" alt="RAD Diagram" src="https://github.com/user-attachments/assets/cc498ee5-36cc-41df-aa93-a638dae2e147" />
+![RAD Diagram](https://github.com/user-attachments/assets/ecd45d95-4012-42f3-b09e-9de1ff16f668)
+
+
 
   Figure X. Rapid Application Development Diagram.
 
