@@ -2,13 +2,13 @@
 
 This study aims to overcome the fundamental challenges preventing sustainable Web3 gaming by developing a comprehensive solution that addresses economic instability, player motivation, and technical integration through a single, cohesive framework.
 
-## General Objective
+### General Objective
 
-**To develop Echoes of Bathala Online: A Culturally-Grounded MMORPG with Programmatically Stable Tokenomics and Secure Hybrid Architecture.**
+**To develop Echoes of Bathala Online, A Massive Multiplayer Role Playing Game with Blockchain Technology System.**
 
-The core purpose is to create a functional prototype that resolves the interconnected problems of economic collapse, speculative player behavior, narrative-mechanics disconnect, and architectural vulnerabilities in Web3 gaming. By implementing a holistic framework that balances automated economic controls with intrinsic motivation systems, this research demonstrates a viable path toward sustainable decentralized gaming ecosystems.
+The core purpose is to create a functional prototype that resolves the interconnected problems of economic collapse, speculative player behavior, narrative-mechanics disconnect, and architectural vulnerabilities in Web4 gaming. By implementing a holistic framework that balances automated economic controls with intrinsic motivation systems, this research demonstrates a viable path toward sustainable decentralized gaming ecosystems.
 
-## Specific Objectives
+### Specific Objectives
 
 1. **To architect a programmatically stabilized dual-token economy**  
    with integrated Automated Market Maker (AMM), adaptive throttling mechanisms, and automated sinks for "Perlas" (in-game currency) and "Baku Coin" (blockchain token), directly addressing unchecked hyperinflation from poorly balanced tokenomics.
