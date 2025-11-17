@@ -1,6 +1,6 @@
 ## Review of Related Literature, Studies or System
 
-### MMORPG Design: Engagement, Social Systems, and Monetization
+### MMORPG Design
 
 The long-term success of decentralized MMORPGs depends on understanding the psychological drivers of intrinsic motivation and building strong social communities, moving beyond the failed, transaction-focused models of early Web3 games. Sustainable player engagement relies on satisfying three core psychological needs: Autonomy (a sense of choice), Competence (the feeling of mastery), and Relatedness (social connection) [@Przybylski2024; @Raza2024; @Rigby2024]. Fulfilling these needs is linked to better mental well-being [@Raza2024] and forms the foundation of genuine, intrinsic motivation [@Rigby2024]. Research confirms that players perceived fulfillment of autonomy and competence is strongly tied to their sustained enjoyment of MMORPGs [@Taipalharju2020].
 
@@ -10,7 +10,7 @@ Beyond individual motivation, social dynamics are crucial for retention. High le
 
 Supporting this approach, experimental studies on social cooperation show that rewards have a much stronger and more persistent effect on encouraging cooperation than punishments [@Seo2020]. This finding mandates the design of non-monetary social sinks, such as special status or unique titles, which leverage long-term psychological fulfillment to reward community contributions [@Sashi2021]. While extrinsic incentives like points and rankings can boost short-term motivation, long-term sustainability requires aligning these systems with players' intrinsic motivations. Evidence for this exists in other fields; for instance, gamification using non-extrinsic rewards has successfully changed students' negative attitudes toward complex financial topics [@Sevidal2021].  
 
-### Blockchain in Gaming: Tokenomics, Player-Driven Economies, and P2E vs. P&O
+### Blockchain in Gaming
 
 The economic structure of Web3 gaming requires a fundamental shift from speculative financial models toward sustainable systems built on utility-based scarcity, secured by verifiable ownership and strong governance. Blockchain technology enables this by granting players true, verifiable ownership of unique digital assets (NFTs), providing a level of control and permanence unattainable in traditional centralized systems [@Shen2024]. This capability has led to the emergence of two distinct economic models.
 
@@ -20,7 +20,7 @@ The foundation of these models is Tokenomics—the formal design of a token's ut
 
 NFTs are crucial for establishing digital property rights [@Shen2024] and enabling player-driven economies [@DellaTorre2023]. However, a significant challenge to their potential is cross-platform interoperability. Moving assets between different games is severely complicated by the risk of disrupting game balance when an item is placed into a new mechanical context [@Yang2024]. The lack of standardized protocols for how these assets are represented across platforms remains a major technical hurdle [@Yang2024].
 
-### Filipino Culture in Digital Media: Identity, Narrative, and the Social Sink
+### Filipino Culture in Digital Media
 
 Integrating Filipino cultural informatics is vital for forging authentic game narratives, affirming national identity, and building socially resilient community structures. The dominance of the Western video game industry often pushes Filipino developers toward outsourced work, hindering the creation of original intellectual property defined by local narratives [@Tangan2022]. Fortunately, Philippine mythology, folklore, and history offer an extensive source for narrative and design material, often containing environmental consciousness and moral wisdom [@Tangan2022; @Mangaldan2023; @KaganFolktales2024].
 
@@ -30,7 +30,7 @@ This is crucial because video games are established as a medium with significant
 
 The concept of the "social sink" offers a powerful avenue for this deep cultural integration. By modeling guild or community mechanics on existing Filipino social tools, such as the communal spirit of bayanihan (collective effort), designers can create culturally resilient social sinks [@Tinio2023; @SanLuis2024]. Studies on Filipino gamers confirm that virtual subcultures often reflect and adapt real-life customs and traditions, relying on the Filipino language to foster a "freer" social space for identity expression and community bonding [@SanLuis2024; @Plaridel2024]. This structural approach promotes collaboration and shared responsibility, effectively minimizing the high-stakes, stressful social dynamics observed in many traditional MMORPGs [@Jäger2021].  
 
-### Technical System Architecture: Scalability, Services, and Smart Contracts
+### Technical System Architecture
 
 The foundation for a Web3 MMORPG mandates a hybrid technical architecture designed for real-time performance, cryptographic integrity, and efficient asset management. A scalable MMORPG architecture requires a microservice design utilizing container orchestration [@Oyeniran2024]. Kubernetes coupled with Agones is the essential solution for managing the server lifecycle, enabling rapid, automated spin-up and horizontal auto-scaling [@Genieee2024]. Latency mitigation is essential, requiring Machine Learning (ML) prediction to forecast network latency and tolerate spikes [@PolitecnicodiTorino2025].
 
