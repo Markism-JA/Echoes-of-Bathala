@@ -8,7 +8,6 @@
 *.toc
 *.lot
 *.lof
-*.pdf
 *.dvi
 *.ps
 *.synctex.gz
