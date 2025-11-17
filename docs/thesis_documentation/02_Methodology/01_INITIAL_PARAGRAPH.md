@@ -1,13 +1,33 @@
 # Methodology
 
-This section defines the methodology that will be employed for the development of the "Echoes of Bathala" game. The project will adopt the Rapid Application Development (RAD) model, an agile methodology that emphasizes a condensed development cycle through iterative prototyping and user feedback. This approach is structured into four distinct phases to ensure efficient and focused progress toward creating a functional prototype.
+This section articulates the systematic approach and technical architecture driving the development of "Echoes of Bathala Online", defining the specific development strategy and lifecycle planning adopted. It exhibits the technical specification by enumerating the required hardware and software. Furthermore, the methodology includes budgetary estimates of the project and to visualize the proposed system, graphic representation such as a high-level conceptual framework and data flow diagram illustrates the processes and data movement across the proposed software architecture.
 
-The four phases of RAD are as follows:
+![Rapid Application Development](docs/thesis_documentation/assets/rapid-application-development.png)
 
-1. Requirements Planning: This initial phase will focus on defining the project's scope, objectives, and core functionalities. It will involve finalizing the game design document, the hybrid tokenomics model (Perlas and Baku Coin), and the technical architecture for integrating the Unity client with the blockchain network via ASP.NET Core server.
+Rapid Application Development (RAD) is an adaptive software development methodology that that emphasizes rapid prototyping, iterative development, and substantial user involvement to accelerate the delivery of a quality, functional software product. As such, its implementation to the development of Echoes of Bathala Online because of the constraint on time and resources for the project. By facilitating continuous user feedback throughout the development process, RAD allows the identification and refinement of the system requirements minimizing the risk of costly redesigns. Additionally, the fast-moving development cycles will enable the project team to implement the core functionalities in order to deliver a playable software product on time.
 
-2. User Design: In this phase, iterative cycles of prototyping and testing will begin. Interactive prototypes of the game's core systems—such as combat, the user interface, and the asset conversion mechanic—will be developed and reviewed to refine the player experience and gameplay flow.
+1. **Requirements Planning**
 
-3. Rapid Construction: The approved prototypes will be developed into a Minimum Playable Content build. This phase involves the concurrent implementation of core features, including asset creation, gameplay programming in Unity, server development, and the deployment and integration of the BAKU (ERC-20) and NFT (ERC-721) smart contracts on the Polygon testnet using Hardhat and Nethereum.
+    The phase of the requirements planning provides a baseline direction to the project and clears expectations from all interested parties. In the context of RAD, this phase emphasizes fast but organized teamwork to outline the goals and constraints of the system. The activities will focus, in this phase, on detailing out the scope of the project, objectives of gameplay, and essential functions. This includes finalizing the GDD, detailing the hybrid tokenomics model that integrates Perlas and Baku Coin, and specifying the technical architecture to interface Unity with the blockchain network by using ASP.NET Web APIs.
 
-4. Cutover: This final phase encompasses comprehensive testing of the integrated prototype. The core activities will be functional testing of gameplay systems and rigorous validation of the proposed tokenomics model to assess economic balance, transaction stability, and the effectiveness of the stabilization mechanisms.
+    In this stage, consultations with advisers, developers, and potential end users-for example, players and/or evaluators-are made to ascertain key needs and possible risks such as gameplay balance and blockchain transaction flows. The goal is to arrive to a mutual understanding of the intended actions of the system prior to the design and prototyping phases. As stressed, early agreement on requirements reduces ambiguity, limits rework, and ensures subsequent phases are driven by a clear, validated direction.
+
+2. **User Design**
+
+    The user design phase is the iterative and collaborative heart of RAD. In this work, prototyping cycles will be used to gradually refine those aspects of the system that will be visible to users. Iterative, interactive prototypes of central gameplay systems, such as combat mechanics, the UI, and the asset conversion mechanism, will be rapidly created, tested, and evaluated.
+
+    The continuous feedback by stakeholders, including potential users and academic advisors, will point out usability issues, gameplay inconsistencies, and improvements in design. Every iteration will give the developers the ability to adjust mechanics, interface layouts and interaction flows. The confirmation of initial design choices by engaging users, facilitating developer conversations, and refining through iteration until the prototype adequately represents the desired user experience. Addressing key design issues in this stage reduces risk and facilitates a more seamless construction process construction.
+
+3. **Construction**
+
+    The construction phase is the transformation of the validated prototypes into a functional build of Minimum Playable Content. Consistent with RAD principles, this stage goes fast because all the foundational design issues have been handled in the iterative User Design phase. Development activities will be executed in parallel, enabling faster advancement without quality compromise.
+
+    Implementation activities will involve the creation of assets, gameplay programming using Unity, and server-side development using ASP.NET. Integration with blockchain will be implemented along with deployment and testing of BAKU (ERC-20) and NFT (ERC-721) smart contracts on Polygon testnet using Hardhat and Nethereum. Frequent testing and building incrementally during this entire process will ensure that gameplay systems, UI elements, server endpoints, and blockchain interactions work cohesively.
+
+    During this stage, reviewers and stakeholders will continue to provide their feedback in order to allow mid-development adjustments where necessary. This will ensure that the final build of the MPC remains in line with user expectations and the stated technical objectives.
+
+4. **Implementation**
+
+    The focus of the implementation phase will be the validation of the integrated system and preparation for evaluation as a working prototype. This will include extensive functional testing of gameplay systems, blockchain interactions, and the server-client communication pipeline. Of paramount importance in this phase will be the testing of the hybrid tokenomics model: primarily the balance between Perlas and Baku Coin, the stability of transactions, and how stabilization mechanisms behave under different simulated conditions.
+
+    Consistent with RAD principles, any issues found in testing will be dealt with immediately, with changes being made in a rapid and focused manner to advance the prototype towards completion. This stage will also include the preparation of documentation, ensuring system readiness, and verifying that all major components function reliably under intended use conditions. The prototype, once polished, will be ready for review, showing not only the practical feasibility of the game system but also the effectiveness of the economic model proposed.

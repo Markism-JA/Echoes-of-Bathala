@@ -20,7 +20,9 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{float}
+\usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{caption}
 
 \usepackage[
     citecolor=black,
@@ -29,6 +31,14 @@
     urlcolor=black,
     pdfborder={0 0 0}
 ]{hyperref}
+
+\captionsetup[figure]{
+    skip=0,
+    font=small,
+    labelfont=bf,
+    textfont=normalfont,
+    justification=centering
+}
 
 \setmainfont{Times New Roman}
 \addbibresource{references.bib}
