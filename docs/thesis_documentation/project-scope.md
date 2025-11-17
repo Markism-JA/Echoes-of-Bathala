@@ -1,6 +1,6 @@
 # Project Scope & Definition of Done
 
-This document defines the three-tiered criteria for project completion, allowing for adjustments based on time, resources, and technical constraints. The project's success will be measured against one of these three defined tiers. We can only define which of these 3 after the implementation phase based on the time and other resource available to us during that time. This document is constructed directly against the [Scope](01_Introduction/06-SCOPE_AND_LIMITATION_OF_THE_STUDY.md), [SOP](01_Introduction/03-STATEMENT-OF-THE-PROBLEM.md) and [Objective](01_Introduction/05-OBJECTIVES_OF_THE_STUDY.md).
+This document defines the three-tiered criteria for project completion, allowing for adjustments based on time, resources, and technical constraints. The project's success will be measured against one of these three defined tiers. We can only define which of these 3 after the implementation phase based on the time and other resource available to us during that time. This document is constructed directly against the [Scope](01_Introduction/05-SCOPE_AND_LIMITATION_OF_THE_STUDY.md), [SOP](01_Introduction/02_BACKGROUND_OF_THE_PROBLEM.md) and [Objective](01_Introduction/04-OBJECTIVES_OF_THE_STUDY.md).
 
 > [!NOTE] Before undergoing any testing, we are essentially imposing a **feature freeze** on development. Our job here is test administrator and researcher not developers. Only bug fixes are allowed from here on out.
 

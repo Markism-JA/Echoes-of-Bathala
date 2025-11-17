@@ -1,3 +1,3 @@
 ## Conceptual Framework
 
-![Conceptual Framework](docs/thesis_documentation/assets/conceptual-framework.png)
+![Conceptual Framework](/docs/thesis_documentation/assets/conceptual-framework.svg)
