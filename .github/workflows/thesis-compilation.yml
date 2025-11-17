@@ -25,8 +25,7 @@ jobs:
           root_file: main.tex
           compiler: latexmk
           latexmk_use_lualatex: true
-          extra_system_packages: ttf-mscorefonts-installer
-          
+          extra_system_packages: msttcorefonts-installer
           pre_compile: 'tlmgr update --self && tlmgr install latexmk biber enumitem biblatex-apa geometry titlesec ragged2e makecell tocloft fancyhdr textcase etoolbox parskip setspace csquotes booktabs float'
 
       - name: Upload Compiled PDF
