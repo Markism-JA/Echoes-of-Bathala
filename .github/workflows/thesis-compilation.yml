@@ -15,20 +15,28 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: ⬇️ Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up TeX Live, Tools, and Compile
+      - name: ⚙️ Set up TeX Live, Tools, and Compile
         uses: xu-cheng/latex-action@v2
         with:
           working_directory: docs/thesis_documentation/
+          
           root_file: main.tex
+          
           compiler: latexmk
+          
           latexmk_use_lualatex: true
+          
           extra_system_packages: msttcorefonts-installer
-          pre_compile: 'tlmgr update --self && tlmgr install latexmk biber enumitem biblatex-apa geometry titlesec ragged2e makecell tocloft fancyhdr textcase etoolbox parskip setspace csquotes booktabs float'
+          
+          pre_compile: >
+            tlmgr update --self && 
+            tlmgr install latexmk biber enumitem biblatex-apa geometry titlesec ragged2e makecell tocloft fancyhdr textcase etoolbox parskip setspace csquotes booktabs float && 
+            fc-cache -f
 
-      - name: Upload Compiled PDF
+      - name: 📤 Upload Compiled PDF
         uses: actions/upload-artifact@v4
         with:
           name: thesis-pdf
