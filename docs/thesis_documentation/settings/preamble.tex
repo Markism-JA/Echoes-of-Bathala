@@ -62,6 +62,30 @@
     \hfill Page\par
 }
 
+\renewcommand{\cftloftitlefont}{\hfill\bfseries\scshape}
+\renewcommand{\cftafterloftitle}{\hfill\par\vspace{1em}}
+
+\renewcommand{\cftlottitlefont}{\hfill\bfseries\scshape}
+\renewcommand{\cftafterlottitle}{\hfill\par\vspace{1em}}
+
+\setlength{\cftfignumwidth}{2em}
+\setlength{\cfttabnumwidth}{2em}
+
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+
+\renewcommand{\listtablename}{
+  \begin{center}\scshape LIST OF TABLES\end{center}
+  \vspace{0.5em}
+  \noindent Table \hfill\textbf Page \par
+}
+
+\renewcommand{\listfigurename}{
+  \begin{center}\bfseries\scshape LIST OF FIGURES\end{center}
+  \vspace{0.5em}
+  \noindent Figure \hfill Page \par
+}
+
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
 \setlength{\cftsecindent}{0pt} 
