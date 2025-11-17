@@ -1,0 +1,386 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="195.17 34.88 1560.77 411.27">
+ <v:documentProperties>
+  <v:userDefs>
+   <v:ud v:nameU="msvNoAutoConnect" v:val="1"/>
+   <v:ud v:nameU="msvWarnOnPersonalInfo" v:val="0"/>
+  </v:userDefs>
+ </v:documentProperties>
+ <g id="SFixTitle"/>
+ <g id="SContent">
+  <g>
+   <g transform="matrix(1,0,0,-1,0,612)">
+    <g transform="matrix(1,0,0,1,929.8656,504.74164)" v:mID="1">
+     <title>Rectangle</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+     </userDefs>
+     <g transform="matrix(1,0,0,1,0,0)" v:mID="1">
+      <title>Rectangle</title>
+      <userDefs>
+       <ud nameU="visVersion" val="15"/>
+      </userDefs>
+      <path d="M0,0 L108,0 L108,0 L108,72 L108,72 L0,72 L0,72 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="none" stroke-opacity="0"/>
+     </g>
+     <path d="M0,0 L108,0 L108,0 L108,72 L108,72 L0,72 L0,72 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="41.38037" y="6" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,39)">Player</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,929.8656,374.112)" v:mID="2">
+     <title>Rectangle</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+     </userDefs>
+     <path d="M0,0 L108,0 L108,0 L108,72 L108,72 L0,72 L0,72 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="17.959959" y="0" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,39)">Echoes of Bathala</text>
+      <text x="28.018553" y="12" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,39)">Online (EBO)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="3">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L45.678131104,0 L45.678131104,0 L45.678131104,-130.629592896 L45.678131104,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,11.442551,-69.17023)">
+      <path d="M4.905729294,-2.817187309 L60.835418701,-2.817187309 L60.835418701,6.948437214 L4.905729294,6.948437214 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,11.201781)"/>
+      <text x="4.9057293" y="4.8" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,11.201781)">Login Credentials</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="4">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L140.348739624,0 L140.348739624,0 L140.348739624,-130.629592896 L140.348739624,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,79.22403,-74.13166)">
+      <path d="M30.026716232,-7.6171875 L87.58140564,-7.6171875 L87.58140564,2.148437023 L30.026716232,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="30.026716" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Input Commands</text>
+      <path d="M4.905622005,1.982812881 L110.89390564,1.982812881 L110.89390564,11.748437881 L4.905622005,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.905622" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">(Movement, Skill Use, Targeting)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="5">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L243.758239746,0 L243.758239746,0 L243.758239746,-130.629592896 L243.758239746,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,196.51778,-75.72821)">
+      <path d="M5.810316086,-7.6171875 L93.079849243,-7.6171875 L93.079849243,2.148437023 L5.810316086,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.810316" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">UI Interactions (Inventory,</text>
+      <path d="M16.269300461,1.982812881 L80.812271118,1.982812881 L80.812271118,11.748437881 L16.269300461,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="16.2693" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Craft, Quests, Stats)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="6">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L344.134124756,0 L344.134124756,0 L344.134124756,-130.629592896 L344.134124756,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,294.0017,-78.91656)">
+      <path d="M19.01524353,-7.6171875 L83.05821228,-7.6171875 L83.05821228,2.148437023 L19.01524353,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="19.015244" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Social Inputs (Chat,</text>
+      <path d="M4.905866623,1.982812881 L95.35899353,1.982812881 L95.35899353,11.748437881 L4.905866623,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.9058666" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Party Invite, Trade Request)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="7">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L447.384674072,0 L447.384674072,0 L447.384674072,-130.629592896 L447.384674072,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,399.68597,-78.91656)">
+      <path d="M5.810011387,-7.6171875 L91.395942688,-7.6171875 L91.395942688,2.148437023 L5.810011387,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8100114" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Talipapa (Market) Actions</text>
+      <path d="M17.36860466,1.982812881 L78.028762817,1.982812881 L78.028762817,11.748437881 L17.36860466,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="17.368605" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">(Post, Buy, Search)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="8">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L533.479064941,0 L533.479064941,0 L533.479064941,-130.629592896 L533.479064941,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,503.10822,-81.84428)">
+      <path d="M5.809996128,-7.6171875 L53.552181244,-7.6171875 L53.552181244,2.148437023 L5.809996128,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.809996" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Wallet Linking</text>
+      <path d="M13.294370651,1.982812881 L44.259212494,1.982812881 L44.259212494,11.748437881 L13.294370651,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="13.294371" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Signature</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="9">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L614.440429688,0 L614.440429688,0 L614.440429688,-130.629592896 L614.440429688,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,577.14197,-78.91656)">
+      <path d="M19.167617798,-7.6171875 L57.237930298,-7.6171875 L57.237930298,2.148437023 L19.167617798,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="19.167618" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Baku Forge</text>
+      <path d="M4.905896664,1.982812881 L69.691055298,1.982812881 L69.691055298,11.748437881 L4.905896664,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.9058967" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Conversion Request</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1028.8656,540.7416)" v:mID="10">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,-133.509597778 L9,-130.629592896 L3.239999533,-127.749595642 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,18,-261.2592)"/>
+     <path d="M9,0 L692.960388184,0 L692.960388184,0 L692.960388184,-130.629592896 L692.960388184,-130.629592896 L9,-130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,653.93555,-74.11658)">
+      <path d="M4.905699253,-2.817187309 L73.143974304,-2.817187309 L73.143974304,6.948437214 L4.905699253,6.948437214 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,11.201781)"/>
+      <text x="4.9056993" y="4.8" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,11.201781)">NFT Minting Request</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="11">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-23.549102783,0 L-23.549102783,0 L-23.549102783,130.629592896 L-23.549102783,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-55.47458,51.713036)">
+      <path d="M5.810240746,-7.6171875 L59.849300385,-7.6171875 L59.849300385,2.148437023 L5.810240746,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8102407" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Login/Character</text>
+      <path d="M17.679380417,1.982812881 L46.17156601,1.982812881 L46.17156601,11.748437881 L17.679380417,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="17.67938" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Select UI</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="12">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-97.044975281,0 L-97.044975281,0 L-97.044975281,130.629592896 L-97.044975281,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-130.68143,51.713036)">
+      <path d="M5.810286045,-7.6171875 L63.271224976,-7.6171875 L63.271224976,2.148437023 L5.810286045,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.810286" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Rendered World,</text>
+      <path d="M7.630598068,1.982812881 L59.642314911,1.982812881 L59.642314911,11.748437881 L7.630598068,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="7.630598" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Entities, &amp; NPCs</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="13">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-180.290313721,0 L-180.290313721,0 L-180.290313721,130.629592896 L-180.290313721,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-214.88176,51.713036)">
+      <path d="M5.810193539,-7.6171875 L65.181289673,-7.6171875 L65.181289673,2.148437023 L5.810193539,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8101935" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">HUD (Health, MP,</text>
+      <path d="M5.187146664,1.982812881 L63.995742798,1.982812881 L63.995742798,11.748437881 L5.187146664,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.1871467" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Cooldowns, Buffs)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="14">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-272.562988281,0 L-272.562988281,0 L-272.562988281,130.629592896 L-272.562988281,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-310.56073,51.713036)">
+      <path d="M8.851271629,-7.6171875 L68.952835083,-7.6171875 L68.952835083,2.148437023 L8.851271629,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="8.851272" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Combat Feedback</text>
+      <path d="M4.905958652,1.982812881 L71.089553833,1.982812881 L71.089553833,11.748437881 L4.905958652,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.9059587" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">(Damages, VFX, SFX)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="15">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-358.34487915,0 L-358.34487915,0 L-358.34487915,130.629592896 L-358.34487915,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-408.48914,51.713036)">
+      <path d="M21.269241333,-7.6171875 L80.827835083,-7.6171875 L80.827835083,2.148437023 L21.269241333,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="21.269241" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">All System Menus</text>
+      <path d="M4.905956745,1.982812881 L95.382522583,1.982812881 L95.382522583,11.748437881 L4.905956745,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.9059567" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">(Inventory, Skills, Map, etc.)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="16">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-453.119659424,0 L-453.119659424,0 L-453.119659424,130.629592896 L-453.119659424,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-493.83435,51.713036)">
+      <path d="M5.810378075,-7.6171875 L77.427566528,-7.6171875 L77.427566528,2.148437023 L5.810378075,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.810378" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Social UI (Chat, Party,</text>
+      <path d="M15.597486496,1.982812881 L65.831863403,1.982812881 L65.831863403,11.748437881 L15.597486496,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="15.5974865" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Trade Window)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="17">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-538.244812012,0 L-538.244812012,0 L-538.244812012,130.629592896 L-538.244812012,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-573.00037,51.713036)">
+      <path d="M5.810240746,-7.6171875 L65.509460449,-7.6171875 L65.509460449,2.148437023 L5.810240746,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8102407" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Talipapa (Market)</text>
+      <path d="M14.673521042,1.982812881 L54.837581635,1.982812881 L54.837581635,11.748437881 L14.673521042,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="14.673521" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">UI &amp; Listings</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="18">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-611.257141113,0 L-611.257141113,0 L-611.257141113,130.629592896 L-611.257141113,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-648.75885,51.713036)">
+      <path d="M5.810316086,-7.6171875 L71.001724243,-7.6171875 L71.001724243,2.148437023 L5.810316086,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.810316" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Tokenomy UI (Baku</text>
+      <path d="M10.118908882,1.982812881 L64.884536743,1.982812881 L64.884536743,11.748437881 L10.118908882,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="10.118909" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Forge, NFT Mint)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,920.8656,410.112)" v:mID="19">
+     <title>Dynamic connector</title>
+     <path d="M3.239999533,127.749595642 L9,130.629592896 L3.239999533,133.509597778 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M9,0 L-693.410949707,0 L-693.410949707,0 L-693.410949707,130.629592896 L-693.410949707,130.629592896 L9,130.629592896 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-729.6,56.513016)">
+      <path d="M4.905791283,-2.817187309 L67.472198486,-2.817187309 L67.472198486,6.948437214 L4.905791283,6.948437214 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,11.201781)"/>
+      <text x="4.9057913" y="4.8" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,11.201781)">Audio (BGM &amp; SFX)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,768.1536,269.40958)" v:mID="31">
+     <title>Rectangle.31</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+     </userDefs>
+     <path d="M0,0 L108,0 L108,0 L108,72 L108,72 L0,72 L0,72 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="14.820311" y="6" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,39)">Polygon Blockchain</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1093.0608,269.40958)" v:mID="33">
+     <title>Rectangle.33</title>
+     <userDefs>
+      <ud nameU="visVersion" val="15"/>
+     </userDefs>
+     <path d="M0,0 L108,0 L108,0 L108,72 L108,72 L0,72 L0,72 L0,0 Z" stroke="#000000" stroke-width="0.75" stroke-linecap="round" fill="#FFFFFF" fill-rule="evenodd"/>
+     <g transform="matrix(1,0,0,1,0,0)">
+      <text x="12.5791" y="6" class="TextStyle0" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,39)">Game Administrator</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1201.1432,281.6046)" v:mID="40">
+     <title>Dynamic connector</title>
+     <path d="M-190.03767395,89.62739563 L-184.277679443,92.507385254 L-190.03767395,95.387390137 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,-91.770294,276.78506)"/>
+     <path d="M0,0 L303.139923096,0 L303.139923096,0 L303.139923096,-115.026039124 L303.139923096,-115.026039124 L-184.277679443,-115.026039124 L-184.277679443,-115.026039124 L-184.277679443,92.507385254 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,256.47577,-70.95428)">
+      <path d="M5.80996418,-7.6171875 L89.766998291,-7.6171875 L89.766998291,2.148437023 L5.80996418,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.809964" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Management Commands</text>
+      <path d="M6.835357666,1.982812881 L86.933013916,1.982812881 L86.933013916,11.748437881 L6.835357666,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="6.8353577" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">(e.g., Broadcast, Restart)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1038.0007,392.247)" v:mID="41">
+     <title>Dynamic connector</title>
+     <path d="M157.300170898,-89.717391968 L163.060165405,-86.837394714 L157.300170898,-83.957397461 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,326.12033,-173.67479)"/>
+     <path d="M0,0 L465.963043213,0 L465.963043213,0 L465.963043213,-86.837394714 L465.963043213,-86.837394714 L163.060165405,-86.837394714 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,431.74274,-60.09427)">
+      <path d="M5.810071468,-7.6171875 L65.513198853,-7.6171875 L65.513198853,2.148437023 L5.810071468,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8100715" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">System Reports &amp;</text>
+      <path d="M9.18311882,1.982812881 L60.331558228,1.982812881 L60.331558228,11.748437881 L9.18311882,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="9.183119" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Player Analytics</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1038.0007,392.247)" v:mID="42">
+     <title>Dynamic connector</title>
+     <path d="M157.300170898,-89.717391968 L163.060165405,-86.837394714 L157.300170898,-83.957397461 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,326.12033,-173.67479)"/>
+     <path d="M0,0 L388.619934082,0 L388.619934082,0 L388.619934082,-86.837394714 L388.619934082,-86.837394714 L163.060165405,-86.837394714 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,355.70764,-60.09427)">
+      <path d="M5.810011387,-7.6171875 L61.583450317,-7.6171875 L61.583450317,2.148437023 L5.810011387,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8100114" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Real-time Server</text>
+      <path d="M10.917432785,1.982812881 L54.667430878,1.982812881 L54.667430878,11.748437881 L10.917432785,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="10.917433" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Logs &amp; Status</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1038.0007,392.247)" v:mID="43">
+     <title>Dynamic connector</title>
+     <path d="M157.300170898,-89.717391968 L163.060165405,-86.837394714 L157.300170898,-83.957397461 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,326.12033,-173.67479)"/>
+     <path d="M0,0 L299.558166504,0 L299.558166504,0 L299.558166504,-86.837394714 L299.558166504,-86.837394714 L163.060165405,-86.837394714 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,261.90863,-57.84427)">
+      <path d="M5.810118675,-7.6171875 L69.181213379,-7.6171875 L69.181213379,2.148437023 L5.810118675,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8101187" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Transaction Queue</text>
+      <path d="M26.491758347,1.982812881 L46.690975189,1.982812881 L46.690975189,11.748437881 L26.491758347,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="26.491758" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Status</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1038.0007,392.247)" v:mID="44">
+     <title>Dynamic connector</title>
+     <path d="M157.300170898,-89.717391968 L163.060165405,-86.837394714 L157.300170898,-83.957397461 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(-1,0,0,-1,326.12033,-173.67479)"/>
+     <path d="M0,0 L212.840148926,0 L212.840148926,0 L212.840148926,-86.837394714 L212.840148926,-86.837394714 L163.060165405,-86.837394714 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,179.03728,-56.34427)">
+      <path d="M5.810408115,-7.6171875 L63.923686981,-7.6171875 L63.923686981,2.148437023 L5.810408115,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.810408" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Transaction Error</text>
+      <path d="M13.900251389,1.982812881 L54.025253296,1.982812881 L54.025253296,11.748437881 L13.900251389,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="13.900251" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">&amp; Gas Alerts</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,930.0007,390.74698)" v:mID="49">
+     <title>Dynamic connector</title>
+     <path d="M-167.607025146,-88.217391968 L-161.84703064,-85.337394714 L-167.607025146,-82.457397461 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,0 L-420.65524292,0 L-420.65524292,0 L-420.65524292,-85.337394714 L-420.65524292,-85.337394714 L-161.84703064,-85.337394714 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-464.5833,-57.09427)">
+      <path d="M4.905591965,-7.6171875 L85.761062622,-7.6171875 L85.761062622,2.148437023 L4.905591965,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.905592" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Signed BAKU Token Mint</text>
+      <path d="M10.350905418,1.982812881 L80.315750122,1.982812881 L80.315750122,11.748437881 L10.350905418,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="10.350905" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">/Transfer Transaction</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1201.1432,281.6046)" v:mID="50">
+     <title>Dynamic connector</title>
+     <path d="M-190.03767395,89.62739563 L-184.277679443,92.507385254 L-190.03767395,95.387390137 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,-91.770294,276.78506)"/>
+     <path d="M0,0 L217.861755371,0 L217.861755371,0 L217.861755371,-115.075332642 L217.861755371,-115.075332642 L-184.277679443,-115.075332642 L-184.277679443,-115.075332642 L-184.277679443,92.507385254 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,184.82542,-69.1543)">
+      <path d="M4.905639172,-2.817187309 L61.163452148,-2.817187309 L61.163452148,6.948437214 L4.905639172,6.948437214 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,11.201781)"/>
+      <text x="4.905639" y="4.8" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,11.201781)">Analytics Queries</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1201.1432,281.6046)" v:mID="51">
+     <title>Dynamic connector</title>
+     <path d="M-190.03767395,89.62739563 L-184.277679443,92.507385254 L-190.03767395,95.387390137 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,-91.770294,276.78506)"/>
+     <path d="M0,0 L135.665878296,0 L135.665878296,0 L135.665878296,-114.160743713 L135.665878296,-114.160743713 L-184.277679443,-114.160743713 L-184.277679443,-114.160743713 L-184.277679443,92.507385254 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,93.35846,-71.70428)">
+      <path d="M12.720244408,-7.6171875 L76.091331482,-7.6171875 L76.091331482,2.148437023 L12.720244408,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="12.720244" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Transaction Queue</text>
+      <path d="M4.905789375,1.982812881 L82.097198486,1.982812881 L82.097198486,11.748437881 L4.905789375,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.9057894" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Inspection / Commands</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,1201.1432,281.6046)" v:mID="52">
+     <title>Dynamic connector</title>
+     <path d="M-190.03767395,89.62739563 L-184.277679443,92.507385254 L-190.03767395,95.387390137 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,-91.770294,276.78506)"/>
+     <path d="M0,0 L50.387718201,0 L50.387718201,0 L50.387718201,-114.160743713 L50.387718201,-114.160743713 L-184.277679443,-114.160743713 L-184.277679443,-114.160743713 L-184.277679443,92.507385254 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,20.35455,-70.20428)">
+      <path d="M5.810103416,-7.6171875 L56.509319305,-7.6171875 L56.509319305,2.148437023 L5.810103416,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8101034" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Gas Fee &amp; Rule</text>
+      <path d="M9.685103416,1.982812881 L50.82572937,1.982812881 L50.82572937,11.748437881 L9.685103416,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="9.685103" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Adjustments</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,768.00366,270.75208)" v:mID="53">
+     <title>Dynamic connector</title>
+     <path d="M180.101959229,100.479888916 L185.861968994,103.359893799 L180.101959229,106.239883423 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,289.22186,-82.502075)"/>
+     <path d="M0,0 L-148.003158569,0 L-148.003158569,0 L-148.003158569,-104.783073425 L-148.003158569,-104.783073425 L185.861968994,-104.783073425 L185.861968994,-104.783073425 L185.861968994,103.359893799 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-196.42343,-66.85176)">
+      <path d="M5.810118675,-7.6171875 L90.345275879,-7.6171875 L90.345275879,2.148437023 L5.810118675,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8101187" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Transaction Confirmation</text>
+      <path d="M32.521053314,1.982812881 L61.825740814,1.982812881 L61.825740814,11.748437881 L32.521053314,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="32.521053" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">/ Receipt</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,930.0007,390.74698)" v:mID="54">
+     <title>Dynamic connector</title>
+     <path d="M-167.607025146,-88.217391968 L-161.84703064,-85.337394714 L-167.607025146,-82.457397461 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,0 L-310.350128174,0 L-310.350128174,0 L-310.350128174,-85.337394714 L-310.350128174,-85.337394714 L-161.84703064,-85.337394714 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-361.8001,-57.09427)">
+      <path d="M24.511075974,-7.6171875 L79.897796631,-7.6171875 L79.897796631,2.148437023 L24.511075974,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="24.511076" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Signed NFT Mint</text>
+      <path d="M4.905609131,1.982812881 L97.694671631,1.982812881 L97.694671631,11.748437881 L4.905609131,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="4.905609" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Transaction (with Metadata)</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,930.0007,390.74698)" v:mID="55">
+     <title>Dynamic connector</title>
+     <path d="M-167.607025146,-88.217391968 L-161.84703064,-85.337394714 L-167.607025146,-82.457397461 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(1,0,0,1,0,0)"/>
+     <path d="M0,0 L-221.989608765,0 L-221.989608765,0 L-221.989608765,-85.337394714 L-221.989608765,-85.337394714 L-161.84703064,-85.337394714 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-263.50928,-57.09427)">
+      <path d="M5.810088634,-7.6171875 L77.517120361,-7.6171875 L77.517120361,2.148437023 L5.810088634,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8100886" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Signed NFT Metadata</text>
+      <path d="M8.837430954,1.982812881 L72.681175232,1.982812881 L72.681175232,11.748437881 L8.837430954,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="8.837431" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Update Transaction</text>
+     </g>
+    </g>
+    <g transform="matrix(1,0,0,1,768.00366,270.75208)" v:mID="56">
+     <title>Dynamic connector</title>
+     <path d="M180.101959229,100.479888916 L185.861968994,103.359893799 L180.101959229,106.239883423 Z" stroke="#000000" stroke-width="0.2376378" fill="#000000" fill-rule="evenodd" transform="matrix(0,1,-1,-0,289.22186,-82.502075)"/>
+     <path d="M0,0 L-55.245185852,0 L-55.245185852,0 L-55.245185852,-103.495269775 L-55.245185852,-103.495269775 L185.861968994,-103.495269775 L185.861968994,-103.495269775 L185.861968994,103.359893799 " stroke="#000000" stroke-width="0.2376378" stroke-linecap="round" fill="none"/>
+     <g transform="matrix(1,0,0,1,-93.04258,-66.10176)">
+      <path d="M5.810133457,-7.6171875 L69.583572388,-7.6171875 L69.583572388,2.148437023 L5.810133457,2.148437023 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="5.8101335" y="0" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">Transaction Failure</text>
+      <path d="M8.417555809,1.982812881 L65.167556763,1.982812881 L65.167556763,11.748437881 L8.417555809,11.748437881 Z" stroke="none" stroke-width="0" fill="#FFFFFF" fill-rule="evenodd" transform="matrix(1,0,0,-1,0,16.001762)"/>
+      <text x="8.417556" y="9.6" class="TextStyle1" fill="#000000" opacity="1" transform="matrix(1,0,0,-1,0,16.001762)">/ Revert Message</text>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+ <style type="text/css"><![CDATA[ .TextStyle1 {font-family:Calibri;font-size:8px;}.TextStyle0 {font-family:Calibri;font-size:10px;} ]]></style>
+</svg>
