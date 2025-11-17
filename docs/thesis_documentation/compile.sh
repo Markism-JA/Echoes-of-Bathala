@@ -74,7 +74,7 @@ compile_chapter_directory() {
     echo "Processing individual Markdown files for source: ${source_chapter_dir}..."
     local md_search_pattern_glob="${source_chapter_dir}/**.md"
 
-    for md_file in $md_search_pattern_glob; do
+    for md_file in "${source_chapter_dir}"/**/*.md; do
         if [ -f "$md_file" ]; then
             if [[ "$interactive" == "true" ]]; then
                 read -p "Compile this file? [${md_file}] (y/N) " choice
