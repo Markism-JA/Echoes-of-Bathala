@@ -1,1 +1,1 @@
-![HIPO-Diagram](https://github.com/user-attachments/assets/113b87d0-2e52-44a5-869e-d0d649852c78)
+![HIPO-Diagram](https://github.com/user-attachments/assets/a932edcc-9b4d-459e-8c89-b67ad52a996a)
