@@ -1,0 +1,1689 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1100.1"
+   height="520.55"
+   version="1.1"
+   viewBox="470.32 518.6 1100.1 520.55"
+   xml:space="preserve"
+   id="svg126"
+   sodipodi:docname="context-flow.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"><defs
+   id="defs126" /><sodipodi:namedview
+   id="namedview126"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="0.68175622"
+   inkscape:cx="564.71799"
+   inkscape:cy="350.56519"
+   inkscape:window-width="1908"
+   inkscape:window-height="1028"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg126" />
+ <v:documentProperties>
+  <v:userDefs>
+   <v:ud
+   v:nameU="msvNoAutoConnect"
+   v:val="1" />
+   <v:ud
+   v:nameU="msvWarnOnPersonalInfo"
+   v:val="0" />
+  </v:userDefs>
+ </v:documentProperties>
+ 
+ <g
+   id="SContent"
+   transform="translate(8)">
+  
+   <g
+   transform="matrix(1,0,0,-1,6,1198)"
+   id="g126">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <g
+   transform="translate(929.87,504.74)"
+   v:mID="1"
+   id="g3">
+     <title
+   id="title1">Rectangle</title>
+     <userDefs>
+      <ud
+   nameU="visVersion"
+   val="15" />
+     </userDefs>
+     <g
+   v:mID="1"
+   id="g2">
+      <title
+   id="title2">Rectangle</title>
+      <userDefs>
+       <ud
+   nameU="visVersion"
+   val="15" />
+      </userDefs>
+      <path
+   d="M 0,0 H 108 V 72 H 0 v 0 z"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-opacity="0"
+   stroke-width="0.75"
+   id="path2" />
+     </g>
+     <path
+   d="M 0,0 H 108 V 72 H 0 v 0 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.75"
+   id="path3" />
+     
+      <text
+   class="TextStyle0"
+   transform="matrix(1,0,0,-1,0,39)"
+   x="41.380371"
+   y="6"
+   fill="#000000"
+   id="text3">Player</text>
+     
+    </g><g
+   transform="translate(929.87,374.11)"
+   v:mID="2"
+   id="g6">
+     <title
+   id="title3">Rectangle</title>
+     <userDefs>
+      <ud
+   nameU="visVersion"
+   val="15" />
+     </userDefs>
+     <path
+   d="M 0,0 H 108 V 72 H 0 v 0 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.75"
+   id="path4" />
+     <g
+   fill="#000000"
+   id="g5">
+      <text
+   class="TextStyle0"
+   transform="matrix(1,0,0,-1,0,39)"
+   x="17.959959"
+   id="text4">Echoes of Bathala</text>
+      <text
+   class="TextStyle0"
+   transform="matrix(1,0,0,-1,0,39)"
+   x="28.018553"
+   y="12"
+   id="text5">Online (EBO)</text>
+     </g>
+    </g><g
+   transform="translate(1028.9,540.74)"
+   v:mID="3"
+   id="g9">
+     <title
+   id="title6">Dynamic connector</title>
+     <path
+   transform="rotate(180,9,-130.63)"
+   d="m 3.24,-133.51 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path6" />
+     <path
+   d="M 9,0 H 45.678 V -130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path7" />
+     <g
+   transform="translate(11.443,-69.17)"
+   id="g8">
+      <path
+   transform="matrix(1,0,0,-1,0,11.202)"
+   d="m 4.9057,-2.8172 h 55.93 v 9.7656 h -55.93 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path8" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,11.202)"
+   x="4.9057293"
+   y="4.8000002"
+   fill="#000000"
+   id="text8">Login Credentials</text>
+     </g>
+    </g><g
+   transform="translate(1028.9,540.74)"
+   v:mID="4"
+   id="g13">
+     <title
+   id="title9">Dynamic connector</title>
+     <path
+   transform="rotate(180,9,-130.63)"
+   d="m 3.24,-133.51 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path9" />
+     <path
+   d="M 9,0 H 140.35 V -130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path10" />
+     <g
+   transform="translate(79.224,-74.132)"
+   id="g12">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 30.027,-7.6172 H 87.582 V 2.1484 H 30.027 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path11" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="30.026716"
+   fill="#000000"
+   id="text11">Input Commands</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.9056,1.9828 h 105.99 v 9.7656 H 4.9056 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path12" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.905622"
+   y="9.6000004"
+   fill="#000000"
+   id="text12">(Movement, Skill Use, Targeting)</text>
+     </g>
+    </g><g
+   transform="translate(1028.9,540.74)"
+   v:mID="5"
+   id="g17">
+     <title
+   id="title13">Dynamic connector</title>
+     <path
+   transform="rotate(180,9,-130.63)"
+   d="m 3.24,-133.51 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path13" />
+     <path
+   d="M 9,0 H 243.76 V -130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path14" />
+     <g
+   transform="translate(196.52,-75.728)"
+   id="g16">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8103,-7.6172 h 87.27 v 9.7656 h -87.27 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path15" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8103161"
+   fill="#000000"
+   id="text15">UI Interactions (Inventory,</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 16.269,1.9828 h 64.543 v 9.7656 H 16.269 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path16" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="16.2693"
+   y="9.6000004"
+   fill="#000000"
+   id="text16">Craft, Quests, Stats)</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="11"
+   id="g21">
+     <title
+   id="title17">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path17" />
+     <path
+   d="M 9,0 H -23.549 V 130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path18" />
+     <g
+   transform="translate(-55.475,51.713)"
+   id="g20">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8102,-7.6172 h 54.039 V 2.1484 H 5.8102 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path19" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8102407"
+   fill="#000000"
+   id="text19">Login/Character</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 17.679,1.9828 h 28.492 v 9.7656 H 17.679 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path20" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="17.67938"
+   y="9.6000004"
+   fill="#000000"
+   id="text20">Select UI</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="12"
+   id="g25">
+     <title
+   id="title21">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path21" />
+     <path
+   d="M 9,0 H -97.04 V 130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path22" />
+     <g
+   transform="translate(-130.68,51.713)"
+   id="g24">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8103,-7.6172 h 57.461 V 2.1484 H 5.8103 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path23" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.810286"
+   fill="#000000"
+   id="text23">Rendered World,</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 7.6306,1.9828 h 52.012 v 9.7656 H 7.6306 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path24" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="7.6305981"
+   y="9.6000004"
+   fill="#000000"
+   id="text24">Entities, &amp; NPCs</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="13"
+   id="g29">
+     <title
+   id="title25">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path25" />
+     <path
+   d="M 9,0 H -180.29 V 130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path26" />
+     <g
+   transform="translate(-214.88,51.713)"
+   id="g28">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8102,-7.6172 h 59.371 V 2.1484 H 5.8102 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path27" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8101935"
+   fill="#000000"
+   id="text27">HUD (Health, MP,</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.1871,1.9828 h 58.809 v 9.7656 H 5.1871 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path28" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.1871467"
+   y="9.6000004"
+   fill="#000000"
+   id="text28">Cooldowns, Buffs)</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="14"
+   id="g33">
+     <title
+   id="title29">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path29" />
+     <path
+   d="M 9,0 H -272.56 V 130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path30" />
+     <g
+   transform="translate(-310.56,51.713)"
+   id="g32">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 8.8513,-7.6172 h 60.102 V 2.1484 H 8.8513 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path31" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="8.8512716"
+   fill="#000000"
+   id="text31">Combat Feedback</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 4.906,1.9828 H 71.09 v 9.7656 H 4.906 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path32" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.9059587"
+   y="9.6000004"
+   fill="#000000"
+   id="text32">(Damages, VFX, SFX)</text>
+     </g>
+    </g><g
+   transform="translate(768.15,269.41)"
+   v:mID="31"
+   id="g34">
+     <title
+   id="title33">Rectangle.31</title>
+     <userDefs>
+      <ud
+   nameU="visVersion"
+   val="15" />
+     </userDefs>
+     <path
+   d="M 0,0 H 108 V 72 H 0 v 0 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.75"
+   id="path33" />
+     
+      <text
+   class="TextStyle0"
+   transform="matrix(1,0,0,-1,0,39)"
+   x="14.820311"
+   y="6"
+   fill="#000000"
+   id="text33">Polygon Blockchain</text>
+     
+    </g><g
+   transform="translate(1093.1,269.41)"
+   v:mID="33"
+   id="g35">
+     <title
+   id="title34">Rectangle.33</title>
+     <userDefs>
+      <ud
+   nameU="visVersion"
+   val="15" />
+     </userDefs>
+     <path
+   d="M 0,0 H 108 V 72 H 0 v 0 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.75"
+   id="path34" />
+     
+      <text
+   class="TextStyle0"
+   transform="matrix(1,0,0,-1,0,39)"
+   x="12.5791"
+   y="6"
+   fill="#000000"
+   id="text34">Game Administrator</text>
+     
+    </g><g
+   transform="translate(1201.1,281.6)"
+   v:mID="40"
+   id="g39">
+     <title
+   id="title35">Dynamic connector</title>
+     <path
+   transform="rotate(90,-184.28,92.507)"
+   d="m -190.04,89.627 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path35" />
+     <path
+   d="M 0,0 H 303.14 V -115.03 H -184.28 V 92.5"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path36" />
+     <g
+   transform="translate(256.48,-70.954)"
+   id="g38">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 5.81,-7.6172 H 89.767 V 2.1484 H 5.81 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path37" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8099642"
+   fill="#000000"
+   id="text37">Management Commands</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 6.8354,1.9828 h 80.098 v 9.7656 H 6.8354 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path38" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="6.8353577"
+   y="9.6000004"
+   fill="#000000"
+   id="text38">(e.g., Broadcast, Restart)</text>
+     </g>
+    </g><g
+   transform="translate(1038,392.25)"
+   v:mID="41"
+   id="g43">
+     <title
+   id="title39">Dynamic connector</title>
+     <path
+   transform="rotate(180,163.06,-86.837)"
+   d="m 157.3,-89.717 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path39" />
+     <path
+   d="M 0,0 H 465.96 V -86.837 H 163.06"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path40" />
+     <g
+   transform="translate(431.74,-60.094)"
+   id="g42">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8101,-7.6172 h 59.703 V 2.1484 H 5.8101 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path41" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8100715"
+   fill="#000000"
+   id="text41">System Reports &amp;</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 9.1831,1.9828 h 51.148 v 9.7656 H 9.1831 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path42" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="9.1831188"
+   y="9.6000004"
+   fill="#000000"
+   id="text42">Player Analytics</text>
+     </g>
+    </g><g
+   transform="translate(1038,392.25)"
+   v:mID="42"
+   id="g47">
+     <title
+   id="title43">Dynamic connector</title>
+     <path
+   transform="rotate(180,163.06,-86.837)"
+   d="m 157.3,-89.717 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path43" />
+     <path
+   d="M 0,0 H 388.62 V -86.837 H 163.06"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path44" />
+     <g
+   transform="translate(355.71,-60.094)"
+   id="g46">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 5.81,-7.6172 H 61.583 V 2.1484 H 5.81 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path45" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8100114"
+   fill="#000000"
+   id="text45">Real-time Server</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 10.917,1.9828 h 43.75 v 9.7656 h -43.75 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path46" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="10.917433"
+   y="9.6000004"
+   fill="#000000"
+   id="text46">Logs &amp; Status</text>
+     </g>
+    </g><g
+   transform="translate(1038,392.25)"
+   v:mID="43"
+   id="g51">
+     <title
+   id="title47">Dynamic connector</title>
+     <path
+   transform="rotate(180,163.06,-86.837)"
+   d="m 157.3,-89.717 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path47" />
+     <path
+   d="M 0,0 H 299.56 V -86.837 H 163.06"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path48" />
+     <g
+   transform="translate(261.91,-57.844)"
+   id="g50">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8101,-7.6172 h 63.371 V 2.1484 H 5.8101 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path49" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8101187"
+   fill="#000000"
+   id="text49">Transaction Queue</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 26.492,1.9828 h 20.199 v 9.7656 H 26.492 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path50" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="26.491758"
+   y="9.6000004"
+   fill="#000000"
+   id="text50">Status</text>
+     </g>
+    </g><g
+   transform="translate(1038,392.25)"
+   v:mID="44"
+   id="g55">
+     <title
+   id="title51">Dynamic connector</title>
+     <path
+   transform="rotate(180,163.06,-86.837)"
+   d="m 157.3,-89.717 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path51" />
+     <path
+   d="M 0,0 H 212.84 V -86.837 H 163.06"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path52" />
+     <g
+   transform="translate(179.04,-56.344)"
+   id="g54">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8104,-7.6172 h 58.113 V 2.1484 H 5.8104 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path53" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8104081"
+   fill="#000000"
+   id="text53">Transaction Error</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 13.9,1.9828 h 40.125 v 9.7656 H 13.9 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path54" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="13.900251"
+   y="9.6000004"
+   fill="#000000"
+   id="text54">&amp; Gas Alerts</text>
+     </g>
+    </g><g
+   transform="translate(930,390.75)"
+   v:mID="49"
+   id="g59">
+     <title
+   id="title55">Dynamic connector</title>
+     <path
+   d="m -167.61,-88.217 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path55" />
+     <path
+   d="m 0,0 h -420.66 v -85.337 h 258.81"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path56" />
+     <g
+   transform="translate(-464.58,-57.094)"
+   id="g58">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.9056,-7.6172 h 80.855 V 2.1484 H 4.9056 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path57" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.905592"
+   fill="#000000"
+   id="text57">Signed BAKU Token Mint</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 10.351,1.9828 h 69.965 v 9.7656 H 10.351 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path58" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="10.350905"
+   y="9.6000004"
+   fill="#000000"
+   id="text58">/Transfer Transaction</text>
+     </g>
+    </g><g
+   transform="translate(1201.1,281.6)"
+   v:mID="50"
+   id="g62">
+     <title
+   id="title59">Dynamic connector</title>
+     <path
+   transform="rotate(90,-184.28,92.507)"
+   d="m -190.04,89.627 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path59" />
+     <path
+   d="M 0,0 H 217.86 V -115.08 H -184.28 V 92.5"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path60" />
+     <g
+   transform="translate(184.83,-69.154)"
+   id="g61">
+      <path
+   transform="matrix(1,0,0,-1,0,11.202)"
+   d="m 4.9056,-2.8172 h 56.258 V 6.9484 H 4.9056 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path61" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,11.202)"
+   x="4.9056392"
+   y="4.8000002"
+   fill="#000000"
+   id="text61">Analytics Queries</text>
+     </g>
+    </g><g
+   transform="translate(1201.1,281.6)"
+   v:mID="51"
+   id="g66">
+     <title
+   id="title62">Dynamic connector</title>
+     <path
+   transform="rotate(90,-184.28,92.507)"
+   d="m -190.04,89.627 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path62" />
+     <path
+   d="M 0,0 H 135.67 V -114.16 H -184.27 V 92.51"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path63" />
+     <g
+   transform="translate(93.358,-71.704)"
+   id="g65">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 12.72,-7.6172 H 76.091 V 2.1484 H 12.72 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path64" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="12.720244"
+   fill="#000000"
+   id="text64">Transaction Queue</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.9058,1.9828 h 77.191 v 9.7656 H 4.9058 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path65" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.9057894"
+   y="9.6000004"
+   fill="#000000"
+   id="text65">Inspection / Commands</text>
+     </g>
+    </g><g
+   transform="translate(1201.1,281.6)"
+   v:mID="52"
+   id="g70">
+     <title
+   id="title66">Dynamic connector</title>
+     <path
+   transform="rotate(90,-184.28,92.507)"
+   d="m -190.04,89.627 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path66" />
+     <path
+   d="m 0,0 h 50.388 v -114.16 h -234.67 V 92.51"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path67" />
+     <g
+   transform="translate(20.355,-70.204)"
+   id="g69">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8101,-7.6172 h 50.699 V 2.1484 H 5.8101 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path68" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8101034"
+   fill="#000000"
+   id="text68">Gas Fee &amp; Rule</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 9.6851,1.9828 h 41.141 v 9.7656 H 9.6851 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path69" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="9.6851034"
+   y="9.6000004"
+   fill="#000000"
+   id="text69">Adjustments</text>
+     </g>
+    </g><g
+   transform="translate(768,270.75)"
+   v:mID="53"
+   id="g74">
+     <title
+   id="title70">Dynamic connector</title>
+     <path
+   transform="rotate(90,185.86,103.36)"
+   d="m 180.1,100.48 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path70" />
+     <path
+   d="M 0,0 H -148 V -104.78 H 185.87 V 103.36"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path71" />
+     <g
+   transform="translate(-196.42,-66.852)"
+   id="g73">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8101,-7.6172 h 84.535 V 2.1484 H 5.8101 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path72" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8101187"
+   fill="#000000"
+   id="text72">Transaction Confirmation</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 32.521,1.9828 h 29.305 v 9.7656 H 32.521 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path73" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="32.521053"
+   y="9.6000004"
+   fill="#000000"
+   id="text73">/ Receipt</text>
+     </g>
+    </g><g
+   transform="translate(930,390.75)"
+   v:mID="54"
+   id="g78">
+     <title
+   id="title74">Dynamic connector</title>
+     <path
+   d="m -167.61,-88.217 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path74" />
+     <path
+   d="m 0,0 h -310.35 v -85.337 h 148.5"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path75" />
+     <g
+   transform="translate(-361.8,-57.094)"
+   id="g77">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 24.511,-7.6172 H 79.898 V 2.1484 H 24.511 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path76" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="24.511076"
+   fill="#000000"
+   id="text76">Signed NFT Mint</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.9056,1.9828 h 92.789 v 9.7656 H 4.9056 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path77" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.9056091"
+   y="9.6000004"
+   fill="#000000"
+   id="text77">Transaction (with Metadata)</text>
+     </g>
+    </g><g
+   transform="translate(930,390.75)"
+   v:mID="55"
+   id="g82">
+     <title
+   id="title78">Dynamic connector</title>
+     <path
+   d="m -167.61,-88.217 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path78" />
+     <path
+   d="m 0,0 h -221.99 v -85.337 h 60.143"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path79" />
+     <g
+   transform="translate(-263.51,-57.094)"
+   id="g81">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8101,-7.6172 h 71.707 V 2.1484 H 5.8101 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path80" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8100886"
+   fill="#000000"
+   id="text80">Signed NFT Metadata</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 8.8374,1.9828 h 63.844 v 9.7656 H 8.8374 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path81" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="8.837431"
+   y="9.6000004"
+   fill="#000000"
+   id="text81">Update Transaction</text>
+     </g>
+    </g><g
+   transform="translate(768,270.75)"
+   v:mID="56"
+   id="g86">
+     <title
+   id="title82">Dynamic connector</title>
+     <path
+   transform="rotate(90,185.86,103.36)"
+   d="m 180.1,100.48 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path82" />
+     <path
+   d="m 0,0 h -55.245 v -103.5 h 241.11 v 206.86"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path83" />
+     <g
+   transform="translate(-93.043,-66.102)"
+   id="g85">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8101,-7.6172 h 63.773 V 2.1484 H 5.8101 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path84" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8101335"
+   fill="#000000"
+   id="text84">Transaction Failure</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 8.4176,1.9828 h 56.75 v 9.7656 h -56.75 z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path85" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="8.4175558"
+   y="9.6000004"
+   fill="#000000"
+   id="text85">/ Revert Message</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="91"
+   id="g89">
+     <title
+   id="title86">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path86" />
+     <path
+   d="M 9,0 H -358.5 V 249.11 H -23.35 V 130.63 H 8.999"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path87" />
+     <g
+   transform="translate(-133.4,175.09)"
+   id="g88">
+      <path
+   transform="matrix(1,0,0,-1,0,11.202)"
+   d="m 4.9058,-2.8172 h 60.758 V 6.9484 H 4.9058 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path88" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,11.202)"
+   x="4.9057765"
+   y="4.8000002"
+   fill="#000000"
+   id="text88">Audio (BGM &amp;SFX)</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="93"
+   id="g93">
+     <title
+   id="title89">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path89" />
+     <path
+   d="m 9,0 h -367 v 248.36 h 177.42 V 130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path90" />
+     <g
+   transform="translate(-221.53,170.74)"
+   id="g92">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 19.047,-7.6172 H 62.172 V 2.1484 H 19.047 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path91" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="19.04657"
+   fill="#000000"
+   id="text91">Tokenomy UI</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.9059,1.9828 h 71.406 v 9.7656 H 4.9059 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path92" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.9059439"
+   y="9.6000004"
+   fill="#000000"
+   id="text92">(BakuForge, NFTMint)</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="94"
+   id="g97">
+     <title
+   id="title93">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path93" />
+     <path
+   d="m 9,0 h -367 v 247.87 h 85.264 V 130.63 H 9.004"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path94" />
+     <g
+   transform="translate(-306.92,167.84)"
+   id="g96">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.9059,-7.6172 h 57.891 V 2.1484 H 4.9059 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path95" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.9059286"
+   fill="#000000"
+   id="text95">Talipapa (Market)</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 13.769,1.9828 h 40.164 v 9.7656 H 13.769 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path96" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="13.769209"
+   y="9.6000004"
+   fill="#000000"
+   id="text96">UI &amp; Listings</text>
+     </g>
+    </g><g
+   transform="translate(1028.9,540.74)"
+   v:mID="96"
+   id="g98">
+     <title
+   id="title97">Dynamic connector</title>
+     <path
+   transform="rotate(180,9,-130.63)"
+   d="m 3.24,-133.51 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path97" />
+     <path
+   d="m 9,0 h 36.735 v 128.54 h 297.99 V -130.63 H 9.005"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path98" />
+    </g><g
+   transform="translate(1041.8,589.35)"
+   v:mID="85"
+   id="g101">
+     <title
+   id="title98">Sheet.85</title>
+     <path
+   d="M 0,0 H 70.56 V 15.84 H 0 V 0"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path99" />
+     <g
+   fill="#000000"
+   id="g100">
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,10.32)"
+   x="15.324923"
+   id="text99">NFT Minting</text>
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,10.32)"
+   x="22.020235"
+   y="9.6000004"
+   id="text100">Request</text>
+     </g>
+    </g><g
+   transform="translate(1028.9,540.74)"
+   v:mID="97"
+   id="g102">
+     <title
+   id="title101">Dynamic connector</title>
+     <path
+   transform="rotate(180,9,-130.63)"
+   d="m 3.24,-133.51 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path101" />
+     <path
+   d="M 9,0 H 140.24 V 128.08 H 343.72 V -130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path102" />
+    </g><g
+   transform="translate(1133.4,589.35)"
+   v:mID="83"
+   id="g106">
+     <title
+   id="title102">Sheet.83</title>
+     <path
+   d="M 0,0 H 70.56 V 22.234 H 0 V 0"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path103" />
+     <g
+   fill="#000000"
+   id="g105">
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,13.517)"
+   x="17.149139"
+   y="-4.8000002"
+   id="text103">Baku Forge</text>
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,13.517)"
+   x="17.051483"
+   y="4.8000002"
+   id="text104">Conversion</text>
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,13.517)"
+   x="22.020235"
+   y="14.400002"
+   id="text105">Request</text>
+     </g>
+    </g><g
+   transform="translate(1028.9,540.74)"
+   v:mID="6"
+   id="g110">
+     <title
+   id="title106">Dynamic connector</title>
+     <path
+   transform="rotate(180,9,-130.63)"
+   d="m 3.24,-133.51 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path106" />
+     <path
+   d="M 9,0 H 344.13 V -130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path107" />
+     <g
+   transform="translate(294,-78.917)"
+   id="g109">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 19.015,-7.6172 H 83.058 V 2.1484 H 19.015 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path108" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="19.015244"
+   fill="#000000"
+   id="text108">Social Inputs (Chat,</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.9059,1.9828 h 90.453 v 9.7656 H 4.9059 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path109" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.9058666"
+   y="9.6000004"
+   fill="#000000"
+   id="text109">Party Invite, Trade Request)</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="92"
+   id="g114">
+     <title
+   id="title110">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path110" />
+     <path
+   d="m 9,0 h -367.42 v 248.33 h 261.41 v -117.7 h 106"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path111" />
+     <g
+   transform="translate(-398.23,169.42)"
+   id="g113">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 5.8104,-7.6172 h 69.809 V 2.1484 H 5.8104 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path112" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="5.8103633"
+   fill="#000000"
+   id="text112">Social UI (Chat,Party,</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 15.597,1.9828 h 48.426 v 9.7656 H 15.597 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path113" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="15.597471"
+   y="9.6000004"
+   fill="#000000"
+   id="text113">TradeWindow)</text>
+     </g>
+    </g><g
+   transform="translate(920.87,410.11)"
+   v:mID="15"
+   id="g118">
+     <title
+   id="title114">Dynamic connector</title>
+     <path
+   d="M 3.24,127.75 9,130.63 3.24,133.51 Z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path114" />
+     <path
+   d="M 9,0 H -358.34 V 130.63 H 9"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path115" />
+     <g
+   transform="translate(-407.01,51.041)"
+   id="g117">
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="M 21.269,-7.6172 H 80.828 V 2.1484 H 21.269 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path116" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="21.269241"
+   fill="#000000"
+   id="text116">All System Menus</text>
+      <path
+   transform="matrix(1,0,0,-1,0,16.002)"
+   d="m 4.906,1.9828 h 90.477 v 9.7656 H 4.906 Z"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path117" />
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,16.002)"
+   x="4.9059567"
+   y="9.6000004"
+   fill="#000000"
+   id="text117">(Inventory, Skills, Map, etc.)</text>
+     </g>
+    </g><g
+   transform="translate(1028.9,540.74)"
+   v:mID="98"
+   id="g119">
+     <title
+   id="title118">Dynamic connector</title>
+     <path
+   transform="rotate(180,9,-130.63)"
+   d="m 3.24,-133.51 5.76,2.88 -5.76,2.88 z"
+   fill-rule="evenodd"
+   stroke="#000000"
+   stroke-width="0.23764"
+   id="path118" />
+     <path
+   d="M 9,0 H 243.3 V 127.95 H 343.92 V -130.62 H 9.01"
+   fill="none"
+   stroke="#000000"
+   stroke-linecap="round"
+   stroke-width="0.23764"
+   id="path119" />
+    </g><g
+   transform="translate(1234.8,589.35)"
+   v:mID="84"
+   id="g122">
+     <title
+   id="title119">Sheet.84</title>
+     <path
+   d="M 0,0 H 70.56 V 15.84 H 0 V 0"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path120" />
+     <g
+   fill="#000000"
+   id="g121">
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,10.32)"
+   x="12.313203"
+   id="text120">Wallet Linking</text>
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,10.32)"
+   x="19.797577"
+   y="9.6000004"
+   id="text121">Signature</text>
+     </g>
+    </g><g
+   transform="translate(1336.2,589.35)"
+   v:mID="82"
+   id="g125">
+     <title
+   id="title122">Sheet.82</title>
+     <path
+   d="M 0,0 H 75.881 V 22.234 H 0 V 0"
+   fill="#ffffff"
+   fill-rule="evenodd"
+   stroke-width="0"
+   id="path122" />
+     <g
+   fill="#000000"
+   id="g124">
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,13.517)"
+   x="8.9950876"
+   y="-4.8000002"
+   id="text122">Talipapa (Market)</text>
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,13.517)"
+   x="25.901335"
+   y="4.8000002"
+   id="text123">Actions</text>
+      <text
+   class="TextStyle1"
+   transform="matrix(1,0,0,-1,0,13.517)"
+   x="7.6103206"
+   y="14.400002"
+   id="text124">(Post, Buy, Search)</text>
+     </g>
+    </g>
+   </g>
+  
+ </g>
+ <style
+   type="text/css"
+   id="style126"><![CDATA[ .TextStyle1 {font-family:Calibri;font-size:8px;}.TextStyle0 {font-family:Calibri;font-size:10px;} ]]></style>
+</svg>
