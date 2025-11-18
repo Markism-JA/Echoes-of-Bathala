@@ -1,44 +1,128 @@
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{10pt}
+
 \section{Hardware/Software}\label{hardwaresoftware}
 
-\subsection{Game Development Software}\label{game-development-software}
+\textbf{Front-End Software}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3088}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6912}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Software / Technology
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Purpose
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Unity & Primary game engine \\
-Blender & 3D modeling, animation, and rendering \\
-ASP.NET Core & Dedicated game server and RESTful API framework \\
-Git & Version control \\
-GitHub & Code repository hosting and project management \\
-Unity Collaborate & Unity-integrated version control \\
+\begin{longtable}{|p{0.22\textwidth}|p{0.70\textwidth}|}
+\caption{Frond-End Software Requirements for Development}
+\hline
+\centering{\textbf{Software}} & \centering{\textbf{Description}} \\
+\hline
+Figma & This browser-based collaborative tool is used to make
+interactive prototypes, wireframes, and vector-based interface designs
+for websites and mobile applications. \\
+\hline
+Blender & A free and open-source 3D creation suite used for 3D modeling,
+sculpting, animation, visual effects, rendering, and video editing. Its
+main purpose is to make 3D assets. \\
+\hline
+Unity & This game engine is used to create 2D, 3D, augmented reality
+(AR), and virtual reality (VR) games and interactive simulations,
+providing a platform for all game-making needs. \\
+\hline
+Visual Studio & A strong editing and debugging environment for front-end
+code, especially when part of full-stack applications built on the
+Microsoft platform. \\
+\hline
+Photoshop & The standard raster graphics editor in the industry, mainly
+used for creating UI elements within the game. \\
+\hline
+FL Studio & A comprehensive Digital Audio Workstation (DAW) used for
+making sound effects and background music within the game. \\
+\hline
 \end{longtable}
 
-\subsection{Blockchain \& Token Creation
-Software}\label{blockchain-token-creation-software}
+\textbf{Back-End Software}
 
-\begin{longtable}[]{@{}ll@{}}
-\toprule\noalign{}
-Software / Technology & Purpose \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Solidity & Smart contract programming language \\
-Hardhat / Truffle & Smart contract development framework \\
-MetaMask & User wallet for login and transactions \\
-Nethereum & .NET library for blockchain interaction \\
-Remix IDE & Web-based Solidity IDE \\
-Polygon PoS Testnet (Amoy) & Smart contract testing network \\
-ERC-20 & Standard for the Baku Coin fungible token \\
-ERC-721 & Standard for in-game NFT assets \\
+\begin{longtable}{|p{0.22\textwidth}|p{0.70\textwidth}|}
+\caption{Back-End Software Requirements}
+\hline
+\centering{\textbf{Software}} & \centering{\textbf{Description}} \\
+\hline
+ASP.NET Core & A cross-platform framework for building fast backend web
+APIs and server-side applications with C\#. \\
+\hline
+Unity & A game engine that uses C\# to write server-side game logic for
+physics, networking, and persistent multiplayer states. \\
+\hline
+Unity Collaborate & A Unity tool for simplifying version control,
+allowing teams to sync and share game code and assets easily. \\
+\hline
+Visual Studio & The main IDE for writing, debugging, and deploying backend
+services, especially C\# and ASP.NET Core. Works in tandem with Unity. \\
+\hline
+Git & A distributed version control system used for tracking code changes
+and managing collaborative workflows. \\
+\hline
+GitHub & A web-based hosting service for Git repositories, providing
+collaboration tools and code review capabilities. \\
+\hline
+\end{longtable}
+
+\textbf{Blockchain and Token Creation Software}
+
+\begin{longtable}{|p{0.22\textwidth}|p{0.70\textwidth}|}
+\caption{Software Requirements for Development of Token Infrastructure}
+\hline
+\centering{\textbf{Software}} & \centering{\textbf{Description}} \\
+\hline
+Solidity & A high-level programming language for writing smart contracts
+on the Ethereum Virtual Machine (EVM). \\
+\hline
+Hardhat/Truffle & Development environments for compiling, testing, and
+deploying Solidity smart contracts. \\
+\hline
+Metamask & A browser wallet that allows users to interact with dApps and
+sign blockchain transactions. \\
+\hline
+Nethereum & A .NET library that lets C\# developers interact with
+Ethereum networks and smart contracts. \\
+\hline
+Remix IDE & A browser-based development environment for rapid Solidity
+prototyping and deployment. \\
+\hline
+Polygon PoS Testnet (Amoy) & A free test environment that mirrors the
+Polygon network for dApp and smart contract testing. \\
+\hline
+ERC-20 & The technical standard defining fungible tokens on Ethereum. \\
+\hline
+ERC-721 & The technical standard defining non-fungible tokens (NFTs) on
+Ethereum. \\
+\hline
+\end{longtable}
+
+\textbf{General Software}
+
+\begin{longtable}{|p{0.22\textwidth}|p{0.70\textwidth}|}
+\caption{General Software Requirements}
+\hline
+\centering{\textbf{Software}} & \centering{\textbf{Description}} \\
+\hline
+Windows 8 OS or higher, 64-bit & The operating system serves as the
+interface between the user's applications and the computer's hardware.
+This is the minimum requirement for development. \\
+\hline
+\end{longtable}
+
+\textbf{Hardware Requirements (Development)}
+
+\begin{longtable}{|p{0.22\textwidth}|p{0.70\textwidth}|}
+\caption{Hardware Requirements for Development}
+\hline
+\centering{\textbf{Hardware}} & \centering{\textbf{Description}} \\
+\hline
+Processor: Intel i5 or higher & A mid-range CPU capable of efficiently
+running instructions and handling multitasking. \\
+\hline
+RAM: 8GB or higher & Short-term memory used by active programs; 8GB is
+the baseline for modern development work. \\
+\hline
+GPU: GeForce 400 with 2GB VRAM or higher & A dedicated graphics card
+needed for rendering 3D graphics in Blender and Unity. \\
+\hline
+Storage: 240GB SSD or higher & Fast flash-based storage enabling quick
+boot and load times. Minimum capacity: 240GB. \\
+\hline
 \end{longtable}
