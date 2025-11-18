@@ -1,49 +1,57 @@
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{10pt}
+
 \section{Calendar of Activities}\label{calendar-of-activities}
 
-\vspace*{-1em}
 \begin{table}[H]
-\centering
-\footnotesize
-\renewcommand{\arraystretch}{1.2}
-\setlength{\tabcolsep}{4pt}
+    \caption{Calendar of Activities}
+    \noindent\makebox[\linewidth][c]{%
+    \resizebox{18cm}{!}{
+    \begin{tabular}{|l|*{16}{w{c}{0.4cm}|}}
+    \hline
 
-\begin{tabularx}{\textwidth}{
-    >{\bfseries}p{3cm}
-    p{7cm}
-    p{2cm}
-    p{2cm}
-}
-\toprule
-Phase & Activity / Milestone & Duration & Timeline \\
-\midrule
+    % --- HEADER ROW ---
+    \rowcolor{tableheadergray}
+    \textbf{ACTIVITIES} &
+    \multicolumn{4}{c|}{\textbf{AUGUST}} &
+    \multicolumn{4}{c|}{\textbf{SEPTEMBER}} &
+    \multicolumn{4}{c|}{\textbf{OCTOBER}} &
+    \multicolumn{4}{c|}{\textbf{NOVEMBER}} \\
+    \hline
 
-1. Pre-Production \& Planning &
-Software planning and initial design; finalize the game design document, tokenomics model, and technical architecture.
-& $\sim$3.5 months & Aug 20, 2025 -- Dec 5, 2025 \\
+    % --- DATA RyOWS ---
+    Planning & \IP & \IP & \IP & \IP & \C & & & & & & & & & & & \\ \hline
+    Research Title & \IP & \IP & \IP & \IP & \C & & & & & & & & & & & \\ \hline
+    Compilation of RRL & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \C & \C \\ \hline
+    Consultation & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Client & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of DFD & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of HIPO & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of ERD & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of Flowchart & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of Usecase & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of Context Flow & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of Conceptual & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Creation of Storyboard & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Checking Final Papers & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    Wireframe & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP \\ \hline
+    IMRAD (Introduction) & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \C & \C & & \\ \hline
+    IMRAD (Methodology) & & & & & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \IP & \C & \C & & \\ \hline
 
-\addlinespace
-2. Prototype Development &
-Core development (MPC — Minimum Playable Content); develop core gameplay systems in Unity.
+    \end{tabular}
+    }%
+    }
 
-\textbf{Milestone:} Alpha build complete.
-& $\sim$2.5 months & Dec 10, 2025 -- Feb 28, 2026 \\
+    % --- LEGEND BOX ---
+    \vspace{1em}
 
-\addlinespace
-3. Testing \& Refinement &
-Blockchain and server development; build low-latency game server and ASP.NET RESTful API; develop and integrate blockchain smart contracts (Baku Coin \& NFTs).
-
-\textbf{Milestone:} Beta build ready.
-& $\sim$5 months & Mar 1, 2026 -- Jul 31, 2026 \\
-
-\addlinespace
-4. Final Integration \& Demo &
-Final integration and public demo; conduct testnet testing and smart contract auditing; implement token exchange system.
-
-\textbf{Milestone:} Project completion.
-& $\sim$3 months & Aug 1, 2026 -- Nov 1, 2026 \\
-
-\bottomrule
-\end{tabularx}
-
-\label{tab:project-timeline}
+    \begin{tabular}{|w{c}{3cm}|}
+    \hline
+    \IP \small \sffamily IN PROGRESS \\
+    \hline
+    \C \small \sffamily COMPLETED \\
+    \hline
+    \end{tabular}
 \end{table}
+
+\pagebreak
