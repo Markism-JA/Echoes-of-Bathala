@@ -1,17 +1,37 @@
 \section{Budgetary Estimate}\label{budgetary-estimate}
 
-\begin{longtable}[]{@{}lll@{}}
-\toprule\noalign{}
-Quantity & Specifics & Approximate Cost \\
-\midrule\noalign{}
+\begin{longtable}{|p{0.12\textwidth}|p{0.58\textwidth}|p{0.25\textwidth}|}
+\caption{Budgetary Estimate for Development}\\
+\hline
+\centering{\textbf{Quantity}} & \centering{\textbf{Specifics}} & \centering{\textbf{Approximate Cost (PHP)}} \\
+\hline
+\endfirsthead
+\hline
+\centering{\textbf{Quantity}} & \centering{\textbf{Specifics}} & \centering{\textbf{Approximate Cost (PHP)}} \\
+\hline
 \endhead
-\bottomrule\noalign{}
+\hline
+\endfoot
+\hline
 \endlastfoot
-1 & Software & 0 \\
-1 & 3D Models / Assets & 5,000--7,000 \\
-1 & Sound / Music & 0--1,000 \\
-1 & UI / Icons & 0--1,000 \\
-2 & Server / Hosting & 2,000--3,000 \\
-1 & Miscellaneous & 0--1,000 \\
-Total & & 7,000--10,000 \\
+1 & Local Development Server - Unity headless server running on development workstation & P0.00 \\
+\hline
+1 & Production Game Server VM - DigitalOcean/Linode (4 vCPU, 8GB RAM) & P5,000.00/month (2 months for Integration \& Final Testing) \\
+\hline
+1 & Local Development Database - Local database for initial testing & P0.00 \\
+\hline
+1 & Production Database VM - PostgreSQL server (4 vCPU, 8GB RAM) & P2,500.00/month (2 months for Integration \& Final Testing) \\
+\hline
+1 & Ganache Local Blockchain - Smart contract development environment & P0.00 \\
+\hline
+1 & Polygon Amoy Testnet - Production test environment with Alchemy & P0.00 \\
+\hline
+1 & Blockchain Bridge VM - Node.js API server (2 vCPU, 4GB RAM) & P2,500.00/month (2 months for Integration \& Final Testing) \\
+\hline
+1 & Unity Student License - Game client and server development & P0.00 \\
+\hline
+1 & GitHub Student Pack - Source code version control & P0.00 \\
+\hline
+1 & Game Assets - Mix of free and paid assets & P0-5,000.00 (one-time) \\
+\hline
 \end{longtable}
