@@ -1,10 +1,9 @@
-## Hardware/Software
 
 **Front-End Software**
 
 | Software      | Description                                                                                                                                                                                          |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Figma         | This browser-based collaborative tool is used to make interactive prototypes, wireframes, and vector-based interface designs for websites and mobile applications.                               |
+| Figma         | This browser-based collaborative tool is used to make interactive prototypes, wireframes, and vector-based interface designs for websites and mobile applications.<br>                               |
 | Blender       | A free and open-source 3D creation suite used for 3D modeling, sculpting, animation, visual effects, rendering, and video editing. Its main purpose is to make 3D assets.                            |
 | Unity         | This game engine is used to create 2D, 3D, augmented reality (AR), and virtual reality (VR) games and interactive simulations. Providing a platform for developer for all game-making needs.         |
 | Visual Studio | It functions as a strong editor and debugging environment for front-end code. This is especially true when the code is part of a larger, full-stack application developed on the Microsoft platform. |
@@ -41,7 +40,9 @@
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Windows 8 OS or higher, 64-bit | Operating system serves as the essential interface between the user's applications and the computer's physical components. Minimum requirement for an operating system to use the software for development. |
 
+
 **Hardware Requirements Development**
+
 
 | Hardware                                 | Description                                                                                                                                    |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,6 +50,7 @@
 | RAM: 8GB or higher                       | Short-term memory that stores data for active programs; 8GB is the baseline for modern smooth multitasking.                                    |
 | GPU: GeForce 400 with 2GB VRAM or higher | A dedicated graphics card with 2GB of VRAM speeds up the rendering of 3D graphics and complex visuals. Needed for apps like blender and unity. |
 | Storage: 240 GB SSD or higher            | Permanent storage device that uses flash memory (SSD) for quick boot and load times. The minimum capacity is 240 GB.                           |
+
 
 **Client App Hardware Requirements**
 
