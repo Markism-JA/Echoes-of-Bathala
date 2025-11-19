@@ -18,95 +18,134 @@
 \caption{Proposed Baku Coin and Perlas Use Case}
 \end{figure}
 
-\subsection{Detailed Use Case Specification for BAKU and Perlas}
+\subsection{Detailed Use Case Description for BAKU and Perlas}
 
-\textbf{Primary Actor:} Player
+\renewcommand{\arraystretch}{1.3}
 
-\begin{description}
-  \item[UC-1: Acquire Off-Chain Resource (Perlas)]
-    \textbf{Description:} The Player performs in-game activities to earn Perlas. This is the primary "faucet" for the off-chain economy.\\
-    \textbf{Goal:} To reward the Player's time and effort with a liquid in-game currency.\\
-    \textbf{Main Flow:}
-    \begin{enumerate}
-      \item The Player completes a "faucet" activity (e.g., defeats a monster, completes a quest).
-      \item The system grants Perlas and adds it to the Player's off-chain inventory (Game Database).
-    \end{enumerate}
-    \textbf{Postcondition:} The Player's Perlas balance is increased.
+% UC-1
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Use Case ID} & \textbf{UC-1: Acquire Off-Chain Resource (Perlas)} \\ \hline
+\textbf{Actor} & Player \\ \hline
+\textbf{Description} & The Player performs in-game activities to earn Perlas. This is the primary ``faucet'' for the off-chain economy. \\ \hline
+\textbf{Goal} & To reward the Player's time and effort with a liquid in-game currency. \\ \hline
+\textbf{Main Flow} & 
+\begin{enumerate}[nosep, leftmargin=*, after=\vspace{\baselineskip}]
+    \item The Player completes a ``faucet'' activity (e.g., defeats a monster, completes a quest).
+    \item The system grants Perlas and adds it to the Player's off-chain inventory (Game Database).
+\end{enumerate} \\ \hline
+\textbf{Postcondition} & The Player's Perlas balance is increased. \\ \hline
+\end{tabularx}
+\end{table}
 
-  \item[UC-2: Spend Off-Chain Resource (Perlas Sinks)]
-    \textbf{Description:} The Player spends Perlas on cyclical in-game services and taxes.\\
-    \textbf{Goal:} To create a constant, low-level drain on the Perlas supply.\\
-    \textbf{Main Flow (Example: Item Repair):}
-    \begin{enumerate}
-      \item The Player's equipment (both normal and tokenized) has low durability.
-      \item The Player interacts with a Blacksmith and selects "Repair."
-      \item The system displays the total Perlas cost for the repair.
-      \item The Player confirms. The system subtracts the Perlas.
-      \item The system restores the item's durability.
-    \end{enumerate}
-    \textbf{Alternative Flows (Other Sinks):}
-    \begin{itemize}
-      \item Talipapa Tax: A 5\% Perlas fee on all marketplace sales.
-      \item Fast Travel: Perlas fees for convenient travel.
-      \item Consumables: Perlas cost for potions, food, etc.
+% UC-2
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Use Case ID} & \textbf{UC-2: Spend Off-Chain Resource (Perlas Sinks)} \\ \hline
+\textbf{Actor} & Player \\ \hline
+\textbf{Description} & The Player spends Perlas on cyclical in-game services and taxes. \\ \hline
+\textbf{Goal} & To create a constant, low-level drain on the Perlas supply. \\ \hline
+\textbf{Main Flow} & \textit{(Example: Item Repair)}
+\begin{enumerate}[nosep, leftmargin=*, after=\vspace{\baselineskip}]
+    \item The Player's equipment (both normal and tokenized) has low durability.
+    \item The Player interacts with a Blacksmith and selects ``Repair.''
+    \item The system displays the total Perlas cost for the repair.
+    \item The Player confirms. The system subtracts the Perlas.
+    \item The system restores the item's durability.
+\end{enumerate} \\ \hline
+\textbf{Alt. Flows} & \textit{(Other Sinks)}
+\begin{itemize}[nosep, leftmargin=*]
+    \item \textbf{Talipapa Tax:} A 5\% Perlas fee on all marketplace sales.
+    \item \textbf{Fast Travel:} Perlas fees for convenient travel.
+    \item \textbf{Consumables:} Perlas cost for potions, food, etc.
+\end{itemize} \\ \hline
+\end{tabularx}
+\end{table}
+
+% UC-3
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Use Case ID} & \textbf{UC-3: Forge On-Chain Token (BAKU) - (The Faucet)} \\ \hline
+\textbf{Actor} & Player \\ \hline
+\textbf{Description} & This is the Baku Forge System (3.7). The Player converts their earned Perlas (labor) into the on-chain BAKU token (capital). This is the only source of new BAKU. \\ \hline
+\textbf{Goal} & To provide the single, player-driven ``faucet'' that creates BAKU. \\ \hline
+\textbf{Preconditions} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item The Player has a linked and verified external wallet.
+    \item The Player has a sufficient Perlas balance.
+\end{itemize} \\ \hline
+\textbf{Main Flow} & 
+\begin{enumerate}[nosep, leftmargin=*, after=\vspace{\baselineskip}]
+    \item The Player interacts with the ``Baku Forge'' game object.
+    \item The UI displays the conversion rate (e.g., ``1000 Perlas = 1 BAKU'').
+    \item The Player inputs the amount of BAKU to forge and confirms.
+    \item The system destroys the Perlas from the Player's in-game inventory.
+    \item The Game Server sends a request to the Token Infrastructure to transfer the BAKU to the Player's linked wallet.
+\end{enumerate} \\ \hline
+\textbf{Postcondition} & The Player's Perlas is permanently decreased. The Player's BAKU balance (on-chain) is increased. \\ \hline
+\end{tabularx}
+\end{table}
+
+% UC-4
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Use Case ID} & \textbf{UC-4: Spend BAKU on In-Game Progression} \\ \hline
+\textbf{Actor} & Player \\ \hline
+\textbf{Description} & The Player spends BAKU as a required material or service fee for high-stakes, in-game progression. \\ \hline
+\textbf{Goal} & To create a powerful in-game utility (a ``sink'') for BAKU. \\ \hline
+\textbf{Sub-Flow 1} & \textit{(Crafting Legendary Item)}
+\begin{enumerate}[nosep, leftmargin=*, after=\vspace{\baselineskip}]
+    \item The Player has the rare (non-token) materials to craft a Legendary Item.
+    \item The recipe also requires a number of BAKU as a core material.
+    \item The Player confirms the crafting attempt.
+    \item The system verifies all materials and the Player's BAKU balance.
+    \item The system consumes in-game materials and sends a ``consume'' request to the Token Infrastructure for BAKU (transferring it to a burn wallet).
+    \item The Legendary Item is created and placed in the Player's inventory.
+\end{enumerate} \\ \hline
+\textbf{Sub-Flow 2} & \textit{(High-Stakes Enhancement)}
+\begin{enumerate}[nosep, leftmargin=*, after=\vspace{\baselineskip}]
+    \item The Player attempts to enhance an item from +8 to +9.
+    \item The Enhancement UI presents a checkbox: ``Use Blessing (Cost: 1 BAKU)'' to prevent destruction on failure.
+    \item The Player checks the box and clicks ``Enhance''.
+    \begin{itemize}[nosep, label=-]
+        \item \textbf{On Failure:} The 1 BAKU is consumed. Item not destroyed.
+        \item \textbf{On Success:} The 1 BAKU is not consumed. Item becomes +9.
     \end{itemize}
+\end{enumerate} \\ \hline
+\textbf{Exception} & \textbf{Insufficient Funds:} If the Player does not have enough BAKU, the ``Craft'' or ``Blessing'' option is disabled. \\ \hline
+\end{tabularx}
+\end{table}
 
-  \item[UC-3: Forge On-Chain Token (BAKU) - (The Faucet)]
-    \textbf{Description:} This is the Baku Forge System (3.7). The Player converts their earned Perlas (labor) into the on-chain BAKU token (capital). This is the only source of new BAKU.\\
-    \textbf{Goal:} To provide the single, player-driven "faucet" that creates BAKU.\\
-    \textbf{Preconditions:}
-    \begin{itemize}
-      \item The Player has a linked and verified external wallet.
-      \item The Player has a sufficient Perlas balance.
-    \end{itemize}
-    \textbf{Main Flow:}
-    \begin{enumerate}
-      \item The Player interacts with the "Baku Forge" game object.
-      \item The UI displays the conversion rate (e.g., "1000 Perlas = 1 BAKU").
-      \item The Player inputs the amount of BAKU to forge and confirms.
-      \item The system destroys the Perlas from the Player's in-game inventory.
-      \item The Game Server sends a request to the Token Infrastructure to transfer the BAKU to the Player's linked wallet.
-    \end{enumerate}
-    \textbf{Postcondition:} The Player's Perlas is permanently decreased. The Player's BAKU balance (on-chain) is increased.
+% UC-5
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Use Case ID} & \textbf{UC-5: Spend BAKU on On-Chain Asset Minting} \\ \hline
+\textbf{Actor} & Player \\ \hline
+\textbf{Description} & The Player spends BAKU as a one-time fee to make their in-game item or character externally tradable (NFT Minting System 3.8). \\ \hline
+\textbf{Goal} & To create an on-chain utility (a ``sink'') for BAKU and manage the creation of NFTs. \\ \hline
+\textbf{Precondition} & The Player has an eligible in-game item (e.g., a Legendary Item). \\ \hline
+\textbf{Main Flow} & \textit{(Mint Item to NFT)}
+\begin{enumerate}[nosep, leftmargin=*, after=\vspace{\baselineskip}]
+    \item The Player selects the ``Mint to NFT'' option for that item.
+    \item The UI displays a confirmation: ``Minting this item will make it tradable on-chain. This action costs 10 BAKU.''
+    \item The Player confirms.
+    \item The system consumes 10 BAKU.
+    \item The Game Server sends the item's metadata to the Token Infrastructure.
+    \item An NFT is minted to the Player's wallet.
+    \item The in-game item is ``locked'' and flagged as ``tokenized'' in the Game Database.
+\end{enumerate} \\ \hline
+\textbf{Postcondition} & The Player's BAKU is consumed, and the item is now represented by an on-chain NFT. \\ \hline
+\end{tabularx}
+\end{table}
 
-  \item[UC-4: Spend BAKU on In-Game Progression (In-Game Sinks)]
-    \textbf{Description:} The Player spends BAKU as a required material or service fee for high-stakes, in-game progression. This makes BAKU essential for all competitive players.\\
-    \textbf{Goal:} To create a powerful in-game utility (a "sink") for BAKU.\\
-    \textbf{Sub-Flow 1 (Crafting Legendary Item):}
-    \begin{enumerate}
-      \item The Player has the rare (non-token) materials to craft a Legendary Item.
-      \item The recipe also requires a number of BAKU as a core material.
-      \item The Player confirms the crafting attempt.
-      \item The system verifies all materials and the Player's BAKU balance.
-      \item The system consumes the in-game materials and sends a "consume" request to the Token Infrastructure for BAKU (transferring it to a system "burn" wallet).
-      \item The Legendary Item is created and placed in the Player's inventory.
-    \end{enumerate}
-    \textbf{Sub-Flow 2 (High-Stakes Enhancement):}
-    \begin{enumerate}
-      \item The Player attempts to enhance an item from +8 to +9.
-      \item The Enhancement UI presents a checkbox: "Use Blessing (Cost: 1 BAKU)" to prevent destruction on failure.
-      \item The Player checks the box and clicks "Enhance".
-      \begin{description}
-        \item[On Failure:] The 1 BAKU is consumed. The item is not destroyed.
-        \item[On Success:] The 1 BAKU is not consumed. The item becomes +9.
-      \end{description}
-    \end{enumerate}
-    \textbf{Exception (Insufficient Funds):} If the Player does not have enough BAKU, the "Craft" or "Blessing" option is disabled.
-
-  \item[UC-5: Spend BAKU on On-Chain Asset Minting (On-Chain Sink)]
-    \textbf{Description:} The Player spends BAKU as a one-time fee to make their in-game item or character externally tradable, as defined in the NFT Minting System (3.8).\\
-    \textbf{Goal:} To create an on-chain utility (a "sink") for BAKU and manage the creation of NFTs.\\
-    \textbf{Precondition:} The Player has an eligible in-game item (e.g., a Legendary Item).\\
-    \textbf{Main Flow (Mint Item to NFT):}
-    \begin{enumerate}
-      \item The Player selects the "Mint to NFT" option for that item.
-      \item The UI displays a confirmation: "Minting this item will make it tradable on-chain. This action costs 10 BAKU."
-      \item The Player confirms.
-      \item The system consumes 10 BAKU.
-      \item The Game Server sends the item's metadata (just a pointer to the API) to the Token Infrastructure.
-      \item An NFT is minted to the Player's wallet.
-      \item The in-game item is "locked" and flagged as "tokenized" in the Game Database.
-    \end{enumerate}
-    \textbf{Postcondition:} The Player's BAKU is consumed, and the item is now represented by an on-chain NFT.
-\end{description}
 \pagebreak
