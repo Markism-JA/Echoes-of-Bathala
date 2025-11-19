@@ -30,3 +30,18 @@
 
 \newcommand{\IP}{\cellcolor{inprogressblue}}
 \newcommand{\C}{\cellcolor{completedyellow}}
+
+\newcounter{decimal}[enumi]
+
+\newenvironment{decimallist}[1][\arabic{enumi}]{
+    \begin{enumerate}
+    \setcounter{decimal}{0}
+    \renewcommand{\thedecimal}{\textbf{#1.\arabic{decimal}}}
+}{
+    \end{enumerate}
+}
+
+\newcommand{\decimalitem}[1]{
+    \stepcounter{decimal}
+    \item[\thedecimal] \textbf{#1}
+}
