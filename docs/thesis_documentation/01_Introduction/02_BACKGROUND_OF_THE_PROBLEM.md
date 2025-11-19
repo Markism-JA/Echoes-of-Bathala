@@ -12,7 +12,7 @@ The emergence of Web3 gaming promised a revolutionary shift toward player-owned 
 
     Current decentralized game economies lack automated, programmatic mechanisms to dynamically balance token generation (faucets) and token removal (sinks), leading to inevitable hyperinflation, speculative collapse, and the devaluation of player assets.
 
-2. **Erosion of Community Resilience from a Speculator Mindset.**
+2. **Lack of Enjoyable Gameplay Due to an Overly Profit-Driven Model.**
 
     Lack of Enjoyable Gameplay Due to an Overly Profit-Driven Model. These games prioritize financial mechanics over fun, reducing the lore and world to a meaningless backdrop. This results in a hollow experience that lacks the core essence of a game consumers would play for enjoyment, leading to rapid player disinterest and abandonment once the novelty of earning wears off.
 
