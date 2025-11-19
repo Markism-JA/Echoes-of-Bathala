@@ -4,7 +4,7 @@ The emergence of Web3 gaming promised a revolutionary shift toward player-owned 
 
 ### General Problem
 
-The integration of blockchain technology into Massively Multiplayer Online Role-Playing Games (MMORPGs) has consistently failed to establish a sustainable paradigm, as evidenced by the repeated collapse of first-generation Web3 games. This failure stems from a combination of critically unstable economic models, a destructive over-reliance on extrinsic player motivation that fosters a speculator mindset, a fundamental disconnect between engaging gameplay and financial mechanics, and unresolved technical challenges in securely merging high-speed game servers with decentralized blockchain networks.
+**No major Web3 MMORPG, has its core lore and world deeply rooted in the rich and untapped tapestry of Filipino Mythology.** This absence represents a significant gap in the gaming landscape, failing to showcase a unique cultural narrative that could serve as a powerful foundation for building intrinsic player motivation and a resilient community.
 
 ### Specific Problems
 
@@ -14,12 +14,8 @@ The integration of blockchain technology into Massively Multiplayer Online Role-
 
 2. **Erosion of Community Resilience from a Speculator Mindset.**
 
-    An over-reliance on extrinsic, profit-driven rewards cultivates a transient user base of speculators, undermining the development of a resilient, invested community and leading to volatile player retention.
+    Lack of Enjoyable Gameplay Due to an Overly Profit-Driven Model. These games prioritize financial mechanics over fun, reducing the lore and world to a meaningless backdrop. This results in a hollow experience that lacks the core essence of a game consumers would play for enjoyment, leading to rapid player disinterest and abandonment once the novelty of earning wears off.
 
-3. **Lack of Intrinsic Motivation Due to a Disconnected Narrative.**
-
-    A significant design gap exists where a game's economic mechanics are not integrated with a compelling narrative and world, resulting in a lack of intrinsic motivation and a failure to leverage cultural lore as a sustainable "social sink."
-
-4. **Systemic Vulnerabilities from a Fragile Hybrid Architecture.**
+3. **Systemic Vulnerabilities from a Fragile Hybrid Architecture.**
 
     The technical challenge of creating a secure, efficient, and seamless bridge between a centralized game server and a decentralized blockchain creates vulnerabilities to exploits and often results in a poor user experience, hindering the functional feasibility of Web3 MMORPGs.
