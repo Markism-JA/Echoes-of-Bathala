@@ -9,13 +9,50 @@ token (NFT) assets to simulate a player-driven economy.
 
 \subsection{Scope of the Study}\label{scope-of-the-study}
 
-The scope of this study is threefold: designing, developing, and evaluating a prototype of a Massively Multiplayer Online Role Playing Game (MMORPG). The study seeks to incorporate traditional folklore, cultural narratives, customs, and mythological symbols into the game's core design, environment, and gameplay systems to act as a social sink.
+The scope of this study is threefold: designing, developing, and
+evaluating a prototype of a Massively Multiplayer Online Role Playing
+Game (MMORPG). The study seeks to incorporate traditional folklore,
+cultural narratives, customs, and mythological symbols into the game's
+core design, environment, and gameplay systems to act as a social sink.
 
-Furthermore, the study defines a dual-currency economic structure to demonstrate the integration of blockchain technology. This system distinguishes between Perlas, the primary in-game off-chain resource, and BAKU, the on-chain cryptocurrency. The acquisition of Perlas acts as the central economic faucet, obtained through specific distinct gameplay loops. Players may acquire Perlas by harvesting Giant Taklobo (Clams) located in aquatic ponds. Alternatively, Perlas can be looted from hostile entities, but this is restricted to specific high-risk areas: the Contested Zone (Low Security), which yields lower drop rates, and the Void Sector (Lawless Null Sec), which offers significantly higher drop rates to incentivize high-stakes gameplay.
+Furthermore, the study defines a dual-currency economic structure to
+demonstrate the integration of blockchain technology. This system
+distinguishes between Perlas, the primary in-game off-chain resource,
+and BAKU, the on-chain cryptocurrency. The acquisition of Perlas acts as
+the central economic faucet, obtained through specific distinct gameplay
+loops. Players may acquire Perlas by harvesting Giant Taklobo (Clams)
+located in aquatic ponds. Alternatively, Perlas can be looted from
+hostile entities, but this is restricted to specific high-risk areas:
+the Contested Zone (Low Security), which yields lower drop rates, and
+the Void Sector (Lawless Null Sec), which offers significantly higher
+drop rates to incentivize high-stakes gameplay.
 
-To bridge the off-chain and on-chain economies, the study covers the development of the Baku Forge mechanics. This system facilitates the conversion process, allowing players to exchange their accumulated Perlas for BAKU tokens, effectively transferring value from the game server to the blockchain.
+To bridge the off-chain and on-chain economies, the study covers the
+development of the Baku Forge mechanics and a market-driven pricing system.
+This facilitates the conversion process, allowing players to exchange
+their accumulated Perlas for BAKU tokens. Crucially, the pricing for this
+conversion is not static; the scope includes the implementation of an
+Automated Market Maker (AMM) mechanism to provide dynamic price
+discovery and liquidity management. The utilization of an AMM is
+necessitated by the decentralized nature of cryptocurrency; unlike
+traditional game economies with static vendor prices, on-chain assets
+are dynamic and lack a central authority to regulate value post-deployment.
+This mechanism ensures that the exchange rate autonomously adjusts to
+real-time market supply and demand, maintaining liquidity without manual
+intervention.
 
-The following contains the software separated into major components, its subsystems, and the features of each subsystem:
+Finally, to ensure economic sustainability and system integrity, the
+study incorporates Macroeconomic Throttles and a Progressive Anti-Exploit System.
+The economic design includes an adaptive difficulty variable to regulate
+overall minting velocity and an on-chain treasury to absorb market shocks. To
+deter automation and abuse, a tripartite security structure is implemented:
+an anti-Sybil Proof-of-Play (PoP) gate to verify genuine player activity,
+Daily Wallet Allowances to protect legitimate users, and a Diminishing Returns
+formula designed to progressively penalize high-volume extractor accounts
+operating beyond fair-play thresholds.
+
+The following contains the software separated into major components, its
+subsystems, and the features of each subsystem:
 
 \subsubsection{Game Server}\label{game-server}
 
@@ -901,8 +938,9 @@ system where the Game Server persists all critical information.
 
         \begin{enumerate}[label=\alph*.]
         \item
-            Account Tables - Stores hashed credentials, account status, and
-            associated wallet addresses.
+            Account Tables - Stores hashed credentials, account status,
+            associated wallet addresses, and Anti-Exploit State (e.g.,
+            Daily Minting Allowance, Diminishing Return Counter).
         \item
             Character Tables - Stores the persistent state for each character
             (e.g., level, XP, class, attributes, current zone).
@@ -1006,6 +1044,14 @@ decentralized blockchain.
     and logic of the game's assets.
 
     \begin{enumerate}[label=\alph*.]
+        \item
+        \textbf{Liquidity Pool / AMM Contract:} The decentralized exchange contract governing the PERLAS/BAKU trading pair.
+            \begin{itemize}[nosep]
+            \item
+                \textbf{Key Functions:} Exposes \texttt{swap()} for exchanging tokens and \texttt{getReserves()} to calculate the current price ratio based on the constant product formula ($x*y=k$).
+            \item
+                \textbf{Liquidity Management:} Manages the reserves of both assets to ensure continuous liquidity for player conversions.
+            \end{itemize}
         \item
             \textbf{BAKU (Fungible Token):} The game's primary economic token, compliant
             with the ERC-20 standard.
