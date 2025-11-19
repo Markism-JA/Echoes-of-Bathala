@@ -4,7 +4,7 @@ The emergence of Web3 gaming promised a revolutionary shift toward player-owned 
 
 ### General Problem
 
-**No major Web3 MMORPG, has its core lore and world deeply rooted in the rich and untapped tapestry of Filipino Mythology.** This absence represents a significant gap in the gaming landscape, failing to showcase a unique cultural narrative that could serve as a powerful foundation for building intrinsic player motivation and a resilient community.
+**No major Web3 MMORPG, has its core lore and world deeply rooted in the rich and untapped stories of Filipino Mythology.** This absence represents a significant gap in the gaming landscape, failing to showcase a unique cultural narrative that could serve as a powerful foundation for building intrinsic player motivation and a resilient community.
 
 ### Specific Problems
 
