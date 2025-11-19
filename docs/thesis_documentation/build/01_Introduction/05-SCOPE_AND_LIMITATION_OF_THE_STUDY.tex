@@ -26,432 +26,413 @@ validating movements, managing the state of all characters and
 environments, and synchronizing that data across every connected client
 in real-time.
 
-\textbf{I. World Simulation}
+% Format
+\begin{enumerate}[label=\textbf{\Roman*.}]
+    \item \textbf{World Simulation}
 
-\begin{itemize}
-\item
-  \textbf{1.0 World State Manager}
+        \begin{decimallist}
+            \decimalitem{World State Manager}
 
-  Contains the states for the environment, acting as a dedicated
-  subsystem responsible for tracking and synchronizing the following
-  persistent data.
+            Contains the states for the environment, acting as a dedicated
+            subsystem responsible for tracking and synchronizing the following
+            persistent data.
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Entity - General container for persistent objects.
-  \item
-    Non-Player Characters - Quest givers.
-  \item
-    Player Objects - Hauling cart.
-  \item
-    Resource Nodes - Perlas, Ores.
-  \item
-    Collective Cooldown and Effects - Zone debuffs, Event Cooldowns.
-  \end{enumerate}
-\item
-  \textbf{1.1 Physics}
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Entity - General container for persistent objects.
+            \item
+                Non-Player Characters - Quest givers.
+            \item
+                Player Objects - Hauling cart.
+            \item
+                Resource Nodes - Perlas, Ores.
+            \item
+                Collective Cooldown and Effects - Zone debuffs, Event Cooldowns.
+            \end{enumerate}
 
-  Contains the data and authoritative engine for all spatial
-  interactions and character locomotion.
+            \decimalitem{Physics}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Position - Stores their location using X, Y, Z coordinates
-  \item
-    Collision Check - Determine if entities are physically overlapping
-  \item
-    Movement Prediction - Validating the client's reported movement
-    against the server's predicted state to prevent lag.
-  \item
-    Map Boundaries - Defines the legal perimeter for zones and regions.
-  \item
-    Hitbox State - Manages the size, shape and active frames of
-    hitboxes.
-  \end{enumerate}
-\item
-  \textbf{1.3 Dungeon Manager}
+            Contains the data and authoritative engine for all spatial
+            interactions and character locomotion.
 
-  Responsible for handling all aspects of instanced, temporary, or
-  specialized gameplay zones.
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Position - Stores their location using X, Y, Z coordinates
+            \item
+                Collision Check - Determine if entities are physically overlapping
+            \item
+                Movement Prediction - Validating the client's reported movement
+                against the server's predicted state to prevent lag.
+            \item
+                Map Boundaries - Defines the legal perimeter for zones and regions.
+            \item
+                Hitbox State - Manages the size, shape and active frames of
+                hitboxes.
+            \end{enumerate}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Dungeon State - Manages the current progress and status of a
-    dungeon.
-  \item
-    Spawn - Handles the initial placement and subsequent respawn logic
-    for all enemies.
-  \item
-    Timer - Administers all time-related constraints, includes cooldown,
-    allowable time.
-  \item
-    Loot Roll Manager - Manages the fair and structured distribution of
-    unique rewards dropped within the dungeon.
-  \end{enumerate}
-\item
-  \textbf{1.4 AI System}
+            \decimalitem{Dungeon Manager}
 
-  Contains processing, execution, and state management of all Non-Player
-  Characters (NPCs), monsters, and boss encounters. It governs all
-  aspects of enemy and npc behavior.
+            Responsible for handling all aspects of instanced, temporary, or
+            specialized gameplay zones.
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Behavior Trees - A hierarchical structure used to model complex,
-    conditional enemy decision-making and action sequencing.
-  \item
-    Threat Table - A data structure tracking numerical amount of threat
-    or enmity.
-  \item
-    State Machine - System that defines and manages the behavioral state
-    of monster.
-  \item
-    Pathfinding - System responsible for calculating the optimal route
-    for an monster
-  \item
-    Aggro System - Logic to designate the current target of the monster.
-  \item
-    Schedule - Manages the time-based non-combat behaviors of NPC or
-    monsters.
-  \end{enumerate}
-\item
-  \textbf{1.5 Combat System}
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Dungeon State - Manages the current progress and status of a
+                dungeon.
+            \item
+                Spawn - Handles the initial placement and subsequent respawn logic
+                for all enemies.
+            \item
+                Timer - Administers all time-related constraints, includes cooldown,
+                allowable time.
+            \item
+                Loot Roll Manager - Manages the fair and structured distribution of
+                unique rewards dropped within the dungeon.
+            \end{enumerate}
 
-  Authoritative core of all player-versus-environment and
-  player-versus-player (PvP) conflicts and battles.
+            \decimalitem{AI System}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Stat Calculation - Calculates the current numerical values of all
-    character attributes.
-  \item
-    Status Effect State - Manages application, duration and ticks of
-    current buffs and debuffs.
-  \item
-    Damage Events - Central process that resolves an attack and
-    calculates the final damage value.
-  \item
-    Cooldowns - Responsible for checking the timer to determine if a
-    skill can be executed.
-  \end{enumerate}
-\end{itemize}
+            Contains processing, execution, and state management of all Non-Player
+            Characters (NPCs), monsters, and boss encounters. It governs all
+            aspects of enemy and npc behavior.
 
-\textbf{II. Player Management}
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Behavior Trees - A hierarchical structure used to model complex,
+                conditional enemy decision-making and action sequencing.
+            \item
+                Threat Table - A data structure tracking numerical amount of threat
+                or enmity.
+            \item
+                State Machine - System that defines and manages the behavioral state
+                of monster.
+            \item
+                Pathfinding - System responsible for calculating the optimal route
+                for an monster
+            \item
+                Aggro System - Logic to designate the current target of the monster.
+            \item
+                Schedule - Manages the time-based non-combat behaviors of NPC or
+                monsters.
+            \end{enumerate}
 
-\begin{itemize}
-\item
-  \textbf{2.1 Authentication System}
+            \decimalitem{Combat System}
 
-  Handles the initial player login and account verification against the
-  database.
+            Authoritative core of all player-versus-environment and
+            player-versus-player (PvP) conflicts and battles.
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Credential Validation - Validates username/password or other login
-    methods.
-  \item
-    Session Token Generation - Creates the unique, temporary
-    cryptographic key (Session Token) upon successful login.
-  \item
-    Character List Retrieval - Fetches the list of characters associated
-    with the account from the Game Database
-  \end{enumerate}
-\item
-  \textbf{2.2 Player Runtime State}
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Stat Calculation - Calculates the current numerical values of all
+                character attributes.
+            \item
+                Status Effect State - Manages application, duration and ticks of
+                current buffs and debuffs.
+            \item
+                Damage Events - Central process that resolves an attack and
+                calculates the final damage value.
+            \item
+                Cooldowns - Responsible for checking the timer to determine if a
+                skill can be executed.
+            \end{enumerate}
 
-  Responsible for tracking all temporary, real-time, and volatile data
-  associated with an actively logged-in player character.
+        \end{decimallist}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Core Player Statistics - Stores the current values of the player's
-    character attributes.
-  \item
-    Status Effects - Tracks all active personal buffs and debuffs
-    currently affecting the player character.
-  \item
-    Inventory Change - Records and manages all temporary modifications
-    to the player's inventory that occur during a session.
-  \item
-    Cooldowns - Manages the current remaining time until a players
-    specific skill, ability, or item can be used again.
-  \item
-    Uncommitted Quest Progress - Stores all temporary advancement within
-    active quests that has not yet been finalized and saved.
-  \item
-    Temporary Combat Logs - Records a brief, volatile history of recent
-    combat events.
-  \item
-    Input Command Queues - A temporary buffer that stores the sequence
-    of actions sent by the player's client.
-  \end{enumerate}
-\item
-  \textbf{2.3 Player Session Manager}
+    \item \textbf{Player Management}
 
-  Manages the server's active record of all logged-in users and their
-  authenticated connection status.
+        \begin{decimallist}
+            \decimalitem{Authentication System}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Connected Players - A live list tracking all current users who have
-    an established and active network connection to the game server.
-  \item
-    Session Tokens - Manages the creation, validation, and expiration of
-    unique, temporary cryptographic keys assigned to a player upon
-    successful login.
-  \item
-    Player State - Tracks the connection status and current activity of
-    a player within the game world.
-  \end{enumerate}
-\end{itemize}
+            Handles the initial player login and account verification against the
+            database.
 
-\textbf{III. Others}
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Credential Validation - Validates username/password or other login
+                methods.
+            \item
+                Session Token Generation - Creates the unique, temporary
+                cryptographic key (Session Token) upon successful login.
+            \item
+                Character List Retrieval - Fetches the list of characters associated
+                with the account from the Game Database
+            \end{enumerate}
 
-\begin{itemize}
-\item
-  \textbf{3.1 Anti Cheat}
+            \decimalitem{Player Runtime State}
 
-  Operates on the game server to monitor, validate, and restrict player
-  actions that violate the established rules of the game.
+            Responsible for tracking all temporary, real-time, and volatile data
+            associated with an actively logged-in player character.
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Movement Check - Performs continuous server-side verification of the
-    player's reported movement speed, direction, and position against
-    the limits imposed by the Physics/Movement Module.
-  \item
-    Input Validation - Scrutinizes every command and action request
-    received from the player's client.
-  \end{enumerate}
-\item
-  \textbf{3.2 Gameplay System}
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Core Player Statistics - Stores the current values of the player's
+                character attributes.
+            \item
+                Status Effects - Tracks all active personal buffs and debuffs
+                currently affecting the player character.
+            \item
+                Inventory Change - Records and manages all temporary modifications
+                to the player's inventory that occur during a session.
+            \item
+                Cooldowns - Manages the current remaining time until a players
+                specific skill, ability, or item can be used again.
+            \item
+                Uncommitted Quest Progress - Stores all temporary advancement within
+                active quests that has not yet been finalized and saved.
+            \item
+                Temporary Combat Logs - Records a brief, volatile history of recent
+                combat events.
+            \item
+                Input Command Queues - A temporary buffer that stores the sequence
+                of actions sent by the player's client.
+            \end{enumerate}
 
-  Manages the primary progression and social reward structures of the
-  game.
+            \decimalitem{Player Session Manager}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Quest Engine - Manages the lifecycle of all quests and cultural
-    narratives, from assignment to completion. Also responsible for
-    awarding non-crypto currency, items, and, in specific cases, BAKU
-    tokens or Perlas.
-  \item
-    Loot System - Governs the server-side determination and distribution
-    of items and currency dropped by defeated enemies or contained in
-    discoverable chests. This includes the calculation of item drops.
-  \item
-    Crafting Queues - Manages the sequential processing and time-gating
-    of all production and crafting orders initiated by players.
-  \item
-    Parties - Manages the formation, membership, and social rules of
-    temporary player groups.
-  \item
-    Player-to-player Trading System - Manages the synchronous, secure,
-    two-player trade interface to exchange non-crypto items and
-    currency.
-  \item
-    Talipapa System (Marketplace) - Manages the authoritative
-    server-side logic for the asynchronous marketplace, including
-    posting listings, processing buyouts, collecting fees, and sending
-    items/currency via an in-game mail system.
-  \end{enumerate}
-\item
-  \textbf{3.3 Infrastructure}
+            Manages the server's active record of all logged-in users and their
+            authenticated connection status.
 
-  Manages the low-level, foundational services that maintain the
-  operational timing, and persistence required for the entire Game
-  Server to function securely and reliably.
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Connected Players - A live list tracking all current users who have
+                an established and active network connection to the game server.
+            \item
+                Session Tokens - Manages the creation, validation, and expiration of
+                unique, temporary cryptographic keys assigned to a player upon
+                successful login.
+            \item
+                Player State - Tracks the connection status and current activity of
+                a player within the game world.
+            \end{enumerate}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \tightlist
-  \item
-    Scheduler Tick - The central, authoritative clock and heartbeat of
-    the entire server simulation.
-  \end{enumerate}
-\item
-  \textbf{3.4 Equipment Attribute Enhancement}
+        \end{decimallist}
 
-  This server-side module executes the permanent and irreversible logic
-  when a player attempts to enhancement an item.
+    \item \textbf{Others}
+        \begin{decimallist}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Item Validity - Performs the initial critical validation that the
-    submitted item or materials are valid.
-  \item
-    Cost Manager - Calculates and deducts all required resources and
-    currency before any enhancement attempt begins.
-  \item
-    Success Probability Scaling - Executes the central logic for
-    determining the enhancement outcome.
-  \item
-    Attribute applier - Contains the probability scaling logic to
-    increase an equipment attributes.
-  \item
-    Item State Manager - Manages the logic that implements the
-    consequences of success and failure.
-  \end{enumerate}
-\item
-  \textbf{3.5 Equipment Tier Upgrade System}
+            \decimalitem{Anti Cheat}
 
-  This server-side module executes the permanent and irreversible logic
-  when a player attempts to upgrade or enchant an item.
+            Operates on the game server to monitor, validate, and restrict player
+            actions that violate the established rules of the game.
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Item Validity - Performs the initial critical validation that the
-    submitted item or materials are valid.
-  \item
-    Cost Manager -Calculates and deducts all required resources and
-    currency before any enhancement attempt begins.
-  \item
-    Success Probability Scaling - Executes the central logic for
-    determining the enhancement outcome.
-  \item
-    Tier Applier - Contains the logic to increase an equipment tier.
-  \item
-    Item State Manager - Manages the logic that implements the
-    consequences of success and failure.
-  \item
-    Tier Cap - Contains the logic for an item maximum tier level.
-  \end{enumerate}
-\item
-  \textbf{3.6 Equipment Crafting System}
+            \begin{enumerate}
+            \def\labelenumi{\alph{enumi}.}
+            \item
+                Movement Check - Performs continuous server-side verification of the
+                player's reported movement speed, direction, and position against
+                the limits imposed by the Physics/Movement Module.
+            \item
+                Input Validation - Scrutinizes every command and action request
+                received from the player's client.
+            \end{enumerate}
 
-  This server-side module handles the complete lifecycle of creating new
-  equipment: validating ingredients, consuming resources.
+            \decimalitem{Gameplay System}
 
-\begin{enumerate}[label=\alph*.]
-    \item
-    Recipe Manager - Manages the lookup, validation, and prerequisites
-    for every crafting recipe.
-    \item
-    Equipment Creation - Executes the core, non-reversible steps of the
-    crafting process, from consuming materials to determining the item's
-    final attributes.
+            Manages the primary progression and social reward structures of the
+            game.
 
-        \begin{enumerate}[label*=\arabic*.]
-        \item
-            Combine Item - Definitive step where the required input
-            materials are simultaneously and authoritatively removed from the
-            player's inventory and consumed by the system.
-        \item
-            Apply Stats - Generates the base stats or attributes for the
-            new item.
-        \item
-            Success or Failure - Executes the calculation to determine the
-            outcome of the craft.
-        \end{enumerate}
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Quest Engine - Manages the lifecycle of all quests and cultural
+                narratives, from assignment to completion. Also responsible for
+                awarding non-crypto currency, items, and, in specific cases, BAKU
+                tokens or Perlas.
+            \item
+                Loot System - Governs the server-side determination and distribution
+                of items and currency dropped by defeated enemies or contained in
+                discoverable chests. This includes the calculation of item drops.
+            \item
+                Crafting Queues - Manages the sequential processing and time-gating
+                of all production and crafting orders initiated by players.
+            \item
+                Parties - Manages the formation, membership, and social rules of
+                temporary player groups.
+            \item
+                Player-to-player Trading System - Manages the synchronous, secure,
+                two-player trade interface to exchange non-crypto items and
+                currency.
+            \item
+                Talipapa System (Marketplace) - Manages the authoritative
+                server-side logic for the asynchronous marketplace, including
+                posting listings, processing buyouts, collecting fees, and sending
+                items/currency via an in-game mail system.
+            \end{enumerate}
 
-    \item
-    Equipment Creation Logic - Contains the logic for the entire flow
-    of crafting process.
+            \decimalitem{Infrastructure}
+
+            Manages the low-level, foundational services that maintain the
+            operational timing, and persistence required for the entire Game
+            Server to function securely and reliably.
+
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Scheduler Tick - The central, authoritative clock and heartbeat of
+                the entire server simulation.
+            \end{enumerate}
+
+            \decimalitem{Equipment Attribute Enhancement}
+
+            This server-side module executes the permanent and irreversible logic
+            when a player attempts to enhancement an item.
+
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Item Validity - Performs the initial critical validation that the
+                submitted item or materials are valid.
+            \item
+                Cost Manager - Calculates and deducts all required resources and
+                currency before any enhancement attempt begins.
+            \item
+                Success Probability Scaling - Executes the central logic for
+                determining the enhancement outcome.
+            \item
+                Attribute applier - Contains the probability scaling logic to
+                increase an equipment attributes.
+            \item
+                Item State Manager - Manages the logic that implements the
+                consequences of success and failure.
+            \end{enumerate}
+
+            \decimalitem{Equipment Tier Upgrade System}
+
+            This server-side module executes the permanent and irreversible logic
+            when a player attempts to upgrade or enchant an item.
+
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Item Validity - Performs the initial critical validation that the
+                submitted item or materials are valid.
+            \item
+                Cost Manager -Calculates and deducts all required resources and
+                currency before any enhancement attempt begins.
+            \item
+                Success Probability Scaling - Executes the central logic for
+                determining the enhancement outcome.
+            \item
+                Tier Applier - Contains the logic to increase an equipment tier.
+            \item
+                Item State Manager - Manages the logic that implements the
+                consequences of success and failure.
+            \item
+                Tier Cap - Contains the logic for an item maximum tier level.
+            \end{enumerate}
+
+            \decimalitem{Equipment Crafting System}
+
+            This server-side module handles the complete lifecycle of creating new
+            equipment: validating ingredients, consuming resources.
+
+            \begin{enumerate}[label=\alph*.]
+                \item
+                    Recipe Manager - Manages the lookup, validation, and prerequisites
+                    for every crafting recipe.
+                \item
+                    Equipment Creation - Executes the core, non-reversible steps of the
+                    crafting process, from consuming materials to determining the item's
+                    final attributes.
+
+                        \begin{enumerate}[label*=\arabic*.]
+                        \item
+                            Combine Item - Definitive step where the required input
+                            materials are simultaneously and authoritatively removed from the
+                            player's inventory and consumed by the system.
+                        \item
+                            Apply Stats - Generates the base stats or attributes for the
+                            new item.
+                        \item
+                            Success or Failure - Executes the calculation to determine the
+                            outcome of the craft.
+                        \end{enumerate}
+
+                \item
+                    Equipment Creation Logic - Contains the logic for the entire flow
+                    of crafting process.
+            \end{enumerate}
+
+            \decimalitem{Baku Forge System (Fungible Token Faucet)}
+
+            This server-side module manages the player-driven conversion of
+            in-game resources (Perlas) into the on-chain fungible token (BAKU).
+            This is a primary economic faucet.
+
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Context Validation - Verifies the player is interacting with the
+                correct NPC or is within the designated ``Baku Forge'' zone.
+            \item
+                Resource Cost Manager - Calculates and deducts the required amount
+                of Perlas from the player's off-chain inventory (Game Database).
+            \item
+                Conversion Rate Logic - Applies the current server-defined exchange
+                rate.
+            \item
+                Token Request Emitter - Upon successful validation and resource
+                deduction, this component generates a secure request to the Crypto
+                Request Router to mint or transfer the calculated BAKU amount to the
+                player's linked wallet.
+            \end{enumerate}
+
+            \decimalitem{NFT Minting System}
+
+            This server-side module handles the player-initiated process of
+            converting a specific, eligible in-game item (from the Game Database)
+            into a permanent Non-Fungible Token (NFT) on the blockchain.
+
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Item Eligibility Check - Validates that the item submitted by the
+                player (e.g., a ``Legendary'' crafted weapon) is eligible for
+                tokenization.
+            \item
+                Minting Cost Manager - Calculates and deducts the required cost for
+                minting, which could be BAKU tokens, non-crypto currency, or other
+                rare materials.
+            \item
+                Item State Conversion - Authoritatively flags the item in the Game
+                Database as ``tokenized,'' linking it to its future on-chain ID and
+                making it non-volatile.
+            \item
+                NFT Request Emitter - Securely packages the item's metadata (stats,
+                name, rarity, ID) and sends a minting request to the Crypto Request
+                Router to create the NFT on the blockchain.
+            \end{enumerate}
+
+            \decimalitem{Character Progression System}
+
+            This is the authoritative server-side counterpart to the client's
+            Progression System. It manages the permanent, non-volatile state of a
+            character's growth, abilities, and skills, ensuring all progression is
+            validated and legitimate.
+
+            \begin{enumerate}[label=\alph*.]
+            \item
+                Experience and Leveling Manager - Authoritatively handles all
+                experience point (XP) gain and the leveling-up process. It receives
+                XP ``grant'' commands from other systems (like Quest Engine and Loot
+                System) and calculates when a character levels up, triggering the
+                availability of new points or skills.
+            \item
+                Attribute Manager - Manages the ``bank'' of available attribute
+                points (e.g., Strength, Intellect) for a character. It validates and
+                processes all player requests to allocate these points, then updates
+                the character's base stats in the Game Database.
+            \item
+                Class \& Profession Manager (Separate and related) - Contains the
+                definitive logic, rules, and skill trees for all player classes
+                (Anito's Heir System) and professions (Blacksmith and Craftsmith).
+                It manages the character's current level in each and validates all
+                requests to learn or upgrade class-specific abilities or
+                profession-specific recipes.
+            \item
+                Skill Manager - Manages the authoritative list of skills a character
+                has learned. It validates all prerequisites (e.g., level, class,
+                attribute requirements) before unlocking a new skill for a
+                character, making it available for the Combat System (1.5) to use.
+                It also handles the upgrading logic of skill via skill scrolls.
+            \end{enumerate}
+
+        \end{decimallist}
 \end{enumerate}
-
-  \item
-    Equipment Creation Logic - Contains the logic for the entire flow
-    of crafting process.
-  \end{enumerate}
-
-\item
-  \textbf{3.7 Baku Forge System (Fungible Token Faucet)}
-
-  This server-side module manages the player-driven conversion of
-  in-game resources (Perlas) into the on-chain fungible token (BAKU).
-  This is a primary economic faucet.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Context Validation - Verifies the player is interacting with the
-    correct NPC or is within the designated ``Baku Forge'' zone.
-  \item
-    Resource Cost Manager - Calculates and deducts the required amount
-    of Perlas from the player's off-chain inventory (Game Database).
-  \item
-    Conversion Rate Logic - Applies the current server-defined exchange
-    rate.
-  \item
-    Token Request Emitter - Upon successful validation and resource
-    deduction, this component generates a secure request to the Crypto
-    Request Router to mint or transfer the calculated BAKU amount to the
-    player's linked wallet.
-  \end{enumerate}
-\item
-  \textbf{3.8 NFT Minting System}
-
-  This server-side module handles the player-initiated process of
-  converting a specific, eligible in-game item (from the Game Database)
-  into a permanent Non-Fungible Token (NFT) on the blockchain.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Item Eligibility Check - Validates that the item submitted by the
-    player (e.g., a ``Legendary'' crafted weapon) is eligible for
-    tokenization.
-  \item
-    Minting Cost Manager - Calculates and deducts the required cost for
-    minting, which could be BAKU tokens, non-crypto currency, or other
-    rare materials.
-  \item
-    Item State Conversion - Authoritatively flags the item in the Game
-    Database as ``tokenized,'' linking it to its future on-chain ID and
-    making it non-volatile.
-  \item
-    NFT Request Emitter - Securely packages the item's metadata (stats,
-    name, rarity, ID) and sends a minting request to the Crypto Request
-    Router to create the NFT on the blockchain.
-  \end{enumerate}
-\item
-  \textbf{3.9 Character Progression System}
-
-  This is the authoritative server-side counterpart to the client's
-  Progression System. It manages the permanent, non-volatile state of a
-  character's growth, abilities, and skills, ensuring all progression is
-  validated and legitimate.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Experience and Leveling Manager - Authoritatively handles all
-    experience point (XP) gain and the leveling-up process. It receives
-    XP ``grant'' commands from other systems (like Quest Engine and Loot
-    System) and calculates when a character levels up, triggering the
-    availability of new points or skills.
-  \item
-    Attribute Manager - Manages the ``bank'' of available attribute
-    points (e.g., Strength, Intellect) for a character. It validates and
-    processes all player requests to allocate these points, then updates
-    the character's base stats in the Game Database.
-  \item
-    Class \& Profession Manager (Separate and related) - Contains the
-    definitive logic, rules, and skill trees for all player classes
-    (Anito's Heir System) and professions (Blacksmith and Craftsmith).
-    It manages the character's current level in each and validates all
-    requests to learn or upgrade class-specific abilities or
-    profession-specific recipes.
-  \item
-    Skill Manager - Manages the authoritative list of skills a character
-    has learned. It validates all prerequisites (e.g., level, class,
-    attribute requirements) before unlocking a new skill for a
-    character, making it available for the Combat System (1.5) to use.
-    It also handles the upgrading logic of skill via skill scrolls.
-  \end{enumerate}
-\end{itemize}
 
 \subsubsection{Game Client}\label{game-client}
 
@@ -459,216 +440,210 @@ One of the main components of the software. Its primary role is to
 render the virtual world based on data received from the Game Server and
 to capture, queue, and transmit player input as commands to the server.
 
-\begin{itemize}
-\item
-  \textbf{1.0 Character Control}
+\begin{decimallist}[1]
 
-  Responsible for translating the player's physical input into digital
-  commands and visual representations of the player character's actions
-  on the local screen.
+    \decimalitem{Character Control}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Movement - Handles the client-side interpretation and execution of
-    directional input.
-  \item
-    Animation - Manages the visual rendering of the player character's
-    actions and state.
-  \item
-    Targeting - Manages the player's client-side system for selecting,
-    directing and locking onto enemies or interactable objects.
-  \end{enumerate}
-\item
-  \textbf{1.1 Progression System}
+    Responsible for translating the player's physical input into digital
+    commands and visual representations of the player character's actions
+    on the local screen.
 
-  Manages the visual representation of the player's advancement and
-  character development and details. It displays all progression-related
-  data received from the Game Server.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Quest Tracker - Displays the current status of all active quests.
-  \item
-    Levelling - Manages the visual presentation of the player's overall
-    level and progression status.
-  \item
-    Experience Curve - Displays the percentage of current experience
-    points accumulated relative to amount of experience points remaining
-    until the next level.
-  \item
-    Class System - Renders the visual interface and mechanics related to
-    the character's chosen class.
-  \item
-    Equipment System - Manages the client-side inventory and character
-    gear display.
-  \item
-    Skill System - Displays the visual interface for all character
-    skills or abilities.
-  \item
-    Profession System - Renders the user interface for all non-combat
-    economic specializations or skills.
-  \item
-    Attributes - Renders the character's core statistics (e.g.,
-    Strength, Agility, Intellect, Vitality). This interface displays the
-    current value of each attribute, the points available for allocation
-    (if any), and tooltips explaining how each attribute contributes to
-    secondary stats like attack power, critical strike chance, and
-    health.
-  \end{enumerate}
-\item
-  \textbf{1.2 Crafting and Gathering}
-
-  This client-side module manages the visual presentation and input
-  mechanisms for all resource acquisition and item production.
-
-  \begin{enumerate}[label=\alph*.]
-  \item
-    Recipe - Manages the display of the player's learned item blueprints
-    and crafting formulas.
-  \item
-    Creation - Handles the visual interface and confirmation for
-    initiating a crafting order.
-  \item
-    Crafting Chance - Displays the server-determined percentage
-    likelihood of success or failure before the player commits to the
-    crafting action.
-  \item
-    Upgrade System - Manages the client-side user interface and logic
-    for modifying or improving existing items, often requiring
-    additional materials or currency.
-    \begin{enumerate}[label*=\arabic*.]
-        \item
-            Enhance - Renders the interface for increasing an item's base
-            statistics or numeric tier.
-        \item
-            Enchant - Renders the interface for applying enhancement to an
-            item.
-    \end{enumerate}
-  \end{enumerate}
-\item
-
-  \textbf{1.3 Inventory System}
-
-  Manages the visual presentation and player interaction with all stored
-  items, resources, and currency.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Item interaction - This term covers the entire range of things a
-    player can do with an item once it is in their inventory, including
-    equipping, unequipping, moving, splitting stacks, using, selling, or
-    destroying.
-  \item
-    Slots - Renders the visual structure of the inventory grid.
-  \item
-    Stack - Handles the visual representation and management of item
-    quantity within a single inventory slot.
-  \item
-    Upgrading - Manages the client-side interface and visual
-    confirmation for increasing the player's total storage capacity.
-  \end{enumerate}
-\item
-  \textbf{1.4 Item System}
-
-  This module manages the visual rendering and information display for
-  all items in the game world, inventory, and equipment slots.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Equipment - Manages the client-side representation and stat
-    comparison interface for items designed to be worn.
-  \item
-    Drop Rate - Renders the visual presentation of the probability that
-    a specific item, or category of items, will be acquired from an
-    enemy or container.
-  \item
-    Durability - Manages the visual status and health bar of an item's
-    current wear and tear.
-  \item
-    Consumables - Handles the visual feedback and prompt for single-use
-    items.
-  \item
-    Item Metadata - Renders the detailed descriptive information about
-    the item in tooltips and inspection windows.
-  \item
-    Rarity - Manages the visual and stylistic representation of an
-    item's unique quality.
-  \item
-    Item Drop UI - Renders the visual window or notification that
-    appears when an enemy is defeated or a container is opened,
-    displaying the icons, names, and quantities of the items that have
-    dropped. This interface allows the player to loot the items,
-    transferring them to their inventory.
-  \end{enumerate}
-\item
-  \textbf{1.5 Social System}
-
-  This client-side module manages all interfaces and functions related
-  to player-to-player communication, grouping, and cooperative
-  interaction, drawing upon the authoritative data from the Game
-  Server's Gameplay System.
-
-  \begin{enumerate}[label=\alph*.]
-  \item
-    Chats - Renders and manages the visual interface for all real-time
-    text communication channels.
-
-    \begin{enumerate}[label*=\arabic*.]
-        \item
-            Area Chat - A localized communication channel that displays
-            messages from players within a specific in-game radius or zone.
-        \item
-            Party Chat - A private communication channel exclusive to
-            members of the same party or group.
-        \item
-            World Chat - A global communication channel visible to all
-            connected players across the entire game world.
+    \begin{enumerate}[label=\alph*.]
+    \item
+        Movement - Handles the client-side interpretation and execution of
+        directional input.
+    \item
+        Animation - Manages the visual rendering of the player character's
+        actions and state.
+    \item
+        Targeting - Manages the player's client-side system for selecting,
+        directing and locking onto enemies or interactable objects.
     \end{enumerate}
 
-  \item
-    Parties - Displays the visual status of all members within the
-    player's current cooperative group.
-  \item
-    Item Distribution - Renders the visual interface and mechanics for
-    determining how loot is shared among party members.
-  \item
-    Friends List - Displays the current connection status and location
-    of a player's designated social contacts.
-  \item
-    Player-to-Player Trade UI - Renders the secure, synchronous interface for two players to exchange
-  items and currency. This includes item slots for each player's offer,
-  a currency field, and a two-stage ``confirm'' and ``finalize'' process
-  to validate the trade on the server.
+    \decimalitem{Progression System}
 
-  \end{enumerate}
+    Manages the visual representation of the player's advancement and
+    character development and details. It displays all progression-related
+    data received from the Game Server.
 
-\item
-  \textbf{1.6 General UI/UX}
+    \begin{enumerate}[label=\alph*.]
+    \item
+        Quest Tracker - Displays the current status of all active quests.
+    \item
+        Levelling - Manages the visual presentation of the player's overall
+        level and progression status.
+    \item
+        Experience Curve - Displays the percentage of current experience
+        points accumulated relative to amount of experience points remaining
+        until the next level.
+    \item
+        Class System - Renders the visual interface and mechanics related to
+        the character's chosen class.
+    \item
+        Equipment System - Manages the client-side inventory and character
+        gear display.
+    \item
+        Skill System - Displays the visual interface for all character
+        skills or abilities.
+    \item
+        Profession System - Renders the user interface for all non-combat
+        economic specializations or skills.
+    \item
+        Attributes - Renders the character's core statistics (e.g.,
+        Strength, Agility, Intellect, Vitality). This interface displays the
+        current value of each attribute, the points available for allocation
+        (if any), and tooltips explaining how each attribute contributes to
+        secondary stats like attack power, critical strike chance, and
+        health.
+    \end{enumerate}
 
-  This comprehensive client-side module manages the aesthetic design,
-  layout, and functionality of all interactive graphical elements
-  presented to the player.
+    \decimalitem{Crafting and Gathering}
 
-  \begin{enumerate}[label=\alph*]
-  \item
-    HUD - Manages the always-visible, non-intrusive overlay that
-    presents essential, real-time status information.
-  \item
-    Map - Renders the visual interface for the game world's geography
-    and current player or NPC location.
-  \item
-    Talipapa UI - Shows the visual interface or button that accesses the
-    talipapa, the auction system.
-  \item
-    Menus - Manages the standard hierarchical pop-up windows that
-    contain and organize the various other system interfaces.
-  \item
-    Pre-Game Menus - Manages the UI flow that occurs before a player
-    loads into the game world.
+    This client-side module manages the visual presentation and input
+    mechanisms for all resource acquisition and item production.
+
+    \begin{enumerate}[label=\alph*.]
+    \item
+        Recipe - Manages the display of the player's learned item blueprints
+        and crafting formulas.
+    \item
+        Creation - Handles the visual interface and confirmation for
+        initiating a crafting order.
+    \item
+        Crafting Chance - Displays the server-determined percentage
+        likelihood of success or failure before the player commits to the
+        crafting action.
+    \item
+        Upgrade System - Manages the client-side user interface and logic
+        for modifying or improving existing items, often requiring
+        additional materials or currency.
+        \begin{enumerate}[label*=\arabic*.]
+            \item
+                Enhance - Renders the interface for increasing an item's base
+                statistics or numeric tier.
+            \item
+                Enchant - Renders the interface for applying enhancement to an
+                item.
+        \end{enumerate}
+    \end{enumerate}
+
+    \decimalitem{Inventory System}
+
+    Manages the visual presentation and player interaction with all stored
+    items, resources, and currency.
+
+    \begin{enumerate}[label=\alph*.]
+    \item
+        Item interaction - This term covers the entire range of things a
+        player can do with an item once it is in their inventory, including
+        equipping, unequipping, moving, splitting stacks, using, selling, or
+        destroying.
+    \item
+        Slots - Renders the visual structure of the inventory grid.
+    \item
+        Stack - Handles the visual representation and management of item
+        quantity within a single inventory slot.
+    \item
+        Upgrading - Manages the client-side interface and visual
+        confirmation for increasing the player's total storage capacity.
+    \end{enumerate}
+
+    \decimalitem{Item System}
+
+    This module manages the visual rendering and information display for
+    all items in the game world, inventory, and equipment slots.
+
+    \begin{enumerate}[label=\alph*.]
+    \item
+        Equipment - Manages the client-side representation and stat
+        comparison interface for items designed to be worn.
+    \item
+        Drop Rate - Renders the visual presentation of the probability that
+        a specific item, or category of items, will be acquired from an
+        enemy or container.
+    \item
+        Durability - Manages the visual status and health bar of an item's
+        current wear and tear.
+    \item
+        Consumables - Handles the visual feedback and prompt for single-use
+        items.
+    \item
+        Item Metadata - Renders the detailed descriptive information about
+        the item in tooltips and inspection windows.
+    \item
+        Rarity - Manages the visual and stylistic representation of an
+        item's unique quality.
+    \item
+        Item Drop UI - Renders the visual window or notification that
+        appears when an enemy is defeated or a container is opened,
+        displaying the icons, names, and quantities of the items that have
+        dropped. This interface allows the player to loot the items,
+        transferring them to their inventory.
+    \end{enumerate}
+
+    \decimalitem{Social System}
+
+    This client-side module manages all interfaces and functions related
+    to player-to-player communication, grouping, and cooperative
+    interaction, drawing upon the authoritative data from the Game
+    Server's Gameplay System.
+
+    \begin{enumerate}[label=\alph*.]
+    \item
+        Chats - Renders and manages the visual interface for all real-time
+        text communication channels.
+
+        \begin{enumerate}[label*=\arabic*.]
+            \item
+                Area Chat - A localized communication channel that displays
+                messages from players within a specific in-game radius or zone.
+            \item
+                Party Chat - A private communication channel exclusive to
+                members of the same party or group.
+            \item
+                World Chat - A global communication channel visible to all
+                connected players across the entire game world.
+        \end{enumerate}
+
+    \item
+        Parties - Displays the visual status of all members within the
+        player's current cooperative group.
+    \item
+        Item Distribution - Renders the visual interface and mechanics for
+        determining how loot is shared among party members.
+    \item
+        Friends List - Displays the current connection status and location
+        of a player's designated social contacts.
+    \item
+        Player-to-Player Trade UI - Renders the secure, synchronous interface for two players to exchange
+    items and currency. This includes item slots for each player's offer,
+    a currency field, and a two-stage ``confirm'' and ``finalize'' process
+    to validate the trade on the server.
+
+    \end{enumerate}
+
+    \decimalitem{General UI/UX}
+
+    This comprehensive client-side module manages the aesthetic design,
+    layout, and functionality of all interactive graphical elements
+    presented to the player.
+
+    \begin{enumerate}[label=\alph*]
+    \item
+        HUD - Manages the always-visible, non-intrusive overlay that
+        presents essential, real-time status information.
+    \item
+        Map - Renders the visual interface for the game world's geography
+        and current player or NPC location.
+    \item
+        Talipapa UI - Shows the visual interface or button that accesses the
+        talipapa, the auction system.
+    \item
+        Menus - Manages the standard hierarchical pop-up windows that
+        contain and organize the various other system interfaces.
+    \item
+        Pre-Game Menus - Manages the UI flow that occurs before a player
+        loads into the game world.
 
     \begin{enumerate}[label*=\arabic*.]
 
@@ -685,8 +660,8 @@ to capture, queue, and transmit player input as commands to the server.
     \end{enumerate}
 
     \item
-      Settings Menu - Renders the interface for configuring all local
-      client options, including:
+    Settings Menu - Renders the interface for configuring all local
+    client options, including:
 
         \begin{enumerate}[label*=\arabic*.]
 
@@ -702,304 +677,309 @@ to capture, queue, and transmit player input as commands to the server.
 
         \end{enumerate}
 
-
-        \item
-            Audio Settings - Manages all volume sliders (e.g., Master,
-            Music, Sound Effects).
-        \item
-            Graphics Settings - Manages resolution, texture quality, and
-            other performance-related options.
-        \item
-            Keybindings - Manages the mapping of user inputs to in-game
-            actions.
-  \end{enumerate}
-
-\item
-  \textbf{1.7 Combat System}
-
-  This client-side module manages all visual feedback and special
-  effects related to conflicts and battles.
-
-  \begin{enumerate}[label=\alph*.]
-  \item
-   PVE - Player Versus Environment blueprints
-
-   \begin{enumerate}[label*=\arabic*.]
-        \item
-        Aggro UI - Renders the visual indicator that a monster is
-        targeting a player.
-
-        \item
-        AI Mob Action -Manages the visual rendering of special actions
-        or abilities performed by monsters and bosses.
-
-   \end{enumerate}
-
     \item
-      PVP - Player Versus Player
-
-    \begin{enumerate}[label*=\arabic*.]
-        \item
-            PK Mode - Manages the client-side visual display of a
-            player's current hostility or PvP engagement status.
+        Audio Settings - Manages all volume sliders (e.g., Master,
+        Music, Sound Effects).
+    \item
+        Graphics Settings - Manages resolution, texture quality, and
+        other performance-related options.
+    \item
+        Keybindings - Manages the mapping of user inputs to in-game
+        actions.
 
     \end{enumerate}
 
+    \decimalitem{Combat System}
+
+    This client-side module manages all visual feedback and special
+    effects related to conflicts and battles.
+
+    \begin{enumerate}[label=\alph*.]
+
     \item
-      PVP and PVE - Shared features for both
-
-      \begin{enumerate}[label*=\arabic*.]
-
-        \item
-            Visual Hit Confirmation - Renders visual confirmation that an
-            attack has successfully landed on a target.
-        \item
-            Damage or Heal - Manages the rendering of floating numerical
-            text for all damage dealt and healing values.
-        \item
-            Status Effects - Displays the visual icons, tooltips, and
-            remaining timer bars for all temporary buffs and debuffs.
-        \item
-            Health and MP Bar - Manages the visual rendering of the
-            player and target's current Health and Resource (MP) bars.
-        \item
-            Cooldown - Renders the visual overlay on skill buttons in the
-            player's HUD to indicate the time remaining until a skill is
-            available for use.
-            \end{enumerate}
-
-  \end{enumerate}
-
-  \textbf{1.8 Kuchero System}
-
-  This client-side module manages all visual and interfaces related to
-  the kuchero.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \tightlist
-  \item
-    Cart - Manages the visual rendering of the object used for hauling
-  \end{enumerate}
-\item
-  \textbf{1.9 Talipapa System}
-
-  This client-side module provides the visual interface for the in-game
-  market.
-
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Search - Manages the input fields and logic for filtering the market
-    listings.
-  \item
-    Sorting - Handles the client-side arrangement and display order of
-    the market listings.
-  \item
-    Market Display - Renders the main interface for viewing item
-    listings. This includes displaying the item icon, quantity, seller's
-    name, the item's metadata, the list price, and any associated
-    transaction fees.
-  \end{enumerate}
-\item
-  \textbf{1.10 Entity Rendering}
-
-  This client-side module is responsible for the visual projection and
-  real-time updating of all player characters, NPCs, objects, and the
-  static environment.
-
-  \begin{enumerate}[label=\alph*]
-  \item
-    Models - Manages the loading and display of the 3D character models
-    for the player, all other players, and NPCs.
-  \item
-    Dialogue - Renders the visual interface for all narrative and
-    conversational interactions with NPCs.
-  \item
-    Environment - Manages the loading and static rendering of the game's
-    physical world, including terrain, buildings, weather or zone
-    effects, and skyboxes.
-  \item
-    Hostiles or Enemies - Focuses on the unique rendering requirements
-    for combat-active entities.
+        PVE - Player Versus Environment blueprints
 
     \begin{enumerate}[label*=\arabic*.]
+
         \item
-            Animation - Manages the visual sequencing of all movement and
-            combat actions performed by hostile NPCs and monsters.
+            Aggro UI - Renders the visual indicator that a monster is
+            targeting a player.
+
         \item
-            Targeting - Renders the visual feedback of a monster skill
-            designation or range.
+            AI Mob Action -Manages the visual rendering of special actions
+            or abilities performed by monsters and bosses.
+
     \end{enumerate}
 
+        \item
+            PVP - Player Versus Player
+
+        \begin{enumerate}[label*=\arabic*.]
+
+            \item
+                PK Mode - Manages the client-side visual display of a
+                player's current hostility or PvP engagement status.
+
+        \end{enumerate}
+
+        \item
+            PVP and PVE - Shared features for both
+
+        \begin{enumerate}[label*=\arabic*.]
+
+            \item
+                Visual Hit Confirmation - Renders visual confirmation that an
+                attack has successfully landed on a target.
+            \item
+                Damage or Heal - Manages the rendering of floating numerical
+                text for all damage dealt and healing values.
+            \item
+                Status Effects - Displays the visual icons, tooltips, and
+                remaining timer bars for all temporary buffs and debuffs.
+            \item
+                Health and MP Bar - Manages the visual rendering of the
+                player and target's current Health and Resource (MP) bars.
+            \item
+                Cooldown - Renders the visual overlay on skill buttons in the
+                player's HUD to indicate the time remaining until a skill is
+                available for use.
+
+        \end{enumerate}
+
+    \end{enumerate}
+
+    \decimalitem{Kuchero System}
+
+    This client-side module manages all visual and interfaces related to
+    the kuchero.
+
+    \begin{enumerate}[label=\alph*.]
+
+        \item
+            Cart - Manages the visual rendering of the object used for hauling
+
+    \end{enumerate}
+
+    \decimalitem{Talipapa System}
+
+    This client-side module provides the visual interface for the in-game
+    market.
+
+    \begin{enumerate}[label=\alph*.]
+        \item
+            Search - Manages the input fields and logic for filtering the market
+            listings.
+        \item
+            Sorting - Handles the client-side arrangement and display order of
+            the market listings.
+        \item
+            Market Display - Renders the main interface for viewing item
+            listings. This includes displaying the item icon, quantity, seller's
+            name, the item's metadata, the list price, and any associated
+            transaction fees.
+    \end{enumerate}
+
+    \decimalitem{Entity Rendering}
+
+    This client-side module is responsible for the visual projection and
+    real-time updating of all player characters, NPCs, objects, and the
+    static environment.
+
+    \begin{enumerate}[label=\alph*]
+
     \item
-      Interactable Objects State - Renders the visual state of all
-      interactable resource nodes and world objects.
+        Models - Manages the loading and display of the 3D character models
+        for the player, all other players, and NPCs.
     \item
-      Particle System Rendering - Manages the creation and rendering of
-      all dynamic visual effects.
+        Dialogue - Renders the visual interface for all narrative and
+        conversational interactions with NPCs.
     \item
-      Interaction and Feedback indicators - Renders contextual visual
-      elements over entities and world objects.
-  \end{enumerate}
+        Environment - Manages the loading and static rendering of the game's
+        physical world, including terrain, buildings, weather or zone
+        effects, and skyboxes.
+    \item
+        Hostiles or Enemies - Focuses on the unique rendering requirements
+        for combat-active entities.
 
-\item
-  \textbf{1.11 Audio Manager}
+        \begin{enumerate}[label*=\arabic*.]
+            \item
+                Animation - Manages the visual sequencing of all movement and
+                combat actions performed by hostile NPCs and monsters.
+            \item
+                Targeting - Renders the visual feedback of a monster skill
+                designation or range.
+        \end{enumerate}
 
-  This module is responsible for managing and playing all audio within
-  the client.
+    \item
+        Interactable Objects State - Renders the visual state of all
+        interactable resource nodes and world objects.
+    \item
+        Particle System Rendering - Manages the creation and rendering of
+        all dynamic visual effects.
+    \item
+        Interaction and Feedback indicators - Renders contextual visual
+        elements over entities and world objects.
+    \end{enumerate}
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Background Music (BGM) - Handles the streaming, looping, and
-    playback of ambient music for different zones, menus, and boss
-    encounters.
-  \item
-    Sound Effects (SFX) - Manages the playback of all event-driven
-    sounds, including spatial (3D) effects for combat and environment
-    (e.g., footsteps, skill hits) and interface (2D) sounds for button
-    clicks and notifications.
-  \end{enumerate}
-\item
-  \textbf{1.12 Tokenomy Interface}
+    \decimalitem{Audio Manager}
 
-  This module manages all client-side UIs that interact directly with
-  the server's Token Infrastructure and related economy systems.
+    This module is responsible for managing and playing all audio within
+    the client.
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Baku-Forge UI - Renders the dedicated interface and world object
-    (inside NPC towns) for converting in-game resources (e.g., Perlas)
-    into the BAKU fungible token. This UI displays the current
-    server-defined conversion rate, the player's available resources,
-    and a confirmation button that sends the conversion request to the
-    server's Baku Forge System.
-  \item
-    NFT-Minting UI - Renders the interface that allows a player to
-    select an eligible, server-validated in-game item (e.g., a
-    ``Legendary'' crafted item) and initiate the process to mint it into
-    an on-chain NFT. This UI displays the item, the BAKU or resource
-    cost, and a final confirmation to send the request to the server's
-    NFT Minting System.
-  \item
-    Wallet Management UI - Renders the interface in the settings menu
-    that allows a player to securely link, verify, or view their
-    external cryptocurrency wallet address with their game account. This
-    UI communicates with the server's Wallet Service.
-  \end{enumerate}
-\end{itemize}
+    \begin{enumerate}[label=\alph*.]
+        \item
+            Background Music (BGM) - Handles the streaming, looping, and
+            playback of ambient music for different zones, menus, and boss
+            encounters.
+        \item
+            Sound Effects (SFX) - Manages the playback of all event-driven
+            sounds, including spatial (3D) effects for combat and environment
+            (e.g., footsteps, skill hits) and interface (2D) sounds for button
+            clicks and notifications.
+    \end{enumerate}
+
+    \decimalitem{Tokenomy Interface}
+
+    This module manages all client-side UIs that interact directly with
+    the server's Token Infrastructure and related economy systems.
+
+    \begin{enumerate}[label=\alph*.]
+        \item
+            Baku-Forge UI - Renders the dedicated interface and world object
+            (inside NPC towns) for converting in-game resources (e.g., Perlas)
+            into the BAKU fungible token. This UI displays the current
+            server-defined conversion rate, the player's available resources,
+            and a confirmation button that sends the conversion request to the
+            server's Baku Forge System.
+        \item
+            NFT-Minting UI - Renders the interface that allows a player to
+            select an eligible, server-validated in-game item (e.g., a
+            ``Legendary'' crafted item) and initiate the process to mint it into
+            an on-chain NFT. This UI displays the item, the BAKU or resource
+            cost, and a final confirmation to send the request to the server's
+            NFT Minting System.
+        \item
+            Wallet Management UI - Renders the interface in the settings menu
+            that allows a player to securely link, verify, or view their
+            external cryptocurrency wallet address with their game account. This
+            UI communicates with the server's Wallet Service.
+    \end{enumerate}
+
+\end{decimallist}
 
 \subsubsection{Game Database}\label{game-database}
 
 A main component of the software. This is the non-volatile storage
 system where the Game Server persists all critical information.
 
-\begin{enumerate}[label=\textbf{\arabic*.0}]
-\item
-  \textbf{Database API (ASP.NET RESTful Service)}
+\begin{enumerate}[label=\textbf{\Roman*.}]
 
-  This is the secure application layer that manages all data
-  transactions. It exposes a series of RESTful endpoints that the Game
-  Server consumes.
+    \item \textbf{Database API (ASP.NET RESTful Service)}
 
-  \begin{enumerate}[label=\arabic{enumi}.\arabic*]
-  \item
-    Account \& Character Endpoints provides endpoints for user
-    authentication (login, registration), session validation, and
-    character management (creation, selection, retrieval).
-  \item
-    Player Data Endpoints provides endpoints for saving and
-    loading a character's persistent state, including their inventory,
-    equipment, quest progress, and attributes (e.g.,
-    /character/\{id\}/save, /character/\{id\}/inventory).
-  \item
-    Economy Endpoints provides endpoints for managing all
-    persistent economic actions, such as posting/canceling Talipapa
-    listings, retrieving crafting history, and logging Baku Forge
-    conversions.
-  \item
-    Static Game Data Endpoints provides endpoints for the Game
-    Server to load static, non-volatile game rules, such as NPC
-    definitions, item blueprints, and quest definitions, on startup.
-  \end{enumerate}
-\item
-  \textbf{SQL Instance}
+        This is the secure application layer that manages all data
+        transactions. It exposes a series of RESTful endpoints that the Game
+        Server consumes.
 
-  This is the non-volatile storage layer. It contains the actual data
-  schemas, tables, and stored procedures managed by the API.
+        \begin{decimallist}
 
-  \begin{enumerate}[label= \textbf{\arabic{enumi}.\arabic*}]
-  \item
-    \textbf{Player Account Schema}
+            \decimalitem{Account \& Character} - Provides endpoints for user
+            authentication (login, registration), session validation, and
+            character management (creation, selection, retrieval).
 
-    Tables containing the authoritative, persistent record for all user
-    and character data.
+            \decimalitem{Player Data} - Provides endpoints for saving and
+            loading a character's persistent state, including their inventory,
+            equipment, quest progress, and attributes (e.g.,
+            /character/\{id\}/save, /character/\{id\}/inventory).
 
-    \begin{enumerate}[label=\alph*.]
-    \item
-      Account Tables - Stores hashed credentials, account status, and
-      associated wallet addresses.
-    \item
-      Character Tables - Stores the persistent state for each character
-      (e.g., level, XP, class, attributes, current zone).
-    \item
-      Inventory \& Equipment Tables - Stores all persistent item
-      instances, their quantity, durability, and which character or
-      storage container they belong to.
-    \item
-      Quest Progression Tables - Stores the state (e.g.,
-      ``in-progress,'' ``completed'') of all quests for each character.
-    \item
-      Social Tables - Stores persistent social data (e.g., Friends
-      List).
-    \end{enumerate}
-  \item
-    \textbf{Static World Data Schema}
+            \decimalitem{Economy} - Provides endpoints for managing all
+            persistent economic actions, such as posting/canceling Talipapa
+            listings, retrieving crafting history, and logging Baku Forge
+            conversions.
 
-    Tables containing the static, read-only ``blueprint'' data for the
-    game.
+            \decimalitem{Static Game Data} - Provides endpoints for the 
+            Game Server to load static, 
+            non-volatile game rules, such as NPC
+            definitions, item blueprints, and quest definitions, on startup.
 
-    \begin{enumerate}[label=\alph*.]
-    \item
-      Entity Definitions - Stores the base stats, models, and abilities
-      for all NPCs and enemies.
-    \item
-      World Definitions - Stores static world data (e.t., zone names,
-      map boundaries).
-    \item
-      Game Rule Tables - Stores the comprehensive rules for combat
-      (e.g., damage formulas), progression (e.g., XP curves), and
-      crafting (e.g., recipes, probability scales).
-    \end{enumerate}
-  \item
-    \textbf{Dynamic Economy Schema}
+        \end{decimallist}
 
-    Tables that manage the persistent state of all economic and
-    item-related transactions.
+    \item \textbf{SQL Instance}
 
-    \begin{enumerate}[label=\alph*.]
-    \item
-      Item Instance Table - The authoritative table for every unique
-      item in the game, including those with NFT linkage.
-    \item
-      Manufacturing \& Transaction Logs - Stores the audit trail for all
-      crafting, enhancement, and Baku Forge conversions.
-    \item
-      Talipapa Listing Table - Stores all active, volatile listings for
-      the player-to-player marketplace.
-    \end{enumerate}
-  \item
-    \textbf{Analytics Schema}
+    This is the non-volatile storage layer. It contains the actual data
+    schemas, tables, and stored procedures managed by the API.
 
-    \begin{enumerate}[label=\alph*.]
-    \item
-      Event Log Tables - Stores detailed, time-stamped logs of
-      significant player and system actions (e.g., trades, boss kills,
-      high-value-item drops).
-    \end{enumerate}
-  \end{enumerate}
+    \begin{decimallist}
+
+        \decimalitem{Player Account Schema}
+
+        Tables containing the authoritative, persistent
+        record for all user and character data.
+
+        \begin{enumerate}[label=\alph*.]
+        \item
+            Account Tables - Stores hashed credentials, account status, and
+            associated wallet addresses.
+        \item
+            Character Tables - Stores the persistent state for each character
+            (e.g., level, XP, class, attributes, current zone).
+        \item
+            Inventory \& Equipment Tables - Stores all persistent item
+            instances, their quantity, durability, and which character or
+            storage container they belong to.
+        \item
+            Quest Progression Tables - Stores the state (e.g.,
+            ``in-progress,'' ``completed'') of all quests for each character.
+        \item
+            Social Tables - Stores persistent social data (e.g., Friends
+            List).
+        \end{enumerate}
+
+        \decimalitem{Static World Data Schema}
+
+        Tables containing the static, read-only ``blueprint'' data for the
+        game.
+
+        \begin{enumerate}[label=\alph*.]
+        \item
+            Entity Definitions - Stores the base stats, models, and abilities
+            for all NPCs and enemies.
+        \item
+            World Definitions - Stores static world data (e.t., zone names,
+            map boundaries).
+        \item
+            Game Rule Tables - Stores the comprehensive rules for combat
+            (e.g., damage formulas), progression (e.g., XP curves), and
+            crafting (e.g., recipes, probability scales).
+        \end{enumerate}
+
+        \decimalitem{Dynamic Economy Schema}
+
+        Tables that manage the persistent state of all economic and
+        item-related transactions.
+
+        \begin{enumerate}[label=\alph*.]
+        \item
+            Item Instance Table - The authoritative table for every unique
+            item in the game, including those with NFT linkage.
+        \item
+            Manufacturing \& Transaction Logs - Stores the audit trail for all
+            crafting, enhancement, and Baku Forge conversions.
+        \item
+            Talipapa Listing Table - Stores all active, volatile listings for
+            the player-to-player marketplace.
+        \end{enumerate}
+
+        \decimalitem{Analytics Schema}
+
+        \begin{enumerate}[label=\alph*.]
+        \item
+            Event Log Tables - Stores detailed, time-stamped logs of
+            significant player and system actions (e.g., trades, boss kills,
+            high-value-item drops).
+        \end{enumerate}
+
+    \end{decimallist}
+
 \end{enumerate}
 
 \subsubsection{Token Infrastructure}\label{token-infrastructure}
@@ -1010,121 +990,117 @@ foundation of the game's economy and unique ownership mechanics. It acts
 as the definitive bridge between the centralized Game Server and the
 decentralized blockchain.
 
-\begin{itemize}
-\item
-  \textbf{1.1 Blockchain API Gateway}
+\begin{decimallist}[1]
+    \decimalitem{Blockchain API Gateway}
 
-  This is the low-level middleware service responsible for all direct
-  communication with the blockchain's RPC nodes. It abstracts the
-  complexity of on-chain transactions, acting as the ``last stop'' for
-  requests.
+    This is the low-level middleware service responsible for all direct
+    communication with the blockchain's RPC nodes. It abstracts the
+    complexity of on-chain transactions, acting as the ``last stop'' for
+    requests.
 
-  \begin{enumerate}
-  \def\labelenumi{\alph{enumi}.}
-  \item
-    Transaction Submission: Takes finalized, signed transaction requests
-    from the Crypto Request Router and broadcasts them to the blockchain
-    network.
-  \item
-    Gas Fee Management: Handles gas price estimation to ensure
-    transactions are processed in a timely and cost-effective manner.
-  \item
-    Nonce Management: Manages the sequential transaction nonce for the
-    server's ``hot wallet'' to prevent transaction re-ordering or
-    re-sends.
-  \item
-    Receipt Confirmation: Listens for transaction confirmations from the
-    network and reports the status (success or failure) back to the
-    Router for logging.
-  \end{enumerate}
-
-\item
-  \textbf{Smart Contract}
-
-  These are the on-chain, deployed contracts that define the properties
-  and logic of the game's assets.
-
-  \begin{enumerate}[label=\alph*., nosep]
-  \item
-    \textbf{BAKU (Fungible Token):} The game's primary economic token, compliant
-    with the ERC-20 standard.
-
-    \begin{itemize}[nosep]
+    \begin{enumerate}[label=\alph*.]
     \item
-      \textbf{Key Functions:} Exposes standard \texttt{transfer()}, \texttt{approve()}, and
-      \texttt{balanceOf()} functions, as well as a privileged \texttt{mint()} function
-      callable only by the Crypto Request Router for distributing tokens
-      from the Baku Forge.
-    \end{itemize}
-
-  \item
-    \textbf{Game Assets (Non-Fungible Token):} The contract for unique in-game
-    items (legendary equipment), compliant with the ERC-721 standard.
-
-    \begin{itemize}[nosep]
+        Transaction Submission: Takes finalized, signed transaction requests
+        from the Crypto Request Router and broadcasts them to the blockchain
+        network.
     \item
-      \textbf{Key Functions:} Exposes standard \texttt{safeTransferFrom()} and \texttt{ownerOf()}
-      functions.
+        Gas Fee Management: Handles gas price estimation to ensure
+        transactions are processed in a timely and cost-effective manner.
     \item
-      \textbf{Metadata Management:} A privileged \texttt{mint()} function (callable only by
-      the Router) that creates a new token and assigns its \texttt{tokenURI}
-      (describing the item's stats).
+        Nonce Management: Manages the sequential transaction nonce for the
+        server's ``hot wallet'' to prevent transaction re-ordering or
+        re-sends.
     \item
-      \textbf{Metadata Update:} A privileged \texttt{setTokenURI()} function to allow the
-      Router to update an NFT's metadata when it is enhanced on the Game
-      Server.
-    \end{itemize}
-  \end{enumerate}
+        Receipt Confirmation: Listens for transaction confirmations from the
+        network and reports the status (success or failure) back to the
+        Router for logging.
+    \end{enumerate}
 
-\item
-  \textbf{Crypto Request Router}
+    \decimalitem{Smart Contract}
 
-  This is the primary security, queuing, and validation layer that sits
-  between the Game Server and the Blockchain API Gateway. It is the only
-  component authorized to call privileged mint or update functions on
-  the Smart Contracts.
+    These are the on-chain, deployed contracts that define the properties
+    and logic of the game's assets.
 
-  \begin{enumerate}[label=\alph*., nosep]
-  \item
-    Request Validation \& Security: Authenticates all incoming requests
-    from the Game Server (via a secure API key) to ensure they are
-    legitimate.
-  \item
-    Transaction Queuing: A persistent queue that holds all transaction
-    requests, ensuring they are processed reliably even if the Gateway
-    or blockchain is slow.
-  \item
-    Retry Logic: Manages failed transactions, automatically retrying
-    them with new gas prices or logging them for manual inspection if
-    they fail repeatedly.
-  \item
-    Prioritization: Prioritizes high-value transactions (a player
-    minting an NFT) over lower-value ones (batch-distributing BAKU
-    rewards).
-  \end{enumerate}
+    \begin{enumerate}[label=\alph*.]
+        \item
+            \textbf{BAKU (Fungible Token):} The game's primary economic token, compliant
+            with the ERC-20 standard.
 
-\item
-  \textbf{Wallet Service}
+            \begin{itemize}[nosep]
+            \item
+                \textbf{Key Functions:} Exposes standard \texttt{transfer()}, \texttt{approve()}, and
+                \texttt{balanceOf()} functions, as well as a privileged \texttt{mint()} function
+                callable only by the Crypto Request Router for distributing tokens
+                from the Baku Forge.
+            \end{itemize}
 
-  This is a dedicated service (part of the Database API or a standalone
-  microservice) that manages the secure link between a player's in-game
-  account and their external blockchain wallet.
+        \item
+            \textbf{Game Assets (Non-Fungible Token):} The contract for unique in-game
+            items (legendary equipment), compliant with the ERC-721 standard.
 
-  \begin{enumerate}[label=\alph*., nosep]
-  \item
-    Wallet Linking: Provides an endpoint for a player to link their
-    wallet address (MetaMask) to their in-game account ID in the Game
-    Database.
-  \item
-    Ownership Verification (Message Signing): Secures the linking
-    process by requiring the player to sign a unique, server-provided
-    message (a ``nonce'') with their wallet's private key. The service
-    then verifies this signature on the backend to prove ownership
-    without ever seeing the private key.
-  \item
-    Read-Only Access: Provides the Game Server with a secure way to look
-    up a player's linked wallet address for sending BAKU or NFTs.
-  \end{enumerate}
+            \begin{itemize}[nosep]
+            \item
+                \textbf{Key Functions:} Exposes standard \texttt{safeTransferFrom()} and \texttt{ownerOf()}
+                functions.
+            \item
+                \textbf{Metadata Management:} A privileged \texttt{mint()} function (callable only by
+                the Router) that creates a new token and assigns its \texttt{tokenURI}
+                (describing the item's stats).
+            \item
+                \textbf{Metadata Update:} A privileged \texttt{setTokenURI()} function to allow the
+                Router to update an NFT's metadata when it is enhanced on the Game
+                Server.
+            \end{itemize}
+    \end{enumerate}
+
+    \decimalitem{Crypto Request Router}
+
+    This is the primary security, queuing, and validation layer that sits
+    between the Game Server and the Blockchain API Gateway. It is the only
+    component authorized to call privileged mint or update functions on
+    the Smart Contracts.
+
+    \begin{enumerate}[label=\alph*., nosep]
+    \item
+        Request Validation \& Security: Authenticates all incoming requests
+        from the Game Server (via a secure API key) to ensure they are
+        legitimate.
+    \item
+        Transaction Queuing: A persistent queue that holds all transaction
+        requests, ensuring they are processed reliably even if the Gateway
+        or blockchain is slow.
+    \item
+        Retry Logic: Manages failed transactions, automatically retrying
+        them with new gas prices or logging them for manual inspection if
+        they fail repeatedly.
+    \item
+        Prioritization: Prioritizes high-value transactions (a player
+        minting an NFT) over lower-value ones (batch-distributing BAKU
+        rewards).
+    \end{enumerate}
+
+    \decimalitem{Wallet Service}
+
+    This is a dedicated service (part of the Database API or a standalone
+    microservice) that manages the secure link between a player's in-game
+    account and their external blockchain wallet.
+
+    \begin{enumerate}[label=\alph*., nosep]
+    \item
+        Wallet Linking: Provides an endpoint for a player to link their
+        wallet address (MetaMask) to their in-game account ID in the Game
+        Database.
+    \item
+        Ownership Verification (Message Signing): Secures the linking
+        process by requiring the player to sign a unique, server-provided
+        message (a ``nonce'') with their wallet's private key. The service
+        then verifies this signature on the backend to prove ownership
+        without ever seeing the private key.
+    \item
+        Read-Only Access: Provides the Game Server with a secure way to look
+        up a player's linked wallet address for sending BAKU or NFTs.
+    \end{enumerate}
+\end{decimallist}
 
 \subsection{Limitations}\label{limitations}
 
