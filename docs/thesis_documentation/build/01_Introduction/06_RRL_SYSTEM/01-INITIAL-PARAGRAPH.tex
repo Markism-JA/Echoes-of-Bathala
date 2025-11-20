@@ -316,7 +316,7 @@ Even though the bonding curve would normally issue 95 BAKU, the Adaptive Throttl
 
 \subsubsection{Sybil Defense: Daily Allowance and Fair Play Protection}
 
-Virtual economies are vulnerable to ``Sybil attacks,'' where automated scripts create thousands of accounts to drain faucets \autocite{douceur2002sybil}. However, applying harsh penalties indiscriminately would harm legitimate players. To balance this, the system implements a \textbf{Daily Wallet Allowance} \( A_{\text{daily}} \).
+Virtual economies are vulnerable to ``Sybil attacks,'' where automated scripts create thousands of accounts to drain faucets. However, applying harsh penalties indiscriminately would harm legitimate players. To balance this, the system implements a \textbf{Daily Wallet Allowance} \( A_{\text{daily}} \).
 
 The allowance is dynamically calculated using a \textbf{Game Mechanics Estimation} approach. Specifically, the average expected yield of a legitimate player \( \mu_{\text{player}} \) is computed based on the designed average rewards from normal gameplay activities (missions, quests, crafting, or staking). This value is then multiplied by a variance buffer to accommodate natural fluctuations:
 
@@ -371,15 +371,15 @@ This mechanism reduces the whale’s efficiency while leaving normal players una
 
 \subsubsection{On-Chain Treasury Stabilization}
 
-The safeguards described above feed into the On-Chain Treasury, which acts as the ``Market Maker of Last Resort'' \autocite{gonzalez2025stablecoin}. The treasury is funded by accumulated Processing Fees \( \tau \) and a portion of penalties from the Diminishing Returns system.
+The safeguards described above feed into the On-Chain Treasury, which acts as the ``Market Maker of Last Resort'' \autocite{hui2025stablecoin}. The treasury is funded by accumulated Processing Fees \( \tau \) and a portion of penalties from the Diminishing Returns system.
 
 The Treasury operates under autonomous smart contract logic to stabilize the external peg (Layer~1):
 
 \begin{enumerate}
-    \item \textbf{Buyback \& Burn:}  
+    \item \textbf{Buyback \& Burn:}
     If the external BAKU price falls below a support band (e.g., moving average minus 10\%), the Treasury uses stablecoin/POLYGON reserves to buy back BAKU and burn it.
 
-    \item \textbf{Liquidity Provision:}  
+    \item \textbf{Liquidity Provision:}
     If pool liquidity \( k \) thins, the Treasury injects Protocol-Owned Liquidity (POL), ensuring manageable slippage for new entrants.
 \end{enumerate}
 
