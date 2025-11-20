@@ -213,6 +213,176 @@ limiting the value of assets these agents can control
 faces challenges due to infrastructure constraints and skill gaps
 \autocite{Rodriguez2024}.
 
+\subsection{Coin Pricing Mechanics}
+
+To resolve the ``Death Spiral'' phenomenon common in first-generation Play-to-Earn games, where hyper-inflation collapses token value \autocite{xu2022ponzi}, this study adopts a dual-layer economic architecture. This framework separates the \textit{secondary trading market} (Public Blockchain) from the \textit{primary issuance mechanism} (Internal Game Logic), utilizing Automated Market Makers (AMMs), adaptive throttles, and granular transaction limits to synchronize value across both layers.
+
+\subsubsection{Layer 1: External Price Discovery (BAKU/POLYGON)}
+
+The external valuation of the BAKU token is determined by a public liquidity pool on the Polygon network, pairing BAKU against a liquid base settlement token (e.g., POLYGON). This pool operates on the Constant Product Market Maker (CPMM) model, a standard established by the Uniswap protocol \autocite{adams2021uniswap}.
+
+The liquidity pool is governed by the invariant equation:
+
+\begin{equation}
+    R_{\text{BAKU}} \cdot R_{\text{POLYGON}} = k
+\end{equation}
+
+where \( R \) represents the reserve quantity of each asset and \( k \) is the constant product. This mechanism ensures continuous liquidity but subjects the token to real-world market forces (volatility).
+
+\textbf{Example Calculation:}
+
+Consider a pool state where \( R_{\text{BAKU}} = 1{,}000{,}000 \) and \( R_{\text{POLYGON}} = 10{,}000 \) (so \( k = 10^{10} \)), implying a spot price of 100 BAKU per POLYGON. If an investor sells \( \Delta x = 5{,}000 \) BAKU into the pool:
+
+\begin{align*}
+    R_{\text{BAKU}}^{\text{new}} &= 1{,}000{,}000 + 5{,}000 = 1{,}005{,}000 \\
+    R_{\text{POLYGON}}^{\text{new}} &= \frac{10{,}000{,}000{,}000}{1{,}005{,}000} \approx 9{,}950.25 \\
+    \Delta y_{\text{POLYGON}} &= 10{,}000 - 9{,}950.25 = \mathbf{49.75\ \text{POLYGON}}
+\end{align*}
+
+The resulting algorithmic slippage naturally discourages massive sell-offs by imposing a higher cost on liquidity removal.
+
+\subsubsection{Layer 2: Internal Bonding Curve \& Adaptive Throttling}
+
+The internal economy governs the creation of tokens through the ``Baku Forge.'' Instead of a fixed exchange rate, the Forge utilizes a virtual Bonding Curve \autocite{titcomb2020bonding} that mimics the external market but uses off-chain resources (Perlas) as collateral. A mandatory Processing Fee \( \tau \) (e.g., \(2\text{--}5\%\)) is deducted from every transaction. This fee serves as an immediate deflationary sink and funds the On-Chain Treasury.
+
+While the Bonding Curve (internal CPMM) determines the \textit{price response per unit input}, it does \textit{not} protect the economy from:
+
+\begin{itemize}
+    \item synchronized player stampedes during sudden external price spikes,
+    \item short-term surges in farming or bot activity,
+    \item clustered minting behaviors that overwhelm the treasury’s stabilizing capacity.
+\end{itemize}
+
+The Adaptive Difficulty Throttle \( D \) tackles a different problem:  
+\textit{it shifts the entire bonding curve upward temporarily}.  
+This does not change the curve’s shape but increases its cost per output during high congestion, preventing short-term extractive bursts.
+
+\paragraph{Final Minting Formula.}
+
+\begin{equation}
+    \text{BAKU}_{\text{minted}} = 
+    \frac{\text{BondingCurveOutput}\!\left(\text{Perlas} \times (1 - \tau)\right)}{D}
+\end{equation}
+
+The difficulty multiplier scales with demand:
+
+\begin{equation}
+    D = 1 + \alpha \times \max\!\left(0,\ \frac{P_{\text{window}}}{P_{\text{target}}} - 1 \right)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item \( P_{\text{window}} \) is recent minting activity,
+    \item \( P_{\text{target}} \) is the designed equilibrium activity,
+    \item \( \alpha \) controls responsiveness.
+\end{itemize}
+
+\textbf{Example: Bonding Curve + Fee + Difficulty Throttle}
+
+Assume:
+\begin{itemize}
+    \item Player inputs \( 10{,}000 \) Perlas
+    \item Fee \( \tau = 0.05 \)
+    \item Bonding curve output is linear for simplicity:  
+          \( \text{BC}(x) = 0.01x \) BAKU
+    \item Demand is 50\% higher than target:  
+          \( \frac{P_{\text{window}}}{P_{\text{target}}} = 1.5 \)
+    \item \( \alpha = 0.6 \)
+\end{itemize}
+
+1. \textbf{Apply Processing Fee}  
+\[
+x_{\text{net}} = 10{,}000 \times (1 - 0.05) = 9{,}500
+\]
+
+2. \textbf{Bonding Curve Output}  
+\[
+\text{BC}(9{,}500) = 0.01 \times 9{,}500 = 95\ \text{BAKU}
+\]
+
+3. \textbf{Compute Difficulty Multiplier}  
+\[
+D = 1 + 0.6 \times (1.5 - 1) = 1 + 0.3 = 1.3
+\]
+
+4. \textbf{Final Minted Amount}  
+\[
+\text{BAKU}_{\text{minted}}
+= \frac{95}{1.3}
+\approx \mathbf{73.08\ BAKU}
+\]
+
+Even though the bonding curve would normally issue 95 BAKU, the Adaptive Throttle suppresses output by 23\%, absorbing short-term fluctuations and protecting the token during external price rallies. The usefulness of this regulation mechanism shines when there are hundreds of transaction occuring because of outside factor like liquidation. It helps absorb some of the market shocks.
+
+\subsubsection{Sybil Defense: Daily Allowance and Fair Play Protection}
+
+Virtual economies are vulnerable to ``Sybil attacks,'' where automated scripts create thousands of accounts to drain faucets \autocite{douceur2002sybil}. However, applying harsh penalties indiscriminately would harm legitimate players. To balance this, the system implements a \textbf{Daily Wallet Allowance} \( A_{\text{daily}} \).
+
+The allowance is dynamically calculated using a \textbf{Game Mechanics Estimation} approach. Specifically, the average expected yield of a legitimate player \( \mu_{\text{player}} \) is computed based on the designed average rewards from normal gameplay activities (missions, quests, crafting, or staking). This value is then multiplied by a variance buffer to accommodate natural fluctuations:
+
+\begin{equation}
+    A_{\text{daily}} = \mu_{\text{player}} \times 1.5
+\end{equation}
+
+where:
+
+\[
+\mu_{\text{player}} = (\text{Avg. reward per mission} \times \text{Avg. missions per day}) + \text{Passive earnings per day}
+\]
+
+This threshold ensures that 99\% of normal organic gameplay falls \textit{within} the allowance. The Diminishing Returns Function with penalty factor \( \beta \) only applies to the specific portion of the input \( x \) that exceeds this allowance.
+
+\textbf{Example Calculation:}
+
+Assume a normal player earns:
+\begin{itemize}
+    \item 50 Perlas per mission
+    \item 6 missions per day
+    \item 100 Perlas passive earnings per day
+\end{itemize}
+
+Then:
+
+\[
+\mu_{\text{player}} = 50 \times 6 + 100 = 400 \text{ Perlas/day}
+\]
+
+Applying the variance buffer:
+
+\[
+A_{\text{daily}} = 400 \times 1.5 = 600 \text{ Perlas/day}
+\]
+
+\textbf{Scenario A (Normal Player):} submits 500 Perlas.  
+Since \(500 < 600\), no penalty applies: \( x_{\text{effective}} = 500 \).
+
+\textbf{Scenario B (Whale/Bot):} submits 10{,}000 Perlas.  
+The first 600 are unpenalized; the excess 9{,}400 are reduced:
+
+\begin{align*}
+x_{\text{effective}} 
+    &= 600 + (10{,}000 - 600)^{\beta} \\
+    &= 600 + (9{,}400)^{0.85} \\
+    &\approx 600 + 2{,}933 \\
+    &\approx \mathbf{3{,}533\ \text{Eff. Perlas}}
+\end{align*}
+
+This mechanism reduces the whale’s efficiency while leaving normal players unaffected.
+
+\subsubsection{On-Chain Treasury Stabilization}
+
+The safeguards described above feed into the On-Chain Treasury, which acts as the ``Market Maker of Last Resort'' \autocite{gonzalez2025stablecoin}. The treasury is funded by accumulated Processing Fees \( \tau \) and a portion of penalties from the Diminishing Returns system.
+
+The Treasury operates under autonomous smart contract logic to stabilize the external peg (Layer~1):
+
+\begin{enumerate}
+    \item \textbf{Buyback \& Burn:}  
+    If the external BAKU price falls below a support band (e.g., moving average minus 10\%), the Treasury uses stablecoin/POLYGON reserves to buy back BAKU and burn it.
+
+    \item \textbf{Liquidity Provision:}  
+    If pool liquidity \( k \) thins, the Treasury injects Protocol-Owned Liquidity (POL), ensuring manageable slippage for new entrants.
+\end{enumerate}
+
 \subsection{Synthesis and Identification of the Research
 Gap}\label{synthesis-and-identification-of-the-research-gap}
 
@@ -276,6 +446,8 @@ integration will create a more resilient and sustainable virtual economy
 by technically mitigating inflationary pressures while sociologically
 cultivating a player base motivated by intrinsic engagement and cultural
 identity, rather than short-term financial extraction.
+
+
 
 \begin{figure}[H]
 \centering
