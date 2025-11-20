@@ -4,20 +4,20 @@ This study aims to overcome the fundamental challenges preventing sustainable We
 
 ### General Objective
 
-**The main objective of this study is to design and develop a desktop-based Massively Multiplayer Online Role-Playing Game (MMORPG) that synergizes blockchain-based asset management with a culturally immersive narrative rooted in Philippine folklore.**
+The main objective of this study is to design and develop **Echoes of Bathala Online**, a blockchain-integrated desktop-based MMORPG that addresses the major limitations of current Web3 games by establishing a **sustainable token economy**, fostering **intrinsic player engagement**, and implementing a **secure hybrid architecture**, all within a culturally immersive narrative world inspired by Filipino mythology.
 
-The core purpose is to utilize the unique and untapped narrative potential of Filipino Mythology in constructing the foundational lore and world of the Web3 MMORPG prototype. This initiative aims to address the prevailing "content void" in the current Web3 gaming landscape, which often prioritizes speculative tokenomics over gameplay depth. By weaving the rich local legends, mythological creatures, and cultural customs into the game’s core environment, the study seeks to establish a powerful narrative. This depth is intended to shift the player experience from purely extrinsic financial incentives to intrinsic motivation, encouraging users to engage with the game for its immersive storytelling, cultural resonance, and world-building quality.
+This objective seeks to overcome the prevailing instability, speculative behavior, and weak cultural grounding found in existing Web3 MMORPGs by leveraging the rich and untapped storytelling traditions of Philippine folklore. Through deeply integrating mythological lore, world-building, and narrative-driven mechanics, the study aims to shift player motivation away from purely profit-oriented participation toward meaningful engagement rooted in cultural resonance, immersive storytelling, and long-term community involvement.
 
 ### Specific Objectives
 
 1. **To architect a programmatically stabilized dual-token economy**
 
-with integrated Automated Market Maker (AMM), adaptive throttling mechanisms, and automated sinks for "Perlas" (in-game currency) and "Baku Coin" (blockchain token), directly addressing unchecked hyperinflation from poorly balanced tokenomics.
+    Develop a balanced economic system that regulates the flow of **Perlas** (in-game currency) and **Baku Coin** (blockchain token) using Automated Market Maker (AMM) logic, adaptive macroeconomic throttling, and automated token sinks to prevent hyperinflation, mitigate speculative exploitation, and sustain long-term economic stability.
 
 2. **To implement gameplay-driven economic mechanics**
 
-that intrinsically link combat, crafting, and exploration systems to token utility and consumption, creating diverse participation rewards that counter the speculator mindset and build community resilience.
+    Design gameplay mechanics—such as combat, crafting, exploration, and narrative quests inspired by Filipino mythology—that naturally drive token utility and consumption, reducing reliance on profit-driven behavior and fostering intrinsic motivation, cultural immersion, and lasting community engagement.
 
 3. **To engineer a secure hybrid technical infrastructure**
 
-utilizing dedicated game servers, custom ERC-20/721 smart contracts on Polygon network, and robust data synchronization bridges that eliminate systemic vulnerabilities in the centralized-decentralized architecture.
+    Build a robust technical infrastructure that integrates a centralized MMORPG game server with decentralized blockchain components through custom ERC-20/721 smart contracts, secure data-synchronization bridges, and optimized communication layers, thereby minimizing systemic vulnerabilities and ensuring a seamless user experience.
