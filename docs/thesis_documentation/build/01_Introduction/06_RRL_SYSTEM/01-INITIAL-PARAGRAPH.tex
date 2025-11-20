@@ -236,7 +236,7 @@ Consider a pool state where \( R_{\text{BAKU}} = 1{,}000{,}000 \) and \( R_{\tex
 \begin{align*}
     R_{\text{BAKU}}^{\text{new}} &= 1{,}000{,}000 + 5{,}000 = 1{,}005{,}000 \\
     R_{\text{POLYGON}}^{\text{new}} &= \frac{10{,}000{,}000{,}000}{1{,}005{,}000} \approx 9{,}950.25 \\
-    \Delta y_{\text{POLYGON}} &= 10{,}000 - 9{,}950.25 = \mathbf{49.75\ \text{POLYGON}}
+    \Delta y_{\text{POLYGON}} &= 10{,}000 - 9{,}950.25 = 49.75\ \text{POLYGON}
 \end{align*}
 
 The resulting algorithmic slippage naturally discourages massive sell-offs by imposing a higher cost on liquidity removal.
@@ -309,16 +309,16 @@ D = 1 + 0.6 \times (1.5 - 1) = 1 + 0.3 = 1.3
 \[
 \text{BAKU}_{\text{minted}}
 = \frac{95}{1.3}
-\approx \mathbf{73.08\ BAKU}
+\approx 73.08\ BAKU
 \]
 
 Even though the bonding curve would normally issue 95 BAKU, the Adaptive Throttle suppresses output by 23\%, absorbing short-term fluctuations and protecting the token during external price rallies. The usefulness of this regulation mechanism shines when there are hundreds of transaction occuring because of outside factor like liquidation. It helps absorb some of the market shocks.
 
 \subsubsection{Sybil Defense: Daily Allowance and Fair Play Protection}
 
-Virtual economies are vulnerable to ``Sybil attacks,'' where automated scripts create thousands of accounts to drain faucets. However, applying harsh penalties indiscriminately would harm legitimate players. To balance this, the system implements a \textbf{Daily Wallet Allowance} \( A_{\text{daily}} \).
+Virtual economies are vulnerable to ``Sybil attacks,'' where automated scripts create thousands of accounts to drain faucets. However, applying harsh penalties indiscriminately would harm legitimate players. To balance this, the system implements a Daily Wallet Allowance \( A_{\text{daily}} \).
 
-The allowance is dynamically calculated using a \textbf{Game Mechanics Estimation} approach. Specifically, the average expected yield of a legitimate player \( \mu_{\text{player}} \) is computed based on the designed average rewards from normal gameplay activities (missions, quests, crafting, or staking). This value is then multiplied by a variance buffer to accommodate natural fluctuations:
+The allowance is dynamically calculated using a Game Mechanics Estimation approach. Specifically, the average expected yield of a legitimate player \( \mu_{\text{player}} \) is computed based on the designed average rewards from normal gameplay activities (missions, quests, crafting, or staking). This value is then multiplied by a variance buffer to accommodate natural fluctuations:
 
 \begin{equation}
     A_{\text{daily}} = \mu_{\text{player}} \times 1.5
