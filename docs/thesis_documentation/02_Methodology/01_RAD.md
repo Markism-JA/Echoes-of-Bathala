@@ -1,10 +1,12 @@
 # Methodology
 
-This section articulates the systematic approach and technical architecture driving the development of "Echoes of Bathala Online", defining the specific development strategy and lifecycle planning adopted. It exhibits the technical specification by enumerating the required hardware and software. Furthermore, the methodology includes budgetary estimates of the project and to visualize the proposed system, graphic representation such as a high-level conceptual framework and data flow diagram illustrates the processes and data movement across the proposed software architecture.
+This section articulates the systematic approach and technical architecture driving the development of "Echoes of Bathala Online", defining the specific development strategy and lifecycle planning adopted. It exhibits the technical specification by enumerating the required hardware and software. Furthermore, the methodology includes budgetary estimates of the project. To visualize the proposed system, graphic representation such as a high-level conceptual framework and data flow diagram illustrates the processes and data movement across the proposed software architecture.
 
 ![Rapid Application Development](/docs/thesis_documentation/assets/rapid-application-development.png)
 
-Rapid Application Development (RAD) is an adaptive software development methodology that that emphasizes rapid prototyping, iterative development, and substantial user involvement to accelerate the delivery of a quality, functional software product. As such, its implementation to the development of Echoes of Bathala Online because of the constraint on time and resources for the project. By facilitating continuous user feedback throughout the development process, RAD allows the identification and refinement of the system requirements minimizing the risk of costly redesigns. Additionally, the fast-moving development cycles will enable the project team to implement the core functionalities in order to deliver a playable software product on time.
+Rapid Application Development (RAD) is an adaptive software development methodology that that emphasizes rapid prototyping, iterative development, and substantial user involvement to accelerate the delivery of a quality, functional software product. 
+
+Its implementation is critical to the development of "Echoes of Bathala Online" due to the high complexity of integrating two distinct systems: a real-time Unity game engine and an asynchronous Blockchain network. By facilitating continuous feedback, RAD allows for the early detection of "race conditions" between game logic and smart contracts, minimizing the risk of costly redesigns. Additionally, the fast-moving development cycles enable the project team to implement core functionalities to deliver a playable software product within the academic timeframe.
 
 1. **Requirements Planning**
 
