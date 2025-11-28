@@ -3,7 +3,7 @@ name: LaTeX Thesis Compilation
 on:
   push:
     branches:
-      - master
+      - feat/latex-compile
     paths:
       - 'docs/thesis_documentation/**.tex'
       - 'docs/thesis_documentation/**.bib'
