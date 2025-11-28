@@ -26,4 +26,11 @@ To start development clone this repo.
 git clone https://github.com/Markism-JA/Echoes-of-Bathala.git
 ```
 
+Software Dependency in Development:
+
+General
+
+- Git
+- Git LFS
+
 [Project Documentation](https://markism-ja.github.io/Echoes-of-Bathala/)

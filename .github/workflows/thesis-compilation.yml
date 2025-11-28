@@ -17,15 +17,20 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          lfs: true 
+
+      - name: Pull LFS Assets
+        run: git lfs pull
 
       - name: Set up TeX Live, Tools, and Compile
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           working_directory: docs/thesis_documentation/
-
           root_file: main.tex
           compiler: latexmk
           latexmk_use_lualatex: true
+
           extra_system_packages: msttcorefonts-installer
           pre_compile: >
             tlmgr update --self && 
@@ -38,3 +43,4 @@ jobs:
         with:
           name: thesis-pdf
           path: docs/thesis_documentation/main.pdf
+          retention-days: 14
