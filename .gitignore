@@ -2,3 +2,28 @@
 .obsidian/
 site/
 *.txt
+
+# OS or Global
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors
+.vs/
+.vscode/
+*.user/
+*.userprefs/
+*.suo
+*.cache
+*.pidb
+*.pdb
+*.mdb
+
+# jetbrains user specific
+*.DotSettings.user
+
+# logs
+*.log
+npm-debug.log*
+yarn-error.log*
