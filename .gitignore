@@ -27,3 +27,7 @@ Desktop.ini
 *.log
 npm-debug.log*
 yarn-error.log*
+
+# Ignore ParrelSync clones
+*_clone
+*_clone_*
