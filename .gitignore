@@ -1,7 +1,6 @@
 .venv/
 .obsidian/
 site/
-*.txt
 
 # OS or Global
 .DS_Store
