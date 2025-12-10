@@ -1,0 +1,16 @@
+[Bb]in/
+[Oo]bj/
+
+*.user
+*.userosscache
+*.sln.docstates
+
+## NuGet (Package Management)
+project.assets.json
+project.nuget.cache
+*.nuget.g.props
+*.nuget.g.targets
+*.nuget.dgspec.json
+
+appsettings.Local.json
+appsettings.*.local.json

@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5302641A-56E7-4045-A2E9-6F68BFA3A673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBackend.API", "src\GameBackend.API\GameBackend.API.csproj", "{5A56B052-2B27-4BA3-87E1-C4EBEBA8DAE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBackend.Core", "src\GameBackend.Core\GameBackend.Core.csproj", "{84421842-20F1-43E2-A1AD-792DC7C15FE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBackend.Infra", "src\GameBackend.Infra\GameBackend.Infra.csproj", "{53628EC9-C0DA-463E-B72C-C37F41261B44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBackend.Worker", "src\GameBackend.Worker\GameBackend.Worker.csproj", "{2A1F3341-B970-49F6-9547-CF458D3F3032}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2207813E-5E6A-4625-AD05-1BBF47FAD1C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBackend.Tests", "tests\GameBackend.Tests\GameBackend.Tests.csproj", "{489017C0-CDB2-48D9-9B54-9CDA463AE0DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A56B052-2B27-4BA3-87E1-C4EBEBA8DAE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A56B052-2B27-4BA3-87E1-C4EBEBA8DAE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A56B052-2B27-4BA3-87E1-C4EBEBA8DAE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A56B052-2B27-4BA3-87E1-C4EBEBA8DAE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84421842-20F1-43E2-A1AD-792DC7C15FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84421842-20F1-43E2-A1AD-792DC7C15FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84421842-20F1-43E2-A1AD-792DC7C15FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84421842-20F1-43E2-A1AD-792DC7C15FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53628EC9-C0DA-463E-B72C-C37F41261B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53628EC9-C0DA-463E-B72C-C37F41261B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53628EC9-C0DA-463E-B72C-C37F41261B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53628EC9-C0DA-463E-B72C-C37F41261B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A1F3341-B970-49F6-9547-CF458D3F3032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A1F3341-B970-49F6-9547-CF458D3F3032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A1F3341-B970-49F6-9547-CF458D3F3032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A1F3341-B970-49F6-9547-CF458D3F3032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489017C0-CDB2-48D9-9B54-9CDA463AE0DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489017C0-CDB2-48D9-9B54-9CDA463AE0DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489017C0-CDB2-48D9-9B54-9CDA463AE0DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489017C0-CDB2-48D9-9B54-9CDA463AE0DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A56B052-2B27-4BA3-87E1-C4EBEBA8DAE6} = {5302641A-56E7-4045-A2E9-6F68BFA3A673}
+		{84421842-20F1-43E2-A1AD-792DC7C15FE7} = {5302641A-56E7-4045-A2E9-6F68BFA3A673}
+		{53628EC9-C0DA-463E-B72C-C37F41261B44} = {5302641A-56E7-4045-A2E9-6F68BFA3A673}
+		{2A1F3341-B970-49F6-9547-CF458D3F3032} = {5302641A-56E7-4045-A2E9-6F68BFA3A673}
+		{489017C0-CDB2-48D9-9B54-9CDA463AE0DF} = {2207813E-5E6A-4625-AD05-1BBF47FAD1C9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-GameBackend.Worker-07db6e53-074d-46d0-9450-25f6ab0161e2</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameBackend.Core\GameBackend.Core.csproj" />
+    <ProjectReference Include="..\GameBackend.Infra\GameBackend.Infra.csproj" />
+  </ItemGroup>
+</Project>
