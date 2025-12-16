@@ -9,6 +9,7 @@ ehthumbs.db
 Desktop.ini
 
 # Editors
+.idea/
 .vs/
 .vscode/
 *.user/
