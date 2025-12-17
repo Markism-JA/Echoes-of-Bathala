@@ -1,0 +1,8 @@
+{
+  "name": "com.echoes.shared",
+  "version": "1.0.0",
+  "displayName": "Echoes Shared Logic",
+  "description": "Shared DTOs and Enums for Echoes of Bathala",
+  "unity": "2022.3",
+  "dependencies": {}
+}
