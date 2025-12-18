@@ -65,9 +65,9 @@
 
 ## Timeline
 
-- Rules
-- Quick links
-  - Functional Requirements
-  - Setup
-  - Testing
-  - Dependency
+[Development Execution Plan](https://drive.google.com/file/d/1qVKfzZTCYacYxvLfTUYaedTA31zdUtcC/view?usp=sharing)
+
+## To start follow the following
+
+- [Development Guideline](development-guide.md)
+- [Documentation Guideline](documentation-guide.md)
