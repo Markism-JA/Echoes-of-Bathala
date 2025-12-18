@@ -233,3 +233,56 @@ volta list
 
 !!! success "Project Pinned"
     You should see the **project-pinned** Node.js and npm versions marked as active. Volta automatically switches versions when you `cd` into the project folder.
+
+---
+
+### .NET 8 SDK
+
+Required for the backend services. We strictly use **.NET 8** for this project.
+
+#### 1. Install SDK
+
+```powershell
+winget install Microsoft.DotNet.SDK.8
+
+```
+
+#### 2. Verify Installation
+
+Navigate to the backend directory and restore dependencies to ensure the SDK is correctly recognized.
+
+```powershell
+# Navigate to backend
+cd backend/
+
+# Restore dependencies
+dotnet restore
+
+```
+
+!!! success "Restore Completed"
+    If successful, the command will output "Restore completed" or "All projects are up-to-date."
+
+---
+
+### Unity
+
+The game client and simulation engine run on **Unity 6**.
+
+#### 1. Install Unity Hub
+
+```powershell
+winget install Unity.UnityHub
+
+```
+
+#### 2. Install Unity 6 LTS
+
+1. Launch **Unity Hub**.
+2. Go to the **Installs** tab.
+3. Click **Install Editor**.
+4. Select **Unity 6 (LTS)** from the "Official Releases" list.
+5. Click **Install**.
+
+!!! tip "Modules"
+    When prompted for modules, ensure **Windows Build Support** (IL2CPP) is selected.
