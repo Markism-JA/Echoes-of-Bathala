@@ -2,41 +2,200 @@
 
 ## Setup
 
-### Dependency
+### Dependencies
 
-- SSH: For authentication and deployment
-- GIT: For version control
-- GitHub CLI: Project and developer suite management
-- Dotnet: Backend
-- Unity: Game Client and Simulation (Service 1)
-- Docker: Containerization for deployment and testing
-- Hardhat: Smart Contract writing and simulating Testnet
-- Volta: Manages NodeJS package.
+* **SSH** — Authentication and deployment
+* **Git** — Version control
+* **GitHub CLI** — Project and developer suite management
+* **.NET** — Backend
+* **Unity** — Game client and simulation (Service 1)
+* **Docker** — Containerization for deployment and testing
+* **Hardhat** — Smart contract development and local testnet simulation
+* **Volta** — Node.js toolchain and version management
 
-#### Editor
+---
 
-You can use what suits you however it must meet the following:
+### Editor Requirements
 
-- General editor for writing documentation and managing codebase.
-- For developing the smart contract it must have an LSP (Plugin) for Solidity and Typescript.
-- Good integration with Unity for writing script.
-- For Backend, you need an editor with great support for C# language features.
+You may use any editor as long as it meets the following requirements:
 
-```markdown
-Ex. Lead Dev's
-- General Editor: Neovim (Lazyvim distribution) with customized configurations.
-- Smart Contract: Neovim or Vscode
-- Unity Scripts: Rider
-- Backend: Nvim and Rider
+* General-purpose editor for documentation and codebase management.
+* **Solidity + TypeScript LSP support** for smart contract development.
+* **Good Unity integration** for writing and debugging scripts.
+* **Strong C# language support** for backend development.
+
+**Example (Lead Developer Setup):**
+
+* **General Editor:** Neovim (LazyVim distribution)
+* **Smart Contracts:** Neovim or VS Code
+* **Unity Scripts:** JetBrains Rider
+* **Backend:** Neovim and Rider
+
+!!! danger "Visual Studio Support"
+    If you choose to use **Visual Studio**, setup and usage are **unsupported** in this guide. This is due to specific project configurations that favor Rider or Neovim/LSP workflows.
+
+---
+
+## Setup Instructions
+
+!!! info "Terminal Requirement"
+    Run all commands using **PowerShell** unless stated otherwise. You **must** restart PowerShell after any step involving an installation to refresh your environment variables (`$PATH`).
+
+### Git
+
+Documentation: [https://git-scm.com/docs/git](https://git-scm.com/docs/git)
+
+#### 1. Install & Identity
+
+```powershell
+winget install Git.Git
+git config --global user.name "your_name"
+git config --global user.email "your_email@example.com"
+git config --global init.defaultBranch main
+
 ```
 
-> [!NOTE]
-> If you choose to go with Visual Studio. I have no idea how that works, so you're on your own.
+#### 2. Set Default Editor
 
-#### Instructions
+The editor must be lightweight and invokable from the terminal. **Avoid heavy IDEs** like Visual Studio or Rider for Git operations.
 
-##### GitHub CLI
+```powershell
+# Example for VS Code
+git config --global core.editor "code --wait"
 
-```pwsh
-winget install GIT
 ```
+
+#### 3. Advanced Configuration
+
+Ensures linear history and auto-stashes local changes during rebase.
+
+```powershell
+git config --global pull.rebase true
+git config --global rebase.autoStash true
+
+```
+
+#### 4. Enable SSH Commit Signing
+
+!!! note "Why sign commits"
+    Signing keys verify commit authorship. Without signing, anyone can spoof your identity by simply matching your email address in their local config.
+
+```powershell
+# Use SSH for signing
+git config --global gpg.format ssh
+
+# Point to your public key (Adjust path if not using default)
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+
+# Sign commits by default
+git config --global commit.gpgsign true
+
+```
+
+---
+
+### GitHub & GitLab CLI
+
+#### 1. Installation
+
+```powershell
+winget install GitHub.cli
+winget install GLab.GLab
+
+```
+
+#### 2. Authentication
+
+!!! warning "GitLab Access"
+    Before authenticating GitLab, ensure you have created an account and contacted the **Lead Developer** to be added to the project organization.
+
+```powershell
+gh auth login
+glab auth login
+
+```
+
+---
+
+### SSH Key Setup
+
+#### 1. Generate Key
+
+```powershell
+ssh-keygen -t ed25519 -C "username@device"
+
+```
+
+???+ abstract "SSH File Locations"
+    By default, keys are generated in `~/.ssh/` (On Windows, this is `C:\Users\YourName\.ssh\`).
+
+* **Private key:** `id_ed25519` (NEVER SHARE THIS)
+* **Public key:** `id_ed25519.pub` (This is the one you upload)
+
+#### 2. Register Keys
+
+```powershell
+# GitHub Signing Key
+gh ssh-key add ~/.ssh/id_ed25519.pub --type signing --title "username@device"
+
+# GitHub Auth Key
+gh ssh-key add ~/.ssh/id_ed25519.pub --title "username@device"
+
+# GitLab (Uses one key for both)
+glab ssh-key add ~/.ssh/id_ed25519.pub --title "username@device"
+
+```
+
+#### 3. Configure SSH Config
+
+You must manually create or edit the file at `~/.ssh/config` to ensure SSH knows which key to use for which service.
+
+```ssh
+Host github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+
+Host gitlab.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+
+```
+
+---
+
+### Docker
+
+!!! warning "BIOS Requirement"
+    Ensure **Virtualization (VT-x / AMD-V)** is enabled in your BIOS settings before installation. Docker Desktop will fail to start without it.
+
+```powershell
+winget install Docker.DockerDesktop
+
+```
+
+---
+
+### Volta (Node.js Management)
+
+Volta pins Node.js versions to the project, preventing "it works on my machine" issues.
+
+#### 1. Install & Pin
+
+```powershell
+winget install Volta.Volta
+# RESTART TERMINAL HERE
+volta install node
+
+```
+
+#### 2. Verify Toolchain
+
+Inside the `blockchain` directory of the repo, run:
+
+```powershell
+volta list
+
+```
+
+!!! success "Project Pinned"
+    You should see the **project-pinned** Node.js and npm versions marked as active. Volta automatically switches versions when you `cd` into the project folder.
