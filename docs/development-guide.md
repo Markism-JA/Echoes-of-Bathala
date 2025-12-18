@@ -45,7 +45,7 @@ You may use any editor as long as it meets the following requirements:
 
 Documentation: [https://git-scm.com/docs/git](https://git-scm.com/docs/git)
 
-#### 1. Install & Identity
+#### 1. Install & Setup Identity
 
 ```powershell
 winget install Git.Git
@@ -84,13 +84,31 @@ git config --global rebase.autoStash true
 # Use SSH for signing
 git config --global gpg.format ssh
 
-# Point to your public key (Adjust path if not using default)
-git config --global user.signingkey ~/.ssh/id_ed25519.pub
-
 # Sign commits by default
 git config --global commit.gpgsign true
 
 ```
+
+---
+
+### Git Large File Storage (LFS)
+
+Git LFS is required for handling large binary assets such as Unity files, textures, audio, and other non-text resources. This prevents repository bloat and keeps clone/pull operations fast.
+
+#### 1. Initialize
+
+```powershell
+git lfs install
+```
+
+#### 2. Verify
+
+```powershell
+git lfs ls-files
+```
+
+!!! note
+    This should list all the binary file tracked by Git LFS.
 
 ---
 
@@ -144,6 +162,9 @@ gh ssh-key add ~/.ssh/id_ed25519.pub --title "username@device"
 # GitLab (Uses one key for both)
 glab ssh-key add ~/.ssh/id_ed25519.pub --title "username@device"
 
+# Point Git to your public key (Adjust path if not using default)
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+
 ```
 
 #### 3. Configure SSH Config
@@ -160,6 +181,19 @@ Host gitlab.com
     IdentityFile ~/.ssh/id_ed25519
 
 ```
+
+---
+
+### Clone the Repo
+
+#### Command
+
+```powershell
+git clone https://github.com/Markism-JA/Echoes-of-Bathala
+```
+
+!!! warning
+    Without setting up Git LFS and GitLab. Cloning the repo would pull just from the GitHub repo and not include the binary Files.
 
 ---
 
