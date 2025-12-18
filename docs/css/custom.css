@@ -50,3 +50,32 @@
 .md-typeset .admonition-title {
     font-size: 1.1rem;
 }
+
+
+.md-typeset pre {
+    margin: 0.75rem 0.25rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.md-typeset pre,
+.md-typeset code {
+    font-size: 0.85em;
+}
+
+
+.md-typeset pre>code {
+    display: block;
+}
+
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 87.5%;
+    }
+
+    body {
+        font-size: 0.95rem;
+    }
+
+}
