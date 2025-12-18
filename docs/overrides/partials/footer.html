@@ -1,0 +1,123 @@
+{% import "partials/language.html" as lang with context %}
+
+<style>
+    /* 1. Main Container - Reduced top spacing */
+    .custom-footer {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--md-default-fg-color--lightest);
+    }
+
+    /* 2. Navigation Area - Slimmer profile */
+    .footer-nav {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        /* Reduced bottom margin */
+        justify-content: space-between;
+    }
+
+    /* 3. Compact Card Styling */
+    .nav-card {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        /* Much smaller padding */
+        border: 1px solid var(--md-default-fg-color--lightest);
+        border-radius: 0.25rem;
+        text-decoration: none !important;
+        background: var(--md-default-bg-color);
+        transition: border 0.2s, background 0.2s;
+        min-width: 0;
+    }
+
+    .nav-card:hover {
+        border-color: var(--md-accent-fg-color);
+        background: var(--md-accent-fg-color--transparent);
+    }
+
+    /* Text Styling - Scaled down */
+    .nav-card-content {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0.75rem;
+        overflow: hidden;
+    }
+
+    .nav-direction {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        color: var(--md-default-fg-color--light);
+        line-height: 1.2;
+    }
+
+    .nav-title {
+        font-weight: 600;
+        font-size: 0.85rem;
+        /* Smaller font */
+        color: var(--md-default-fg-color);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .nav-card.next {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    /* 4. Copyright - High Contrast */
+    .footer-meta {
+        text-align: center;
+        font-size: 0.75rem;
+        /* Using standard color for better visibility, slightly dimmed via opacity */
+        color: var(--md-default-fg-color);
+        opacity: 0.7;
+        padding-bottom: 2rem;
+    }
+</style>
+
+<footer class="md-footer custom-footer">
+    <div class="md-grid">
+
+        {% if page.previous_page or page.next_page %}
+        <nav class="footer-nav">
+
+            {% if page.previous_page %}
+            <a href="{{ page.previous_page.url | url }}" class="nav-card prev">
+                <span class="md-icon" style="transform: scale(0.8);"> {% include ".icons/material/arrow-left.svg" %}
+                </span>
+                <div class="nav-card-content">
+                    <span class="nav-direction">{{ lang.t("footer.previous") }}</span>
+                    <span class="nav-title">{{ page.previous_page.title }}</span>
+                </div>
+            </a>
+            {% else %}
+            <div style="flex: 1;"></div>
+            {% endif %}
+
+            {% if page.next_page %}
+            <a href="{{ page.next_page.url | url }}" class="nav-card next">
+                <div class="nav-card-content">
+                    <span class="nav-direction">{{ lang.t("footer.next") }}</span>
+                    <span class="nav-title">{{ page.next_page.title }}</span>
+                </div>
+                <span class="md-icon" style="transform: scale(0.8);"> {% include ".icons/material/arrow-right.svg" %}
+                </span>
+            </a>
+            {% else %}
+            <div style="flex: 1;"></div>
+            {% endif %}
+
+        </nav>
+        {% endif %}
+
+        <div class="footer-meta">
+            {% if config.copyright %}
+            {{ config.copyright }}
+            {% endif %}
+        </div>
+
+    </div>
+</footer>
