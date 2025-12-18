@@ -52,4 +52,9 @@
 
 .md-typeset th {
     background-color: var(--md-code-bg-color);
+    font-size: 0.8rem;
+}
+
+.md-grid {
+    max-width: 1900px;
 }
