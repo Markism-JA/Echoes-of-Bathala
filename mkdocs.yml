@@ -14,12 +14,13 @@ theme:
     - navigation.top
     - search.suggest
     - content.tabs.link
+    - content.code.copy
 
   palette:
     - media: "(prefers-color-scheme: light)"
-      scheme: default 
+      scheme: default
       toggle:
-        icon: material/brightness-7 
+        icon: material/brightness-7
         name: Switch to dark mode
 
     - media: "(prefers-color-scheme: dark)"
@@ -39,12 +40,15 @@ markdown_extensions:
       permalink: true
   - footnotes
   - def_list
+  - admonition
   - attr_list
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
 
 extra_css:
   - css/custom.css
