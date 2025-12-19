@@ -263,6 +263,17 @@ dotnet restore
 !!! success "Restore Completed"
     If successful, the command will output "Restore completed" or "All projects are up-to-date."
 
+#### 3. .NET Tools
+
+All dotnet tools are localized in the root of the repo in `.config/dotnet-tools.json`. To restore in local dev environment run:
+
+```powershell
+dotnet tool restore
+```
+
+!!! success "Restore Completed"
+    If successful, the command will list all tools available and output "Restore was successful.".
+
 ---
 
 ### Unity
@@ -286,3 +297,16 @@ winget install Unity.UnityHub
 
 !!! tip "Modules"
     When prompted for modules, ensure **Windows Build Support** (IL2CPP) is selected.
+
+#### 3. Restore package for unity
+
+!!! info
+    Unity does not handle Nuget packages on its own so we are using [NugetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) as a tool for managing dependencies we need. `NugetForUnity` is available both as a CLI tool `dotnet nugetforunity` and a plugin in Unity Editor.
+
+Before opening the project in Unity Editor run at project root:
+
+```powershell
+dotnet nugetforunity restore /unity/Echoes-of-Bathala
+```
+
+Were going to use NugetForUnity mainly in Service 1 (Game Server).
