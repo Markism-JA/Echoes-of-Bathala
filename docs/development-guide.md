@@ -89,6 +89,15 @@ git config --global commit.gpgsign true
 
 ```
 
+#### 5. Verify
+
+```powershell
+git config --list --show-origin
+```
+
+!!! note
+    This should show the configuration you just made.
+
 ---
 
 ### Git Large File Storage (LFS)
@@ -181,6 +190,19 @@ Host gitlab.com
     IdentityFile ~/.ssh/id_ed25519
 
 ```
+
+#### 4. Verify
+
+```powershell
+ssh -T git@gitlab.com
+```
+
+```powershell
+ssh -T git@github.com
+```
+
+!!! success
+    If successful, the command will return a welcome or successful message.
 
 ---
 
