@@ -104,11 +104,11 @@ git lfs install
 #### 2. Verify
 
 ```powershell
-git lfs ls-files
+git lfs --version
 ```
 
 !!! note
-    This should list all the binary file tracked by Git LFS.
+    This should show the version.
 
 ---
 
@@ -186,7 +186,7 @@ Host gitlab.com
 
 ### Clone the Repo
 
-#### Command
+#### 1. Cloning
 
 ```powershell
 git clone https://github.com/Markism-JA/Echoes-of-Bathala
@@ -195,6 +195,14 @@ git clone https://github.com/Markism-JA/Echoes-of-Bathala
 !!! warning
     Without setting up Git LFS and GitLab. Cloning the repo would pull just from the GitHub repo and not include the binary Files.
 
+#### 2. Verify binary files
+
+```powershell
+git lfs ls-files
+```
+
+!!! note
+    This should list all the binary file tracked by Git LFS
 ---
 
 ### Docker
@@ -272,7 +280,7 @@ dotnet tool restore
 ```
 
 !!! success "Restore Completed"
-    If successful, the command will list all tools available and output "Restore was successful.".
+    If successful, the command will list all tools available and output "Restore was successful."
 
 ---
 
