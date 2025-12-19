@@ -178,7 +178,7 @@ git config --global user.signingkey ~/.ssh/id_ed25519.pub
 
 #### 3. Configure SSH Config
 
-You must manually create or edit the file at `~/.ssh/config` to ensure SSH knows which key to use for which service.
+You must manually create or edit the file at `~/.ssh/config` to ensure SSH knows which key to use for which service. Copy the following to `~/.ssh/config`:
 
 ```ssh
 Host github.com
