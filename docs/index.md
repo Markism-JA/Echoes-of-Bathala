@@ -63,6 +63,18 @@
     └── hardhat.config.ts
 ```
 
+### Dependencies
+
+| Directory / Project | Role | Depends On (References) | Why? |
+| --- | --- | --- | --- |
+| **`/backend/src/GameBackend.Shared`** | **The Dictionary** | *None* (Leaf Node) | Contains DTOs, Enums, Constants used by everyone. |
+| **`/backend/src/GameBackend.Core`** | **Domain Logic** | `Shared` | Uses Enums to define Entities and Interfaces. |
+| **`/backend/src/GameBackend.Infra`** | **External Tools** | `Core`, `Shared` | Implements Repo interfaces from Core; uses Shared types. |
+| **`/backend/src/GameBackend.API`** | **Web Service** | `Core`, `Infra`, `Shared` | Orchestrates the app; Inject dependencies. |
+| **`/backend/src/GameBackend.Worker`** | **Background Svc** | `Core`, `Infra`, `Shared` | Executes domain logic triggered by events. |
+| **`/unity`** | **Game Client & Server** | `Shared` (via csproj ref) | Needs DTOs to talk to API; Enums for game logic. |
+| **`/blockchain`** | **Smart Contracts** | *None* | Independent TS/Solidity project. |
+
 ## Timeline
 
 [Development Execution Plan](https://drive.google.com/file/d/1qVKfzZTCYacYxvLfTUYaedTA31zdUtcC/view?usp=sharing)
