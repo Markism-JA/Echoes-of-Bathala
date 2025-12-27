@@ -81,5 +81,5 @@
 
 ## To start follow the following
 
-- [Development Guideline](development-guide.md)
+- [Development Guideline](development_guide/setup.md)
 - [Documentation Guideline](documentation-guide.md)
