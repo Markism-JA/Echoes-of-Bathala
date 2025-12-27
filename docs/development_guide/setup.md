@@ -1,5 +1,3 @@
-# Development Guide
-
 ## Setup
 
 ### Dependencies

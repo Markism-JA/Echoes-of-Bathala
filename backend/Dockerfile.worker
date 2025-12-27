@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+COPY ["src/GameBackend.Worker/GameBackend.Worker.csproj", "src/GameBackend.Worker/"]
+COPY ["src/GameBackend.Shared/GameBackend.Shared.csproj", "src/GameBackend.Shared/"]
+COPY ["src/GameBackend.Core/GameBackend.Core.csproj", "src/GameBackend.Core/"]
+COPY ["src/GameBackend.Infra/GameBackend.Infra.csproj", "src/GameBackend.Infra/"]
+
+RUN dotnet restore "src/GameBackend.Worker/GameBackend.Worker.csproj"
+
+COPY . .
+
+RUN dotnet publish "src/GameBackend.Worker/GameBackend.Worker.csproj" -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "GameBackend.Worker.dll"]

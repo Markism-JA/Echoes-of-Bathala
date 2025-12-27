@@ -1,0 +1,91 @@
+version: "3.8"
+
+services:
+  # ---------------------------------------------
+  # 1. DATABASE (PostgreSQL)
+  # ---------------------------------------------
+  db:
+    image: postgres:15-alpine
+    container_name: echoes_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: echoes_bathala_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - echoes_net
+
+  # ---------------------------------------------
+  # 2. BACKEND API (Service 2)
+  # ---------------------------------------------
+  backend-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: echoes_api
+    depends_on:
+      - db
+      - blockchain
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # Connects to 'db' container
+      - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=password123
+      # Connects to 'blockchain' container
+      - BlockchainSettings__RpcUrl=http://blockchain:8545
+    ports:
+      - "5000:80"
+    networks:
+      - echoes_net
+
+  # ---------------------------------------------
+  # 3. WORKER SERVICE (Service 3)
+  # ---------------------------------------------
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.worker
+    container_name: echoes_worker
+    depends_on:
+      - db
+      - blockchain
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=password123
+      - BlockchainSettings__RpcUrl=http://blockchain:8545
+    networks:
+      - echoes_net
+
+  # ---------------------------------------------
+  # 4. BLOCKCHAIN (Hardhat)
+  # ---------------------------------------------
+  blockchain:
+    build:
+      context: ./blockchain
+    container_name: echoes_chain
+    ports:
+      - "8545:8545" # Exposed for Metamask to connect from Chrome
+    networks:
+      - echoes_net
+
+  # ---------------------------------------------
+  # 5. UNITY SERVER (Headless Linux Build)
+  # ---------------------------------------------
+  # Uncomment only after having built the Linux Server binary
+  # game-server:
+  #   build:
+  #     context: ./unity
+  #   container_name: echoes_game_server
+  #   ports:
+  #     - "7777:7777/udp"
+  #   networks:
+  #     - echoes_net
+
+volumes:
+  postgres_data:
+
+networks:
+  echoes_net:
+    driver: bridge

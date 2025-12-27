@@ -1,0 +1,6 @@
+**/.docker
+**/bin
+**/obj
+**/.git
+**/.vs
+**/TestResults
