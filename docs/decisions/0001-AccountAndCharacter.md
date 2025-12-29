@@ -1,8 +1,8 @@
 # ADR 0001 — Account and Multi-Character Feature
 
-**Date:** 2025-12-30
-**Status:** To be discussed
-**Context:**
+**Date:** 2025-12-30  
+**Status:** To be discussed  
+**Context:**  
 
 We should support multiple characters, but manage it with the following rules:
 
