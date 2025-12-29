@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameBackend.Core\GameBackend.Core.csproj" />
+    <ProjectReference Include="..\GameBackend.Shared\GameBackend.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
