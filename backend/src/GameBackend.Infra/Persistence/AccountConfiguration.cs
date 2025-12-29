@@ -9,7 +9,7 @@ namespace GameBackend.Infra.Persistence
     {
         public void Configure(EntityTypeBuilder<Account> builder)
         {
-            builder.ToTable("Players");
+            builder.ToTable("Accounts");
 
             builder.HasKey(e => e.AccountId);
             builder.Property(e => e.AccountId).HasMaxLength(36).IsFixedLength();
