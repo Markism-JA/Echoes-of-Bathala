@@ -1,4 +1,6 @@
 using GameBackend.Infra;
+using GameBackend.Infra.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<GameDbContext>();
+
+    db.Database.Migrate();
 }
 
 app.UseHttpsRedirection();
