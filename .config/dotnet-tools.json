@@ -1,20 +1,24 @@
 {
-  "version": 1,
-  "isRoot": true,
-  "tools": {
-    "nugetforunity.cli": {
-      "version": "4.5.0",
-      "commands": [
-        "nugetforunity"
-      ],
-      "rollForward": false
-    },
-    "csharpier": {
-      "version": "1.2.3",
-      "commands": [
-        "csharpier"
-      ],
-      "rollForward": false
+    "version": 1,
+    "isRoot": true,
+    "tools": {
+        "nugetforunity.cli": {
+            "version": "4.5.0",
+            "commands": [
+                "nugetforunity"
+            ]
+        },
+        "csharpier": {
+            "version": "1.2.3",
+            "commands": [
+                "csharpier"
+            ]
+        },
+        "dotnet-ef": {
+            "version": "8.0.11",
+            "commands": [
+                "dotnet-ef"
+            ]
+        }
     }
-  }
 }
