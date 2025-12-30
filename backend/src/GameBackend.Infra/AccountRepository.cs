@@ -1,6 +1,7 @@
 using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces;
 using GameBackend.Infra.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameBackend.Infra
 {
@@ -8,54 +9,59 @@ namespace GameBackend.Infra
     {
         private readonly GameDbContext _context = context;
 
-        public Task CreateAccountAsync(Account account)
+        public async Task CreateAccountAsync(Account account)
         {
-            throw new NotImplementedException();
+            await _context.Accounts.AddAsync(account);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAccountAsync(Account account)
+        public async Task DeleteAccountAsync(Account account)
         {
-            throw new NotImplementedException();
+            _context.Accounts.Remove(account);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Account?> GetByEmailAsync(string email)
+        public async Task<Account?> GetByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _context.Accounts.FirstOrDefaultAsync(a => a.Email == email);
         }
 
-        public Task<Account?> GetByIdAsync(Guid accountId)
+        public async Task<Account?> GetByIdAsync(Guid accountId)
         {
-            throw new NotImplementedException();
+            return await _context.Accounts.FindAsync(accountId);
         }
 
-        public Task<Account?> GetByUsernameAsync(string username)
+        public async Task<Account?> GetByUsernameAsync(string username)
         {
-            throw new NotImplementedException();
+            return await _context.Accounts.FirstOrDefaultAsync(a => a.Username == username);
         }
 
-        public Task<Account?> GetByWalletAddressAsync(string walletAddress)
+        public async Task<Account?> GetByWalletAddressAsync(string walletAddress)
         {
-            throw new NotImplementedException();
+            return await _context.Accounts.FirstOrDefaultAsync(a =>
+                a.LinkedWalletAddress == walletAddress
+            );
         }
 
-        public Task<bool> IsEmailTakenAsync(string email)
+        public async Task<bool> IsEmailTakenAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _context.Accounts.AnyAsync(a => a.Email == email);
         }
 
-        public Task<bool> IsUsernameTakenAsync(string username)
+        public async Task<bool> IsUsernameTakenAsync(string username)
         {
-            throw new NotImplementedException();
+            return await _context.Accounts.AnyAsync(a => a.Username == username);
         }
 
-        public Task<bool> IsWalletLinkedAsync(string walletAddress)
+        public async Task<bool> IsWalletLinkedAsync(string walletAddress)
         {
-            throw new NotImplementedException();
+            return await _context.Accounts.AnyAsync(a => a.LinkedWalletAddress == walletAddress);
         }
 
-        public Task UpdateAccountAsync(Account account)
+        public async Task UpdateAccountAsync(Account account)
         {
-            throw new NotImplementedException();
+            _context.Accounts.Update(account);
+            await _context.SaveChangesAsync();
         }
     }
 }
