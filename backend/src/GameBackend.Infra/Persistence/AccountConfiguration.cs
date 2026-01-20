@@ -11,8 +11,8 @@ namespace GameBackend.Infra.Persistence
         {
             builder.ToTable("Accounts");
 
-            builder.HasKey(e => e.AccountId);
-            builder.Property(e => e.AccountId).HasMaxLength(36).IsFixedLength();
+            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id).HasMaxLength(36).IsFixedLength();
 
             builder.HasIndex(e => e.Username).IsUnique();
             builder.Property(e => e.Username).IsRequired().HasMaxLength(32);
