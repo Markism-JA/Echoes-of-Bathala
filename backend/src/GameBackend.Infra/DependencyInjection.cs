@@ -24,7 +24,7 @@ namespace GameBackend.Infra
             services.AddDbContext<GameDbContext>(options => options.UseNpgsql(connectionString));
 
             // Auth Tool
-            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

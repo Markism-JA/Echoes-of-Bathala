@@ -2,14 +2,13 @@ using GameBackend.Shared.Enums;
 
 namespace GameBackend.Core.Entities
 {
-    public class Account
+    public class User
     {
-        // Note: Init allows for this property to be accessible only during creation.
         public required Guid Id { get; init; }
         public required string Username { get; set; }
         public required string Email { get; set; }
         public required string HashedPassword { get; set; }
-        public AccountStatus Status { get; set; } = AccountStatus.Unverified;
+        public UserStatus Status { get; set; } = UserStatus.Unverified;
         public string? LinkedWalletAddress { get; set; }
         public DateTimeOffset CreatedAt { get; init; } = DateTimeOffset.Now;
     }
