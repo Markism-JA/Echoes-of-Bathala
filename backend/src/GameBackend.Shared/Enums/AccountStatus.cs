@@ -1,6 +1,6 @@
 namespace GameBackend.Shared.Enums
 {
-    public enum AccountStatus
+    public enum UserStatus
     {
         Unverified,
         Active,

@@ -3,7 +3,7 @@ using GameBackend.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GameBackend.Infra.Persistence
+namespace GameBackend.Infra.Persistence.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
@@ -12,10 +12,9 @@ namespace GameBackend.Infra.Persistence
             builder.ToTable("Users");
 
             builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id).HasMaxLength(36).IsFixedLength();
 
-            builder.HasIndex(e => e.Username).IsUnique();
-            builder.Property(e => e.Username).IsRequired().HasMaxLength(32);
+            builder.HasIndex(e => e.UserName).IsUnique();
+            builder.Property(e => e.UserName).IsRequired().HasMaxLength(32);
 
             builder.HasIndex(e => e.Email).IsUnique();
             builder.Property(p => p.Email).IsRequired().HasMaxLength(254);
@@ -25,13 +24,13 @@ namespace GameBackend.Infra.Persistence
                 .HasConversion<int>()
                 .HasDefaultValue(UserStatus.Unverified);
 
-            builder
-                .HasIndex(e => e.LinkedWalletAddress)
-                .IsUnique()
-                .HasFilter("\"LinkedWalletAddress\" IS NOT NULL");
+            builder.HasIndex(e => e.LinkedWalletAddress).IsUnique();
             builder.Property(e => e.LinkedWalletAddress).HasMaxLength(42).IsRequired(false);
 
-            builder.Property(e => e.CreatedAt).IsRequired();
+            builder
+                .Property(e => e.CreatedAt)
+                .HasDefaultValueSql("now() at time zone 'utc'")
+                .IsRequired();
         }
     }
 }

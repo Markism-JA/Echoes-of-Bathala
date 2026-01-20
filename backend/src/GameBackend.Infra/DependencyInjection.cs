@@ -1,5 +1,7 @@
 using GameBackend.Core.Interfaces;
+using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Infra.Persistence;
+using GameBackend.Infra.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

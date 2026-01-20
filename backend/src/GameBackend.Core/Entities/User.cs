@@ -1,15 +1,18 @@
+using GameBackend.Core.Interfaces;
 using GameBackend.Shared.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace GameBackend.Core.Entities
 {
-    public class User
+    public class User : IdentityUser<Guid>, IEntity<Guid>, IAuditable, ISoftDelete
     {
-        public required Guid Id { get; init; }
-        public required string Username { get; set; }
-        public required string Email { get; set; }
         public required string HashedPassword { get; set; }
         public UserStatus Status { get; set; } = UserStatus.Unverified;
         public string? LinkedWalletAddress { get; set; }
-        public DateTimeOffset CreatedAt { get; init; } = DateTimeOffset.Now;
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
+        public ICollection<PlayerCharacter> Characters { get; set; }
     }
 }
