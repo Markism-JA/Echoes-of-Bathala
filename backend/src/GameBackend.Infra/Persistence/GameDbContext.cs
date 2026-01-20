@@ -5,7 +5,7 @@ namespace GameBackend.Infra.Persistence
 {
     public class GameDbContext(DbContextOptions<GameDbContext> options) : DbContext(options)
     {
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GameBackend.Infra.Persistence
 {
-    public class AccountConfiguration : IEntityTypeConfiguration<Account>
+    public class UserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Account> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Accounts");
+            builder.ToTable("Users");
 
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id).HasMaxLength(36).IsFixedLength();
@@ -23,7 +23,7 @@ namespace GameBackend.Infra.Persistence
             builder
                 .Property(e => e.Status)
                 .HasConversion<int>()
-                .HasDefaultValue(AccountStatus.Unverified);
+                .HasDefaultValue(UserStatus.Unverified);
 
             builder
                 .HasIndex(e => e.LinkedWalletAddress)
