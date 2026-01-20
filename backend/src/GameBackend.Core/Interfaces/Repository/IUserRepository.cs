@@ -1,18 +1,18 @@
 using GameBackend.Core.Entities;
 
-namespace GameBackend.Core.Interfaces
+namespace GameBackend.Core.Interfaces.Repository
 {
     public interface IUserRepository
     {
         // -- Reads
         Task<User?> GetByIdAsync(Guid accountId);
         Task<User?> GetByEmailAsync(string email);
-        Task<User?> GetByUsernameAsync(string username);
+        Task<User?> GetByUserNameAsync(string username);
         Task<User?> GetByWalletAddressAsync(string walletAddress);
 
         // Fast Checks
         Task<bool> IsEmailTakenAsync(string email);
-        Task<bool> IsUsernameTakenAsync(string username);
+        Task<bool> IsUserNameTakenAsync(string username);
         Task<bool> IsWalletLinkedAsync(string walletAddress);
 
         // -- Create

@@ -19,7 +19,7 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
             return new User
             {
                 UserId = Guid.NewGuid(),
-                Username = $"User{suffix}",
+                UserName = $"User{suffix}",
                 Email = $"user{suffix}@example.com",
                 HashedPassword = $"Hash{suffix}",
                 LinkedWalletAddress = $"0xWallet{suffix}",
@@ -95,7 +95,7 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
                 var result = await repository.GetByEmailAsync(account.Email);
 
                 Assert.NotNull(result);
-                Assert.Equal(account.Username, result.Username);
+                Assert.Equal(account.UserName, result.UserName);
             }
         }
 
@@ -122,9 +122,9 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
         }
 
         [Fact]
-        public async Task GetByUsernameAsync_ReturnsCorrectUser()
+        public async Task GetByUserNameAsync_ReturnsCorrectUser()
         {
-            var options = GetOptions("GetByUsername_Db");
+            var options = GetOptions("GetByUserName_Db");
             var account = CreateTestUser();
 
             using (var context = new GameDbContext(options))
@@ -136,7 +136,7 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
             using (var context = new GameDbContext(options))
             {
                 var repository = new UserRepository(context);
-                var result = await repository.GetByUsernameAsync(account.Username);
+                var result = await repository.GetByUserNameAsync(account.UserName);
 
                 Assert.NotNull(result);
                 Assert.Equal(account.UserId, result.UserId);
@@ -161,7 +161,7 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
                 var result = await repository.GetByWalletAddressAsync(account.LinkedWalletAddress!);
 
                 Assert.NotNull(result);
-                Assert.Equal(account.Username, result.Username);
+                Assert.Equal(account.UserName, result.UserName);
             }
         }
 
@@ -192,9 +192,9 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
         }
 
         [Fact]
-        public async Task IsUsernameTakenAsync_ReturnsTrue_WhenUsernameExists()
+        public async Task IsUserNameTakenAsync_ReturnsTrue_WhenUserNameExists()
         {
-            var options = GetOptions("IsUsernameTaken_Db");
+            var options = GetOptions("IsUserNameTaken_Db");
             var account = CreateTestUser();
 
             using (var context = new GameDbContext(options))
@@ -207,8 +207,8 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
             {
                 var repository = new UserRepository(context);
 
-                Assert.True(await repository.IsUsernameTakenAsync(account.Username));
-                Assert.False(await repository.IsUsernameTakenAsync("NonExistentUser"));
+                Assert.True(await repository.IsUserNameTakenAsync(account.UserName));
+                Assert.False(await repository.IsUserNameTakenAsync("NonExistentUser"));
             }
         }
 
@@ -253,7 +253,7 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
 
                 // Fetch, Modify, Update
                 var fetchedUser = await repository.GetByIdAsync(account.UserId);
-                fetchedUser!.Username = "UpdatedUser";
+                fetchedUser!.UserName = "UpdatedUser";
 
                 await repository.UpdateUserAsync(fetchedUser);
             }
@@ -262,7 +262,7 @@ namespace GameBackend.Tests.GameBackend.IntegrationTests.Infra
             using (var context = new GameDbContext(options))
             {
                 var updatedUser = await context.Users.FindAsync(account.UserId);
-                Assert.Equal("UpdatedUser", updatedUser!.Username);
+                Assert.Equal("UpdatedUser", updatedUser!.UserName);
             }
         }
     }
