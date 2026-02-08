@@ -1,21 +1,41 @@
 
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class PlayerController : MonoBehaviour 
 {
     [SerializeField] InputReader inputReader;
-    [SerializeField] private float speed = 20f;
+    public CharacterController controller;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float dashSpeed = 4f;
+    [SerializeField] private TrailRenderer trailRenderer;
     private Vector3 rotationTarget;
-
+    private Vector3 movement;
+    private bool isDashing;
+    
     void Start()
     {
         inputReader.moveEvent += HandleMove;
         inputReader.interactEvent += HandleInteract;
         inputReader.lookEvent += HandleLook;
+        inputReader.dashEvent += HandleDash;
     }
+    
     public void HandleInteract()
     {
+
+    }
+    public void HandleDash(){
+        if (!isDashing)
+        {
+            isDashing = true;
+            moveSpeed *=  dashSpeed;
+            trailRenderer.material.color = Color.red;
+            trailRenderer.emitting = true;
+            StartCoroutine(EndDashRoutine());
+        }
 
     }
     public void HandleLook(Vector2 mouseLook)
@@ -42,10 +62,23 @@ public class PlayerController : MonoBehaviour
     }
     public void HandleMove(Vector2 moveInput)
     {
-        Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
-        transform.Translate(movement * speed * Time.fixedDeltaTime);
-
+        movement = new Vector3(moveInput.x, 0f, moveInput.y);
     }
 
+    private IEnumerator EndDashRoutine()
+    {
+        float dashTime = .2f;
+        float dashCD = .25f;
+        yield return new WaitForSeconds(dashTime);
+        moveSpeed /= dashSpeed;
+        trailRenderer.emitting = false;
+        yield return new WaitForSeconds(dashCD);
+        isDashing = false;
+    }
+
+    void Update()
+    {
+        controller.Move(movement * (moveSpeed * Time.deltaTime));
+    }
 }
 
