@@ -1,10 +1,18 @@
 
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 
-public class PlayerController : MonoBehaviour 
+public struct ZoneType
+{
+    public Vector3 SafeZone;
+    public Vector3 Contested;   
+    public Vector3 Void;
+}
+
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField] InputReader inputReader;
     public CharacterController controller;
@@ -14,7 +22,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 rotationTarget;
     private Vector3 movement;
     private bool isDashing;
-    
+    private NetworkVariable<ZoneType> currentZone = new NetworkVariable<ZoneType>();
+
+
+    public ZoneType CurrentZone
+    {
+        get => currentZone.Value;
+        set => currentZone.Value = value;
+    }
+
+
     void Start()
     {
         inputReader.moveEvent += HandleMove;
@@ -76,9 +93,15 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
     }
 
-    void Update()
+    private void MoveCharacter()
     {
         controller.Move(movement * (moveSpeed * Time.deltaTime));
     }
+
+    void Update()
+    {
+        MoveCharacter();
+    }
+    
 }
 
