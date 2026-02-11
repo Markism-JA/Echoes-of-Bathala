@@ -3,56 +3,59 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerControls;
 
-[CreateAssetMenu(fileName = "New Input", menuName = "Input/InputReader")]
-public class InputReader : ScriptableObject, IPlayerActions
+namespace Project.Scripts.Client
 {
-    private PlayerControls controls;
-
-    // Public events for other scripts to subscribe to
-    public event Action<Vector2> moveEvent;
-    public event Action<Vector2> lookEvent;
-    public event Action interactEvent;
-    public event Action dashEvent;
-
-    private void OnEnable()
+    [CreateAssetMenu(fileName = "New Input", menuName = "Input/InputReader")]
+    public class InputReader : ScriptableObject, IPlayerActions
     {
-        if (controls == null)
+        private PlayerControls controls;
+
+        // Public events for other scripts to subscribe to
+        public event Action<Vector2> moveEvent;
+        public event Action<Vector2> lookEvent;
+        public event Action interactEvent;
+        public event Action dashEvent;
+
+        private void OnEnable()
         {
-            controls = new PlayerControls(); // Initialize the input actions
-            controls.Player.SetCallbacks(this); // Set this class to handle the callbacks
+            if (controls == null)
+            {
+                controls = new PlayerControls(); // Initialize the input actions
+                controls.Player.SetCallbacks(this); // Set this class to handle the callbacks
+            }
+            controls.Player.Enable(); // Enable the action map
         }
-        controls.Player.Enable(); // Enable the action map
-    }
 
-    private void OnDisable()
-    {
-        controls?.Player.Disable(); // Disable when not needed
-    }
-
-    // Implement the interface methods (called when inputs occur)
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveEvent?.Invoke(context.ReadValue<Vector2>()); // Trigger move event with input value
-    }
-
-
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        private void OnDisable()
         {
-            interactEvent?.Invoke();
+            controls?.Player.Disable(); // Disable when not needed
         }
-    }
 
-    public void OnMouseLook(InputAction.CallbackContext context)
-    {
-        if (context.performed)
+        // Implement the interface methods (called when inputs occur)
+        public void OnMove(InputAction.CallbackContext context)
         {
-            lookEvent?.Invoke(context.ReadValue<Vector2>()); // Trigger look event with input value
+            moveEvent?.Invoke(context.ReadValue<Vector2>()); // Trigger move event with input value
         }
-    }
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        dashEvent?.Invoke();
+
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                interactEvent?.Invoke();
+            }
+        }
+
+        public void OnMouseLook(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                lookEvent?.Invoke(context.ReadValue<Vector2>()); // Trigger look event with input value
+            }
+        }
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            dashEvent?.Invoke();
+        }
     }
 }
