@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -11,45 +12,74 @@ namespace Project.Scripts.Server
         [SerializeField] private float moveSpeed = 10f;
         [SerializeField] private float dashSpeed = 4f;
         [SerializeField] private TrailRenderer trailRenderer;
-        private Vector3 rotationTarget;
         private bool isDashing;
         private Vector2 moveInput;
-        private Vector2 mouseMoveInput;
+        private Vector3 rotationTarget;
+        
         private bool isMouseDown;
         [SerializeField] private CharacterController controller;
-        
-        
-        void Start()
+
+        private void Awake()
         {
+            controller = GetComponent<CharacterController>();
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            if (!IsOwner) return;
             inputReader.moveEvent += CacheMoveInput;
-            inputReader.interactEvent += InteractServerRPC;
-            inputReader.lookEvent += CacheMouseMoveInput;
-            inputReader.dashEvent += DashServerRPC;
+            inputReader.dashEvent += OnDashRequested;
+            inputReader.lookEvent += OnCharacterLookRequested;
+        }
+
+        public override void OnNetworkDespawn()
+        {
+            inputReader.moveEvent -= CacheMoveInput;
+            inputReader.dashEvent -= OnDashRequested;
+
         }
 
         private void CacheMoveInput(Vector2 clientMoveInput)
         {
             moveInput = clientMoveInput;
         }
-        
-        private void CacheMouseMoveInput(Vector2 clientMouseMoveInput)
+
+        // private void CacheMouseMoveInput(Vector2 clientMouseMoveInput)
+        // {
+        //     mouseMoveInput = clientMouseMoveInput;
+        // }
+
+        private void OnDashRequested()
         {
-            mouseMoveInput = clientMouseMoveInput;
+            if (!IsOwner) return;
+            DashServerRPC();
         }
 
-        
-        
-        [ServerRpc]
-        public void MoveServerRPC()
+        private void OnCharacterLookRequested(Vector2 mousePoint)
         {
-            Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
+            if (!IsOwner) return;
+            LookServerRPC(mousePoint);
+        }
+
+        void Update()
+        {
+            if (!IsOwner) return;
+            MoveServerRPC(moveInput);
+
+        }
+
+
+        [ServerRpc]
+        private void MoveServerRPC(Vector2 input)
+        {
+            Vector3 movement = new Vector3(input.x, 0f, input.y);
             controller.Move(movement * (moveSpeed * Time.deltaTime));
         }
-        
+
         [ServerRpc]
-        public void DashServerRPC()
+        private void DashServerRPC()
         {
-            
+
             if (!isDashing)
             {
                 isDashing = true;
@@ -59,49 +89,60 @@ namespace Project.Scripts.Server
                 StartCoroutine(EndDashRoutine());
             }
         }
-        
         [ServerRpc]
-        public void LookServerRPC()
+        private void LookServerRPC(Vector2 input)
+
         {
-            
             RaycastHit hit;
             if (Camera.main != null)
             {
-                Ray ray = Camera.main.ScreenPointToRay(mouseMoveInput);
-
+                Ray ray = Camera.main.ScreenPointToRay(input);
                 if (Physics.Raycast(ray, out hit))
                 {
                     rotationTarget = hit.point;
                 }
             }
-
             var lookPos = rotationTarget - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
-
             Vector3 aimDirection = new Vector3(rotationTarget.x, 0f, rotationTarget.z);
-
+            
             if (aimDirection != Vector3.zero)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
             }
         }
-
         [ServerRpc]
-        public void InteractServerRPC()
-        {
-            
-        }
-        
-        private IEnumerator EndDashRoutine()
-        {
-            float dashTime = .2f;
-            float dashCD = .25f;
-            yield return new WaitForSeconds(dashTime);
-            moveSpeed /= dashSpeed;
-            trailRenderer.emitting = false;
-            yield return new WaitForSeconds(dashCD);
-            isDashing = false;
+            private void InteractServerRPC()
+            {
+
+            }
+
+            private IEnumerator EndDashRoutine()
+            {
+                float dashTime = .2f;
+                float dashCD = .25f;
+                yield return new WaitForSeconds(dashTime);
+                moveSpeed /= dashSpeed;
+                trailRenderer.emitting = false;
+                yield return new WaitForSeconds(dashCD);
+                isDashing = false;
+            }
         }
     }
-}
+    //
+        // private Vector3 calculatePlayerDirection()
+        // {
+        //     RaycastHit hit;
+        //     if (Camera.main != null)
+        //     {
+        //         Ray ray = Camera.main.ScreenPointToRay(mouseMoveInput);
+        //
+        //         if (Physics.Raycast(ray, out hit))
+        //         {
+        //             return hit.point;
+        //         }
+        //     }
+        //   return new Vector3(0f, 0f, 0f);  
+        // }
+
