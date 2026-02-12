@@ -1,0 +1,47 @@
+.title {
+    width: 100px;
+    height: 50px;
+}
+
+.authTextField {
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=4cc1108e72663c3408e7ce32f405e564&type=3#Maragsa-Font");
+    flex-direction: column;
+    font-size: 24px;
+}
+
+.authTextField:focus {
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=4cc1108e72663c3408e7ce32f405e564&type=3#Maragsa-Font");
+    font-size: 24px;
+    color: black;
+}
+
+.authTextField:focus Label {
+    color: lightsalmon;
+}
+
+.rememberMeBtn:active {
+    color: greenyellow;
+}
+
+.rememberMeBtn:checked {
+    color: lightsalmon;
+}
+
+.loginBtn {
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=4cc1108e72663c3408e7ce32f405e564&type=3#Maragsa-Font");
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(22, 22, 22);
+    transition-timing-function: ease-in;
+    transition-duration: 0.67s;
+}
+
+.loginBtn:hover {
+    background-color: rgb(197, 197, 197);
+    color: rgb(31, 31, 31);
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=4cc1108e72663c3408e7ce32f405e564&type=3#Maragsa-Font");
+    font-size: 36px;
+    transition-duration: 0.67s;
+    transition-timing-function: ease;
+}

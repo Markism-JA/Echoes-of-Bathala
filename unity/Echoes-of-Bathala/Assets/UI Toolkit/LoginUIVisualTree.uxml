@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/StyleSheets/LoginUIStyle.uss?fileID=7433441132597879392&amp;guid=55c9824ac8f8d204c8af12379746fa5f&amp;type=3#LoginUIStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; height: -10%;">
+        <ui:Label text="Echoes Of Bathala" name="Title" class="title" style="height: 115px; width: 945px; font-size: 135px; -unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&amp;guid=4cc1108e72663c3408e7ce32f405e564&amp;type=3#Maragsa-Font&quot;); color: rgb(255, 255, 255); align-self: center; margin-top: 200px;" />
+        <ui:GroupBox name="LoginFormGroup" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&amp;guid=4cc1108e72663c3408e7ce32f405e564&amp;type=3#Maragsa-Font&quot;); align-self: center; width: 565px; justify-content: flex-start; align-items: stretch; flex-direction: column; color: rgb(255, 255, 255); margin-top: 100px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-left-color: rgba(255, 255, 255, 0.44); border-right-color: rgba(255, 255, 255, 0.44); border-top-color: rgba(255, 255, 255, 0.44); border-bottom-color: rgba(255, 255, 255, 0.44); border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; padding-top: 50px; padding-left: 10px; padding-bottom: 50px; padding-right: 10px;">
+            <ui:Label text="Login" name="Label" style="font-size: 36px; -unity-text-align: upper-center;" />
+            <ui:TextField label="Username" placeholder-text="Username" readonly="false" hide-mobile-input="false" class="logintextfield authtextfield authTextField" />
+            <ui:TextField label="Password" placeholder-text="Password" password="true" name="PasswordTextfield" enabled="true" class="authTextField" style="flex-direction: column; font-size: 24px;" />
+            <ui:Toggle label="Remember me?" name="RememeberMeBtn" class="rememberMeBtn" style="font-size: 24px; flex-direction: row; justify-content: flex-start; align-self: stretch; flex-wrap: nowrap; transition-duration: 0.67s;" />
+            <ui:Button text="Login" name="LoginBtn" class="loginBtn" style="font-size: 36px; margin-top: 36px;" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
