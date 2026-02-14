@@ -15,7 +15,7 @@ namespace Project.Scripts.Server
         private bool isDashing;
         private Vector2 moveInput;
         private Vector3 rotationTarget;
-        
+
         private bool isMouseDown;
         [SerializeField] private CharacterController controller;
 
@@ -89,6 +89,7 @@ namespace Project.Scripts.Server
                 StartCoroutine(EndDashRoutine());
             }
         }
+
         [ServerRpc]
         private void LookServerRPC(Vector2 input)
 
@@ -97,6 +98,7 @@ namespace Project.Scripts.Server
             if (Camera.main != null)
             {
                 Ray ray = Camera.main.ScreenPointToRay(input);
+            
                 if (Physics.Raycast(ray, out hit))
                 {
                     rotationTarget = hit.point;
@@ -106,43 +108,46 @@ namespace Project.Scripts.Server
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             Vector3 aimDirection = new Vector3(rotationTarget.x, 0f, rotationTarget.z);
-            
+
             if (aimDirection != Vector3.zero)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
             }
         }
+
         [ServerRpc]
-            private void InteractServerRPC()
-            {
+        private void InteractServerRPC()
+        {
 
-            }
-
-            private IEnumerator EndDashRoutine()
-            {
-                float dashTime = .2f;
-                float dashCD = .25f;
-                yield return new WaitForSeconds(dashTime);
-                moveSpeed /= dashSpeed;
-                trailRenderer.emitting = false;
-                yield return new WaitForSeconds(dashCD);
-                isDashing = false;
-            }
         }
-    }
+
+        private IEnumerator EndDashRoutine()
+        {
+            float dashTime = .2f;
+            float dashCD = .25f;
+            yield return new WaitForSeconds(dashTime);
+            moveSpeed /= dashSpeed;
+            trailRenderer.emitting = false;
+            yield return new WaitForSeconds(dashCD);
+            isDashing = false;
+        }
+
+    // private Vector3 calculatePlayerDirection(Vector2 mouseMoveInput)
+    // {
+    //     RaycastHit hit;
+    //     if (Camera.main != null)
+    //     {
+    //         Ray ray = Camera.main.ScreenPointToRay(mouseMoveInput);
     //
-        // private Vector3 calculatePlayerDirection()
-        // {
-        //     RaycastHit hit;
-        //     if (Camera.main != null)
-        //     {
-        //         Ray ray = Camera.main.ScreenPointToRay(mouseMoveInput);
-        //
-        //         if (Physics.Raycast(ray, out hit))
-        //         {
-        //             return hit.point;
-        //         }
-        //     }
-        //   return new Vector3(0f, 0f, 0f);  
-        // }
+    //         if (Physics.Raycast(ray, out hit))
+    //         {
+    //             return hit.point;
+    //         }
+    //     }
+    //     return rotationTarget;
+    // }
+}
+
+}
+
 
