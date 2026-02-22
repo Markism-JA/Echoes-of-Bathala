@@ -4,18 +4,25 @@
 }
 
 .authTextField {
-    color: rgb(255, 255, 255);
+    color: white;
     -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=4cc1108e72663c3408e7ce32f405e564&type=3#Maragsa-Font");
     flex-direction: column;
     font-size: 24px;
 }
 
 .authTextField:focus {
-    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=4cc1108e72663c3408e7ce32f405e564&type=3#Maragsa-Font");
+    -unity-font-definition: url("project://database/Assets/TextMesh%21Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=4cc1108e72663c3408e7ce32f405e564&type=3#Maragsa-Font");
     font-size: 24px;
     color: black;
 }
 
+.authTextField .unity-text-field__input {
+    color: black;
+}
+
+.authTextField Label{
+    color: white;
+}
 .authTextField:focus Label {
     color: lightsalmon;
 }
