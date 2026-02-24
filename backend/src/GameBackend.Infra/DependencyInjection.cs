@@ -25,8 +25,8 @@ namespace GameBackend.Infra
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GameDbContext>(options => options.UseNpgsql(connectionString));
 
-            // Auth Tool
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
 
             return services;
         }
