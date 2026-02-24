@@ -13,7 +13,13 @@ namespace GameBackend.Infra.Persistence.Repositories
             CancellationToken cancellationToken = default
         )
         {
-            return await _dbSet.FirstOrDefaultAsync(a => a.Email == email, cancellationToken);
+            if (string.IsNullOrWhiteSpace(email))
+                return null;
+
+            return await _dbSet.FirstOrDefaultAsync(
+                a => a.Email != null && a.Email.ToLower() == email.ToLower(),
+                cancellationToken
+            );
         }
 
         public async Task<User?> GetByUserNameAsync(
@@ -21,7 +27,12 @@ namespace GameBackend.Infra.Persistence.Repositories
             CancellationToken cancellationToken = default
         )
         {
-            return await _dbSet.FirstOrDefaultAsync(a => a.UserName == username, cancellationToken);
+            if (string.IsNullOrWhiteSpace(username))
+                return null;
+            return await _dbSet.FirstOrDefaultAsync(
+                a => a.UserName != null && a.UserName.ToLower() == username.ToLower(),
+                cancellationToken
+            );
         }
 
         public async Task<User?> GetByWalletAddressAsync(
@@ -29,8 +40,12 @@ namespace GameBackend.Infra.Persistence.Repositories
             CancellationToken cancellationToken = default
         )
         {
+            if (string.IsNullOrWhiteSpace(walletAddress))
+                return null;
             return await _dbSet.FirstOrDefaultAsync(
-                a => a.LinkedWalletAddress == walletAddress,
+                a =>
+                    a.LinkedWalletAddress != null
+                    && a.LinkedWalletAddress.ToLower() == walletAddress.ToLower(),
                 cancellationToken
             );
         }
