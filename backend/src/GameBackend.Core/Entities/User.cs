@@ -13,6 +13,7 @@ namespace GameBackend.Core.Entities
         public DateTime? UpdatedAt { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
-        public ICollection<PlayerCharacter> Characters { get; set; }
+        public ICollection<PlayerCharacter> Characters { get; set; } =
+            new HashSet<PlayerCharacter>();
     }
 }
