@@ -65,6 +65,16 @@ if ($Report) {
     $dotnetArgs += "XPlat Code Coverage"
     $dotnetArgs += "--results-directory"
     $dotnetArgs += $RESULTS_DIR
+
+    $runsettingsPath = Join-Path $PSScriptRoot "coverlet.runsettings"
+
+    if (Test-Path $runsettingsPath) {
+        Write-Host "Found runsettings: $runsettingsPath" -ForegroundColor DarkGray
+        $dotnetArgs += "--settings"
+        $dotnetArgs += $runsettingsPath
+    } else {
+        Write-Warning "Could not find $runsettingsPath! Coverage exclusions will not be applied."
+    }
 }
 
 Write-Host "Running: dotnet $($dotnetArgs -join ' ')" -ForegroundColor Gray
