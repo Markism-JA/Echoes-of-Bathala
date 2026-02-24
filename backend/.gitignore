@@ -16,6 +16,3 @@ appsettings.Local.json
 appsettings.*.local.json
 
 Migrations/
-
-TestResults
-coveragereport

@@ -31,3 +31,6 @@ yarn-error.log*
 # Ignore ParrelSync clones
 *_clone
 *_clone_*
+
+[Tt]est[Rr]esults
+[Cc]overage[Rr]eport

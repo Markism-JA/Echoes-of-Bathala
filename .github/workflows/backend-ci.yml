@@ -1,0 +1,78 @@
+name: Backend CI
+
+on:
+  pull_request:
+    branches: ["master"]
+    paths:
+      - "backend/**"
+
+jobs:
+  quality-and-test:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+          cache: true
+          cache-dependency-path: "backend/**/*.csproj"
+
+      - name: Restore Dependencies & Tools
+        run: |
+          dotnet restore backend/GameBackend.sln
+          dotnet tool restore
+
+      - name: Verify CSharpier Formatting
+        run: |
+          dotnet csharpier check backend/ || {
+            echo "::error title=Formatting Failed::CSharpier found layout issues. Run 'dotnet csharpier backend/' locally and commit changes."
+            exit 1
+          }
+
+      - name: Verify Code Style
+        run: |
+          dotnet format style backend/GameBackend.sln --verify-no-changes --no-restore --severity error --verbosity normal || {
+            echo "::error title=Code Style Violation::Run 'dotnet format style backend/GameBackend.sln' locally to apply fixes."
+            exit 1
+          }
+
+      - name: Verify Analyzers
+        run: |
+          dotnet format analyzers backend/GameBackend.sln --verify-no-changes --no-restore --severity error --verbosity normal || {
+            echo "::error title=Analyzer Violation::Run 'dotnet format analyzers backend/GameBackend.sln' locally to apply fixes."
+            exit 1
+          }
+
+      - name: Build
+        run: dotnet build backend/GameBackend.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test backend/GameBackend.sln --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
+
+      - name: Code Coverage Summary Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        id: coverage
+        with:
+          filename: coverage/**/coverage.cobertura.xml
+          badge: true
+          fail_below_min: true
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: false
+          indicators: true
+          output: both
+          thresholds: "70 80"
+
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
