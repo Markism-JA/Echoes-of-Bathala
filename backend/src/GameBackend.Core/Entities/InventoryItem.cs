@@ -4,7 +4,6 @@ using GameBackend.Shared.Enums;
 
 namespace GameBackend.Core.Entities
 {
-    // TODO: Further consideration given nuances like crafting (Randomly generated Attribute) and so on. Will Change
     public class InventoryItem : BaseEntity, ISoftDelete, IPlayerOwned
     {
         public int PlayerCharacterId { get; set; }

@@ -13,13 +13,9 @@ namespace GameBackend.Core.Interfaces.Repository
             CancellationToken cancellationToken = default
         );
 
-        // 2. Modifying Data
         Task AddAsync(T entity, CancellationToken cancellationToken = default);
         Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
-        // Note: Update and Remove are often synchronous because
-        // they usually just mark the state in the ChangeTracker (if using EF Core)
-        // However, keeping them async allows for flexibility in other implementations.
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
 
