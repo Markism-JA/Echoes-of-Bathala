@@ -1,6 +1,8 @@
 using GameBackend.Core.Interfaces.Repository;
+using GameBackend.Core.Interfaces.Security;
 using GameBackend.Infra.Persistence;
 using GameBackend.Infra.Persistence.Repositories;
+using GameBackend.Infra.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,10 +26,13 @@ namespace GameBackend.Infra
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GameDbContext>(options => options.UseNpgsql(connectionString));
 
+            services.AddScoped<IUsernamePolicy, UsernamePolicy>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
 
             return services;
         }
+        // NOTE: This would get complex given that there would be cases where certain services are only needed in specific projects.
+        // This should be broken down into logical SOC. In example separate Method for those in API.
     }
 }
