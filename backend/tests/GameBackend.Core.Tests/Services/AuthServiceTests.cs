@@ -88,6 +88,37 @@ namespace GameBackend.Core.Tests.Services
                 .IsEmailTakenAsync(default!, default);
         }
 
+        [Fact]
+        public async Task RegisterAsync_ShouldReturnConflict_WhenUsernameIdentitiesMatch()
+        {
+            var request = new RegisterRequestDto(
+                "Lakan_",
+                "test@email.com",
+                "Pass123!",
+                "Pass123!"
+            );
+            var normalized = "lakan";
+
+            _usernamePolicyMock
+                .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
+                .Returns(true);
+
+            _usernamePolicyMock.Normalize(request.Username).Returns(normalized);
+
+            _userRepositoryMock
+                .IsUserNameTakenAsync(normalized, Arg.Any<CancellationToken>())
+                .Returns(true);
+
+            var result = await _sut.RegisterAsync(request);
+
+            result.IsError.Should().BeTrue();
+            result.FirstError.Should().Be(GameErrors.Auth.UsernameTaken);
+
+            await _userRepositoryMock
+                .Received()
+                .IsUserNameTakenAsync(normalized, Arg.Any<CancellationToken>());
+        }
+
         private static RegisterRequestDto CreateDefaultRequest() =>
             new("NewPlayer", "testPlayer@example.com", "Password123", "Password123");
     }
