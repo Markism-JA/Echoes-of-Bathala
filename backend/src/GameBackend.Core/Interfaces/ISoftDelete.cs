@@ -2,7 +2,7 @@ namespace GameBackend.Core.Interfaces
 {
     public interface ISoftDelete
     {
-        bool IsDeleted { get; set; }
-        DateTime? DeletedAt { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

@@ -2,6 +2,6 @@ namespace GameBackend.Core.Interfaces
 {
     public interface IPlayerOwned
     {
-        int PlayerCharacterId { get; set; }
+        public int PlayerCharacterId { get; set; }
     }
 }
