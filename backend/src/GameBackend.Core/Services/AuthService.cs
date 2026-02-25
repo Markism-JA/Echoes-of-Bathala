@@ -1,6 +1,8 @@
+using ErrorOr;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
 using GameBackend.Shared.DTOs.Identity;
+using GameBackend.Shared.Errors;
 
 namespace GameBackend.Core.Services
 {
@@ -10,7 +12,7 @@ namespace GameBackend.Core.Services
         IUsernamePolicy usernamePolicy
     ) : IAuthService
     {
-        public Task<AuthResponseDto> LoginAsync(
+        public Task<ErrorOr<AuthResponseDto>> LoginAsync(
             LoginRequestDto request,
             CancellationToken ct = default
         )
@@ -18,7 +20,7 @@ namespace GameBackend.Core.Services
             throw new NotImplementedException();
         }
 
-        public Task<AuthResponseDto> RefreshTokenAsync(
+        public Task<ErrorOr<AuthResponseDto>> RefreshTokenAsync(
             RefreshTokenRequestDto request,
             CancellationToken ct = default
         )
@@ -26,15 +28,13 @@ namespace GameBackend.Core.Services
             throw new NotImplementedException();
         }
 
-        public async Task<AuthResponseDto> RegisterAsync(
+        public async Task<ErrorOr<AuthResponseDto>> RegisterAsync(
             RegisterRequestDto request,
             CancellationToken ct = default
         )
         {
             if (!await usernamePolicy.IsAllowedAsync(request.Username, ct))
-                throw new InvalidOperationException(
-                    "Username contains forbidden words or is reserved."
-                );
+                return GameErrors.Auth.ProfaneUsername;
 
             var normalizedUsername = usernamePolicy.Normalize(request.Username);
 
@@ -44,10 +44,10 @@ namespace GameBackend.Core.Services
             await Task.WhenAll(emailCheckTask, usernameCheckTask);
 
             if (await emailCheckTask)
-                throw new InvalidOperationException("Email is already taken.");
+                return GameErrors.Auth.EmailTaken;
 
             if (await usernameCheckTask)
-                throw new InvalidOperationException("Username is already taken.");
+                return GameErrors.Auth.UsernameTaken;
 
             var hashedPassword = passwordHasher.HashPassword(request.Password);
 

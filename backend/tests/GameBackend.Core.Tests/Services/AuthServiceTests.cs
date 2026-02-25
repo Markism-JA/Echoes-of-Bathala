@@ -3,6 +3,7 @@ using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
 using GameBackend.Core.Services;
 using GameBackend.Shared.DTOs.Identity;
+using GameBackend.Shared.Errors;
 using NSubstitute;
 
 namespace GameBackend.Core.Tests.Services
@@ -24,14 +25,9 @@ namespace GameBackend.Core.Tests.Services
         }
 
         [Fact]
-        public async Task RegisterAsync_ShouldThrowException_WhenEmailIsTaken()
+        public async Task RegisterAsync_ShouldReturnConflict_WhenEmailIsTaken()
         {
-            var request = new RegisterRequestDto(
-                "NewPlayer",
-                "testPlayer@example.com",
-                "Password123",
-                "Password123"
-            );
+            var request = CreateDefaultRequest();
 
             _usernamePolicyMock
                 .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
@@ -41,64 +37,58 @@ namespace GameBackend.Core.Tests.Services
                 .IsEmailTakenAsync(request.Email, Arg.Any<CancellationToken>())
                 .Returns(true);
 
-            var action = async () => await _sut.RegisterAsync(request);
+            var result = await _sut.RegisterAsync(request);
 
-            await action
-                .Should()
-                .ThrowAsync<InvalidOperationException>()
-                .WithMessage("Email is already taken.");
+            result.IsError.Should().BeTrue();
+            result.FirstError.Should().Be(GameErrors.Auth.EmailTaken);
 
             await _userRepositoryMock.DidNotReceiveWithAnyArgs().AddAsync(default!);
         }
 
         [Fact]
-        public async Task RegisterAsync_ShouldThrowException_WhenUsernameIsTaken()
+        public async Task RegisterAsync_ShouldReturnConflict_WhenUsernameIsTaken()
         {
-            var request = new RegisterRequestDto(
-                "NewPlayer",
-                "testPlayer@example.com",
-                "Password123",
-                "Password123"
-            );
+            var request = CreateDefaultRequest();
+            var normalized = "newplayer";
 
             _usernamePolicyMock
                 .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
                 .Returns(true);
+            _usernamePolicyMock.Normalize(request.Username).Returns(normalized);
 
             _userRepositoryMock
-                .IsUserNameTakenAsync(request.Username, Arg.Any<CancellationToken>())
+                .IsEmailTakenAsync(request.Email, Arg.Any<CancellationToken>())
+                .Returns(false);
+            _userRepositoryMock
+                .IsUserNameTakenAsync(normalized, Arg.Any<CancellationToken>())
                 .Returns(true);
 
-            var action = async () => await _sut.RegisterAsync(request);
+            var result = await _sut.RegisterAsync(request);
 
-            await action
-                .Should()
-                .ThrowAsync<InvalidOperationException>()
-                .WithMessage("Username is already taken.");
-
-            await _userRepositoryMock.DidNotReceiveWithAnyArgs().AddAsync(default!);
+            result.IsError.Should().BeTrue();
+            result.FirstError.Should().Be(GameErrors.Auth.UsernameTaken);
         }
 
         [Fact]
-        public async Task RegisterAsync_ShouldThrowException_WhenUsernameIsProfaneOrReserved()
+        public async Task RegisterAsync_ShouldReturnValidationError_WhenUsernameIsProfaneOrReserved()
         {
-            var request = new RegisterRequestDto(
-                "NewPlayer",
-                "testPlayer@example.com",
-                "Password123",
-                "Password123"
-            );
+            var request = CreateDefaultRequest();
 
-            _usernamePolicyMock.IsAllowedAsync(request.Username).Returns(false);
+            _usernamePolicyMock
+                .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
+                .Returns(false);
 
-            var action = async () => await _sut.RegisterAsync(request);
+            var result = await _sut.RegisterAsync(request);
 
-            await action
-                .Should()
-                .ThrowAsync<InvalidOperationException>()
-                .WithMessage("Username contains forbidden words or is reserved.");
+            result.IsError.Should().BeTrue();
+            result.FirstError.Should().Be(GameErrors.Auth.ProfaneUsername);
 
-            await _userRepositoryMock.DidNotReceiveWithAnyArgs().IsUserNameTakenAsync(default!);
+            await _userRepositoryMock
+                .DidNotReceiveWithAnyArgs()
+                .IsEmailTakenAsync(default!, default);
         }
+
+        private static RegisterRequestDto CreateDefaultRequest() =>
+            new("NewPlayer", "testPlayer@example.com", "Password123", "Password123");
     }
 }
