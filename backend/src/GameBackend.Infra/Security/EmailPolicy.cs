@@ -47,9 +47,9 @@ public class EmailPolicy : IEmailPolicy
         if (string.IsNullOrWhiteSpace(email))
             return string.Empty;
 
-        var parts = email.ToLowerInvariant().Trim().Split('@');
+        var parts = email.ToUpperInvariant().Trim().Split('@');
         if (parts.Length != 2)
-            return email.ToLowerInvariant();
+            return email.ToUpperInvariant();
 
         var user = parts[0];
         var domain = parts[1];

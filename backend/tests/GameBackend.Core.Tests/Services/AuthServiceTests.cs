@@ -206,12 +206,16 @@ namespace GameBackend.Core.Tests.Services
             _usernamePolicyMock
                 .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
                 .Returns(new UsernameValidationResult(true));
-            _usernamePolicyMock.Normalize(request.Username).Returns(request.Username.ToLower());
+
+            _usernamePolicyMock
+                .Normalize(request.Username)
+                .Returns(request.Username.ToUpperInvariant());
 
             _emailPolicyMock
                 .ValidateAsync(request.Email, Arg.Any<CancellationToken>())
                 .Returns(new EmailValidationResult(true));
-            _emailPolicyMock.Normalize(request.Email).Returns(request.Email.ToLower());
+
+            _emailPolicyMock.Normalize(request.Email).Returns(request.Email.ToUpperInvariant());
 
             _passwordPolicyMock
                 .Validate(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>())

@@ -51,7 +51,7 @@ namespace GameBackend.Infra.Security
                 return string.Empty;
 
             return username
-                .ToLowerInvariant()
+                .ToUpperInvariant()
                 .Replace("@", "a")
                 .Replace("1", "i")
                 .Replace("0", "o")
