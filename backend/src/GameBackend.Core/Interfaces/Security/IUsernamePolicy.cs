@@ -9,7 +9,10 @@ public interface IUsernamePolicy
     /// <param name="username">The raw username input from the user.</param>
     /// <param name="ct">Cancellation token for async operations.</param>
     /// <returns>True if the username is safe and available for use; otherwise, false.</returns>
-    public Task<bool> IsAllowedAsync(string username, CancellationToken ct = default);
+    public Task<UsernameValidationResult> IsAllowedAsync(
+        string username,
+        CancellationToken ct = default
+    );
 
     /// <summary>
     /// Normalizes a username to its "canonical" form to prevent identity spoofing
@@ -20,3 +23,5 @@ public interface IUsernamePolicy
     /// <example>B@thala_123 -> bathala123</example>
     public string Normalize(string username);
 }
+
+public record UsernameValidationResult(bool IsValid, string ErrorMessage = "");

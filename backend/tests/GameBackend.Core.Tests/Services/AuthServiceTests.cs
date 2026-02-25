@@ -1,3 +1,4 @@
+using ErrorOr;
 using FluentAssertions;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
@@ -13,6 +14,7 @@ namespace GameBackend.Core.Tests.Services
         private readonly IUserRepository _userRepositoryMock;
         private readonly IPasswordHasher _passwordHasherMock;
         private readonly IUsernamePolicy _usernamePolicyMock;
+        private readonly IEmailPolicy _emailPolicyMock;
         private readonly AuthService _sut;
 
         public AuthServiceTest()
@@ -20,68 +22,69 @@ namespace GameBackend.Core.Tests.Services
             _userRepositoryMock = Substitute.For<IUserRepository>();
             _passwordHasherMock = Substitute.For<IPasswordHasher>();
             _usernamePolicyMock = Substitute.For<IUsernamePolicy>();
+            _emailPolicyMock = Substitute.For<IEmailPolicy>();
 
-            _sut = new AuthService(_userRepositoryMock, _passwordHasherMock, _usernamePolicyMock);
+            _sut = new AuthService(
+                _userRepositoryMock,
+                _passwordHasherMock,
+                _usernamePolicyMock,
+                _emailPolicyMock
+            );
         }
 
-        [Fact]
-        public async Task RegisterAsync_ShouldReturnConflict_WhenEmailIsTaken()
+        [Theory]
+        [InlineData("Username is required.", "Auth.Username.Required")]
+        [InlineData("This username is reserved for system use.", "Auth.Username.Reserved")]
+        [InlineData("Username contains forbidden language.", "Auth.Username.Profane")]
+        [InlineData("Some random unknown error.", "Auth.Username.Invalid")]
+        public async Task RegisterAsync_ShouldReturnValidationError_WhenUsernamePolicyFails(
+            string policyMessage,
+            string expectedErrorCode
+        )
         {
             var request = CreateDefaultRequest();
 
             _usernamePolicyMock
                 .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
-                .Returns(true);
-
-            _userRepositoryMock
-                .IsEmailTakenAsync(request.Email, Arg.Any<CancellationToken>())
-                .Returns(true);
+                .Returns(new UsernameValidationResult(false, policyMessage));
 
             var result = await _sut.RegisterAsync(request);
 
             result.IsError.Should().BeTrue();
-            result.FirstError.Should().Be(GameErrors.Auth.EmailTaken);
+            result.FirstError.Code.Should().Be(expectedErrorCode);
+            result.FirstError.Type.Should().Be(ErrorType.Validation);
 
-            await _userRepositoryMock.DidNotReceiveWithAnyArgs().AddAsync(default!);
+            await _emailPolicyMock.DidNotReceiveWithAnyArgs().ValidateAsync(default!, default);
+            await _userRepositoryMock
+                .DidNotReceiveWithAnyArgs()
+                .IsEmailTakenAsync(default!, default);
         }
 
-        [Fact]
-        public async Task RegisterAsync_ShouldReturnConflict_WhenUsernameIsTaken()
-        {
-            var request = CreateDefaultRequest();
-            var normalized = "newplayer";
-
-            _usernamePolicyMock
-                .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
-                .Returns(true);
-            _usernamePolicyMock.Normalize(request.Username).Returns(normalized);
-
-            _userRepositoryMock
-                .IsEmailTakenAsync(request.Email, Arg.Any<CancellationToken>())
-                .Returns(false);
-            _userRepositoryMock
-                .IsUserNameTakenAsync(normalized, Arg.Any<CancellationToken>())
-                .Returns(true);
-
-            var result = await _sut.RegisterAsync(request);
-
-            result.IsError.Should().BeTrue();
-            result.FirstError.Should().Be(GameErrors.Auth.UsernameTaken);
-        }
-
-        [Fact]
-        public async Task RegisterAsync_ShouldReturnValidationError_WhenUsernameIsProfaneOrReserved()
+        [Theory]
+        [InlineData("Email is required.", "Auth.Email.Required")]
+        [InlineData("Disposable email addresses are not allowed.", "Auth.Email.Disposable")]
+        [InlineData("Invalid email format.", "Auth.Email.Invalid")]
+        [InlineData("Unexpected email error.", "Auth.Email.Invalid")]
+        public async Task RegisterAsync_ShouldReturnValidationError_WhenEmailPolicyFails(
+            string policyMessage,
+            string expectedErrorCode
+        )
         {
             var request = CreateDefaultRequest();
 
             _usernamePolicyMock
                 .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
-                .Returns(false);
+                .Returns(new UsernameValidationResult(true));
+
+            _emailPolicyMock
+                .ValidateAsync(request.Email, Arg.Any<CancellationToken>())
+                .Returns(new EmailValidationResult(false, policyMessage));
 
             var result = await _sut.RegisterAsync(request);
 
             result.IsError.Should().BeTrue();
-            result.FirstError.Should().Be(GameErrors.Auth.ProfaneUsername);
+            result.FirstError.Code.Should().Be(expectedErrorCode);
+            result.FirstError.Type.Should().Be(ErrorType.Validation);
 
             await _userRepositoryMock
                 .DidNotReceiveWithAnyArgs()
@@ -89,37 +92,76 @@ namespace GameBackend.Core.Tests.Services
         }
 
         [Fact]
-        public async Task RegisterAsync_ShouldReturnConflict_WhenUsernameIdentitiesMatch()
+        public async Task RegisterAsync_ShouldReturnConflict_WhenEmailIsTaken()
         {
-            var request = new RegisterRequestDto(
-                "Lakan_",
-                "test@email.com",
-                "Pass123!",
-                "Pass123!"
-            );
-            var normalized = "lakan";
-
-            _usernamePolicyMock
-                .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
-                .Returns(true);
-
-            _usernamePolicyMock.Normalize(request.Username).Returns(normalized);
+            var request = CreateDefaultRequest();
+            SetupHappyPathPolicies(request);
 
             _userRepositoryMock
-                .IsUserNameTakenAsync(normalized, Arg.Any<CancellationToken>())
+                .IsEmailTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(true);
+
+            var result = await _sut.RegisterAsync(request);
+
+            result.IsError.Should().BeTrue();
+            result.FirstError.Should().Be(GameErrors.Auth.EmailTaken);
+            await _userRepositoryMock.DidNotReceiveWithAnyArgs().AddAsync(default!);
+        }
+
+        [Fact]
+        public async Task RegisterAsync_ShouldReturnConflict_WhenUsernameIsTaken()
+        {
+            var request = CreateDefaultRequest();
+            SetupHappyPathPolicies(request);
+
+            _userRepositoryMock
+                .IsEmailTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(false);
+
+            _userRepositoryMock
+                .IsUserNameTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
                 .Returns(true);
 
             var result = await _sut.RegisterAsync(request);
 
             result.IsError.Should().BeTrue();
             result.FirstError.Should().Be(GameErrors.Auth.UsernameTaken);
+        }
 
-            await _userRepositoryMock
-                .Received()
-                .IsUserNameTakenAsync(normalized, Arg.Any<CancellationToken>());
+        [Fact]
+        public async Task RegisterAsync_ShouldProceedToSuccessFlow_WhenAllChecksPass()
+        {
+            var request = CreateDefaultRequest();
+            SetupHappyPathPolicies(request);
+
+            _userRepositoryMock
+                .IsEmailTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(false);
+            _userRepositoryMock
+                .IsUserNameTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(false);
+
+            Func<Task> act = async () => await _sut.RegisterAsync(request);
+
+            await act.Should()
+                .ThrowAsync<NotImplementedException>()
+                .WithMessage("Next step: User persistence and JWT generation.");
         }
 
         private static RegisterRequestDto CreateDefaultRequest() =>
             new("NewPlayer", "testPlayer@example.com", "Password123", "Password123");
+
+        private void SetupHappyPathPolicies(RegisterRequestDto request)
+        {
+            _usernamePolicyMock
+                .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
+                .Returns(new UsernameValidationResult(true));
+            _usernamePolicyMock.Normalize(request.Username).Returns(request.Username.ToLower());
+
+            _emailPolicyMock
+                .ValidateAsync(request.Email, Arg.Any<CancellationToken>())
+                .Returns(new EmailValidationResult(true));
+            _emailPolicyMock.Normalize(request.Email).Returns(request.Email.ToLower());
+        }
     }
 }

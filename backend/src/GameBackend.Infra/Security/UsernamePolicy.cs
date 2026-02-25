@@ -23,14 +23,26 @@ namespace GameBackend.Infra.Security
             _detector = new ProfanityDetector();
         }
 
-        public async Task<bool> IsAllowedAsync(string username, CancellationToken ct = default)
+        public async Task<UsernameValidationResult> IsAllowedAsync(
+            string username,
+            CancellationToken ct = default
+        )
         {
             ct.ThrowIfCancellationRequested();
 
-            if (IsReserved(username))
-                return false;
+            if (string.IsNullOrWhiteSpace(username))
+                return new UsernameValidationResult(false, "Username is required.");
 
-            return !_detector.IsProfane(username);
+            if (IsReserved(username))
+                return new UsernameValidationResult(
+                    false,
+                    "This username is reserved for system use."
+                );
+
+            if (_detector.IsProfane(username))
+                return new UsernameValidationResult(false, "Username contains forbidden language.");
+
+            return new UsernameValidationResult(true);
         }
 
         public string Normalize(string username)

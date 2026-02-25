@@ -6,17 +6,53 @@ public static class GameErrors
 {
     public static class Auth
     {
-        public const string ProfaneUsernameCode = "Auth.ProfaneReservedUsername";
-        public static Error ProfaneUsername =>
-            Error.Conflict(
-                code: ProfaneUsernameCode,
-                description: "Username contains forbidden words or is reserved."
-            );
-        public const string EmailTakenCode = "Auth.EmailTaken";
-        public static Error EmailTaken =>
-            Error.Conflict(code: EmailTakenCode, description: "Email is already taken.");
-        public const string UsernameTakenCode = "Auth.UsernameTaken";
-        public static Error UsernameTaken =>
-            Error.Conflict(code: UsernameTakenCode, description: "Username is already taken.");
+        // Username
+
+        public static readonly Error UsernameRequired = Error.Validation(
+            code: "Auth.Username.Required",
+            description: "Username is required."
+        );
+
+        public static readonly Error UsernameProfane = Error.Validation(
+            code: "Auth.Username.Profane",
+            description: "Username contains forbidden words."
+        );
+
+        public static readonly Error UsernameReserved = Error.Validation(
+            code: "Auth.Username.Reserved",
+            description: "This username is reserved for system use."
+        );
+
+        public static readonly Error UsernameInvalid = Error.Validation(
+            code: "Auth.Username.Invalid",
+            description: "The username provided is invalid."
+        );
+
+        public static readonly Error UsernameTaken = Error.Conflict(
+            code: "Auth.Username.Taken",
+            description: "Username is already taken."
+        );
+
+        // Email
+
+        public static readonly Error EmailRequired = Error.Validation(
+            code: "Auth.Email.Required",
+            description: "Email is required."
+        );
+
+        public static readonly Error EmailInvalid = Error.Validation(
+            code: "Auth.Email.Invalid",
+            description: "Invalid email format."
+        );
+
+        public static readonly Error EmailDisposable = Error.Validation(
+            code: "Auth.Email.Disposable",
+            description: "Disposable email addresses are not allowed."
+        );
+
+        public static readonly Error EmailTaken = Error.Conflict(
+            code: "Auth.Email.Taken",
+            description: "Email is already taken."
+        );
     }
 }
