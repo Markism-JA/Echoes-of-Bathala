@@ -10,7 +10,8 @@ namespace GameBackend.Core.Services
         IUserRepository userRepository,
         IPasswordHasher passwordHasher,
         IUsernamePolicy usernamePolicy,
-        IEmailPolicy emailPolicy
+        IEmailPolicy emailPolicy,
+        IPasswordPolicy passwordPolicy
     ) : IAuthService
     {
         public Task<ErrorOr<AuthResponseDto>> LoginAsync(
@@ -65,6 +66,29 @@ namespace GameBackend.Core.Services
                         code: GameErrors.Auth.EmailInvalid.Code,
                         description: emailPolicyResult.ErrorMessage
                             ?? GameErrors.Auth.EmailInvalid.Description
+                    ),
+                };
+            }
+
+            var passwordPolicyResult = passwordPolicy.Validate(
+                request.Password,
+                request.Username,
+                request.Email
+            );
+
+            if (!passwordPolicyResult.IsValid)
+            {
+                return passwordPolicyResult.ErrorMessage switch
+                {
+                    "Password is required." => GameErrors.Auth.PasswordRequired,
+                    "Password must be at least 8 characters long." => GameErrors
+                        .Auth
+                        .PasswordTooShort,
+
+                    _ => Error.Validation(
+                        code: GameErrors.Auth.PasswordTooWeak.Code,
+                        description: passwordPolicyResult.ErrorMessage
+                            ?? GameErrors.Auth.PasswordTooWeak.Description
                     ),
                 };
             }

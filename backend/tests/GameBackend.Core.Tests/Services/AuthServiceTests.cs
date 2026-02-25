@@ -15,6 +15,7 @@ namespace GameBackend.Core.Tests.Services
         private readonly IPasswordHasher _passwordHasherMock;
         private readonly IUsernamePolicy _usernamePolicyMock;
         private readonly IEmailPolicy _emailPolicyMock;
+        private readonly IPasswordPolicy _passwordPolicyMock;
         private readonly AuthService _sut;
 
         public AuthServiceTest()
@@ -23,12 +24,14 @@ namespace GameBackend.Core.Tests.Services
             _passwordHasherMock = Substitute.For<IPasswordHasher>();
             _usernamePolicyMock = Substitute.For<IUsernamePolicy>();
             _emailPolicyMock = Substitute.For<IEmailPolicy>();
+            _passwordPolicyMock = Substitute.For<IPasswordPolicy>();
 
             _sut = new AuthService(
                 _userRepositoryMock,
                 _passwordHasherMock,
                 _usernamePolicyMock,
-                _emailPolicyMock
+                _emailPolicyMock,
+                _passwordPolicyMock
             );
         }
 
@@ -85,6 +88,39 @@ namespace GameBackend.Core.Tests.Services
             result.IsError.Should().BeTrue();
             result.FirstError.Code.Should().Be(expectedErrorCode);
             result.FirstError.Type.Should().Be(ErrorType.Validation);
+
+            await _userRepositoryMock
+                .DidNotReceiveWithAnyArgs()
+                .IsEmailTakenAsync(default!, default);
+        }
+
+        [Theory]
+        [InlineData("Password is required.", "Auth.Password.Required")]
+        [InlineData("Password must be at least 8 characters long.", "Auth.Password.TooShort")]
+        [InlineData("This is a top 100 common password.", "Auth.Password.TooWeak")]
+        [InlineData("Unexpected security flaw.", "Auth.Password.TooWeak")]
+        public async Task RegisterAsync_ShouldReturnValidationError_WhenPasswordPolicyFails(
+            string policyMessage,
+            string expectedErrorCode
+        )
+        {
+            var request = CreateDefaultRequest();
+
+            _usernamePolicyMock
+                .IsAllowedAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(new UsernameValidationResult(true));
+            _emailPolicyMock
+                .ValidateAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(new EmailValidationResult(true));
+
+            _passwordPolicyMock
+                .Validate(request.Password, request.Username, request.Email)
+                .Returns(new PasswordValidationResult(false, policyMessage));
+
+            var result = await _sut.RegisterAsync(request);
+
+            result.IsError.Should().BeTrue();
+            result.FirstError.Code.Should().Be(expectedErrorCode);
 
             await _userRepositoryMock
                 .DidNotReceiveWithAnyArgs()
@@ -148,6 +184,20 @@ namespace GameBackend.Core.Tests.Services
                 .WithMessage("Next step: User persistence and JWT generation.");
         }
 
+        [Fact]
+        public async Task RegisterAsync_ShouldNotCheckEmail_WhenUsernameIsInvalid()
+        {
+            var request = CreateDefaultRequest();
+            _usernamePolicyMock
+                .IsAllowedAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(new UsernameValidationResult(false, "Username is required."));
+
+            await _sut.RegisterAsync(request);
+
+            await _emailPolicyMock.DidNotReceiveWithAnyArgs().ValidateAsync(default!, default);
+            _passwordPolicyMock.DidNotReceiveWithAnyArgs().Validate(default!, default!, default!);
+        }
+
         private static RegisterRequestDto CreateDefaultRequest() =>
             new("NewPlayer", "testPlayer@example.com", "Password123", "Password123");
 
@@ -162,6 +212,10 @@ namespace GameBackend.Core.Tests.Services
                 .ValidateAsync(request.Email, Arg.Any<CancellationToken>())
                 .Returns(new EmailValidationResult(true));
             _emailPolicyMock.Normalize(request.Email).Returns(request.Email.ToLower());
+
+            _passwordPolicyMock
+                .Validate(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>())
+                .Returns(new PasswordValidationResult(true));
         }
     }
 }

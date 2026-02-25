@@ -54,5 +54,22 @@ public static class GameErrors
             code: "Auth.Email.Taken",
             description: "Email is already taken."
         );
+
+        // Password
+
+        public static readonly Error PasswordRequired = Error.Validation(
+            code: "Auth.Password.Required",
+            description: "Password is required."
+        );
+
+        public static readonly Error PasswordTooShort = Error.Validation(
+            code: "Auth.Password.TooShort",
+            description: "Password must be at least 8 characters long."
+        );
+
+        public static readonly Error PasswordTooWeak = Error.Validation(
+            code: "Auth.Password.TooWeak",
+            description: "Password is too common or easy to guess."
+        );
     }
 }
