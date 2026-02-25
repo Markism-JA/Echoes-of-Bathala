@@ -27,6 +27,7 @@ namespace GameBackend.Infra
             services.AddDbContext<GameDbContext>(options => options.UseNpgsql(connectionString));
 
             services.AddScoped<IUsernamePolicy, UsernamePolicy>();
+            services.AddScoped<IEmailPolicy, EmailPolicy>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
 
