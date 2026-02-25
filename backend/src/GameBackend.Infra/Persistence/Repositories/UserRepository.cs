@@ -9,70 +9,70 @@ namespace GameBackend.Infra.Persistence.Repositories
             IUserRepository
     {
         public async Task<User?> GetByEmailAsync(
-            string email,
+            string normalizedEmail,
             CancellationToken cancellationToken = default
         )
         {
-            if (string.IsNullOrWhiteSpace(email))
-                return null;
-
             return await _dbSet.FirstOrDefaultAsync(
-                a => a.Email != null && a.Email.ToLower() == email.ToLower(),
+                a => a.NormalizedEmail == normalizedEmail,
                 cancellationToken
             );
         }
 
         public async Task<User?> GetByUserNameAsync(
-            string username,
+            string normalizedUsername,
             CancellationToken cancellationToken = default
         )
         {
-            if (string.IsNullOrWhiteSpace(username))
-                return null;
             return await _dbSet.FirstOrDefaultAsync(
-                a => a.UserName != null && a.UserName.ToLower() == username.ToLower(),
+                a => a.NormalizedUserName == normalizedUsername,
                 cancellationToken
             );
         }
 
         public async Task<User?> GetByWalletAddressAsync(
-            string walletAddress,
+            string normalizedWalletAddress,
             CancellationToken cancellationToken = default
         )
         {
-            if (string.IsNullOrWhiteSpace(walletAddress))
+            if (string.IsNullOrWhiteSpace(normalizedWalletAddress))
                 return null;
+
             return await _dbSet.FirstOrDefaultAsync(
-                a =>
-                    a.LinkedWalletAddress != null
-                    && a.LinkedWalletAddress.ToLower() == walletAddress.ToLower(),
+                a => a.LinkedWalletAddress == normalizedWalletAddress,
                 cancellationToken
             );
         }
 
         public async Task<bool> IsEmailTakenAsync(
-            string email,
-            CancellationToken cancellationToken = default
-        )
-        {
-            return await _dbSet.AnyAsync(a => a.Email == email, cancellationToken);
-        }
-
-        public async Task<bool> IsUserNameTakenAsync(
-            string username,
-            CancellationToken cancellationToken = default
-        )
-        {
-            return await _dbSet.AnyAsync(a => a.UserName == username, cancellationToken);
-        }
-
-        public async Task<bool> IsWalletLinkedAsync(
-            string walletAddress,
+            string normalizedEmail,
             CancellationToken cancellationToken = default
         )
         {
             return await _dbSet.AnyAsync(
-                a => a.LinkedWalletAddress == walletAddress,
+                a => a.NormalizedEmail == normalizedEmail,
+                cancellationToken
+            );
+        }
+
+        public async Task<bool> IsUserNameTakenAsync(
+            string normalizedUsername,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await _dbSet.AnyAsync(
+                a => a.NormalizedUserName == normalizedUsername,
+                cancellationToken
+            );
+        }
+
+        public async Task<bool> IsWalletLinkedAsync(
+            string normalizedWalletAddress,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await _dbSet.AnyAsync(
+                a => a.LinkedWalletAddress == normalizedWalletAddress,
                 cancellationToken
             );
         }

@@ -6,7 +6,6 @@ namespace GameBackend.Core.Entities
 {
     public class User : IdentityUser<Guid>, IEntity<Guid>, IAuditable, ISoftDelete
     {
-        public required string HashedPassword { get; set; }
         public UserStatus Status { get; set; } = UserStatus.Unverified;
         public string? LinkedWalletAddress { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -1,15 +1,20 @@
 using GameBackend.Core.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace GameBackend.Infra.Persistence
-{
-    public class GameDbContext(DbContextOptions<GameDbContext> options) : DbContext(options)
-    {
-        public DbSet<User> Users { get; set; }
+namespace GameBackend.Infra.Persistence;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameDbContext).Assembly);
-        }
+public class GameDbContext(DbContextOptions<GameDbContext> options)
+    : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options)
+{
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Ignore<InventoryItem>();
+        modelBuilder.Ignore<PlayerCharacter>();
+        modelBuilder.Ignore<QuestProgress>();
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameDbContext).Assembly);
     }
 }

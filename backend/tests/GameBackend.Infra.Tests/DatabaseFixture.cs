@@ -20,6 +20,12 @@ public class DatabaseFixture : IAsyncLifetime
     public async Task InitializeAsync()
     {
         await _dbContainer.StartAsync();
+        var options = new DbContextOptionsBuilder<GameDbContext>()
+            .UseNpgsql(_dbContainer.GetConnectionString())
+            .Options;
+
+        using var context = new GameDbContext(options);
+        await context.Database.EnsureCreatedAsync();
     }
 
     public async Task DisposeAsync()
@@ -35,8 +41,6 @@ public class DatabaseFixture : IAsyncLifetime
             .Options;
 
         var context = new GameDbContext(options);
-
-        context.Database.EnsureCreated();
 
         return context;
     }

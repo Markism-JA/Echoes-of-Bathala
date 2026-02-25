@@ -5,11 +5,11 @@ namespace GameBackend.Core.Interfaces.Repository
     public interface IUserRepository : IRepository<User, Guid>
     {
         public Task<User?> GetByEmailAsync(
-            string email,
+            string normalizedEmail,
             CancellationToken cancellationToken = default
         );
         public Task<User?> GetByUserNameAsync(
-            string username,
+            string normalizedUsername,
             CancellationToken cancellationToken = default
         );
         public Task<User?> GetByWalletAddressAsync(
@@ -18,11 +18,11 @@ namespace GameBackend.Core.Interfaces.Repository
         );
 
         public Task<bool> IsEmailTakenAsync(
-            string email,
+            string normalizedEmail,
             CancellationToken cancellationToken = default
         );
         public Task<bool> IsUserNameTakenAsync(
-            string username,
+            string normalizedUsername,
             CancellationToken cancellationToken = default
         );
         public Task<bool> IsWalletLinkedAsync(

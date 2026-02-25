@@ -11,26 +11,32 @@ namespace GameBackend.Infra.Persistence.Configurations
         {
             builder.ToTable("Users");
 
-            builder.HasKey(e => e.Id);
+            builder.Property(u => u.UserName).HasMaxLength(32).IsRequired();
+            builder.Property(u => u.Email).HasMaxLength(254).IsRequired();
 
-            builder.HasIndex(e => e.UserName).IsUnique();
-            builder.Property(e => e.UserName).IsRequired().HasMaxLength(32);
-
-            builder.HasIndex(e => e.Email).IsUnique();
-            builder.Property(p => p.Email).IsRequired().HasMaxLength(254);
+            builder.Property(u => u.NormalizedUserName).HasMaxLength(32);
+            builder.Property(u => u.NormalizedEmail).HasMaxLength(254);
 
             builder
                 .Property(e => e.Status)
                 .HasConversion<int>()
                 .HasDefaultValue(UserStatus.Unverified);
 
-            builder.HasIndex(e => e.LinkedWalletAddress).IsUnique();
             builder.Property(e => e.LinkedWalletAddress).HasMaxLength(42).IsRequired(false);
 
             builder
                 .Property(e => e.CreatedAt)
-                .HasDefaultValueSql("now() at time zone 'utc'")
+                .HasDefaultValueSql("timezone('utc', now())")
                 .IsRequired();
+
+            builder
+                .HasIndex(e => e.LinkedWalletAddress)
+                .IsUnique()
+                .HasFilter("\"LinkedWalletAddress\" IS NOT NULL");
+
+            builder.HasIndex(e => e.NormalizedEmail).IsUnique();
+
+            builder.HasIndex(e => e.NormalizedUserName).IsUnique();
         }
     }
 }

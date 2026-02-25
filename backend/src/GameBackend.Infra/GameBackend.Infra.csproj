@@ -7,9 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="DotnetBadWordDetector" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.0" />
     <PackageReference Include="Nethereum.Web3" Version="5.0.0" />

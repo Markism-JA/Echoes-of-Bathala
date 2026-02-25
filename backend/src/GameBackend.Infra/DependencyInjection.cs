@@ -1,8 +1,10 @@
+using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
 using GameBackend.Infra.Persistence;
 using GameBackend.Infra.Persistence.Repositories;
 using GameBackend.Infra.Security;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +27,17 @@ namespace GameBackend.Infra
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GameDbContext>(options => options.UseNpgsql(connectionString));
+
+            services
+                .AddIdentityCore<User>(options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 1;
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddRoles<IdentityRole<Guid>>()
+                .AddEntityFrameworkStores<GameDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddScoped<IPasswordPolicy, PasswordPolicy>();
             services.AddScoped<IUsernamePolicy, UsernamePolicy>();
