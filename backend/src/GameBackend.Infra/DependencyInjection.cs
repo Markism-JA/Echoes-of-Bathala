@@ -39,6 +39,7 @@ namespace GameBackend.Infra
                 .AddEntityFrameworkStores<GameDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IPasswordPolicy, PasswordPolicy>();
             services.AddScoped<IUsernamePolicy, UsernamePolicy>();
             services.AddScoped<IEmailPolicy, EmailPolicy>();

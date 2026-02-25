@@ -1,4 +1,6 @@
 using ErrorOr;
+using GameBackend.Core.Entities;
+using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
 using GameBackend.Shared.DTOs.Identity;
@@ -11,7 +13,8 @@ namespace GameBackend.Core.Services
         IPasswordHasher passwordHasher,
         IUsernamePolicy usernamePolicy,
         IEmailPolicy emailPolicy,
-        IPasswordPolicy passwordPolicy
+        IPasswordPolicy passwordPolicy,
+        IUnitOfWork unitOfWork
     ) : IAuthService
     {
         public Task<ErrorOr<AuthResponseDto>> LoginAsync(
@@ -35,86 +38,109 @@ namespace GameBackend.Core.Services
             CancellationToken ct = default
         )
         {
-            var usernamePolicyResult = await usernamePolicy.IsAllowedAsync(request.Username, ct);
-            if (!usernamePolicyResult.IsValid)
-            {
-                return usernamePolicyResult.ErrorMessage switch
-                {
-                    "Username is required." => GameErrors.Auth.UsernameRequired,
-                    "This username is reserved for system use." => GameErrors.Auth.UsernameReserved,
-                    "Username contains forbidden language." => GameErrors.Auth.UsernameProfane,
-
-                    _ => Error.Validation(
-                        code: GameErrors.Auth.UsernameInvalid.Code,
-                        description: usernamePolicyResult.ErrorMessage
-                            ?? GameErrors.Auth.UsernameInvalid.Description
-                    ),
-                };
-            }
-
-            var emailPolicyResult = await emailPolicy.ValidateAsync(request.Email, ct);
-            if (!emailPolicyResult.IsValid)
-            {
-                return emailPolicyResult.ErrorMessage switch
-                {
-                    "Email is required." => GameErrors.Auth.EmailRequired,
-                    "Disposable email addresses are not allowed." => GameErrors
-                        .Auth
-                        .EmailDisposable,
-                    "Invalid email format." => GameErrors.Auth.EmailInvalid,
-                    _ => Error.Validation(
-                        code: GameErrors.Auth.EmailInvalid.Code,
-                        description: emailPolicyResult.ErrorMessage
-                            ?? GameErrors.Auth.EmailInvalid.Description
-                    ),
-                };
-            }
-
-            var passwordPolicyResult = passwordPolicy.Validate(
-                request.Password,
-                request.Username,
-                request.Email
-            );
-
-            if (!passwordPolicyResult.IsValid)
-            {
-                return passwordPolicyResult.ErrorMessage switch
-                {
-                    "Password is required." => GameErrors.Auth.PasswordRequired,
-                    "Password must be at least 8 characters long." => GameErrors
-                        .Auth
-                        .PasswordTooShort,
-
-                    _ => Error.Validation(
-                        code: GameErrors.Auth.PasswordTooWeak.Code,
-                        description: passwordPolicyResult.ErrorMessage
-                            ?? GameErrors.Auth.PasswordTooWeak.Description
-                    ),
-                };
-            }
+            var validationResult = await ValidateRegistrationPolicies(request, ct);
+            if (validationResult.IsError)
+                return validationResult.Errors;
 
             var normalizedUsername = usernamePolicy.Normalize(request.Username);
             var normalizedEmail = emailPolicy.Normalize(request.Email);
 
-            var emailCheckTask = userRepository.IsEmailTakenAsync(normalizedEmail, ct);
-            var usernameCheckTask = userRepository.IsUserNameTakenAsync(normalizedUsername, ct);
+            var availabilityResult = await CheckAvailabilityAsync(
+                normalizedUsername,
+                normalizedEmail,
+                ct
+            );
+            if (availabilityResult.IsError)
+                return availabilityResult.Errors;
 
-            await Task.WhenAll(emailCheckTask, usernameCheckTask);
+            var user = User.Create(request.Username, request.Email);
 
-            if (await emailCheckTask)
+            user.UpdateNormalizedFields(normalizedUsername, normalizedEmail);
+            user.SetPasswordHash(passwordHasher.HashPassword(user, request.Password));
+
+            await userRepository.AddAsync(user, ct);
+            await unitOfWork.SaveChangesAsync(ct);
+
+            // 5. Next steps (JWT)
+            throw new NotImplementedException("Next step: JWT generation.");
+        }
+
+        private async Task<ErrorOr<Success>> ValidateRegistrationPolicies(
+            RegisterRequestDto request,
+            CancellationToken ct
+        )
+        {
+            var userResult = await usernamePolicy.IsAllowedAsync(request.Username, ct);
+            if (!userResult.IsValid)
+                return MapUsernameError(userResult.ErrorMessage);
+
+            var emailResult = await emailPolicy.ValidateAsync(request.Email, ct);
+            if (!emailResult.IsValid)
+                return MapEmailError(emailResult.ErrorMessage);
+
+            var passResult = passwordPolicy.Validate(
+                request.Password,
+                request.Username,
+                request.Email
+            );
+            if (!passResult.IsValid)
+                return MapPasswordError(passResult.ErrorMessage);
+
+            return Result.Success;
+        }
+
+        private Error MapUsernameError(string? message) =>
+            message switch
+            {
+                "Username is required." => GameErrors.Auth.UsernameRequired,
+                "This username is reserved for system use." => GameErrors.Auth.UsernameReserved,
+                "Username contains forbidden language." => GameErrors.Auth.UsernameProfane,
+                _ => Error.Validation(
+                    GameErrors.Auth.UsernameInvalid.Code,
+                    message ?? GameErrors.Auth.UsernameInvalid.Description
+                ),
+            };
+
+        private Error MapEmailError(string? message) =>
+            message switch
+            {
+                "Email is required." => GameErrors.Auth.EmailRequired,
+                "Disposable email addresses are not allowed." => GameErrors.Auth.EmailDisposable,
+                "Invalid email format." => GameErrors.Auth.EmailInvalid,
+                _ => Error.Validation(
+                    GameErrors.Auth.EmailInvalid.Code,
+                    message ?? GameErrors.Auth.EmailInvalid.Description
+                ),
+            };
+
+        private Error MapPasswordError(string? message) =>
+            message switch
+            {
+                "Password is required." => GameErrors.Auth.PasswordRequired,
+                "Password must be at least 8 characters long." => GameErrors.Auth.PasswordTooShort,
+                _ => Error.Validation(
+                    GameErrors.Auth.PasswordTooWeak.Code,
+                    message ?? GameErrors.Auth.PasswordTooWeak.Description
+                ),
+            };
+
+        private async Task<ErrorOr<Success>> CheckAvailabilityAsync(
+            string normName,
+            string normEmail,
+            CancellationToken ct
+        )
+        {
+            var emailTask = userRepository.IsEmailTakenAsync(normEmail, ct);
+            var userTask = userRepository.IsUserNameTakenAsync(normName, ct);
+
+            await Task.WhenAll(emailTask, userTask);
+
+            if (await emailTask)
                 return GameErrors.Auth.EmailTaken;
-
-            if (await usernameCheckTask)
+            if (await userTask)
                 return GameErrors.Auth.UsernameTaken;
 
-            // 5. Success Flow
-            var hashedPassword = passwordHasher.HashPassword(request.Password);
-
-            // TODO: Map to User Entity and Persist
-            // var user = User.Create(request.Username, normalizedUsername, request.Email, normalizedEmail, hashedPassword);
-            // await userRepository.AddAsync(user, ct);
-
-            throw new NotImplementedException("Next step: User persistence and JWT generation.");
+            return Result.Success;
         }
     }
 }

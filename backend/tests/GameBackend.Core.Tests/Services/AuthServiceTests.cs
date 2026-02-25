@@ -1,5 +1,7 @@
 using ErrorOr;
 using FluentAssertions;
+using GameBackend.Core.Entities;
+using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
 using GameBackend.Core.Services;
@@ -16,6 +18,7 @@ namespace GameBackend.Core.Tests.Services
         private readonly IUsernamePolicy _usernamePolicyMock;
         private readonly IEmailPolicy _emailPolicyMock;
         private readonly IPasswordPolicy _passwordPolicyMock;
+        private readonly IUnitOfWork _unitOfWorkMock;
         private readonly AuthService _sut;
 
         public AuthServiceTest()
@@ -25,13 +28,15 @@ namespace GameBackend.Core.Tests.Services
             _usernamePolicyMock = Substitute.For<IUsernamePolicy>();
             _emailPolicyMock = Substitute.For<IEmailPolicy>();
             _passwordPolicyMock = Substitute.For<IPasswordPolicy>();
+            _unitOfWorkMock = Substitute.For<IUnitOfWork>();
 
             _sut = new AuthService(
                 _userRepositoryMock,
                 _passwordHasherMock,
                 _usernamePolicyMock,
                 _emailPolicyMock,
-                _passwordPolicyMock
+                _passwordPolicyMock,
+                _unitOfWorkMock
             );
         }
 
@@ -177,11 +182,24 @@ namespace GameBackend.Core.Tests.Services
                 .IsUserNameTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
                 .Returns(false);
 
+            var expectedHash = "secure_hashed_password_123";
+            _passwordHasherMock
+                .HashPassword(Arg.Any<User>(), Arg.Any<string>())
+                .Returns(expectedHash);
+
             Func<Task> act = async () => await _sut.RegisterAsync(request);
 
             await act.Should()
                 .ThrowAsync<NotImplementedException>()
-                .WithMessage("Next step: User persistence and JWT generation.");
+                .WithMessage("Next step: JWT generation.");
+
+            await _userRepositoryMock
+                .Received(1)
+                .AddAsync(
+                    Arg.Is<User>(u => u.PasswordHash == expectedHash),
+                    Arg.Any<CancellationToken>()
+                );
+            await _unitOfWorkMock.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());
         }
 
         [Fact]
@@ -196,6 +214,46 @@ namespace GameBackend.Core.Tests.Services
 
             await _emailPolicyMock.DidNotReceiveWithAnyArgs().ValidateAsync(default!, default);
             _passwordPolicyMock.DidNotReceiveWithAnyArgs().Validate(default!, default!, default!);
+        }
+
+        [Fact]
+        public async Task RegisterAsync_ShouldPersistUserAndSaveChanges_WhenAllChecksPass()
+        {
+            var request = CreateDefaultRequest();
+            SetupHappyPathPolicies(request);
+
+            _userRepositoryMock
+                .IsEmailTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(false);
+            _userRepositoryMock
+                .IsUserNameTakenAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
+                .Returns(false);
+
+            var expectedHash = "secure_hashed_password_123";
+            _passwordHasherMock
+                .HashPassword(Arg.Any<User>(), request.Password)
+                .Returns(expectedHash);
+
+            Func<Task> act = async () => await _sut.RegisterAsync(request);
+
+            await act.Should()
+                .ThrowAsync<NotImplementedException>()
+                .WithMessage("Next step: JWT generation.");
+
+            await _userRepositoryMock
+                .Received(1)
+                .AddAsync(
+                    Arg.Is<User>(u =>
+                        u.UserName == request.Username
+                        && u.Email == request.Email
+                        && u.NormalizedUserName == request.Username.ToUpperInvariant()
+                        && u.NormalizedEmail == request.Email.ToUpperInvariant()
+                        && u.PasswordHash == expectedHash
+                    ),
+                    Arg.Any<CancellationToken>()
+                );
+
+            await _unitOfWorkMock.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());
         }
 
         private static RegisterRequestDto CreateDefaultRequest() =>
