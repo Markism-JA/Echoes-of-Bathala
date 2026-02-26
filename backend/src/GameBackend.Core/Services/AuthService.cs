@@ -153,14 +153,12 @@ namespace GameBackend.Core.Services
             CancellationToken ct
         )
         {
-            var emailTask = userRepository.IsEmailTakenAsync(normEmail, ct);
-            var userTask = userRepository.IsUserNameTakenAsync(normName, ct);
-
-            await Task.WhenAll(emailTask, userTask);
-
-            if (await emailTask)
+            // Check Email first
+            if (await userRepository.IsEmailTakenAsync(normEmail, ct))
                 return GameErrors.Auth.EmailTaken;
-            if (await userTask)
+
+            // Check Username second
+            if (await userRepository.IsUserNameTakenAsync(normName, ct))
                 return GameErrors.Auth.UsernameTaken;
 
             return Result.Success;
