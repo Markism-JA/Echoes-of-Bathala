@@ -1,10 +1,14 @@
 using GameBackend.Core.Entities;
+using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
+using GameBackend.Core.Interfaces.Services;
+using GameBackend.Core.Services;
 using GameBackend.Infra.Authentication;
 using GameBackend.Infra.Persistence;
 using GameBackend.Infra.Persistence.Repositories;
 using GameBackend.Infra.Security;
+using GameBackend.Infra.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -43,8 +47,14 @@ namespace GameBackend.Infra
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddSingleton<IRefreshTokenGenerator, RefreshTokenGenerator>();
+            services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+            services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
-            services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IAuthService, AuthService>();
+
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<IPasswordPolicy, PasswordPolicy>();
             services.AddScoped<IUsernamePolicy, UsernamePolicy>();
             services.AddScoped<IEmailPolicy, EmailPolicy>();
