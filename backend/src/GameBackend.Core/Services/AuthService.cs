@@ -39,8 +39,8 @@ namespace GameBackend.Core.Services
 
             var passResult = passwordHasher.VerifyPassword(
                 user,
-                request.Password,
-                user.PasswordHash!
+                user.PasswordHash!,
+                request.Password
             );
             if (!passResult)
                 return GameErrors.Auth.InvalidCredentials;
