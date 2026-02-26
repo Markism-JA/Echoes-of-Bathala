@@ -125,9 +125,10 @@ GameObject:
   - component: {fileID: 8190401857462522543}
   - component: {fileID: 5071357850575535530}
   - component: {fileID: 1865764590337549190}
+  - component: {fileID: -3972758378301317930}
   m_Layer: 0
   m_Name: PlayerCapsulePrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -481,3 +482,18 @@ MonoBehaviour:
   dashSpeed: 4
   trailRenderer: {fileID: 5071357850575535530}
   controller: {fileID: 8190401857462522543}
+--- !u!114 &-3972758378301317930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896576914824225207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f5322a527bdc5489a5ff6b85ab6bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  CurrentZone:
+    m_InternalValue: 3

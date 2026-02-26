@@ -28,11 +28,15 @@
                 // Subscribe to changes so the client can react immediately
                 CurrentZone.OnValueChanged += OnZoneChanged;
             }
+
+            public override void OnNetworkDespawn()
+            {
+                CurrentZone.OnValueChanged -= OnZoneChanged;
+            }
             
             private void OnZoneChanged(ZoneType previousValue, ZoneType newValue)
             {
                 Debug.Log($"Client updated: Player is now in {newValue}");
-                
             }
         }
     }

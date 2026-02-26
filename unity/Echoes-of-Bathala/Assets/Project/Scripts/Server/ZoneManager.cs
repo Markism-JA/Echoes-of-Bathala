@@ -7,23 +7,28 @@ namespace Project.Scripts.Server
 {
     public class ZoneManager : NetworkBehaviour
     {   
-        Player player;
         void FixedUpdate()
         {
+            
             if (!IsServer) return;
-            UpdatePlayerZone();
+            UpdatePlayersZone();
         }
 
-        private void UpdatePlayerZone()
-        {
-            float playerDistance = Vector3.Distance(player.transform.position, Vector3.zero);
-
-            ZoneType detectedZone = DetermineZone(playerDistance);
-
-
-            if (player.CurrentZone.Value != detectedZone)
+        // ReSharper disable Unity.PerformanceAnalysis
+        private void UpdatePlayersZone()
+        { 
+            foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
             {
-                player.CurrentZone.Value = detectedZone;
+                var player = client.PlayerObject.GetComponent<Player>();
+                Vector3 currentPosition = client.PlayerObject.transform.position;
+                float playerDistance = Vector3.Distance(currentPosition, Vector3.zero);
+                
+                ZoneType detectedZone = DetermineZone(playerDistance);
+
+                if (player.CurrentZone.Value != detectedZone)
+                {
+                    player.CurrentZone.Value = detectedZone;
+                }
             }
 
         }
