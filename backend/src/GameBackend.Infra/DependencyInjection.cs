@@ -1,4 +1,5 @@
 using GameBackend.Core.Entities;
+using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
 using GameBackend.Infra.Persistence;
@@ -45,6 +46,8 @@ namespace GameBackend.Infra
             services.AddScoped<IEmailPolicy, EmailPolicy>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
+
+            services.AddScoped<IDbSeeder, DbSeeder>();
 
             return services;
         }

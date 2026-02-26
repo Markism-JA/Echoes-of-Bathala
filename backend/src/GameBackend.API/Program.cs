@@ -1,3 +1,4 @@
+using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Infra;
 using GameBackend.Infra.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -15,16 +16,18 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 
     using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<GameDbContext>();
 
-    db.Database.Migrate();
+    var db = scope.ServiceProvider.GetRequiredService<GameDbContext>();
+    await db.Database.MigrateAsync();
+
+    var seeder = scope.ServiceProvider.GetRequiredService<IDbSeeder>();
+    await seeder.SeedAsync();
 }
 
 app.UseHttpsRedirection();
