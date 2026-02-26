@@ -71,5 +71,15 @@ public static class GameErrors
             code: "Auth.Password.TooWeak",
             description: "Password is too common or easy to guess."
         );
+
+        /// <summary>
+        /// Returned when the email/password combination is incorrect.
+        /// Maps to 401 Unauthorized.
+        /// </summary>
+        public static Error InvalidCredentials =>
+            Error.Validation(
+                code: "Auth.InvalidCredentials",
+                description: "The email or password provided is incorrect."
+            );
     }
 }

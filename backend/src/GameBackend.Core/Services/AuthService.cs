@@ -32,7 +32,42 @@ namespace GameBackend.Core.Services
             CancellationToken ct = default
         )
         {
-            throw new NotImplementedException();
+            var normalizedEmail = emailPolicy.Normalize(request.Email);
+            var user = await userRepository.GetByEmailAsync(normalizedEmail, ct);
+            if (user is null)
+                return GameErrors.Auth.InvalidCredentials;
+
+            var passResult = passwordHasher.VerifyPassword(
+                user,
+                request.Password,
+                user.PasswordHash!
+            );
+            if (!passResult)
+                return GameErrors.Auth.InvalidCredentials;
+
+            var now = dateTimeProvider.UtcNow;
+
+            const int MaxSessions = 5;
+            await refreshTokenRepository.RevokeExcessTokensAsync(user.Id, MaxSessions, ct);
+
+            var (accessToken, _) = jwtTokenGenerator.GenerateToken(user, now);
+
+            var refreshTokenValue = refreshTokenGenerator.GenerateToken();
+            var refreshExpiry = now.AddDays(_jwtSettings.RefreshTokenExpiryDays);
+
+            var refreshToken = RefreshToken.Create(refreshTokenValue, user.Id, refreshExpiry, now);
+
+            await refreshTokenRepository.AddAsync(refreshToken, ct);
+            await unitOfWork.SaveChangesAsync(ct);
+
+            var userDto = new UserResponseDto(user.Id, user.UserName!, user.Email!, user.CreatedAt);
+
+            return new AuthResponseDto(
+                accessToken,
+                refreshToken.Token,
+                refreshToken.ExpiryDate,
+                userDto
+            );
         }
 
         public Task<ErrorOr<AuthResponseDto>> RefreshTokenAsync(

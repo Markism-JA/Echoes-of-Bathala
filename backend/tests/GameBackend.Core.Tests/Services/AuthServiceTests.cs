@@ -299,8 +299,163 @@ namespace GameBackend.Core.Tests.Services
             await _unitOfWorkMock.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());
         }
 
-        private static RegisterRequestDto CreateDefaultRequest() =>
-            new("NewPlayer", "testPlayer@example.com", "Password123", "Password123");
+        [Fact]
+        public async Task LoginAsync_ShouldReturnInvalidCredentials_WhenUserDoesNotExist()
+        {
+            var request = CreateDefaultLoginRequest();
+            var normalizedEmail = request.Email.ToUpperInvariant();
+
+            _emailPolicyMock.Normalize(request.Email).Returns(normalizedEmail);
+
+            _userRepositoryMock
+                .GetByEmailAsync(normalizedEmail, Arg.Any<CancellationToken>())
+                .Returns((User?)null);
+
+            var result = await _sut.LoginAsync(request);
+
+            result.IsError.Should().BeTrue();
+            result.FirstError.Should().Be(GameErrors.Auth.InvalidCredentials);
+
+            _passwordHasherMock
+                .DidNotReceiveWithAnyArgs()
+                .VerifyPassword(default!, default!, default!);
+        }
+
+        [Fact]
+        public async Task LoginAsync_ShouldReturnInvalidCredentials_WhenPasswordIsWrong()
+        {
+            var request = CreateDefaultLoginRequest();
+            var normalizedEmail = request.Email.ToUpperInvariant();
+
+            var user = User.Create(
+                "Lakan",
+                request.Email,
+                "real_hash",
+                "LAKAN",
+                normalizedEmail,
+                DateTime.UtcNow
+            );
+
+            _emailPolicyMock.Normalize(request.Email).Returns(normalizedEmail);
+
+            _userRepositoryMock
+                .GetByEmailAsync(normalizedEmail, Arg.Any<CancellationToken>())
+                .Returns(user);
+
+            _passwordHasherMock
+                .VerifyPassword(user, request.Password, user.PasswordHash!)
+                .Returns(false);
+
+            var result = await _sut.LoginAsync(request);
+
+            result.IsError.Should().BeTrue();
+            result.FirstError.Should().Be(GameErrors.Auth.InvalidCredentials);
+
+            _jwtTokenGeneratorMock.DidNotReceiveWithAnyArgs().GenerateToken(default!, default);
+        }
+
+        [Fact]
+        public async Task LoginAsync_ShouldRevokeExcessTokens_WhenMaxSessionsIsReached()
+        {
+            var request = CreateDefaultLoginRequest();
+            var normalizedEmail = request.Email.ToUpperInvariant();
+            var user = User.Create(
+                "Lakan",
+                request.Email,
+                "hash",
+                "LAKAN",
+                normalizedEmail,
+                DateTime.UtcNow
+            );
+
+            _emailPolicyMock.Normalize(request.Email).Returns(normalizedEmail);
+            _userRepositoryMock
+                .GetByEmailAsync(normalizedEmail, Arg.Any<CancellationToken>())
+                .Returns(user);
+            _passwordHasherMock
+                .VerifyPassword(user, request.Password, user.PasswordHash!)
+                .Returns(true);
+
+            _dateTimeProviderMock.UtcNow.Returns(DateTime.UtcNow);
+            _jwtTokenGeneratorMock
+                .GenerateToken(Arg.Any<User>(), Arg.Any<DateTime>())
+                .Returns(("access_token", DateTime.UtcNow.AddMinutes(60)));
+            _refreshTokenGeneratorMock.GenerateToken().Returns("refresh_token");
+
+            await _sut.LoginAsync(request);
+
+            await _refreshTokenRepositoryMock
+                .Received(1)
+                .RevokeExcessTokensAsync(user.Id, 5, Arg.Any<CancellationToken>());
+        }
+
+        [Fact]
+        public async Task LoginAsync_ShouldReturnSuccessAndPersistSession_WhenCredentialsAreValid()
+        {
+            // Arrange
+            var request = CreateDefaultLoginRequest();
+            var normalizedEmail = request.Email.ToUpperInvariant();
+
+            var fixedTime = new DateTime(2026, 2, 26, 12, 0, 0, DateTimeKind.Utc);
+            var user = User.Create(
+                "Lakan",
+                request.Email,
+                "hash",
+                "LAKAN",
+                normalizedEmail,
+                fixedTime
+            );
+
+            _emailPolicyMock.Normalize(request.Email).Returns(normalizedEmail);
+            _userRepositoryMock
+                .GetByEmailAsync(normalizedEmail, Arg.Any<CancellationToken>())
+                .Returns(user);
+            _passwordHasherMock
+                .VerifyPassword(user, request.Password, user.PasswordHash!)
+                .Returns(true);
+
+            _dateTimeProviderMock.UtcNow.Returns(fixedTime);
+
+            var expectedJwtToken = "mock_jwt_token";
+            var expectedJwtExpiry = fixedTime.AddMinutes(60);
+            _jwtTokenGeneratorMock
+                .GenerateToken(user, fixedTime)
+                .Returns((expectedJwtToken, expectedJwtExpiry));
+
+            var expectedRefreshToken = "mock_refresh_token_123";
+            _refreshTokenGeneratorMock.GenerateToken().Returns(expectedRefreshToken);
+
+            var result = await _sut.LoginAsync(request);
+
+            result.IsError.Should().BeFalse();
+
+            result.Value.AccessToken.Should().Be(expectedJwtToken);
+            result.Value.RefreshToken.Should().Be(expectedRefreshToken);
+            result.Value.User.Username.Should().Be(user.UserName);
+
+            await _refreshTokenRepositoryMock
+                .Received(1)
+                .AddAsync(
+                    Arg.Is<RefreshToken>(rt =>
+                        rt.Token == expectedRefreshToken && rt.UserId == user.Id
+                    ),
+                    Arg.Any<CancellationToken>()
+                );
+
+            await _unitOfWorkMock.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());
+        }
+
+        private static LoginRequestDto CreateDefaultLoginRequest() =>
+            new LoginRequestDto("lakan@bathala.ph", "Password123");
+
+        private static RegisterRequestDto CreateDefaultRegisterRequest() =>
+            new()
+            {
+                Username = "NewPlayer",
+                Email = "testPlayer@example.com",
+                Password = "Password123",
+                ConfirmPassword = "Password123",
+            };
 
         private void SetupHappyPathPolicies(RegisterRequestDto request)
         {
