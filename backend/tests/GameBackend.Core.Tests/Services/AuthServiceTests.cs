@@ -1,5 +1,6 @@
 using ErrorOr;
 using FluentAssertions;
+using GameBackend.Core.Common.Authentication;
 using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
@@ -8,6 +9,7 @@ using GameBackend.Core.Interfaces.Services;
 using GameBackend.Core.Services;
 using GameBackend.Shared.DTOs.Identity;
 using GameBackend.Shared.Errors;
+using Microsoft.Extensions.Options;
 using NSubstitute;
 
 namespace GameBackend.Core.Tests.Services
@@ -24,6 +26,7 @@ namespace GameBackend.Core.Tests.Services
         private readonly IDateTimeProvider _dateTimeProviderMock;
         private readonly IRefreshTokenRepository _refreshTokenRepositoryMock;
         private readonly IRefreshTokenGenerator _refreshTokenGeneratorMock;
+        private readonly IOptions<JwtSettings> _jwtOptions;
         private readonly AuthService _sut;
 
         public AuthServiceTest()
@@ -39,6 +42,17 @@ namespace GameBackend.Core.Tests.Services
             _refreshTokenRepositoryMock = Substitute.For<IRefreshTokenRepository>();
             _refreshTokenGeneratorMock = Substitute.For<IRefreshTokenGenerator>();
 
+            _jwtOptions = Options.Create(
+                new JwtSettings
+                {
+                    Secret = "super-secret-key-at-least-32-chars-long",
+                    ExpiryMinutes = 60,
+                    RefreshTokenExpiryDays = 7,
+                    Issuer = "TestIssuer",
+                    Audience = "TestAudience",
+                }
+            );
+
             _sut = new AuthService(
                 _userRepositoryMock,
                 _passwordHasherMock,
@@ -49,7 +63,8 @@ namespace GameBackend.Core.Tests.Services
                 _jwtTokenGeneratorMock,
                 _dateTimeProviderMock,
                 _refreshTokenRepositoryMock,
-                _refreshTokenGeneratorMock
+                _refreshTokenGeneratorMock,
+                _jwtOptions
             );
         }
 
@@ -63,7 +78,7 @@ namespace GameBackend.Core.Tests.Services
             string expectedErrorCode
         )
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
 
             _usernamePolicyMock
                 .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
@@ -91,7 +106,7 @@ namespace GameBackend.Core.Tests.Services
             string expectedErrorCode
         )
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
 
             _usernamePolicyMock
                 .IsAllowedAsync(request.Username, Arg.Any<CancellationToken>())
@@ -122,7 +137,7 @@ namespace GameBackend.Core.Tests.Services
             string expectedErrorCode
         )
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
 
             _usernamePolicyMock
                 .IsAllowedAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
@@ -148,7 +163,7 @@ namespace GameBackend.Core.Tests.Services
         [Fact]
         public async Task RegisterAsync_ShouldReturnConflict_WhenEmailIsTaken()
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
             SetupHappyPathPolicies(request);
 
             _userRepositoryMock
@@ -165,7 +180,7 @@ namespace GameBackend.Core.Tests.Services
         [Fact]
         public async Task RegisterAsync_ShouldReturnConflict_WhenUsernameIsTaken()
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
             SetupHappyPathPolicies(request);
 
             _userRepositoryMock
@@ -185,7 +200,7 @@ namespace GameBackend.Core.Tests.Services
         [Fact]
         public async Task RegisterAsync_ShouldProceedToSuccessFlow_WhenAllChecksPass()
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
             SetupHappyPathPolicies(request);
 
             _userRepositoryMock
@@ -208,8 +223,9 @@ namespace GameBackend.Core.Tests.Services
 
             var expectedAccessToken = "mock_jwt_token";
             var expectedExpiry = fixedTime.AddMinutes(60);
+
             _jwtTokenGeneratorMock
-                .GenerateToken(Arg.Any<User>())
+                .GenerateToken(Arg.Any<User>(), Arg.Any<DateTime>())
                 .Returns((expectedAccessToken, expectedExpiry));
 
             var result = await _sut.RegisterAsync(request);
@@ -223,7 +239,7 @@ namespace GameBackend.Core.Tests.Services
         [Fact]
         public async Task RegisterAsync_ShouldNotCheckEmail_WhenUsernameIsInvalid()
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
             _usernamePolicyMock
                 .IsAllowedAsync(Arg.Any<string>(), Arg.Any<CancellationToken>())
                 .Returns(new UsernameValidationResult(false, "Username is required."));
@@ -237,7 +253,7 @@ namespace GameBackend.Core.Tests.Services
         [Fact]
         public async Task RegisterAsync_ShouldPersistUserAndRefreshToken_WhenAllChecksPass()
         {
-            var request = CreateDefaultRequest();
+            var request = CreateDefaultRegisterRequest();
             SetupHappyPathPolicies(request);
 
             _userRepositoryMock
@@ -259,7 +275,7 @@ namespace GameBackend.Core.Tests.Services
             _refreshTokenGeneratorMock.GenerateToken().Returns(expectedRefreshToken);
 
             _jwtTokenGeneratorMock
-                .GenerateToken(Arg.Any<User>())
+                .GenerateToken(Arg.Any<User>(), Arg.Any<DateTime>())
                 .Returns(("token", fixedTime.AddMinutes(60)));
 
             var result = await _sut.RegisterAsync(request);

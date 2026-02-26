@@ -1,4 +1,5 @@
 using ErrorOr;
+using GameBackend.Core.Common.Authentication;
 using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
@@ -6,6 +7,7 @@ using GameBackend.Core.Interfaces.Security;
 using GameBackend.Core.Interfaces.Services;
 using GameBackend.Shared.DTOs.Identity;
 using GameBackend.Shared.Errors;
+using Microsoft.Extensions.Options;
 
 namespace GameBackend.Core.Services
 {
@@ -19,10 +21,13 @@ namespace GameBackend.Core.Services
         IJwtTokenGenerator jwtTokenGenerator,
         IDateTimeProvider dateTimeProvider,
         IRefreshTokenRepository refreshTokenRepository,
-        IRefreshTokenGenerator refreshTokenGenerator
+        IRefreshTokenGenerator refreshTokenGenerator,
+        IOptions<JwtSettings> jwtOptions
     ) : IAuthService
     {
-        public Task<ErrorOr<AuthResponseDto>> LoginAsync(
+        private readonly JwtSettings _jwtSettings = jwtOptions.Value;
+
+        public async Task<ErrorOr<AuthResponseDto>> LoginAsync(
             LoginRequestDto request,
             CancellationToken ct = default
         )
@@ -58,34 +63,38 @@ namespace GameBackend.Core.Services
             if (availabilityResult.IsError)
                 return availabilityResult.Errors;
 
+            var now = dateTimeProvider.UtcNow;
+
             var user = User.Create(
                 request.Username,
                 request.Email,
                 passwordHasher.HashPassword(null!, request.Password),
                 normalizedUsername,
                 normalizedEmail,
-                dateTimeProvider.UtcNow
+                now
             );
 
             await userRepository.AddAsync(user, ct);
 
+            var (accessToken, _) = jwtTokenGenerator.GenerateToken(user, now);
+
             var refreshTokenString = refreshTokenGenerator.GenerateToken();
-            var refreshToken = RefreshToken.Create(
-                refreshTokenString,
-                user.Id,
-                dateTimeProvider.UtcNow.AddDays(7),
-                dateTimeProvider.UtcNow
-            );
+            var refreshExpiry = now.AddDays(_jwtSettings.RefreshTokenExpiryDays);
+
+            var refreshToken = RefreshToken.Create(refreshTokenString, user.Id, refreshExpiry, now);
 
             await refreshTokenRepository.AddAsync(refreshToken, ct);
 
             await unitOfWork.SaveChangesAsync(ct);
 
-            var (accessToken, expiration) = jwtTokenGenerator.GenerateToken(user);
-
             var userDto = new UserResponseDto(user.Id, user.UserName!, user.Email!, user.CreatedAt);
 
-            return new AuthResponseDto(accessToken, refreshTokenString, expiration, userDto);
+            return new AuthResponseDto(
+                accessToken,
+                refreshToken.Token,
+                refreshToken.ExpiryDate,
+                userDto
+            );
         }
 
         private async Task<ErrorOr<Success>> ValidateRegistrationPolicies(

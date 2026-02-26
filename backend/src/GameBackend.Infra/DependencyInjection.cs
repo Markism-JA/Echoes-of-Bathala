@@ -1,3 +1,4 @@
+using GameBackend.Core.Common.Authentication;
 using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;

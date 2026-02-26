@@ -1,19 +1,18 @@
 using System.Text;
+using GameBackend.Core.Common.Authentication;
 using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Security;
-using GameBackend.Core.Interfaces.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
 namespace GameBackend.Infra.Authentication;
 
-public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions, IDateTimeProvider dateTimeProvider)
-    : IJwtTokenGenerator
+public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions) : IJwtTokenGenerator
 {
     private readonly JwtSettings _jwtSettings = jwtOptions.Value;
 
-    public (string Token, DateTime Expiration) GenerateToken(User user)
+    public (string Token, DateTime Expiration) GenerateToken(User user, DateTime now)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
 
@@ -27,7 +26,7 @@ public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions, IDateTimeProvid
             [JwtRegisteredClaimNames.Jti] = Guid.NewGuid().ToString(),
         };
 
-        var expiration = dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes);
+        var expiration = now.AddMinutes(_jwtSettings.ExpiryMinutes);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
