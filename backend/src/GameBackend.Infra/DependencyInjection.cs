@@ -41,6 +41,8 @@ namespace GameBackend.Infra
                 .AddDefaultTokenProviders();
             services.AddDataProtection();
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddSingleton<IRefreshTokenGenerator, RefreshTokenGenerator>();
 
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IPasswordPolicy, PasswordPolicy>();

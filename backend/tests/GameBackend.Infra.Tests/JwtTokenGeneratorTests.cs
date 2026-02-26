@@ -34,11 +34,17 @@ public class JwtTokenGeneratorTests
     [Fact]
     public void GenerateToken_ShouldReadSettingsCorrectly()
     {
-        var user = User.Create("Lakan", "lakan@bathala.ph");
-        user.UpdateNormalizedFields("LAKAN", "LAKAN@BATHALA.PH");
-        user.SetPasswordHash("hashed_pass");
         var fixedTime = new DateTime(2026, 2, 26, 12, 0, 0, DateTimeKind.Utc);
         _dateTimeProviderMock.UtcNow.Returns(fixedTime);
+
+        var user = User.Create(
+            "Lakan",
+            "lakan@bathala.ph",
+            "hashed_pass",
+            "LAKAN",
+            "LAKAN@BATHALA.PH",
+            fixedTime
+        );
 
         var (token, expiration) = _sut.GenerateToken(user);
 

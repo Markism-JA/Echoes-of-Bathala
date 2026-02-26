@@ -14,5 +14,3 @@ project.nuget.cache
 
 appsettings.Local.json
 appsettings.*.local.json
-
-Migrations/

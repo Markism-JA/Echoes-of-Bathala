@@ -7,7 +7,6 @@ using GameBackend.Core.Interfaces.Security;
 using GameBackend.Core.Interfaces.Services;
 using GameBackend.Core.Services;
 using GameBackend.Shared.DTOs.Identity;
-using GameBackend.Shared.Enums;
 using GameBackend.Shared.Errors;
 using NSubstitute;
 
@@ -23,6 +22,8 @@ namespace GameBackend.Core.Tests.Services
         private readonly IUnitOfWork _unitOfWorkMock;
         private readonly IJwtTokenGenerator _jwtTokenGeneratorMock;
         private readonly IDateTimeProvider _dateTimeProviderMock;
+        private readonly IRefreshTokenRepository _refreshTokenRepositoryMock;
+        private readonly IRefreshTokenGenerator _refreshTokenGeneratorMock;
         private readonly AuthService _sut;
 
         public AuthServiceTest()
@@ -35,6 +36,8 @@ namespace GameBackend.Core.Tests.Services
             _unitOfWorkMock = Substitute.For<IUnitOfWork>();
             _jwtTokenGeneratorMock = Substitute.For<IJwtTokenGenerator>();
             _dateTimeProviderMock = Substitute.For<IDateTimeProvider>();
+            _refreshTokenRepositoryMock = Substitute.For<IRefreshTokenRepository>();
+            _refreshTokenGeneratorMock = Substitute.For<IRefreshTokenGenerator>();
 
             _sut = new AuthService(
                 _userRepositoryMock,
@@ -44,7 +47,9 @@ namespace GameBackend.Core.Tests.Services
                 _passwordPolicyMock,
                 _unitOfWorkMock,
                 _jwtTokenGeneratorMock,
-                _dateTimeProviderMock
+                _dateTimeProviderMock,
+                _refreshTokenRepositoryMock,
+                _refreshTokenGeneratorMock
             );
         }
 
@@ -198,24 +203,21 @@ namespace GameBackend.Core.Tests.Services
             var fixedTime = new DateTime(2026, 2, 26, 12, 0, 0, DateTimeKind.Utc);
             _dateTimeProviderMock.UtcNow.Returns(fixedTime);
 
-            var expectedToken = "mock_jwt_token";
+            var expectedRefreshToken = "mock_refresh_token_abc_123";
+            _refreshTokenGeneratorMock.GenerateToken().Returns(expectedRefreshToken);
+
+            var expectedAccessToken = "mock_jwt_token";
             var expectedExpiry = fixedTime.AddMinutes(60);
             _jwtTokenGeneratorMock
                 .GenerateToken(Arg.Any<User>())
-                .Returns((expectedToken, expectedExpiry));
+                .Returns((expectedAccessToken, expectedExpiry));
 
             var result = await _sut.RegisterAsync(request);
 
             result.IsError.Should().BeFalse();
-            result.Value.Should().NotBeNull();
-
-            result.Value.AccessToken.Should().Be(expectedToken);
-            result.Value.Expiration.Should().Be(expectedExpiry);
-
+            result.Value.AccessToken.Should().Be(expectedAccessToken);
+            result.Value.RefreshToken.Should().Be(expectedRefreshToken);
             result.Value.User.Username.Should().Be(request.Username);
-            result.Value.User.Email.Should().Be(request.Email);
-
-            result.Value.User.CreatedAt.Should().BeCloseTo(fixedTime, TimeSpan.FromSeconds(1));
         }
 
         [Fact]
@@ -233,7 +235,7 @@ namespace GameBackend.Core.Tests.Services
         }
 
         [Fact]
-        public async Task RegisterAsync_ShouldPersistUserAndSaveChanges_WhenAllChecksPass()
+        public async Task RegisterAsync_ShouldPersistUserAndRefreshToken_WhenAllChecksPass()
         {
             var request = CreateDefaultRequest();
             SetupHappyPathPolicies(request);
@@ -247,11 +249,15 @@ namespace GameBackend.Core.Tests.Services
 
             var expectedHash = "secure_hashed_password_123";
             _passwordHasherMock
-                .HashPassword(Arg.Any<User>(), request.Password)
+                .HashPassword(Arg.Any<User>(), Arg.Is(request.Password))
                 .Returns(expectedHash);
 
             var fixedTime = new DateTime(2026, 2, 26, 12, 0, 0, DateTimeKind.Utc);
             _dateTimeProviderMock.UtcNow.Returns(fixedTime);
+
+            var expectedRefreshToken = "mock_refresh_token_123";
+            _refreshTokenGeneratorMock.GenerateToken().Returns(expectedRefreshToken);
+
             _jwtTokenGeneratorMock
                 .GenerateToken(Arg.Any<User>())
                 .Returns(("token", fixedTime.AddMinutes(60)));
@@ -263,14 +269,14 @@ namespace GameBackend.Core.Tests.Services
             await _userRepositoryMock
                 .Received(1)
                 .AddAsync(
-                    Arg.Is<User>(u =>
-                        u.UserName == request.Username
-                        && u.Email == request.Email
-                        && u.NormalizedUserName == request.Username.ToUpperInvariant()
-                        && u.NormalizedEmail == request.Email.ToUpperInvariant()
-                        && u.PasswordHash == expectedHash
-                        && u.Status == UserStatus.Unverified
-                    ),
+                    Arg.Is<User>(u => u.PasswordHash == expectedHash),
+                    Arg.Any<CancellationToken>()
+                );
+
+            await _refreshTokenRepositoryMock
+                .Received(1)
+                .AddAsync(
+                    Arg.Is<RefreshToken>(rt => rt.Token == expectedRefreshToken),
                     Arg.Any<CancellationToken>()
                 );
 

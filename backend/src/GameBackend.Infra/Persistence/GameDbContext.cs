@@ -8,6 +8,8 @@ namespace GameBackend.Infra.Persistence;
 public class GameDbContext(DbContextOptions<GameDbContext> options)
     : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options)
 {
+    public DbSet<RefreshToken> refreshTokens { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

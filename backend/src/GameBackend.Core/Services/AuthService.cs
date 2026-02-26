@@ -17,7 +17,9 @@ namespace GameBackend.Core.Services
         IPasswordPolicy passwordPolicy,
         IUnitOfWork unitOfWork,
         IJwtTokenGenerator jwtTokenGenerator,
-        IDateTimeProvider dateTimeProvider
+        IDateTimeProvider dateTimeProvider,
+        IRefreshTokenRepository refreshTokenRepository,
+        IRefreshTokenGenerator refreshTokenGenerator
     ) : IAuthService
     {
         public Task<ErrorOr<AuthResponseDto>> LoginAsync(
@@ -66,13 +68,24 @@ namespace GameBackend.Core.Services
             );
 
             await userRepository.AddAsync(user, ct);
+
+            var refreshTokenString = refreshTokenGenerator.GenerateToken();
+            var refreshToken = RefreshToken.Create(
+                refreshTokenString,
+                user.Id,
+                dateTimeProvider.UtcNow.AddDays(7),
+                dateTimeProvider.UtcNow
+            );
+
+            await refreshTokenRepository.AddAsync(refreshToken, ct);
+
             await unitOfWork.SaveChangesAsync(ct);
 
             var (accessToken, expiration) = jwtTokenGenerator.GenerateToken(user);
 
             var userDto = new UserResponseDto(user.Id, user.UserName!, user.Email!, user.CreatedAt);
 
-            return new AuthResponseDto(accessToken, "TODO_REFRESH_TOKEN", expiration, userDto);
+            return new AuthResponseDto(accessToken, refreshTokenString, expiration, userDto);
         }
 
         private async Task<ErrorOr<Success>> ValidateRegistrationPolicies(
