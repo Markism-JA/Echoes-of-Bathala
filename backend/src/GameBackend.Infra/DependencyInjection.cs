@@ -39,6 +39,7 @@ namespace GameBackend.Infra
                 .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<GameDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddDataProtection();
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
 
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
