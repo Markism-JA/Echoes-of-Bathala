@@ -4,54 +4,42 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GameBackend.API.Controllers;
 
-[ApiController]
 [Route("api/auth")]
-public class AuthController(IAuthService authService) : ControllerBase
+public class AuthController(IAuthService authService) : BaseApiController
 {
+    /// <summary>
+    /// Registers a new player in the Echoes of Bathala universe.
+    /// </summary>
+    /// <response code="200">Returns the new user details and initial auth tokens.</response>
+    /// <response code="400">If the request is malformed or validation fails.</response>
+    /// <response code="409">If the username or email is already taken.</response>
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterRequestDto request, CancellationToken ct)
+    [ProducesResponseType(typeof(AuthResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> Register(
+        [FromBody] RegisterRequestDto request,
+        CancellationToken ct
+    )
     {
         var result = await authService.RegisterAsync(request, ct);
 
-        return result.Match(authResponse => Ok(authResponse), errors => MapErrorsToProblem(errors));
+        // Uses the Problem() method inherited from BaseApiController
+        return result.Match(authResponse => Ok(authResponse), errors => Problem(errors));
     }
 
-    private IActionResult MapErrorsToProblem(List<ErrorOr.Error> errors)
+    /// <summary>
+    /// Authenticates a player and initiates a new game session.
+    /// </summary>
+    /// <response code="200">Returns the access and refresh tokens.</response>
+    /// <response code="401">If the email or password is incorrect.</response>
+    [HttpPost("login")]
+    [ProducesResponseType(typeof(AuthResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> Login([FromBody] LoginRequestDto request, CancellationToken ct)
     {
-        if (errors.Count == 0)
-            return Problem();
+        var result = await authService.LoginAsync(request, ct);
 
-        if (errors.All(error => error.Type == ErrorOr.ErrorType.Validation))
-        {
-            return ValidationProblem(errors);
-        }
-
-        var firstError = errors[0];
-
-        var statusCode = firstError.Type switch
-        {
-            ErrorOr.ErrorType.Conflict => StatusCodes.Status409Conflict,
-            ErrorOr.ErrorType.Validation => StatusCodes.Status400BadRequest,
-            ErrorOr.ErrorType.NotFound => StatusCodes.Status404NotFound,
-            _ => StatusCodes.Status500InternalServerError,
-        };
-
-        return Problem(
-            statusCode: statusCode,
-            title: firstError.Code,
-            detail: firstError.Description
-        );
-    }
-
-    private ActionResult ValidationProblem(List<ErrorOr.Error> errors)
-    {
-        var modelStateDictionary = new Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary();
-
-        foreach (var error in errors)
-        {
-            modelStateDictionary.AddModelError(error.Code, error.Description);
-        }
-
-        return ValidationProblem(modelStateDictionary);
+        return result.Match(authResponse => Ok(authResponse), errors => Problem(errors));
     }
 }
