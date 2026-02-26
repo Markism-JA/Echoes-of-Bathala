@@ -27,14 +27,18 @@ public class RefreshTokenRepository(GameDbContext context)
 
     public async Task RevokeExcessTokensAsync(Guid userId, int maxSessions, CancellationToken ct)
     {
+        var now = DateTime.UtcNow;
+
         var oldTokens = await _dbSet
-            .Where(t => t.UserId == userId && !t.IsRevoked && !t.IsActive)
+            .Where(t => t.UserId == userId && !t.IsRevoked && t.ExpiryDate > now)
             .OrderByDescending(t => t.CreatedAt)
             .Skip(maxSessions - 1)
             .ToListAsync(ct);
 
         foreach (var token in oldTokens)
+        {
             token.Revoke();
+        }
     }
 
     public Task RevokeTokenAsync(string token, CancellationToken ct = default)
