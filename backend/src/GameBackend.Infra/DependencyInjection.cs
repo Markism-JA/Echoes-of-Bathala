@@ -1,6 +1,7 @@
 using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
+using GameBackend.Infra.Authentication;
 using GameBackend.Infra.Persistence;
 using GameBackend.Infra.Persistence.Repositories;
 using GameBackend.Infra.Security;
@@ -38,6 +39,7 @@ namespace GameBackend.Infra
                 .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<GameDbContext>()
                 .AddDefaultTokenProviders();
+            services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
 
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IPasswordPolicy, PasswordPolicy>();

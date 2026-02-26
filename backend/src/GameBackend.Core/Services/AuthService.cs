@@ -3,6 +3,7 @@ using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
+using GameBackend.Core.Interfaces.Services;
 using GameBackend.Shared.DTOs.Identity;
 using GameBackend.Shared.Errors;
 
@@ -14,7 +15,9 @@ namespace GameBackend.Core.Services
         IUsernamePolicy usernamePolicy,
         IEmailPolicy emailPolicy,
         IPasswordPolicy passwordPolicy,
-        IUnitOfWork unitOfWork
+        IUnitOfWork unitOfWork,
+        IJwtTokenGenerator jwtTokenGenerator,
+        IDateTimeProvider dateTimeProvider
     ) : IAuthService
     {
         public Task<ErrorOr<AuthResponseDto>> LoginAsync(
@@ -53,16 +56,23 @@ namespace GameBackend.Core.Services
             if (availabilityResult.IsError)
                 return availabilityResult.Errors;
 
-            var user = User.Create(request.Username, request.Email);
-
-            user.UpdateNormalizedFields(normalizedUsername, normalizedEmail);
-            user.SetPasswordHash(passwordHasher.HashPassword(user, request.Password));
+            var user = User.Create(
+                request.Username,
+                request.Email,
+                passwordHasher.HashPassword(null!, request.Password),
+                normalizedUsername,
+                normalizedEmail,
+                dateTimeProvider.UtcNow
+            );
 
             await userRepository.AddAsync(user, ct);
             await unitOfWork.SaveChangesAsync(ct);
 
-            // 5. Next steps (JWT)
-            throw new NotImplementedException("Next step: JWT generation.");
+            var (accessToken, expiration) = jwtTokenGenerator.GenerateToken(user);
+
+            var userDto = new UserResponseDto(user.Id, user.UserName!, user.Email!, user.CreatedAt);
+
+            return new AuthResponseDto(accessToken, "TODO_REFRESH_TOKEN", expiration, userDto);
         }
 
         private async Task<ErrorOr<Success>> ValidateRegistrationPolicies(

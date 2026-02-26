@@ -4,8 +4,10 @@ using GameBackend.Core.Entities;
 using GameBackend.Core.Interfaces.Persistence;
 using GameBackend.Core.Interfaces.Repository;
 using GameBackend.Core.Interfaces.Security;
+using GameBackend.Core.Interfaces.Services;
 using GameBackend.Core.Services;
 using GameBackend.Shared.DTOs.Identity;
+using GameBackend.Shared.Enums;
 using GameBackend.Shared.Errors;
 using NSubstitute;
 
@@ -19,6 +21,8 @@ namespace GameBackend.Core.Tests.Services
         private readonly IEmailPolicy _emailPolicyMock;
         private readonly IPasswordPolicy _passwordPolicyMock;
         private readonly IUnitOfWork _unitOfWorkMock;
+        private readonly IJwtTokenGenerator _jwtTokenGeneratorMock;
+        private readonly IDateTimeProvider _dateTimeProviderMock;
         private readonly AuthService _sut;
 
         public AuthServiceTest()
@@ -29,6 +33,8 @@ namespace GameBackend.Core.Tests.Services
             _emailPolicyMock = Substitute.For<IEmailPolicy>();
             _passwordPolicyMock = Substitute.For<IPasswordPolicy>();
             _unitOfWorkMock = Substitute.For<IUnitOfWork>();
+            _jwtTokenGeneratorMock = Substitute.For<IJwtTokenGenerator>();
+            _dateTimeProviderMock = Substitute.For<IDateTimeProvider>();
 
             _sut = new AuthService(
                 _userRepositoryMock,
@@ -36,7 +42,9 @@ namespace GameBackend.Core.Tests.Services
                 _usernamePolicyMock,
                 _emailPolicyMock,
                 _passwordPolicyMock,
-                _unitOfWorkMock
+                _unitOfWorkMock,
+                _jwtTokenGeneratorMock,
+                _dateTimeProviderMock
             );
         }
 
@@ -187,19 +195,27 @@ namespace GameBackend.Core.Tests.Services
                 .HashPassword(Arg.Any<User>(), Arg.Any<string>())
                 .Returns(expectedHash);
 
-            Func<Task> act = async () => await _sut.RegisterAsync(request);
+            var fixedTime = new DateTime(2026, 2, 26, 12, 0, 0, DateTimeKind.Utc);
+            _dateTimeProviderMock.UtcNow.Returns(fixedTime);
 
-            await act.Should()
-                .ThrowAsync<NotImplementedException>()
-                .WithMessage("Next step: JWT generation.");
+            var expectedToken = "mock_jwt_token";
+            var expectedExpiry = fixedTime.AddMinutes(60);
+            _jwtTokenGeneratorMock
+                .GenerateToken(Arg.Any<User>())
+                .Returns((expectedToken, expectedExpiry));
 
-            await _userRepositoryMock
-                .Received(1)
-                .AddAsync(
-                    Arg.Is<User>(u => u.PasswordHash == expectedHash),
-                    Arg.Any<CancellationToken>()
-                );
-            await _unitOfWorkMock.Received(1).SaveChangesAsync(Arg.Any<CancellationToken>());
+            var result = await _sut.RegisterAsync(request);
+
+            result.IsError.Should().BeFalse();
+            result.Value.Should().NotBeNull();
+
+            result.Value.AccessToken.Should().Be(expectedToken);
+            result.Value.Expiration.Should().Be(expectedExpiry);
+
+            result.Value.User.Username.Should().Be(request.Username);
+            result.Value.User.Email.Should().Be(request.Email);
+
+            result.Value.User.CreatedAt.Should().BeCloseTo(fixedTime, TimeSpan.FromSeconds(1));
         }
 
         [Fact]
@@ -234,11 +250,15 @@ namespace GameBackend.Core.Tests.Services
                 .HashPassword(Arg.Any<User>(), request.Password)
                 .Returns(expectedHash);
 
-            Func<Task> act = async () => await _sut.RegisterAsync(request);
+            var fixedTime = new DateTime(2026, 2, 26, 12, 0, 0, DateTimeKind.Utc);
+            _dateTimeProviderMock.UtcNow.Returns(fixedTime);
+            _jwtTokenGeneratorMock
+                .GenerateToken(Arg.Any<User>())
+                .Returns(("token", fixedTime.AddMinutes(60)));
 
-            await act.Should()
-                .ThrowAsync<NotImplementedException>()
-                .WithMessage("Next step: JWT generation.");
+            var result = await _sut.RegisterAsync(request);
+
+            result.IsError.Should().BeFalse();
 
             await _userRepositoryMock
                 .Received(1)
@@ -249,6 +269,7 @@ namespace GameBackend.Core.Tests.Services
                         && u.NormalizedUserName == request.Username.ToUpperInvariant()
                         && u.NormalizedEmail == request.Email.ToUpperInvariant()
                         && u.PasswordHash == expectedHash
+                        && u.Status == UserStatus.Unverified
                     ),
                     Arg.Any<CancellationToken>()
                 );
