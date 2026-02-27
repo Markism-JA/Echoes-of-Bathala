@@ -373,7 +373,7 @@ namespace GameBackend.Core.Tests.Services
                 .GetByEmailAsync(normalizedEmail, Arg.Any<CancellationToken>())
                 .Returns(user);
             _passwordHasherMock
-                .VerifyPassword(user, request.Password, user.PasswordHash!)
+                .VerifyPassword(user, user.PasswordHash!, request.Password)
                 .Returns(true);
 
             _dateTimeProviderMock.UtcNow.Returns(DateTime.UtcNow);
@@ -411,7 +411,7 @@ namespace GameBackend.Core.Tests.Services
                 .GetByEmailAsync(normalizedEmail, Arg.Any<CancellationToken>())
                 .Returns(user);
             _passwordHasherMock
-                .VerifyPassword(user, request.Password, user.PasswordHash!)
+                .VerifyPassword(user, user.PasswordHash!, request.Password)
                 .Returns(true);
 
             _dateTimeProviderMock.UtcNow.Returns(fixedTime);
