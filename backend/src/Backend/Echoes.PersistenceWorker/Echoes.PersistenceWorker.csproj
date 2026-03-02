@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-Echoes.PersistenceWorker-df25407b-8d58-4881-9ea2-cf12a200d31d</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Abstraction\Echoes.Shared.Abstraction.csproj" />
+    <ProjectReference Include="..\Echoes.Application\Echoes.Application.csproj" />
+    <ProjectReference Include="..\Echoes.Infrastructure\Echoes.Infrastructure.csproj" />
+    <ProjectReference Include="..\Echoes.Domain\Echoes.Domain.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-Echoes.GameServer-28e4b0e1-c9fe-4319-ba67-ecd62704450c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Network\Echoes.Shared.Network.csproj" />
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Abstraction\Echoes.Shared.Abstraction.csproj" />
+    <ProjectReference Include="..\Echoes.Application\Echoes.Application.csproj" />
+    <ProjectReference Include="..\Echoes.Infrastructure\Echoes.Infrastructure.csproj" />
+    <ProjectReference Include="..\Echoes.Domain\Echoes.Domain.csproj" />
+  </ItemGroup>
+</Project>
