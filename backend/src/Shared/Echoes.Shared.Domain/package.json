@@ -1,0 +1,7 @@
+{
+    "name": "com.echoes.shared.domain",
+    "version": "0.0.1",
+    "displayName": "Echoes Shared Domain",
+    "description": "Core game domain models and POCOs. Acts as the single source of truth for shared data structures between Backend and Unity Client.",
+    "author": "Echoes of Bathala Team"
+}

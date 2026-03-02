@@ -1,0 +1,16 @@
+{
+    "name": "Echoes.Shared.Network",
+    "rootNamespace": "",
+    "references": [
+        "GUID:036ff12260114ec99de40a70436f5891"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

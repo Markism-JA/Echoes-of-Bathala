@@ -1,0 +1,7 @@
+{
+    "name": "com.echoes.shared.network",
+    "version": "0.0.1",
+    "displayName": "Echoes Shared Network",
+    "description": "The API Contract: Defines all shared Request/Response DTOs and network protocols used by the Backend and any authorized Clients.",
+    "author": "Echoes of Bathala Team"
+}

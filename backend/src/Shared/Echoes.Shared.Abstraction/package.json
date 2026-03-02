@@ -1,0 +1,7 @@
+{
+    "name": "com.echoes.shared.abstraction",
+    "version": "0.0.1",
+    "displayName": "Echoes Shared Abstraction",
+    "description": "Defines core service interfaces, behavioral contracts, and abstraction layers. Decouples application logic from concrete infrastructure implementations shared between Backend and Unity.",
+    "author": "Echoes of Bathala Team"
+}
