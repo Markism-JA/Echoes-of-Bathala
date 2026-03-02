@@ -1,7 +1,19 @@
 {
   "dependencies": {
-    "com.echoes.shared": {
-      "version": "file:../../../backend/src/GameBackend.Shared",
+    "com.echoes.shared.abstraction": {
+      "version": "file:../../../backend/src/Shared/Echoes.Shared.Abstraction",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.echoes.shared.domain": {
+      "version": "file:../../../backend/src/Shared/Echoes.Shared.Domain",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.echoes.shared.network": {
+      "version": "file:../../../backend/src/Shared/Echoes.Shared.Network",
       "depth": 0,
       "source": "local",
       "dependencies": {}

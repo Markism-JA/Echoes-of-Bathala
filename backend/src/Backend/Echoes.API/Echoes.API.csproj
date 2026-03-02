@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Abstraction\Echoes.Shared.Abstraction.csproj" />
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Network\Echoes.Shared.Network.csproj" />
+    <ProjectReference Include="..\Echoes.Application\Echoes.Application.csproj" />
+    <ProjectReference Include="..\Echoes.Infrastructure\Echoes.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

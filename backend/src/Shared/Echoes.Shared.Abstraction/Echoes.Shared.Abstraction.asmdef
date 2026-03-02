@@ -1,0 +1,17 @@
+{
+    "name": "Echoes.Shared.Abstraction",
+    "rootNamespace": "",
+    "references": [
+        "GUID:53d2ba53e5d847dda9e4f8fa89770602",
+        "GUID:036ff12260114ec99de40a70436f5891"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

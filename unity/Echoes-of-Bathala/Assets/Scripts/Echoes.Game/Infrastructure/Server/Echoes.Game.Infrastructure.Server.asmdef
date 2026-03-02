@@ -1,0 +1,17 @@
+{
+    "name": "Echoes.Game.Infrastructure.Server",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b0bfe40d979842fe8bfda27151a68795",
+        "GUID:f1c390d781844266b7d8e048020d7e74"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

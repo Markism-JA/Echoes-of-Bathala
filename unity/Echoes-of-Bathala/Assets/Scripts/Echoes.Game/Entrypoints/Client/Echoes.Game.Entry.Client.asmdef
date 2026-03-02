@@ -1,0 +1,43 @@
+{
+    "name": "Echoes.Game.Entry.Client",
+    "rootNamespace": "",
+    "references": [
+        "Echoes.Game.Presentation",
+        "Echoes.Game.Infrastructure.Client",
+        "Echoes.Game.App.Client",
+        "Echoes.Shared.Domain",
+        "Echoes.Shared.Abstraction",
+        "Echoes.Shared.Network"
+    ],
+    "includePlatforms": [
+        "Android",
+        "Editor",
+        "EmbeddedLinux",
+        "iOS",
+        "Kepler",
+        "LinuxStandalone64",
+        "macOSStandalone",
+        "Switch2",
+        "Switch",
+        "PS4",
+        "PS5",
+        "QNX",
+        "tvOS",
+        "WSA",
+        "VisionOS",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64",
+        "GameCoreXboxOne",
+        "XboxOne",
+        "GameCoreScarlett"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
