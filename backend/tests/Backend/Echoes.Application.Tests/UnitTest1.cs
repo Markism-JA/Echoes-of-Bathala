@@ -1,4 +1,4 @@
-namespace GameBackend.Shared.Tests;
+namespace Echoes.Application.Tests;
 
 public class UnitTest1
 {
