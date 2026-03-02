@@ -1,0 +1,18 @@
+{
+    "name": "Echoes.Game.App.Server",
+    "rootNamespace": "",
+    "references": [
+        "Echoes.Shared.Network",
+        "Echoes.Shared.Domain",
+        "Echoes.Shared.Abstraction"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
