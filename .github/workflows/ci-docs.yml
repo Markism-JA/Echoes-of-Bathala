@@ -24,8 +24,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          lfs: false
 
-      - name: Sync GitLab Assets with LFS
+      - name: Pull LFS Assets from GitLab
         env:
           GL_TOKEN: ${{ secrets.GITLAB_TOKEN }}
           GL_REPO_URL: ${{ vars.GL_REPO_URL }}
@@ -35,16 +37,11 @@ jobs:
           git config --global credential.helper store
           echo "https://oauth2:${GL_TOKEN}@gitlab.com" > ~/.git-credentials
 
-          git lfs install
+          git config lfs.url "${GL_REPO_URL}/info/lfs"
 
-          git clone --depth 1 "${GL_REPO_URL}" docs/gitlab-assets
-
-          cd docs/gitlab-assets
           git lfs pull
 
-          rm -rf .git
-
-          echo "LFS Assets successfully downloaded!"
+          echo "LFS Assets successfully downloaded into the workspace!"
 
       - name: Set up Python
         uses: actions/setup-python@v5
