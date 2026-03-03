@@ -1,0 +1,78 @@
+using Echoes.Domain.Repository;
+using Echoes.Domain.Users;
+using Microsoft.EntityFrameworkCore;
+
+namespace Echoes.Infrastructure.Persistence.Repositories
+{
+    public class UserRepository(GameDbContext context) : Repository<User>(context), IUserRepository
+    {
+        public async Task<User?> GetByEmailAsync(
+            string normalizedEmail,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await _dbSet.FirstOrDefaultAsync(
+                a => a.NormalizedEmail == normalizedEmail,
+                cancellationToken
+            );
+        }
+
+        public async Task<User?> GetByUserNameAsync(
+            string normalizedUsername,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await _dbSet.FirstOrDefaultAsync(
+                a => a.NormalizedUserName == normalizedUsername,
+                cancellationToken
+            );
+        }
+
+        public async Task<User?> GetByWalletAddressAsync(
+            string normalizedWalletAddress,
+            CancellationToken cancellationToken = default
+        )
+        {
+            if (string.IsNullOrWhiteSpace(normalizedWalletAddress))
+                return null;
+
+            return await _dbSet.FirstOrDefaultAsync(
+                a => a.LinkedWalletAddress == normalizedWalletAddress,
+                cancellationToken
+            );
+        }
+
+        public async Task<bool> IsEmailTakenAsync(
+            string normalizedEmail,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await _dbSet.AnyAsync(
+                a => a.NormalizedEmail == normalizedEmail,
+                cancellationToken
+            );
+        }
+
+        public async Task<bool> IsUserNameTakenAsync(
+            string normalizedUsername,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await _dbSet.AnyAsync(
+                a => a.NormalizedUserName == normalizedUsername,
+                cancellationToken
+            );
+        }
+
+        public async Task<bool> IsWalletLinkedAsync(
+            string normalizedWalletAddress,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await _dbSet.AnyAsync(
+                a => a.LinkedWalletAddress == normalizedWalletAddress,
+                cancellationToken
+            );
+        }
+    }
+}
