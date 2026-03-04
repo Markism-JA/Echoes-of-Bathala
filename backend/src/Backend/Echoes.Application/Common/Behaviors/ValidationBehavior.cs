@@ -24,7 +24,9 @@ namespace Echoes.Application.Common.Behaviors
             if (failures.Count != 0)
             {
                 return (dynamic)
-                    failures.Select(f => Error.Validation(f.PropertyName, f.ErrorMessage)).ToList();
+                    failures
+                        .Select(f => Error.Validation(code: f.ErrorCode, f.ErrorMessage))
+                        .ToList();
             }
 
             return await next(ct);
