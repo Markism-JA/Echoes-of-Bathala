@@ -7,7 +7,9 @@ namespace Echoes.Shared.Network.Constants
             public const string Required = "Auth.Username.Required";
             public const string Profane = "Auth.Username.Profane";
             public const string Reserved = "Auth.Username.Reserved";
-            public const string Invalid = "Auth.Username.Invalid";
+            public const string TooShort = "Auth.Username.TooShort";
+            public const string TooLong = "Auth.Username.TooLong";
+            public const string InvalidCharacters = "Auth.Username.InvalidCharacters";
             public const string Taken = "Auth.Username.Taken";
         }
 
