@@ -23,3 +23,10 @@ dotnet_naming_style.prefix_underscore.capitalization = camel_case
 
 [**/Migrations/**]
 generated_code = true
+
+# CA1822: Mark members as static
+dotnet_diagnostic.CA1822.severity = none
+
+# CA1822: Mark members as static
+dotnet_diagnostic.CA1822.severity = silent
+
