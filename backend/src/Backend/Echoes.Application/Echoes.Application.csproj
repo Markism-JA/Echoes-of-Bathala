@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj" />
     <ProjectReference Include="..\..\Shared\Echoes.Shared.Abstraction\Echoes.Shared.Abstraction.csproj" />
+    <ProjectReference Include="..\Echoes.Domain\Echoes.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -10,6 +11,7 @@
     <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageReference Include="MediatR" Version="14.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.3" />
   </ItemGroup>
 
   <PropertyGroup>
