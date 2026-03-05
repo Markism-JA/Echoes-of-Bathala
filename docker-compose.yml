@@ -1,9 +1,23 @@
 version: "3.8"
 
 services:
-  # ---------------------------------------------
-  # 1. DATABASE (PostgreSQL)
-  # ---------------------------------------------
+  # Reverse Proxy
+  traefik:
+    image: traefik:v2.10
+    container_name: echoes_traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - echoes_net
+
   db:
     image: postgres:15-alpine
     container_name: echoes_db
@@ -18,73 +32,127 @@ services:
     networks:
       - echoes_net
 
-  # ---------------------------------------------
-  # 2. BACKEND API (Service 2)
-  # ---------------------------------------------
-  backend-api:
+  redis_auth:
+    image: redis:7-alpine
+    container_name: echoes_redis_auth
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "6379:6379"
+    networks:
+      - echoes_net
+
+  redis_buffer:
+    image: redis:7-alpine
+    container_name: echoes_redis_buffer
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6380:6379"
+    networks:
+      - echoes_net
+
+  # Logging
+  seq:
+    image: datalust/seq:latest
+    container_name: echoes_seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "8081:80"
+      - "5341:5341"
+    volumes:
+      - seq_data:/data
+    networks:
+      - echoes_net
+
+  api:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: src/Backend/Echoes.API/Dockerfile
     container_name: echoes_api
     depends_on:
       - db
-      - blockchain
+      - redis_auth
+      - seq
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      # Connects to 'db' container
       - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=password123
-      # Connects to 'blockchain' container
-      - BlockchainSettings__RpcUrl=http://blockchain:8545
-    ports:
-      - "5000:80"
+      - Redis__AuthConnectionString=redis_auth:6379
+      - JwtSettings__Secret=super-secret-key-that-is-at-least-32-characters-long
+      - Seq__ServerUrl=http://seq:5341
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.echoes_api.rule=Host(`localhost`) && PathPrefix(`/api`)"
+      - "traefik.http.services.echoes_api.loadbalancer.server.port=80"
     networks:
       - echoes_net
 
-  # ---------------------------------------------
-  # 3. WORKER SERVICE (Service 3)
-  # ---------------------------------------------
-  worker:
+  game_server:
     build:
       context: ./backend
-      dockerfile: Dockerfile.worker
-    container_name: echoes_worker
+      dockerfile: src/Backend/Echoes.GameServer/Dockerfile
+    container_name: echoes_game_server
+    depends_on:
+      - redis_auth
+      - redis_buffer
+      - seq
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+      - Redis__AuthConnectionString=redis_auth:6379
+      - Redis__BufferConnectionString=redis_buffer:6379
+      - Seq__ServerUrl=http://seq:5341
+    ports:
+      - "7777:7777/udp"
+      - "7777:7777/tcp"
+    networks:
+      - echoes_net
+
+  persistence_worker:
+    build:
+      context: ./backend
+      dockerfile: src/Backend/Echoes.PersistenceWorker/Dockerfile
+    container_name: echoes_persistence_worker
     depends_on:
       - db
-      - blockchain
+      - redis_buffer
+      - seq
     environment:
       - DOTNET_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=password123
-      - BlockchainSettings__RpcUrl=http://blockchain:8545
+      - Redis__BufferConnectionString=redis_buffer:6379
+      - Seq__ServerUrl=http://seq:5341
     networks:
       - echoes_net
 
-  # ---------------------------------------------
-  # 4. BLOCKCHAIN (Hardhat)
-  # ---------------------------------------------
+  crypto_worker:
+    build:
+      context: ./backend
+      dockerfile: src/Backend/Echoes.CryptoWorker/Dockerfile
+    container_name: echoes_crypto_worker
+    depends_on:
+      - blockchain
+      - redis_buffer
+      - seq
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+      - BlockchainSettings__RpcUrl=http://blockchain:8545
+      - Redis__BufferConnectionString=redis_buffer:6379
+      - Seq__ServerUrl=http://seq:5341
+    networks:
+      - echoes_net
+
+  # Only for dev second option for october testing
   blockchain:
     build:
       context: ./blockchain
     container_name: echoes_chain
     ports:
-      - "8545:8545" # Exposed for Metamask to connect from Chrome
+      - "8545:8545"
     networks:
       - echoes_net
 
-  # ---------------------------------------------
-  # 5. UNITY SERVER (Headless Linux Build)
-  # ---------------------------------------------
-  # Uncomment only after having built the Linux Server binary
-  # game-server:
-  #   build:
-  #     context: ./unity
-  #   container_name: echoes_game_server
-  #   ports:
-  #     - "7777:7777/udp"
-  #   networks:
-  #     - echoes_net
-
 volumes:
   postgres_data:
+  seq_data:
 
 networks:
   echoes_net:
