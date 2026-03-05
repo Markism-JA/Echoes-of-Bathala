@@ -1,5 +1,6 @@
 using Echoes.Domain;
 using Echoes.Domain.Users;
+using Echoes.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,7 +10,13 @@ namespace Echoes.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Users");
+            builder.ToTable("users");
+
+            builder
+                .HasOne<ApplicationUser>()
+                .WithOne(a => a.User)
+                .HasForeignKey<User>(u => u.Id)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(u => u.UserName).HasMaxLength(32).IsRequired();
             builder.Property(u => u.Email).HasMaxLength(254).IsRequired();

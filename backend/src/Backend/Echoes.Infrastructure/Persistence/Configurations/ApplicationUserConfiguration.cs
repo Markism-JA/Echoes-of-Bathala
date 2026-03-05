@@ -8,12 +8,7 @@ namespace Echoes.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            builder
-                .HasOne(appUser => appUser.User)
-                .WithOne()
-                .HasForeignKey<ApplicationUser>(appUser => appUser.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            builder.ToTable("application_user");
             builder.Property(u => u.UserName).HasMaxLength(32).IsRequired();
             builder.Property(u => u.Email).HasMaxLength(254).IsRequired();
 

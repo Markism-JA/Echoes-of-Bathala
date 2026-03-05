@@ -8,6 +8,7 @@ namespace Echoes.Infrastructure.Mappers
         public static User ToDomain(ApplicationUser appUser)
         {
             return User.Create(
+                appUser.Id,
                 appUser.UserName!,
                 appUser.NormalizedUserName!,
                 appUser.Email!,
