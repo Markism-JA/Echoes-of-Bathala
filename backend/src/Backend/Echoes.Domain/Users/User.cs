@@ -17,6 +17,7 @@ namespace Echoes.Domain.Users
         private User() { }
 
         public static User Create(
+            Guid id,
             string username,
             string normalizedUserName,
             string email,
@@ -41,7 +42,7 @@ namespace Echoes.Domain.Users
 
             return new User
             {
-                Id = Guid.NewGuid(),
+                Id = id,
                 UserName = username,
                 NormalizedUserName = normalizedUserName,
                 Email = email,
