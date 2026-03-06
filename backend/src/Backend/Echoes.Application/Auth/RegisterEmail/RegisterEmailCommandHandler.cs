@@ -15,7 +15,7 @@ public class RegisterEmailCommandHandler(
     IRegistrationPolicy registrationPolicy,
     IIdentityService identityService,
     IUserRepository userRepository,
-    IRefreshTokenRepository refreshTokenRepository,
+    ISessionService sessionService,
     IUnitOfWork unitOfWork,
     IDateTimeProvider dateTimeProvider,
     IJwtTokenGenerator jwtTokenGenerator,
@@ -68,8 +68,7 @@ public class RegisterEmailCommandHandler(
             now
         );
 
-        await refreshTokenRepository.AddAsync(refreshToken, cancellationToken);
-
+        await sessionService.CreateSessionAsync(refreshToken);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return CreateResponse(accessToken, refreshToken, domainUser);

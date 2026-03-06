@@ -10,7 +10,10 @@ builder
     .Services.AddDatabaseInfrastructure(builder.Configuration)
     .AddAuthInfrastructure(builder.Configuration)
     .AddRepositoryInfrastructure()
-    .AddPolicyAndUtilityServices();
+    .AddPolicyAndUtilityServices()
+    .AddPubSubRedisInfrastructure(builder.Configuration)
+    .AddBufferRedisInfrastructure(builder.Configuration)
+    .AddSerializationInfrastructure();
 
 builder.Services.AddApplicationServices();
 

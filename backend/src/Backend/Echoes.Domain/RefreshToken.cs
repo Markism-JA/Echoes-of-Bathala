@@ -1,13 +1,13 @@
-using Echoes.Domain.Common;
-
 namespace Echoes.Domain
 {
-    public class RefreshToken : BaseEntity, IAggregateRoot
+    public class RefreshToken
     {
         private RefreshToken() { }
 
+        public Guid Id { get; set; }
         public string Token { get; private set; } = null!;
         public Guid UserId { get; private set; }
+        public DateTime CreatedAt { get; set; }
         public DateTime ExpiryDate { get; private set; }
         public bool IsRevoked { get; private set; }
 
@@ -34,6 +34,29 @@ namespace Echoes.Domain
                 ExpiryDate = expiryDate,
                 CreatedAt = createdAt,
                 IsRevoked = false,
+            };
+        }
+
+        public static RefreshToken Restore(
+            Guid id,
+            string token,
+            Guid userId,
+            DateTime expiryDate,
+            bool isRevoked,
+            DateTime createdAt
+        )
+        {
+            if (id == Guid.Empty)
+                throw new ArgumentException("Cannot restore RefreshToken without an ID.");
+
+            return new RefreshToken
+            {
+                Id = id,
+                Token = token,
+                UserId = userId,
+                ExpiryDate = expiryDate,
+                IsRevoked = isRevoked,
+                CreatedAt = createdAt,
             };
         }
 
