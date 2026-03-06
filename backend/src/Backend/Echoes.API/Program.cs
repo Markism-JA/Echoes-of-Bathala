@@ -5,7 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddInfrastructureServices(builder.Configuration);
+// Echoes.API/Program.cs
+builder
+    .Services.AddDatabaseInfrastructure(builder.Configuration)
+    .AddAuthInfrastructure(builder.Configuration)
+    .AddRepositoryInfrastructure()
+    .AddPolicyAndUtilityServices();
+
 builder.Services.AddApplicationServices();
 
 builder.Services.AddControllers();
