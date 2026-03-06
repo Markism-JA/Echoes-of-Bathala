@@ -56,16 +56,17 @@ setup_service() {
 
 setup_service "backend/src/Backend/Echoes.API" \
 	"ConnectionStrings:DefaultConnection" "Host=localhost;Database=echoes_bathala_db;Username=admin;Password=$POSTGRES_PASSWORD" \
-	"Redis:PubSubConnectionString" "localhost:6379,password=$REDIS_PUBSUB_PASSWORD" \
+	"ConnectionStrings:RedisPubSub" "localhost:6379,password=$REDIS_PUBSUB_PASSWORD" \
+	"ConnectionStrings:RedisBuffer" "localhost:6380,password=$REDIS_BUFFER_PASSWORD" \
 	"JwtSettings:Secret" "$JWT_SECRET"
 
 setup_service "backend/src/Backend/Echoes.GameServer" \
-	"Redis:PubSubConnectionString" "localhost:6379,password=$REDIS_PUBSUB_PASSWORD" \
-	"Redis:BufferConnectionString" "localhost:6380,password=$REDIS_BUFFER_PASSWORD"
+	"ConnectionStrings:RedisPubSub" "localhost:6379,password=$REDIS_PUBSUB_PASSWORD" \
+	"ConnectionStrings:RedisBuffer" "localhost:6380,password=$REDIS_BUFFER_PASSWORD"
 
 setup_service "backend/src/Backend/Echoes.PersistenceWorker" \
 	"ConnectionStrings:DefaultConnection" "Host=localhost;Database=echoes_bathala_db;Username=admin;Password=$POSTGRES_PASSWORD" \
-	"Redis:BufferConnectionString" "localhost:6380,password=$REDIS_BUFFER_PASSWORD"
+	"ConnectionStrings:RedisBuffer" "localhost:6380,password=$REDIS_BUFFER_PASSWORD"
 
 setup_service "backend/src/Backend/Echoes.CryptoWorker" \
 	"ConnectionStrings:DefaultConnection" "Host=localhost;Database=echoes_bathala_db;Username=admin;Password=$POSTGRES_PASSWORD"

@@ -60,18 +60,18 @@ function Setup-Service {
 
 Setup-Service -ServicePath "backend/src/Backend/Echoes.API" -Secrets @{
     "ConnectionStrings:DefaultConnection" = "Host=localhost;Database=echoes_bathala_db;Username=admin;Password=$env:POSTGRES_PASSWORD"
-    "Redis:PubSubConnectionString"        = "localhost:6379,password=$env:REDIS_PUBSUB_PASSWORD"
+    "ConnectionStrings:RedisPubSub"        = "localhost:6379,password=$env:REDIS_PUBSUB_PASSWORD"
     "JwtSettings:Secret"                  = $env:JWT_SECRET
 }
 
 Setup-Service -ServicePath "backend/src/Backend/Echoes.GameServer" -Secrets @{
-    "Redis:PubSubConnectionString"   = "localhost:6379,password=$env:REDIS_PUBSUB_PASSWORD"
-    "Redis:BufferConnectionString" = "localhost:6380,password=$env:REDIS_BUFFER_PASSWORD"
+    "ConnectionStrings:RedisPubSub"   = "localhost:6379,password=$env:REDIS_PUBSUB_PASSWORD"
+    "ConnectionStrings:RedisBuffer" = "localhost:6380,password=$env:REDIS_BUFFER_PASSWORD"
 }
 
 Setup-Service -ServicePath "backend/src/Backend/Echoes.PersistenceWorker" -Secrets @{
     "ConnectionStrings:DefaultConnection" = "Host=localhost;Database=echoes_bathala_db;Username=admin;Password=$env:POSTGRES_PASSWORD"
-    "Redis:BufferConnectionString"        = "localhost:6380,password=$env:REDIS_BUFFER_PASSWORD"
+    "ConnectionStrings:RedisBuffer"        = "localhost:6380,password=$env:REDIS_BUFFER_PASSWORD"
 }
 
 Setup-Service -ServicePath "backend/src/Backend/Echoes.CryptoWorker" -Secrets @{
