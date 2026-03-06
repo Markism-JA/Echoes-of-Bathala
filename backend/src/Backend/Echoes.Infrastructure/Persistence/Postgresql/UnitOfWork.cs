@@ -1,6 +1,6 @@
 using Echoes.Application.Common.Persistence;
 
-namespace Echoes.Infrastructure.Persistence
+namespace Echoes.Infrastructure.Persistence.Postgresql
 {
     public class UnitOfWork(GameDbContext context) : IUnitOfWork
     {

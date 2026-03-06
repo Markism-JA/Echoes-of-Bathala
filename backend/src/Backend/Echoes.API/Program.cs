@@ -1,6 +1,6 @@
 using Echoes.Application;
 using Echoes.Infrastructure;
-using Echoes.Infrastructure.Persistence;
+using Echoes.Infrastructure.Persistence.Postgresql;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

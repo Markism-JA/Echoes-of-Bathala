@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Echoes.Infrastructure.Persistence
+namespace Echoes.Infrastructure.Persistence.Postgresql
 {
     public class GameDbContext(DbContextOptions<GameDbContext> options)
         : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>(options)

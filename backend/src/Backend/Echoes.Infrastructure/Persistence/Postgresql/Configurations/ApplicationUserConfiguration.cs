@@ -2,7 +2,7 @@ using Echoes.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Echoes.Infrastructure.Persistence.Configurations
+namespace Echoes.Infrastructure.Persistence.Postgresql.Configurations
 {
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

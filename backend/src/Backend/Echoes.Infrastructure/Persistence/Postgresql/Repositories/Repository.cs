@@ -2,7 +2,7 @@ using Echoes.Domain.Common;
 using Echoes.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Echoes.Infrastructure.Persistence.Repositories
+namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
 {
     public class Repository<T>(GameDbContext context) : IRepository<T>
         where T : class, IAggregateRoot

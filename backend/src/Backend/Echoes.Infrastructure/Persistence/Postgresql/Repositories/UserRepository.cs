@@ -2,7 +2,7 @@ using Echoes.Domain.Repository;
 using Echoes.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace Echoes.Infrastructure.Persistence.Repositories
+namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
 {
     public class UserRepository(GameDbContext context) : Repository<User>(context), IUserRepository
     {
