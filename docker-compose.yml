@@ -23,7 +23,7 @@ services:
     container_name: echoes_db
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password123
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: echoes_bathala_db
     ports:
       - "5432:5432"
@@ -31,24 +31,55 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - echoes_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d echoes_bathala_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
-  redis_auth:
+  redis_pubsub:
     image: redis:7-alpine
-    container_name: echoes_redis_auth
-    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    container_name: echoes_redis_pubsub
+    command:
+      [
+        "redis-server",
+        "--save",
+        "",
+        "--appendonly",
+        "no",
+        "--requirepass",
+        "${REDIS_PUBSUB_PASSWORD}",
+      ]
     ports:
       - "6379:6379"
     networks:
       - echoes_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PUBSUB_PASSWORD}", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
   redis_buffer:
     image: redis:7-alpine
     container_name: echoes_redis_buffer
-    command: ["redis-server", "--appendonly", "yes"]
+    command:
+      [
+        "redis-server",
+        "--appendonly",
+        "yes",
+        "--requirepass",
+        "${REDIS_BUFFER_PASSWORD}",
+      ]
     ports:
       - "6380:6379"
     networks:
       - echoes_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_BUFFER_PASSWORD}", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
   # Logging
   seq:
@@ -63,6 +94,11 @@ services:
       - seq_data:/data
     networks:
       - echoes_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   api:
     build:
@@ -70,14 +106,17 @@ services:
       dockerfile: src/Backend/Echoes.API/Dockerfile
     container_name: echoes_api
     depends_on:
-      - db
-      - redis_auth
-      - seq
+      db:
+        condition: service_healthy
+      redis_pubsub:
+        condition: service_healthy
+      seq:
+        condition: service_healthy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=password123
-      - Redis__AuthConnectionString=redis_auth:6379
-      - JwtSettings__Secret=super-secret-key-that-is-at-least-32-characters-long
+      - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=${POSTGRES_PASSWORD}
+      - Redis__PubSubConnectionString=redis_pubsub:6379,password=${REDIS_PUBSUB_PASSWORD}
+      - JwtSettings__Secret=${JWT_SECRET}
       - Seq__ServerUrl=http://seq:5341
     labels:
       - "traefik.enable=true"
@@ -92,13 +131,16 @@ services:
       dockerfile: src/Backend/Echoes.GameServer/Dockerfile
     container_name: echoes_game_server
     depends_on:
-      - redis_auth
-      - redis_buffer
-      - seq
+      redis_pubsub:
+        condition: service_healthy
+      redis_buffer:
+        condition: service_healthy
+      seq:
+        condition: service_healthy
     environment:
       - DOTNET_ENVIRONMENT=Development
-      - Redis__AuthConnectionString=redis_auth:6379
-      - Redis__BufferConnectionString=redis_buffer:6379
+      - Redis__PubSubConnectionString=redis_pubsub:6379,password=${REDIS_PUBSUB_PASSWORD}
+      - Redis__BufferConnectionString=redis_buffer:6379,password=${REDIS_BUFFER_PASSWORD}
       - Seq__ServerUrl=http://seq:5341
     ports:
       - "7777:7777/udp"
@@ -112,13 +154,16 @@ services:
       dockerfile: src/Backend/Echoes.PersistenceWorker/Dockerfile
     container_name: echoes_persistence_worker
     depends_on:
-      - db
-      - redis_buffer
-      - seq
+      db:
+        condition: service_healthy
+      redis_buffer:
+        condition: service_healthy
+      seq:
+        condition: service_healthy
     environment:
       - DOTNET_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=password123
-      - Redis__BufferConnectionString=redis_buffer:6379
+      - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=${POSTGRES_PASSWORD}
+      - Redis__BufferConnectionString=redis_buffer:6379,password=${REDIS_BUFFER_PASSWORD}
       - Seq__ServerUrl=http://seq:5341
     networks:
       - echoes_net
@@ -129,13 +174,16 @@ services:
       dockerfile: src/Backend/Echoes.CryptoWorker/Dockerfile
     container_name: echoes_crypto_worker
     depends_on:
-      - blockchain
-      - redis_buffer
-      - seq
+      db:
+        condition: service_healthy
+      seq:
+        condition: service_healthy
+      blockchain:
+        condition: service_started
     environment:
       - DOTNET_ENVIRONMENT=Development
       - BlockchainSettings__RpcUrl=http://blockchain:8545
-      - Redis__BufferConnectionString=redis_buffer:6379
+      - ConnectionStrings__DefaultConnection=Host=db;Database=echoes_bathala_db;Username=admin;Password=${POSTGRES_PASSWORD}
       - Seq__ServerUrl=http://seq:5341
     networks:
       - echoes_net

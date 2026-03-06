@@ -34,3 +34,5 @@ yarn-error.log*
 
 [Tt]est[Rr]esults
 [Cc]overage[Rr]eport
+
+.env
