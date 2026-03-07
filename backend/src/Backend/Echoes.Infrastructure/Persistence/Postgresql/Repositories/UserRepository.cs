@@ -11,7 +11,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             CancellationToken cancellationToken = default
         )
         {
-            return await _dbSet.FirstOrDefaultAsync(
+            return await DbSet.FirstOrDefaultAsync(
                 a => a.NormalizedEmail == normalizedEmail,
                 cancellationToken
             );
@@ -22,7 +22,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             CancellationToken cancellationToken = default
         )
         {
-            return await _dbSet.FirstOrDefaultAsync(
+            return await DbSet.FirstOrDefaultAsync(
                 a => a.NormalizedUserName == normalizedUsername,
                 cancellationToken
             );
@@ -36,7 +36,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             if (string.IsNullOrWhiteSpace(normalizedWalletAddress))
                 return null;
 
-            return await _dbSet.FirstOrDefaultAsync(
+            return await DbSet.FirstOrDefaultAsync(
                 a => a.LinkedWalletAddress == normalizedWalletAddress,
                 cancellationToken
             );
@@ -47,7 +47,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             CancellationToken cancellationToken = default
         )
         {
-            return await _dbSet.AnyAsync(
+            return await DbSet.AnyAsync(
                 a => a.NormalizedEmail == normalizedEmail,
                 cancellationToken
             );
@@ -58,7 +58,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             CancellationToken cancellationToken = default
         )
         {
-            return await _dbSet.AnyAsync(
+            return await DbSet.AnyAsync(
                 a => a.NormalizedUserName == normalizedUsername,
                 cancellationToken
             );
@@ -69,7 +69,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             CancellationToken cancellationToken = default
         )
         {
-            return await _dbSet.AnyAsync(
+            return await DbSet.AnyAsync(
                 a => a.LinkedWalletAddress == normalizedWalletAddress,
                 cancellationToken
             );
