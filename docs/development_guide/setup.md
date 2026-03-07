@@ -1,4 +1,4 @@
-## Setup
+# Setup
 
 ### Dependencies
 
@@ -329,7 +329,7 @@ winget install Unity.UnityHub
 #### 3. Restore package for unity
 
 !!! info
-    Unity does not handle Nuget packages on its own so we are using [NugetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) as a tool for managing dependencies we need. `NugetForUnity` is available both as a CLI tool `dotnet nugetforunity` and a plugin in Unity Editor.
+    Unity does not handle Nuget packages on its own, so we are using [NugetForUnity](https://github.com/GlitchEnzo/NuGetForUnity) as a tool for managing dependencies we need. `NugetForUnity` is available both as a CLI tool `dotnet nugetforunity` and a plugin in Unity Editor.
 
 Before opening the project in Unity Editor run at project root:
 
@@ -337,4 +337,20 @@ Before opening the project in Unity Editor run at project root:
 dotnet nugetforunity restore /unity/Echoes-of-Bathala
 ```
 
-Were going to use NugetForUnity mainly in Service 1 (Game Server).
+---
+
+### Environment Variables
+
+The development environment can be run in two ways:
+
+1. A **full stack setup** using the `docker-compose` configuration.
+2. A **local setup** where services are run directly from the source code.
+
+!!! info
+    In the **.NET backend**, environment variables are managed using **dotnet user-secrets**. To initialize the required development settings, run the `setup-dev` script located in the project root.
+
+* Use `setup-dev.sh` for **Linux/macOS shells**
+* Use `setup-dev.ps1` for **PowerShell**
+
+!!! note
+    Running this script injects the necessary configuration values into the local **user-secrets store**, allowing the backend services to run with the required environment settings without committing sensitive data to the repository.

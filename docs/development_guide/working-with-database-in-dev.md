@@ -1,7 +1,9 @@
-## dotnet-ef & Migrations
+# Working with DB Schema in Development
+
+## Dotnet-ef & Migrations
 
 !!! tip "Quick Start Overview"
-    Use this section to manage your database schema using **EF Core CLI**. Includes creating, updating, and applying migrations.
+    Use this section to manage your database schema using **EF Core CLI**. Includes creating, updating, and applying migrations. In SQL database db schema are versioned alongside the codebase. Dotnet-ef tool allows for this.
 
 ### Installing dotnet-ef
 

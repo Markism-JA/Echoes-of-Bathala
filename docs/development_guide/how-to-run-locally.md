@@ -1,3 +1,5 @@
+# Working with the Docker Containers in Development
+
 ## Quick Start
 
 !!! tip "Quick Start Overview"
@@ -5,7 +7,10 @@
 
 ### Run Everything (Full Stack)
 
-Spin up the entire stack (**Database**, **API**, **Worker**, **Blockchain**) using Docker:
+!!! note
+    Check the `docker-compose.yml` file for more information about the specific configuration of the full stack.
+
+Spin up the entire stack using Docker:
 
 ```bash
 docker-compose up --build
@@ -17,76 +22,9 @@ docker-compose up --build
 
 Use these commands if you only need specific parts of the stack.
 
-#### Database Only (Postgres)
-
-!!! info "Required Dependency"
-    The database is required for all backend-related development.
-
 ```bash
-docker-compose up -d db
+docker-compose up -d <container-name>
 ```
-
-**Connection String**
-
-```
-Host=localhost;Port=5432;Database=echoes_bathala_db;Username=admin;Password=password123
-```
-
----
-
-#### Blockchain Only (Hardhat)
-
-!!! info "Smart Contract Development"
-    Required when working on **Smart Contracts** or the **Crypto Worker**.
-
-```bash
-docker-compose up -d blockchain
-```
-
-* **RPC URL:** `http://localhost:8545`
-* **Chain ID:** `31337` (Hardhat default)
-
----
-
-#### API Only (Hot Reload)
-
-!!! tip "Recommended for C# Iteration"
-    Run the database in Docker and the API **natively** for faster hot reloads.
-
-1. Start the database:
-
-   ```bash
-   docker-compose up -d db
-   ```
-
-2. Run the API:
-
-   ```bash
-   cd backend/src/GameBackend.API
-   dotnet watch run
-   ```
-
-* **Swagger UI:** [http://localhost:5000/swagger](http://localhost:5000/swagger)
-
----
-
-#### Crypto Worker Only
-
-!!! info "Worker Dependencies"
-    The worker requires both the **Database** and **Blockchain** services.
-
-1. Start dependencies:
-
-   ```bash
-   docker-compose up -d db blockchain
-   ```
-
-2. Run the worker:
-
-   ```bash
-   cd backend/src/GameBackend.Worker
-   dotnet run
-   ```
 
 ---
 
@@ -128,11 +66,3 @@ docker-compose ps
 
 * **Docker Networking**
   [https://docs.docker.com/network/](https://docs.docker.com/network/)
-
-#### When to Check the Docs
-
-* Adding new services or dependencies
-* Debugging container networking issues
-* Managing volumes and persistent data
-* Creating environment-specific overrides (`docker-compose.override.yml`)
-* Optimizing development vs production setups
