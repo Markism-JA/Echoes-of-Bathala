@@ -152,6 +152,7 @@ public static class DependencyInjection
     {
         var jsonOptions = new JsonSerializerOptions
         {
+            MaxDepth = 128,
             PropertyNameCaseInsensitive = true,
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
 
