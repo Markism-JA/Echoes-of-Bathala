@@ -1,9 +1,9 @@
-using Echoes.Application.Common.Identity;
-using Echoes.Application.Common.Persistence;
-using Echoes.Application.Common.Serialization;
+using Echoes.Application.Auth.Models;
+using Echoes.Application.Core.Abstractions;
+using Echoes.Application.Persistence.Abstractions;
 using Echoes.Domain;
-using Echoes.Infrastructure.Common.Security;
-using Echoes.Infrastructure.Mappers;
+using Echoes.Infrastructure.Persistence.Redis.Dto;
+using Echoes.Infrastructure.Security;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;

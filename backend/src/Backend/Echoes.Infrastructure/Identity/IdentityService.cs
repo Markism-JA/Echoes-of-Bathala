@@ -1,4 +1,4 @@
-using Echoes.Application.Common.Identity;
+using Echoes.Application.Auth.Abstractions;
 using ErrorOr;
 using Microsoft.AspNetCore.Identity;
 

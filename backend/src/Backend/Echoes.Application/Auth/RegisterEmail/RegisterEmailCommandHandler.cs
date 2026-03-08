@@ -1,6 +1,8 @@
-using Echoes.Application.Common.Identity;
-using Echoes.Application.Common.Persistence;
-using Echoes.Application.Common.Services;
+using Echoes.Application.Auth.Abstractions;
+using Echoes.Application.Auth.Models;
+using Echoes.Application.Auth.Policies;
+using Echoes.Application.Core.Services;
+using Echoes.Application.Persistence.Abstractions;
 using Echoes.Domain;
 using Echoes.Domain.Repository;
 using Echoes.Domain.Users;

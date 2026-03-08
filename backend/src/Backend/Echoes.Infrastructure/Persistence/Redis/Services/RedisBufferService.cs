@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Echoes.Application.Common.Persistence;
+using Echoes.Application.Persistence.Abstractions;
 using Echoes.Infrastructure.Persistence.Redis.Multiplexers;
 using StackExchange.Redis;
 

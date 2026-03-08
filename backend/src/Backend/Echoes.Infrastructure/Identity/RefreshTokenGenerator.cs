@@ -1,5 +1,5 @@
 using System.Security.Cryptography;
-using Echoes.Application.Common.Identity;
+using Echoes.Application.Auth.Abstractions;
 
 namespace Echoes.Infrastructure.Identity
 {

@@ -1,4 +1,3 @@
-using Echoes.Application.Common;
 using Echoes.Application.Extensions;
 using Echoes.Shared.Network.Constants;
 using FluentValidation;
@@ -11,24 +10,24 @@ public class RegisterEmailCommandValidator : AbstractValidator<RegisterEmailComm
     {
         RuleFor(x => x.Username)
             .NotEmpty()
-            .WithCustomError(Errors.Auth.Username.Required)
+            .WithCustomError(Errors.Username.Required)
             .MinimumLength(ValidationConstraint.Username.MinLength)
-            .WithCustomError(Errors.Auth.Username.TooShort)
+            .WithCustomError(Errors.Username.TooShort)
             .MaximumLength(ValidationConstraint.Username.MaxLength)
-            .WithCustomError(Errors.Auth.Username.TooLong)
+            .WithCustomError(Errors.Username.TooLong)
             .Matches(ValidationConstraint.Username.AllowedCharactersRegex)
-            .WithCustomError(Errors.Auth.Username.InvalidCharacters);
+            .WithCustomError(Errors.Username.InvalidCharacters);
 
         RuleFor(x => x.Email)
             .NotEmpty()
-            .WithCustomError(Errors.Auth.Email.Required)
+            .WithCustomError(Errors.Email.Required)
             .EmailAddress()
-            .WithCustomError(Errors.Auth.Email.Invalid);
+            .WithCustomError(Errors.Email.Invalid);
 
         RuleFor(x => x.Password)
             .NotEmpty()
-            .WithCustomError(Errors.Auth.Password.Required)
+            .WithCustomError(Errors.Password.Required)
             .MinimumLength(ValidationConstraint.Password.MinLength)
-            .WithCustomError(Errors.Auth.Password.TooShort);
+            .WithCustomError(Errors.Password.TooShort);
     }
 }

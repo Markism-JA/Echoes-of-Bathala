@@ -1,4 +1,4 @@
-using Echoes.Application.Common.Services;
+using Echoes.Application.Core.Services;
 
 namespace Echoes.Infrastructure.Services
 {

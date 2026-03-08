@@ -1,4 +1,4 @@
-using Echoes.Application.Common.Persistence;
+using Echoes.Application.Persistence.Abstractions;
 
 namespace Echoes.Infrastructure.Persistence.Postgresql
 {

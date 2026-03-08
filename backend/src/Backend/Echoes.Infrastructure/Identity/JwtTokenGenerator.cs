@@ -1,5 +1,6 @@
 using System.Text;
-using Echoes.Application.Common.Identity;
+using Echoes.Application.Auth.Abstractions;
+using Echoes.Application.Auth.Models;
 using Echoes.Domain.Users;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
