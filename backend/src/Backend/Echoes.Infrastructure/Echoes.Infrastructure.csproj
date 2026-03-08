@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="DotnetBadWordDetector" Version="2.0.0" />
     <PackageReference Include="ErrorOr" Version="2.0.1" />
+    <PackageReference Include="litenetlib" Version="2.0.2" />
     <PackageReference Include="MessagePack" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.*" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.9" />
