@@ -1,0 +1,31 @@
+.title {
+    font-size: 75px;
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=a62fe6ed0986e51458e292a300de9949&type=3#Maragsa-Font");
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-center;
+}
+
+.textfield {
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=a62fe6ed0986e51458e292a300de9949&type=3#Maragsa-Font");
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+.textfield Label {
+    font-size: 24px;
+}
+
+.authButton {
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=a62fe6ed0986e51458e292a300de9949&type=3#Maragsa-Font");
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    font-size: 24px;
+}
+
+.rememberMe {
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/Maragsa-Font.otf?fileID=12800000&guid=a62fe6ed0986e51458e292a300de9949&type=3#Maragsa-Font");
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-left;
+    font-size: 18px;
+}

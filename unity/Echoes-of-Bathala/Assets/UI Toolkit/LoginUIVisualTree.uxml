@@ -1,7 +1,14 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/StyleSheets/AuthUIStyle.uss?fileID=7433441132597879392&amp;guid=f7d5fef9584306341b153190530847d4&amp;type=3#AuthUIStyle" />
     <ui:VisualElement name="MainPanel" style="flex-grow: 1;">
-        <ui:VisualElement name="TitlePanel" style="flex-grow: 1; align-self: center; justify-content: flex-start; max-height: 20%; width: auto; max-width: 60%;">
-            <ui:Label text="Echoes Of Bathala" name="Title" style="width: 1312px; -unity-text-align: upper-center; font-size: 139px;" />
+        <ui:Label text="Echoes of Bathala" name="title" parse-escape-sequences="false" class="title" style="position: relative; top: 10%; align-self: auto;" />
+        <ui:VisualElement name="TextFieldsContainer" style="flex-grow: 1; position: relative; top: 25%; left: auto; width: 390px; height: 112px; align-self: center; justify-content: flex-start; bottom: auto;">
+            <ui:TextField label="Email" placeholder-text="email@example.com" name="EmailTextfield" class="textfield" style="flex-direction: column; -unity-text-align: upper-left;" />
+            <ui:TextField label="Password" placeholder-text="########" name="PasswordTextfield" mask-character="#" password="true" class="textfield" style="flex-direction: column; -unity-text-align: upper-left;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ButtonGroupContainer" style="flex-grow: 1; justify-content: flex-start; align-self: center; width: 366px; flex-direction: column-reverse; bottom: 10%;">
+            <ui:Button text="Login" class="authButton" style="height: 47px;" />
+            <ui:Toggle label="Remember Me?" name="RememberMe" class="rememberMe" style="justify-content: space-around; flex-direction: row-reverse; width: 192px; align-self: auto; align-content: flex-start; align-items: center; position: relative; top: auto; left: 93px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
