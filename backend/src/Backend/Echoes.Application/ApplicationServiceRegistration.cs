@@ -19,4 +19,9 @@ public static class ApplicationServiceRegistration
 
         return services;
     }
+
+    public static IServiceCollection AddSimulationServices(this IServiceCollection services)
+    {
+        return services;
+    }
 }
