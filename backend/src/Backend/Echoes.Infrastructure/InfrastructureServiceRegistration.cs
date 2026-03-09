@@ -170,6 +170,8 @@ public static class DependencyInjection
 
         services.AddKeyedSingleton<ISerializer, MessagePackSerializationService>("MessagePack");
 
+        services.AddKeyedSingleton<ISerializer, MemoryPackSerializationService>("MemoryPack");
+
         return services;
     }
 }
