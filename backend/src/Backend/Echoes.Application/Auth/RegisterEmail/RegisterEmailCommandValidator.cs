@@ -1,5 +1,5 @@
 using Echoes.Application.Extensions;
-using Echoes.Shared.Network.Constants;
+using Echoes.Shared.Network.Features.Validation;
 using FluentValidation;
 
 namespace Echoes.Application.Auth.RegisterEmail;

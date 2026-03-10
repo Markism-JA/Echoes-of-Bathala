@@ -16,6 +16,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echoes.Infrastructure", "src\Backend\Echoes.Infrastructure\Echoes.Infrastructure.csproj", "{F6C13B0B-BD8D-4729-9302-15240B50093D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{9DCBA673-FC90-4526-BAEC-6797759BE564}"
+	ProjectSection(SolutionItems) = preProject
+		src\Shared\Polyfills.cs = src\Shared\Polyfills.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echoes.Shared.Domain", "src\Shared\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj", "{64D9388D-82ED-4FCF-A933-E26FAE76B09A}"
 EndProject
@@ -46,6 +49,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echoes.PersistenceWorker", "src\Backend\Echoes.PersistenceWorker\Echoes.PersistenceWorker.csproj", "{81AE5CCA-626B-425A-95C9-031AF6D41A62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echoes.GameServer", "src\Backend\Echoes.GameServer\Echoes.GameServer.csproj", "{03A1BAAD-96F5-4EB0-88B7-FFC148E4A9C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echoes.Shared.Simulation", "src\Shared\Echoes.Shared.Simulation\Echoes.Shared.Simulation.csproj", "{A0A63F9B-2566-4542-94CC-F658C075E8B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -120,6 +125,10 @@ Global
 		{03A1BAAD-96F5-4EB0-88B7-FFC148E4A9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03A1BAAD-96F5-4EB0-88B7-FFC148E4A9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03A1BAAD-96F5-4EB0-88B7-FFC148E4A9C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0A63F9B-2566-4542-94CC-F658C075E8B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A63F9B-2566-4542-94CC-F658C075E8B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A63F9B-2566-4542-94CC-F658C075E8B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A63F9B-2566-4542-94CC-F658C075E8B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C99EF2E1-C4B1-45AC-BF65-C63AEF02A3C1} = {29F76C3A-326F-467C-A8AE-684DDF92C8BF}
@@ -142,5 +151,6 @@ Global
 		{36A20E2E-815A-47D3-9668-891084B81184} = {C99EF2E1-C4B1-45AC-BF65-C63AEF02A3C1}
 		{81AE5CCA-626B-425A-95C9-031AF6D41A62} = {C99EF2E1-C4B1-45AC-BF65-C63AEF02A3C1}
 		{03A1BAAD-96F5-4EB0-88B7-FFC148E4A9C0} = {C99EF2E1-C4B1-45AC-BF65-C63AEF02A3C1}
+		{A0A63F9B-2566-4542-94CC-F658C075E8B2} = {9DCBA673-FC90-4526-BAEC-6797759BE564}
 	EndGlobalSection
 EndGlobal

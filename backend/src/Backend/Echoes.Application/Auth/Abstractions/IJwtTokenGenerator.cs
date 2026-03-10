@@ -1,8 +1,8 @@
-using Echoes.Domain.Users;
+using Echoes.Domain.Users.Persistence;
 
 namespace Echoes.Application.Auth.Abstractions;
 
 public interface IJwtTokenGenerator
 {
-    public (string Token, DateTime Expiration) GenerateToken(User user, DateTime utcNow);
+    public (string Token, DateTime Expiration) GenerateToken(UserEntity user, DateTime utcNow);
 }

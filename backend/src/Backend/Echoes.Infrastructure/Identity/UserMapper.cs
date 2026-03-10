@@ -1,12 +1,12 @@
-using Echoes.Domain.Users;
+using Echoes.Domain.Users.Persistence;
 
 namespace Echoes.Infrastructure.Identity
 {
     public static class UserMapper
     {
-        public static User ToDomain(ApplicationUser appUser)
+        public static UserEntity ToDomain(ApplicationUser appUser)
         {
-            return User.Create(
+            return UserEntity.Create(
                 appUser.Id,
                 appUser.UserName!,
                 appUser.NormalizedUserName!,
@@ -15,7 +15,7 @@ namespace Echoes.Infrastructure.Identity
             );
         }
 
-        public static void MapToApplicationUser(User domainUser, ApplicationUser appUser)
+        public static void MapToApplicationUser(UserEntity domainUser, ApplicationUser appUser)
         {
             appUser.UserName = domainUser.UserName;
             appUser.NormalizedUserName = domainUser.NormalizedUserName;

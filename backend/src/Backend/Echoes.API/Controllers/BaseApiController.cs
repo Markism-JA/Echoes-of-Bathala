@@ -1,4 +1,4 @@
-using Echoes.Shared.Network.Contract;
+using Echoes.Shared.Network.Common;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 

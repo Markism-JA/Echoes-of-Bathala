@@ -1,4 +1,4 @@
-using Echoes.Shared.Network.Constants;
+using Echoes.Shared.Network.Common;
 using ErrorOr;
 
 namespace Echoes.Application.Auth;

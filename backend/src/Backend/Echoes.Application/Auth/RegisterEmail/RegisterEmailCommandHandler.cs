@@ -4,9 +4,8 @@ using Echoes.Application.Auth.Policies;
 using Echoes.Application.Core.Services;
 using Echoes.Application.Persistence.Abstractions;
 using Echoes.Domain;
-using Echoes.Domain.Repository;
-using Echoes.Domain.Users;
-using Echoes.Shared.Network.DTOs.Auth;
+using Echoes.Domain.Users.Persistence;
+using Echoes.Shared.Network.Features.Auth;
 using ErrorOr;
 using MediatR;
 using Microsoft.Extensions.Options;
@@ -50,7 +49,7 @@ public class RegisterEmailCommandHandler(
             return identityResult.Errors;
 
         var now = dateTimeProvider.UtcNow;
-        var domainUser = User.Create(
+        var domainUser = UserEntity.Create(
             id: userId,
             username: request.Username,
             email: request.Email,
@@ -73,27 +72,27 @@ public class RegisterEmailCommandHandler(
         await sessionService.CreateSessionAsync(refreshToken);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return CreateResponse(accessToken, refreshToken, domainUser);
+        return CreateResponse(
+            accessToken,
+            refreshToken,
+            domainUser,
+            now.AddMinutes(_jwtSettings.ExpiryMinutes)
+        );
     }
 
     private static AuthResponseDto CreateResponse(
         string accessToken,
         RefreshToken refreshToken,
-        User user
+        UserEntity user,
+        DateTime accessTokenExpiration
     )
     {
-        return new AuthResponseDto
-        {
-            AccessToken = accessToken,
-            RefreshToken = refreshToken.Token,
-            Expiration = refreshToken.ExpiryDate,
-            User = new UserResponseDto
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                Email = user.Email,
-                CreatedAt = user.CreatedAt,
-            },
-        };
+        return new AuthResponseDto(
+            accessToken,
+            refreshToken.Token,
+            accessTokenExpiration,
+            refreshToken.ExpiryDate,
+            new UserResponseDto(user.Id, user.UserName, user.Email, user.CreatedAt)
+        );
     }
 }

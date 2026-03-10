@@ -1,4 +1,4 @@
-using Echoes.Shared.Network.DTOs.Auth;
+using Echoes.Shared.Network.Features.Auth;
 using ErrorOr;
 using MediatR;
 

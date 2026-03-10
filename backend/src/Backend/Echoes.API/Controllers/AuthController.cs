@@ -1,5 +1,5 @@
 using Echoes.Application.Auth.RegisterEmail;
-using Echoes.Shared.Network.DTOs.Auth;
+using Echoes.Shared.Network.Features.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
