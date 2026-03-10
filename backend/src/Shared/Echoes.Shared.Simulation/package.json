@@ -1,0 +1,7 @@
+{
+    "name": "com.echoes.shared.simulation",
+    "version": "0.0.1",
+    "displayName": "Echoes Shared Simulation",
+    "description": "The ECS core simulation engine. Defines the orchestrator logic (WorldManager), system contracts (ISystem), and platform-agnostic simulation systems (Input/Movement) used for both server-side authority and client-side prediction.",
+    "author": "Echoes of Bathala Team"
+}

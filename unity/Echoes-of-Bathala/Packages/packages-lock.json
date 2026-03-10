@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.echoes.shared.simulation": {
+      "version": "file:../../../backend/src/Shared/Echoes.Shared.Simulation",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.echoes.shared.abstraction": {
       "version": "file:../../../backend/src/Shared/Echoes.Shared.Abstraction",
       "depth": 0,
