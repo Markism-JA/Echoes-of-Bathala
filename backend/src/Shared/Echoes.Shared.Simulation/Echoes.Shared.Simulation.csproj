@@ -3,7 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
-    <RootNamespace>Echoes.Shared.Security</RootNamespace>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Arch" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj" />
+  </ItemGroup>
 
 </Project>
