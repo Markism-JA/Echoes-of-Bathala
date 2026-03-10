@@ -1,7 +1,9 @@
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
+using Echoes.Application.Connection;
 using Echoes.Shared.Network.Common.Protocol;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Echoes.Application.Network;
 
@@ -14,7 +16,11 @@ namespace Echoes.Application.Network;
 /// overhead of runtime reflection. Handlers are resolved via Dependency Injection
 /// and cached after the first invocation for near-native execution speed.
 /// </remarks>
-public class PacketDispatcher(IServiceProvider serviceProvider)
+public class PacketDispatcher(
+    IServiceProvider serviceProvider,
+    ConnectionManager connectionManager,
+    ILogger<PacketDispatcher> logger
+)
 {
     /// <summary>
     /// Stores compiled delegates for packet handling to avoid repeated reflection lookups.
@@ -32,6 +38,14 @@ public class PacketDispatcher(IServiceProvider serviceProvider)
     /// </remarks>
     public void Dispatch(Guid senderId, IPacketUnion packet)
     {
+        if (!connectionManager.IsConnected(senderId))
+        {
+            logger.LogWarning(
+                "Unauthorized packet attempts from {SenderId}. Dropping packet.",
+                senderId
+            );
+            return;
+        }
         var type = packet.GetType();
 
         var handler = _cachedHandlers.GetOrAdd(type, CreateHandlerDelegate);
