@@ -6,10 +6,14 @@ using Echoes.Application.Auth.Models;
 using Echoes.Application.Auth.Policies;
 using Echoes.Application.Core.Abstractions;
 using Echoes.Application.Core.Services;
+using Echoes.Application.Network;
 using Echoes.Application.Persistence.Abstractions;
-using Echoes.Domain.Repository;
+using Echoes.Domain.Common;
+using Echoes.Domain.Users.Persistence;
 using Echoes.Infrastructure.Auth.Policies;
 using Echoes.Infrastructure.Identity;
+using Echoes.Infrastructure.Networking;
+using Echoes.Infrastructure.Networking.Configuration;
 using Echoes.Infrastructure.Persistence.Postgresql;
 using Echoes.Infrastructure.Persistence.Postgresql.Repositories;
 using Echoes.Infrastructure.Persistence.Redis.Multiplexers;
@@ -171,6 +175,19 @@ public static class DependencyInjection
         services.AddKeyedSingleton<ISerializer, MessagePackSerializationService>("MessagePack");
 
         services.AddKeyedSingleton<ISerializer, MemoryPackSerializationService>("MemoryPack");
+
+        return services;
+    }
+
+    public static IServiceCollection AddNetworkingInfrastructure(
+        this IServiceCollection services,
+        IConfiguration configuration
+    )
+    {
+        services.Configure<NetworkOptions>(configuration.GetSection("Network"));
+        services.AddSingleton<INetworkEngineFactory, LiteNetEngineFactory>();
+        services.AddSingleton<LiteNetTransport>();
+        services.AddSingleton<INetworkTransport>(sp => sp.GetRequiredService<LiteNetTransport>());
 
         return services;
     }
