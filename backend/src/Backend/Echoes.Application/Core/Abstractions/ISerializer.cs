@@ -8,7 +8,8 @@ public interface ISerializer
     public byte[] Serialize<T>(T value);
 
     /// <summary>
-    /// Converts a byte array back into a strongly-typed object.
+    /// Converts a memory buffer back into a strongly-typed object.
+    /// Uses <see cref="ReadOnlySpan{T}"/> for zero-copy deserialization.
     /// </summary>
-    public T? Deserialize<T>(byte[] data);
+    public T? Deserialize<T>(ReadOnlyMemory<byte> data);
 }

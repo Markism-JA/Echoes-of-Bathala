@@ -7,14 +7,12 @@ namespace Echoes.Infrastructure.Serialization
     {
         public byte[] Serialize<T>(T value)
         {
-            var json = JsonSerializer.Serialize(value, options);
-            return System.Text.Encoding.UTF8.GetBytes(json);
+            return JsonSerializer.SerializeToUtf8Bytes(value, options);
         }
 
-        public T? Deserialize<T>(byte[] data)
+        public T? Deserialize<T>(ReadOnlyMemory<byte> data)
         {
-            var json = System.Text.Encoding.UTF8.GetString(data);
-            return JsonSerializer.Deserialize<T>(json, options);
+            return JsonSerializer.Deserialize<T>(data.Span, options);
         }
     }
 }

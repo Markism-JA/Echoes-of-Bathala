@@ -5,9 +5,9 @@ namespace Echoes.Infrastructure.Serialization
 {
     public class MemoryPackSerializationService : ISerializer
     {
-        public T? Deserialize<T>(byte[] data)
+        public T? Deserialize<T>(ReadOnlyMemory<byte> data)
         {
-            return MemoryPackSerializer.Deserialize<T>(data);
+            return MemoryPackSerializer.Deserialize<T>(data.Span);
         }
 
         public byte[] Serialize<T>(T value)

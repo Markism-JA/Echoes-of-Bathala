@@ -13,7 +13,7 @@ public class MessagePackSerializationService : ISerializer
         return MessagePackSerializer.Serialize(value, _options);
     }
 
-    public T? Deserialize<T>(byte[] data)
+    public T? Deserialize<T>(ReadOnlyMemory<byte> data)
     {
         return MessagePackSerializer.Deserialize<T>(data, _options);
     }
