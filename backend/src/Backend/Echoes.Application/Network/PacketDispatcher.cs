@@ -62,6 +62,12 @@ public class PacketDispatcher(
         var handlerType = typeof(IPacketHandler<>).MakeGenericType(packetType);
         var handler = serviceProvider.GetRequiredService(handlerType);
 
+        if (handler == null)
+        {
+            // Return a "no-op" delegate so the server doesn't crash on unregistered packets
+            return (sender, packet) =>
+                logger.LogWarning("No handler registered for packet type {Type}", packetType);
+        }
         // Build the expression: (senderId, packet) => handler.Handle(senderId, (PacketType)packet)
         var senderParam = Expression.Parameter(typeof(Guid), "senderId");
         var packetParam = Expression.Parameter(typeof(IPacketUnion), "packet");
