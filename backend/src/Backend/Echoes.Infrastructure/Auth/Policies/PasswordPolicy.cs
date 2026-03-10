@@ -1,5 +1,5 @@
 using Echoes.Shared.Abstraction.Security;
-using Echoes.Shared.Network.Constants;
+using Echoes.Shared.Network.Common;
 using Zxcvbn;
 
 namespace Echoes.Infrastructure.Auth.Policies
