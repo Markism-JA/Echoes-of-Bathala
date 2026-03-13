@@ -36,3 +36,5 @@ yarn-error.log*
 [Cc]overage[Rr]eport
 
 .env
+.bin
+.obj
