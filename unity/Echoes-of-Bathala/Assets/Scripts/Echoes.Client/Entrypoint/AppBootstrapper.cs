@@ -1,11 +1,6 @@
 using UnityEngine;
 
-// NGO/LiteNetLib implementation
-
-// NGO/LiteNetLib implementation
-// using other namespaces...
-
-namespace Echoes.Game.Entrypoints
+namespace Echoes.Client.Entrypoint
 {
     public class AppBootstrapper : MonoBehaviour
     {
@@ -14,18 +9,7 @@ namespace Echoes.Game.Entrypoints
 
         private void Awake()
         {
-            // Container = new ServiceRegistry();
-
-#if UNITY_SERVER
-            InitializeServer();
-#else
             InitializeClient();
-#endif
-        }
-
-        private void InitializeServer()
-        {
-            Debug.Log("Server Initialized.");
         }
 
         private void InitializeClient()

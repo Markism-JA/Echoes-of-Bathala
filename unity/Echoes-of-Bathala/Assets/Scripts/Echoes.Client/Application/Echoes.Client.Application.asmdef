@@ -1,13 +1,10 @@
 {
-    "name": "Echoes.Game.Entry.Client",
+    "name": "Echoes.Client.Application",
     "rootNamespace": "",
     "references": [
-        "Echoes.Game.Presentation",
-        "Echoes.Game.Infrastructure.Client",
-        "Echoes.Game.App.Client",
-        "Echoes.Shared.Domain",
-        "Echoes.Shared.Abstraction",
-        "Echoes.Shared.Network"
+        "GUID:53d2ba53e5d847dda9e4f8fa89770602",
+        "GUID:036ff12260114ec99de40a70436f5891",
+        "GUID:f1c390d781844266b7d8e048020d7e74"
     ],
     "includePlatforms": [
         "Android",

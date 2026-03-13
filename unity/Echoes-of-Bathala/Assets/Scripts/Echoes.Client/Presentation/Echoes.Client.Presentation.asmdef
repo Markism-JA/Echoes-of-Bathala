@@ -1,9 +1,8 @@
 {
-    "name": "Echoes.Game.Infrastructure.Client",
+    "name": "Echoes.Client.Presentation",
     "rootNamespace": "",
     "references": [
-        "GUID:bf73cdb777da467d98599e4425c977d7",
-        "GUID:f1c390d781844266b7d8e048020d7e74"
+        "GUID:bf73cdb777da467d98599e4425c977d7"
     ],
     "includePlatforms": [
         "Android",
