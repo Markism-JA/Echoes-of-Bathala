@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+        <LangVersion>12</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <BaseIntermediateOutputPath>.obj/</BaseIntermediateOutputPath>
+        <BaseOutputPath>.bin/</BaseOutputPath>
+        <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)/</IntermediateOutputPath>
+        <OutputPath>$(BaseOutputPath)$(Configuration)/</OutputPath>
+    </PropertyGroup>
+</Project>
