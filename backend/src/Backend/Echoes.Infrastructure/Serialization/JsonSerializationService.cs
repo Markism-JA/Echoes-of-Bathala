@@ -3,18 +3,33 @@ using Echoes.Application.Common.Abstractions;
 
 namespace Echoes.Infrastructure.Serialization
 {
+    /// <summary>
+    /// A JSON-based implementation of <see cref="ISerializer"/> using System.Text.Json.
+    /// </summary>
+    /// <remarks>
+    /// This service is ideal for human-readable debugging or cross-platform compatibility
+    /// where binary serialization (like MemoryPack) is not required.
+    /// </remarks>
     public class JsonSerializationService(JsonSerializerOptions options) : ISerializer
     {
+        /// <inheritdoc />
+        /// <remarks>
+        /// Serializes directly to a UTF-8 encoded byte array to minimize string allocation overhead.
+        /// </remarks>
         public byte[] Serialize<T>(T value)
         {
-            var json = JsonSerializer.Serialize(value, options);
-            return System.Text.Encoding.UTF8.GetBytes(json);
+            return JsonSerializer.SerializeToUtf8Bytes(value, options);
         }
 
-        public T? Deserialize<T>(byte[] data)
+        /// <inheritdoc />
+        /// <remarks>
+        /// Deserializes by accessing the underlying <see cref="ReadOnlySpan{T}"/> of the provided memory.
+        /// This provides the high-performance benefits of Span-based parsing while maintaining
+        /// the interface's <see cref="ReadOnlyMemory{T}"/> contract.
+        /// </remarks>
+        public T? Deserialize<T>(ReadOnlyMemory<byte> data)
         {
-            var json = System.Text.Encoding.UTF8.GetString(data);
-            return JsonSerializer.Deserialize<T>(json, options);
+            return JsonSerializer.Deserialize<T>(data.Span, options);
         }
     }
 }

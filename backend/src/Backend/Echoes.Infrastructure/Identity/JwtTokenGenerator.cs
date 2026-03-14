@@ -8,10 +8,14 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Echoes.Infrastructure.Identity;
 
+/// <summary>
+/// Implementation of <see cref="IJwtTokenGenerator"/> that issues signed HMAC-SHA256 tokens.
+/// </summary>
 public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions) : IJwtTokenGenerator
 {
     private readonly JwtSettings _jwtSettings = jwtOptions.Value;
 
+    /// <inheritdoc />
     public (string Token, DateTime Expiration) GenerateToken(UserEntity user, DateTime now)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
@@ -24,6 +28,9 @@ public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions) : IJwtTokenGene
             [JwtRegisteredClaimNames.Name] = user.UserName,
             [JwtRegisteredClaimNames.Email] = user.Email,
             [JwtRegisteredClaimNames.Jti] = Guid.NewGuid().ToString(),
+
+            // TODO: Implement authorization claims.
+            // TODO: Implement iat claim.
         };
 
         var expiration = now.AddMinutes(_jwtSettings.ExpiryMinutes);

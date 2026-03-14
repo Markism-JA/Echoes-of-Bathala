@@ -7,9 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Echoes.Infrastructure.Persistence.Postgresql
 {
+    /// <summary>
+    /// The main database context for the Echoes PostgreSql Database.
+    /// </summary>
     public class GameDbContext(DbContextOptions<GameDbContext> options)
         : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>(options)
     {
+        /// <summary>
+        /// Configures the model mapping and applies global security/logic filters.
+        /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -19,6 +25,9 @@ namespace Echoes.Infrastructure.Persistence.Postgresql
             ApplyGlobalFilters(modelBuilder);
         }
 
+        /// <summary>
+        /// Dynamically applies a 'IsDeleted == false' filter to all entities implementing <see cref="ISoftDelete"/>.
+        /// </summary>
         private void ApplyGlobalFilters(ModelBuilder modelBuilder)
         {
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())

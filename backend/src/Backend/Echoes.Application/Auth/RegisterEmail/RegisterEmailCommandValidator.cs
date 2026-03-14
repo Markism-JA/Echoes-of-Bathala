@@ -4,6 +4,14 @@ using FluentValidation;
 
 namespace Echoes.Application.Auth.RegisterEmail;
 
+/// <summary>
+/// Defines the structural validation rules for the <see cref="RegisterEmailCommand"/>.
+/// </summary>
+/// <remarks>
+/// This validator is automatically picked up by the <see cref="ValidationBehavior{TRequest, TResponse}"/>
+/// to enforce constraints before the command reaches the handler. It uses centralized constants
+/// for length and format to ensure consistency across the ecosystem.
+/// </remarks>
 public class RegisterEmailCommandValidator : AbstractValidator<RegisterEmailCommand>
 {
     public RegisterEmailCommandValidator()

@@ -9,6 +9,14 @@ using ErrorOr;
 
 namespace Echoes.Infrastructure.Auth.Policies
 {
+    /// <summary>
+    /// Coordinates the validation of user registration attempts by aggregating
+    /// specialized sub-policies and checking persistence for identity conflicts.
+    /// </summary>
+    /// <param name="userNamePolicy">Policy for username format and content (e.g., profanity).</param>
+    /// <param name="emailPolicy">Policy for email validity and provider blacklisting.</param>
+    /// <param name="passwordPolicy">Policy for entropy and security requirements.</param>
+    /// <param name="userRepository">Repository used to verify uniqueness of normalized identities.</param>
     public class RegistrationPolicy(
         IUserNamePolicy userNamePolicy,
         IEmailPolicy emailPolicy,
@@ -16,6 +24,11 @@ namespace Echoes.Infrastructure.Auth.Policies
         IUserRepository userRepository
     ) : IRegistrationPolicy
     {
+        /// <inheritdoc />
+        /// <returns>
+        /// A <see cref="RegistrationDetails"/> DTO containing normalized credentials on success;
+        /// otherwise, a failure <see cref="Error"/>.
+        /// </returns>
         public async Task<ErrorOr<RegistrationDetails>> IsAllowedAsync(
             RegisterEmailCommand command,
             CancellationToken ct
@@ -49,6 +62,9 @@ namespace Echoes.Infrastructure.Auth.Policies
             return new RegistrationDetails(normalizedUsername, normalizedEmail);
         }
 
+        /// <summary>
+        /// Maps internal username validation results to domain errors.
+        /// </summary>
         private Error MapUsernameError(ValidationResult result) =>
             result.ErrorCode switch
             {
@@ -60,6 +76,9 @@ namespace Echoes.Infrastructure.Auth.Policies
                 ),
             };
 
+        /// <summary>
+        /// Maps internal email validation results to domain errors.
+        /// </summary>
         private Error MapEmailError(ValidationResult result) =>
             result.ErrorCode switch
             {
@@ -71,6 +90,9 @@ namespace Echoes.Infrastructure.Auth.Policies
                 ),
             };
 
+        /// <summary>
+        /// Maps internal password validation results to domain errors.
+        /// </summary>
         private Error MapPasswordError(ValidationResult result) =>
             result.ErrorCode switch
             {

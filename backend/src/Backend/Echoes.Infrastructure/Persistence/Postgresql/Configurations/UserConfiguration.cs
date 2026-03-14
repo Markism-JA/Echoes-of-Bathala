@@ -1,5 +1,4 @@
 using Echoes.Domain;
-using Echoes.Domain.Users;
 using Echoes.Domain.Users.Persistence;
 using Echoes.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -7,17 +6,21 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Echoes.Infrastructure.Persistence.Postgresql.Configurations
 {
+    /// <summary>
+    /// Configures the database schema for the <see cref="UserEntity"/> domain model.
+    /// </summary>
     public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {
         public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
             builder.ToTable("users");
 
+            // Sets up a 1:1 relationship where UserEntity uses the same Primary Key as ApplicationUser.
+            // Cascade delete ensures that if the Identity account is removed, the domain profile follows.
             builder
                 .HasOne<ApplicationUser>()
                 .WithOne(a => a.User)
-                .HasForeignKey<UserEntity>(u => u.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey<UserEntity>(u => u.Id);
 
             builder.Property(u => u.UserName).HasMaxLength(32).IsRequired();
             builder.Property(u => u.Email).HasMaxLength(254).IsRequired();

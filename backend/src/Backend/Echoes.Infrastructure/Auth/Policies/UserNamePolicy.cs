@@ -4,8 +4,17 @@ using Echoes.Shared.Network.Common;
 
 namespace Echoes.Infrastructure.Auth.Policies
 {
+    /// <summary>
+    /// Implements username validation using a combination of a reserved keyword list
+    /// and an external profanity detection service.
+    /// </summary>
+    /// <remarks>
+    /// This implementation is designed to defeat "evasion" tactics (like replacing 'S' with '5')
+    /// by normalizing the input before performing security checks.
+    /// </remarks>
     public class UserNamePolicy(ProfanityDetector profanityDetector) : IUserNamePolicy
     {
+        /// NOTE: In prod this should ideally connect to a db table.
         private static readonly HashSet<string> _reservedNames = new(
             StringComparer.OrdinalIgnoreCase
         )
@@ -18,6 +27,11 @@ namespace Echoes.Infrastructure.Auth.Policies
             "Moderator",
         };
 
+        /// <inheritdoc />
+        /// <remarks>
+        /// Checks for empty inputs, system-reserved names (Admin, GameMaster, etc.),
+        /// and forbidden language via the <see cref="ProfanityDetector"/>.
+        /// </remarks>
         public Task<ValidationResult> IsAllowedAsync(
             string username,
             CancellationToken ct = default
@@ -55,6 +69,10 @@ namespace Echoes.Infrastructure.Auth.Policies
             return Task.FromResult(new ValidationResult(true));
         }
 
+        /// <summary>
+        /// Aggressively normalizes strings to their phonetic/visual equivalents.
+        /// Maps 1->I, 0->O, 3->E, etc., and removes all punctuation.
+        /// </summary>
         public string Normalize(string username)
         {
             if (string.IsNullOrWhiteSpace(username))

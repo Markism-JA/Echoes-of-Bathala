@@ -1,5 +1,13 @@
 namespace Echoes.Domain.Auth
 {
+    /// <summary>
+    /// Represents a long-lived credential used to acquire new access tokens.
+    /// </summary>
+    /// <remarks>
+    /// <b>Storage Note:</b> This entity is persisted in the <b>Redis Buffer Instance</b>
+    /// via <c>ISessionService</c> to ensure high-performance authentication checks
+    /// and to support rapid revocation across distributed services.
+    /// </remarks>
     public class RefreshToken
     {
         private RefreshToken() { }
@@ -12,6 +20,7 @@ namespace Echoes.Domain.Auth
         public bool IsRevoked { get; private set; }
 
         public bool IsExpired => DateTime.UtcNow >= ExpiryDate;
+
         public bool IsActive => !IsRevoked && !IsExpired;
 
         public static RefreshToken Create(
@@ -37,6 +46,9 @@ namespace Echoes.Domain.Auth
             };
         }
 
+        /// <summary>
+        /// Reconstructs an existing Refresh Token from the persistence layer (Redis).
+        /// </summary>
         public static RefreshToken Restore(
             Guid id,
             string token,
@@ -60,6 +72,11 @@ namespace Echoes.Domain.Auth
             };
         }
 
+        /// <summary>
+        /// Permanently invalidates this session.
+        /// Use this to trigger revocation logic across the infrastructure
+        /// without losing the session's metadata.
+        /// </summary>
         public void Revoke()
         {
             IsRevoked = true;
