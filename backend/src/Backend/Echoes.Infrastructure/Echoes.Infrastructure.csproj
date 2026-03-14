@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="DotnetBadWordDetector" Version="2.0.0" />
     <PackageReference Include="ErrorOr" Version="2.0.1" />
+    <PackageReference Include="litenetlib" Version="2.0.2" />
     <PackageReference Include="memorypack" Version="1.21.4" />
     <PackageReference Include="MessagePack" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.*" />
@@ -31,6 +32,10 @@
     <ProjectReference Include="..\Echoes.Domain\Echoes.Domain.csproj" />
     <ProjectReference Include="..\..\Shared\Echoes.Shared.Abstraction\Echoes.Shared.Abstraction.csproj" />
     <ProjectReference Include="..\Echoes.Application\Echoes.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Network\Litenet\" />
   </ItemGroup>
 
 </Project>
