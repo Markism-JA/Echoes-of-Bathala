@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Network\Echoes.Shared.Network.csproj" />
     <ProjectReference Include="..\Echoes.Domain\Echoes.Domain.csproj" />
     <ProjectReference Include="..\..\Shared\Echoes.Shared.Abstraction\Echoes.Shared.Abstraction.csproj" />
     <ProjectReference Include="..\Echoes.Application\Echoes.Application.csproj" />

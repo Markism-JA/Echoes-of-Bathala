@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj" />
     <ProjectReference Include="..\..\Shared\Echoes.Shared.Abstraction\Echoes.Shared.Abstraction.csproj" />
+    <ProjectReference Include="..\..\Shared\Echoes.Shared.Network\Echoes.Shared.Network.csproj" />
     <ProjectReference Include="..\Echoes.Domain\Echoes.Domain.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 using System.Net.Mail;
 using Echoes.Shared.Abstraction.Security;
-using Echoes.Shared.Network.Constants;
+using Echoes.Shared.Network.Common;
 
 namespace Echoes.Infrastructure.Auth.Policies
 {

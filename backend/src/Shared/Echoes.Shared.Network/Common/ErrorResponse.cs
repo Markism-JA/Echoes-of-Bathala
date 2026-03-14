@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Echoes.Shared.Network.Contract
+namespace Echoes.Shared.Network.Common
 {
     [Serializable]
     public class ErrorResponse

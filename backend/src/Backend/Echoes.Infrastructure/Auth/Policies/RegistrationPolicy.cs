@@ -4,7 +4,7 @@ using Echoes.Application.Auth.Policies;
 using Echoes.Application.Auth.RegisterEmail;
 using Echoes.Domain.Repository;
 using Echoes.Shared.Abstraction.Security;
-using Echoes.Shared.Network.Constants;
+using Echoes.Shared.Network.Common;
 using ErrorOr;
 
 namespace Echoes.Infrastructure.Auth.Policies

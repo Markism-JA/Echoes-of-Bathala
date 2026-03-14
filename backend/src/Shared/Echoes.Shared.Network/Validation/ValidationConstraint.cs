@@ -1,4 +1,4 @@
-namespace Echoes.Shared.Network.Constants
+namespace Echoes.Shared.Network.Validation
 {
     public static class ValidationConstraint
     {
