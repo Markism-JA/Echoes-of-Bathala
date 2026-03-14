@@ -1,8 +1,8 @@
 {
   "dependencies": {
+    "com.echoes.shared.abstraction": "file:../../../backend/src/Shared/Echoes.Shared.Abstraction",
     "com.echoes.shared.domain": "file:../../../backend/src/Shared/Echoes.Shared.Domain",
     "com.echoes.shared.network": "file:../../../backend/src/Shared/Echoes.Shared.Network",
-    "com.echoes.shared.abstraction": "file:../../../backend/src/Shared/Echoes.Shared.Abstraction",
     "com.github-glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
     "com.unity.ai.navigation": "2.0.9",
     "com.unity.collab-proxy": "2.9.3",
@@ -48,6 +48,16 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
-  }
+    "com.unity.modules.xr": "1.0.0",
+    "jp.hadashikick.vcontainer": "1.17.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "jp.hadashikick.vcontainer"
+      ]
+    }
+  ]
 }
