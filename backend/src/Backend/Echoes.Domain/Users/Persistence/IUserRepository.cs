@@ -1,8 +1,8 @@
-using Echoes.Domain.Users;
+using Echoes.Domain.Common;
 
-namespace Echoes.Domain.Repository
+namespace Echoes.Domain.Users.Persistence
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IRepository<UserEntity>
     {
         /// <summary>
         /// Retrieves a user by their normalized email address.
@@ -10,7 +10,7 @@ namespace Echoes.Domain.Repository
         /// <param name="normalizedEmail">The email address after policy normalization (e.g., uppercase).</param>
         /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
         /// <returns>The <see cref="User"/> if a match is found; otherwise, null.</returns>
-        public Task<User?> GetByEmailAsync(
+        public Task<UserEntity?> GetByEmailAsync(
             string normalizedEmail,
             CancellationToken cancellationToken = default
         );
@@ -21,7 +21,7 @@ namespace Echoes.Domain.Repository
         /// <param name="normalizedUsername">The username after policy normalization.</param>
         /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
         /// <returns>The <see cref="User"/> if a match is found; otherwise, null.</returns>
-        public Task<User?> GetByUserNameAsync(
+        public Task<UserEntity?> GetByUserNameAsync(
             string normalizedUsername,
             CancellationToken cancellationToken = default
         );
@@ -32,7 +32,7 @@ namespace Echoes.Domain.Repository
         /// <param name="walletAddress">The unique public wallet address string.</param>
         /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
         /// <returns>The <see cref="User"/> if a link exists; otherwise, null.</returns>
-        public Task<User?> GetByWalletAddressAsync(
+        public Task<UserEntity?> GetByWalletAddressAsync(
             string walletAddress,
             CancellationToken cancellationToken = default
         );

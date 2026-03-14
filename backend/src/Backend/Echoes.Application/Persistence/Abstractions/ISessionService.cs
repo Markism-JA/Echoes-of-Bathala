@@ -1,4 +1,4 @@
-using Echoes.Domain;
+using Echoes.Domain.Auth;
 
 namespace Echoes.Application.Persistence.Abstractions;
 

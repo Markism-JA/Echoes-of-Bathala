@@ -2,7 +2,7 @@ using ErrorOr;
 using FluentValidation;
 using MediatR;
 
-namespace Echoes.Application.Core.Behaviors
+namespace Echoes.Application.Common.Behaviors
 {
     public class ValidationBehavior<TRequest, TResponse>(
         IEnumerable<IValidator<TRequest>> validators

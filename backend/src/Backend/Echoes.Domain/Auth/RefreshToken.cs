@@ -1,4 +1,4 @@
-namespace Echoes.Domain
+namespace Echoes.Domain.Auth
 {
     public class RefreshToken
     {

@@ -1,4 +1,4 @@
-namespace Echoes.Application.Core.Abstractions;
+namespace Echoes.Application.Common.Abstractions;
 
 public interface ISerializer
 {

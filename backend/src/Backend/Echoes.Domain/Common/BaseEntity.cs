@@ -1,6 +1,4 @@
-using Echoes.Domain.Common;
-
-namespace Echoes.Domain
+namespace Echoes.Domain.Common
 {
     public abstract class BaseEntity : IAuditable
     {

@@ -1,12 +1,13 @@
 using Echoes.Domain.Common;
 using Echoes.Domain.Users;
+using Echoes.Domain.Users.Persistence;
 using Microsoft.AspNetCore.Identity;
 
 namespace Echoes.Infrastructure.Identity
 {
     public class ApplicationUser : IdentityUser<Guid>, ISoftDelete
     {
-        public virtual User User { get; set; } = null!;
+        public virtual UserEntity User { get; set; } = null!;
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
 

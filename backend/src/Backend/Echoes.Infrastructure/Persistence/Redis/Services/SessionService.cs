@@ -1,7 +1,7 @@
 using Echoes.Application.Auth.Models;
-using Echoes.Application.Core.Abstractions;
+using Echoes.Application.Common.Abstractions;
 using Echoes.Application.Persistence.Abstractions;
-using Echoes.Domain;
+using Echoes.Domain.Auth;
 using Echoes.Infrastructure.Persistence.Redis.Dto;
 using Echoes.Infrastructure.Security;
 using Microsoft.Extensions.DependencyInjection;

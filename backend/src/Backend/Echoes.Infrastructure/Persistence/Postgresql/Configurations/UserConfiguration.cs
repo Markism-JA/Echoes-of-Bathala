@@ -1,21 +1,22 @@
 using Echoes.Domain;
 using Echoes.Domain.Users;
+using Echoes.Domain.Users.Persistence;
 using Echoes.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Echoes.Infrastructure.Persistence.Postgresql.Configurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
             builder.ToTable("users");
 
             builder
                 .HasOne<ApplicationUser>()
                 .WithOne(a => a.User)
-                .HasForeignKey<User>(u => u.Id)
+                .HasForeignKey<UserEntity>(u => u.Id)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(u => u.UserName).HasMaxLength(32).IsRequired();

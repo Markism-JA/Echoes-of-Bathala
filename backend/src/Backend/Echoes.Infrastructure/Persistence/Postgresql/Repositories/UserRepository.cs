@@ -1,12 +1,11 @@
-using Echoes.Domain.Repository;
-using Echoes.Domain.Users;
+using Echoes.Domain.Users.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
 {
-    public class UserRepository(GameDbContext context) : Repository<User>(context), IUserRepository
+    public class UserRepository(GameDbContext context) : Repository<UserEntity>(context), IUserRepository
     {
-        public async Task<User?> GetByEmailAsync(
+        public async Task<UserEntity?> GetByEmailAsync(
             string normalizedEmail,
             CancellationToken cancellationToken = default
         )
@@ -17,7 +16,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             );
         }
 
-        public async Task<User?> GetByUserNameAsync(
+        public async Task<UserEntity?> GetByUserNameAsync(
             string normalizedUsername,
             CancellationToken cancellationToken = default
         )
@@ -28,7 +27,7 @@ namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories
             );
         }
 
-        public async Task<User?> GetByWalletAddressAsync(
+        public async Task<UserEntity?> GetByWalletAddressAsync(
             string normalizedWalletAddress,
             CancellationToken cancellationToken = default
         )

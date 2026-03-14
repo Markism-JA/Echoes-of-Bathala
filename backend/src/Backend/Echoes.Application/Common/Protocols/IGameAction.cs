@@ -1,4 +1,4 @@
-namespace Echoes.Application.Core.Protocols;
+namespace Echoes.Application.Common.Protocols;
 
 public interface IGameAction
 {

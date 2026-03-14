@@ -2,6 +2,7 @@ using System.Text;
 using Echoes.Application.Auth.Abstractions;
 using Echoes.Application.Auth.Models;
 using Echoes.Domain.Users;
+using Echoes.Domain.Users.Persistence;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
@@ -12,7 +13,7 @@ public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions) : IJwtTokenGene
 {
     private readonly JwtSettings _jwtSettings = jwtOptions.Value;
 
-    public (string Token, DateTime Expiration) GenerateToken(User user, DateTime now)
+    public (string Token, DateTime Expiration) GenerateToken(UserEntity user, DateTime now)
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
 

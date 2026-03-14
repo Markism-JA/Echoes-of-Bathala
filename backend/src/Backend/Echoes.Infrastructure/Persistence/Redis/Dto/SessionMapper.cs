@@ -1,4 +1,5 @@
 using Echoes.Domain;
+using Echoes.Domain.Auth;
 
 namespace Echoes.Infrastructure.Persistence.Redis.Dto
 {

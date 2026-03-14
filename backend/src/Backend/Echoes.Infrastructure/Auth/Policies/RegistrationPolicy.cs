@@ -1,8 +1,8 @@
 using Echoes.Application.Auth;
-using Echoes.Application.Auth.Models;
 using Echoes.Application.Auth.Policies;
 using Echoes.Application.Auth.RegisterEmail;
-using Echoes.Domain.Repository;
+using Echoes.Domain.Auth;
+using Echoes.Domain.Users.Persistence;
 using Echoes.Shared.Abstraction.Security;
 using Echoes.Shared.Network.Common;
 using ErrorOr;

@@ -1,8 +1,8 @@
 using Echoes.Domain.Common;
 
-namespace Echoes.Domain.Users
+namespace Echoes.Domain.Users.Persistence
 {
-    public class User : BaseEntity, ISoftDelete, IAggregateRoot
+    public class UserEntity : BaseEntity, ISoftDelete, IAggregateRoot
     {
         public string UserName { get; private set; } = null!;
         public string NormalizedUserName { get; private set; } = null!;
@@ -14,9 +14,9 @@ namespace Echoes.Domain.Users
         public bool IsDeleted { get; set; }
         public DateTime? DeletedAt { get; set; }
 
-        private User() { }
+        private UserEntity() { }
 
-        public static User Create(
+        public static UserEntity Create(
             Guid id,
             string username,
             string normalizedUserName,
@@ -40,7 +40,7 @@ namespace Echoes.Domain.Users
                     nameof(normalizedEmail)
                 );
 
-            return new User
+            return new UserEntity
             {
                 Id = id,
                 UserName = username,

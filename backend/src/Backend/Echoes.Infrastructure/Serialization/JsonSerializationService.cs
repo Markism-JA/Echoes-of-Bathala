@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Echoes.Application.Core.Abstractions;
+using Echoes.Application.Common.Abstractions;
 
 namespace Echoes.Infrastructure.Serialization
 {

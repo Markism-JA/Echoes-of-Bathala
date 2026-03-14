@@ -1,4 +1,4 @@
-using Echoes.Application.Core.Abstractions;
+using Echoes.Application.Common.Abstractions;
 using MessagePack;
 
 namespace Echoes.Infrastructure.Serialization;

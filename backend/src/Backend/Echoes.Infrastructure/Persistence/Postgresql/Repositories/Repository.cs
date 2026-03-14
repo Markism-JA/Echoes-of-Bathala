@@ -1,5 +1,4 @@
 using Echoes.Domain.Common;
-using Echoes.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Echoes.Infrastructure.Persistence.Postgresql.Repositories

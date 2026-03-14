@@ -1,11 +1,10 @@
 using Echoes.Application.Auth.Abstractions;
 using Echoes.Application.Auth.Models;
 using Echoes.Application.Auth.Policies;
-using Echoes.Application.Core.Services;
+using Echoes.Application.Common.Services;
 using Echoes.Application.Persistence.Abstractions;
-using Echoes.Domain;
-using Echoes.Domain.Repository;
-using Echoes.Domain.Users;
+using Echoes.Domain.Auth;
+using Echoes.Domain.Users.Persistence;
 using Echoes.Shared.Network.Auth;
 using ErrorOr;
 using MediatR;
@@ -72,7 +71,7 @@ public class RegisterEmailCommandHandler(
 
         var now = dateTimeProvider.UtcNow;
 
-        var domainUser = User.Create(
+        var domainUser = UserEntity.Create(
             id: userId,
             username: request.Username,
             email: request.Email,
@@ -104,7 +103,7 @@ public class RegisterEmailCommandHandler(
     private static AuthResponseDto CreateResponse(
         string accessToken,
         RefreshToken refreshToken,
-        User user,
+        UserEntity user,
         DateTime accessTokenExpiration
     )
     {

@@ -1,4 +1,4 @@
-using Echoes.Application.Core.Behaviors;
+using Echoes.Application.Common.Behaviors;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 

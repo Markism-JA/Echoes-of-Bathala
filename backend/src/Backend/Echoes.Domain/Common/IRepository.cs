@@ -1,6 +1,4 @@
-using Echoes.Domain.Common;
-
-namespace Echoes.Domain.Repository
+namespace Echoes.Domain.Common
 {
     /// <summary>
     /// Defines the generic contract for a repository, providing basic CRUD and querying operations
