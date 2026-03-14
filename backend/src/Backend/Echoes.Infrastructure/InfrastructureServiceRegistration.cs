@@ -149,6 +149,20 @@ public static class DependencyInjection
         return services;
     }
 
+    /// <summary>
+    /// Registers various <see cref="ISerializer"/> implementations as keyed singletons
+    /// and configures default JSON options.
+    /// </summary>
+    /// <param name="services">The service collection to add the services to.</param>
+    /// <returns>The modified service collection for chaining.</returns>
+    /// <remarks>
+    /// This method configures three distinct serialization strategies accessible via keys:
+    /// <list type="bullet">
+    /// <item><term>"Json"</term><description>Standard JSON serialization with camelCase and enum-string support.</description></item>
+    /// <item><term>"MessagePack"</term><description>Binary serialization with LZ4 compression for bandwidth efficiency.</description></item>
+    /// <item><term>"MemoryPack"</term><description>Ultra-fast, zero-allocation binary serialization for the networking hot-path.</description></item>
+    /// </list>
+    /// </remarks>
     public static IServiceCollection AddSerializationInfrastructure(
         this IServiceCollection services
     )
@@ -170,6 +184,8 @@ public static class DependencyInjection
         services.AddKeyedSingleton<ISerializer, JsonSerializationService>("Json");
 
         services.AddKeyedSingleton<ISerializer, MessagePackSerializationService>("MessagePack");
+
+        services.AddKeyedSingleton<ISerializer, MemoryPackSerializationService>("MemoryPack");
 
         return services;
     }
