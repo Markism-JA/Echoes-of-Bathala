@@ -38,3 +38,6 @@ yarn-error.log*
 .env
 .bin
 .obj
+
+unity/Echoes-of-Bathala/Assets/Packages/**
+!unity/Echoes-of-Bathala/Assets/Packages/**/*.meta

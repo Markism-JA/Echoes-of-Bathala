@@ -4,6 +4,9 @@
         <ProjectReference Include="..\Echoes.Shared.Domain\Echoes.Shared.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="memorypack" Version="1.21.4" />
+    </ItemGroup>
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
